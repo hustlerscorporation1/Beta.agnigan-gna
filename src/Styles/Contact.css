@@ -19,6 +19,7 @@
     display: flex;
     justify-content: center;
     /* align-items: center; */
+    border-radius: 10px 10px 10px 10px !important;
     
 }
 
@@ -56,10 +57,56 @@
 }
 
 
+.bg-white{
+    background-color: #f0efef;
+}
+
 .space-y-3 {
     color: #fff !important;
 }
 
+.space-y-4 input {
+    color: #100E2C !important;
+}
+
 .aside-icon {
     fill: #100E2C !important;
+}
+
+.contetaint-bureau  {
+    border-radius: 15px 15px 0px 0px !important;
+
+    width: 20rem !important;
+}
+
+.contetaint-bureau img {
+    width: 100% !important;
+    height: 17rem !important;
+}
+
+.para-bureaux {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    text-align: center;
+}
+
+.text-2xl  {
+    margin-bottom: 0.5rem !important;
+    font-size: 35px !important;
+}
+
+.bureau{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.logopartenaire {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    height: 5rem;
 }

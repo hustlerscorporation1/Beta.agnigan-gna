@@ -1,6 +1,6 @@
 
 .video-background {
-    background-color: rgba(0, 0, 0, 0.645);
+    background-color: rgba(0, 0, 0, 0.853);
     position: fixed;
     top: 0;
     left: 0;
@@ -22,7 +22,6 @@
     object-fit: cover;
 }
 
-/* Overlay sombre pour améliorer la lisibilité */
 .video-background::after {
     content: '';
     position: absolute;
@@ -30,7 +29,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3); /* Un overlay semi-transparent */
+    background-color: rgba(0, 0, 0, 0.681); /* Un overlay semi-transparent */
     z-index: 0; /* Au-dessus de la vidéo mais en dessous du contenu */
 }
 

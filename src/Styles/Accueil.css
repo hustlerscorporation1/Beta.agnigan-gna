@@ -1,5 +1,9 @@
-.body-accuiel {
+.containt-accuiel {
     width: 100%;
     height: 200%;
     background-color: blueviolet !important;
+}
+.containt-element .font-bold{
+    margin-top: 5rem !important;
+    
 }

@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import Navbar from '../Navbar';
 import '../Styles/Contact.css';
-import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaFacebook, FaTwitter, FaInstagram, } from "react-icons/fa";
+import { SiTiktok } from "react-icons/si";
 import TogoMap from '../pages/TogoMap';
 import '../Styles/TogoMap.css'; 
+import '../Styles/Footer.css';
 import VideoBackground from '../pages/VideoBackgroud';
+import MaVideo from '../videos/Terrain du Sud __ Publicité TV (1).mp4'
+import MonImagebureau1 from '../images/MonImagebureau1.jpg'
+import MonImagebureau2 from '../images/MonImagebureau2.jpg'
+import MonImagebureau3 from '../images/MonImagebureau3.jpg'
+
+import logopartenaire from '../images/Logo_Hustler_AN-removebg-preview.png'
  
 
 
@@ -32,8 +40,8 @@ function Contact() {
         };
 
         const videoSources = [
-            { src: '/videos/your-video.mp4', type: 'video/mp4' },
-            { src: '/videos/your-video.webm', type: 'video/webm' },
+            { src: '../videos/Terrain du Sud __ Publicité TV (1).mp4', type: 'video/mp4' },
+            { src: '../videos/Terrain du Sud __ Publicité TV Webm', type: 'video/webm' },
             // Ajoutez d'autres formats si nécessaire
         ];
 
@@ -42,7 +50,7 @@ function Contact() {
     <div className="body-contact">
 
         <div className="Video-arr">
-            <VideoBackground videoSrc={videoSources} posterSrc="/images/your-poster-image.jpg">
+            <VideoBackground videoSrc={MaVideo} posterSrc="../images/Logo_Hustler_AN.png">
                 <div className="descrip-video">
                     {/* <h1>Bienvenue en React !</h1>
                     <p>Ceci est votre contenu superposé à l'arrière-plan vidéo.</p>
@@ -141,9 +149,12 @@ function Contact() {
       {/* Nos Bureaux */}
       <section className="bg-white px-8 py-12">
         <h2 className="text-2xl font-semibold text-center mb-8">Nos bureaux</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="shadow rounded overflow-hidden">
-            <img src="https://via.placeholder.com/300x200" alt="Lomé" />
+        <div className="para-bureaux">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio earum.</p>
+        </div>
+        <div className="md:grid-cols-3 gap-6 bureau">
+          <div className="shadow contetaint-bureau rounded overflow-hidden">
+            <img src={MonImagebureau1} alt="Lomé" />
             <div className="p-4">
               <h3 className="font-semibold text-lg">Lomé Agoè</h3>
               <p>555555, Agoè A. A, Togo</p>
@@ -152,8 +163,8 @@ function Contact() {
             </div>
           </div>
 
-          <div className="shadow rounded overflow-hidden">
-            <img src="https://via.placeholder.com/300x200" alt="Kara" />
+          <div className="shadow contetaint-bureau rounded overflow-hidden">
+            <img src={MonImagebureau2} alt="Kara" />
             <div className="p-4">
               <h3 className="font-semibold text-lg">Kara</h3>
               <p>Ville de Kara, MD 66565</p>
@@ -162,8 +173,8 @@ function Contact() {
             </div>
           </div>
 
-          <div className="shadow rounded overflow-hidden">
-            <img src="https://via.placeholder.com/300x200" alt="Vogan" />
+          <div className="shadow contetaint-bureau rounded overflow-hidden">
+            <img src={MonImagebureau3} alt="Vogan" />
             <div className="p-4">
               <h3 className="font-semibold text-lg">Vogan, centre ville</h3>
               <p>Vogan centre ville, MD 77614</p>
@@ -176,7 +187,8 @@ function Contact() {
 
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-300 px-8 py-10 text-sm">
-        <div className="grid md:grid-cols-4 gap-6 mb-6">
+
+        <div className="info-footer md:grid-cols-4 gap-6 mb-6">
           <div>
             <h4 className="font-semibold mb-2">Horaires d'ouverture</h4>
             <p>Lun-Ven: 09:00 - 20:00</p>
@@ -200,24 +212,40 @@ function Contact() {
 
           <div>
             <h4 className="font-semibold mb-2">Liens</h4>
-            <p>Accueil</p>
-            <p>Propriétés</p>
-            <p>À propos</p>
-            <p>Contact</p>
+            <p><a href="">Accueil</a></p>
+            <p><a href="">Propriétés</a></p>
+            <p><a href="">À propos</a></p>
+            <p><a href="">Contact</a></p>
+          </div>
+
+          <div className="newsletter gap-2">
+            <h4>Newsletter</h4>
+            <p>Abonnez-vous à notre newsletter</p>
+            <div className="footer-input">
+                <input
+                type="email"
+                placeholder="Votre email"
+                className="px-3 py-1 rounded text-black"
+                />
+                <button className="sabonne bg-blue-600 px-3 py-1 rounded text-white">S'abonner</button>
+            </div>
           </div>
         </div>
 
         <div className="border-t border-gray-700 pt-4 flex justify-between items-center">
+            <div className="logopartenaire">
+                <img src={logopartenaire} alt="logopartenaire" />
+            </div>
           <p>© Copyright Hustler 2025. Conception par hustler cooperation</p>
-          <div className="flex gap-2">
-            <input
-              type="email"
-              placeholder="Adresse email à suivre les news"
-              className="px-3 py-1 rounded text-black"
-            />
-            <button className="bg-blue-600 px-3 py-1 rounded text-white">S'abonner</button>
-          </div>
+        <div className="footer-reseau-sociaux">
+            <div><a href=""><FaFacebook /></a></div>
+            <div><a href=""><FaTwitter /></a></div>
+            <div><a href=""><FaInstagram /></a></div>
+            <div><a href=""><SiTiktok /></a></div>
         </div>
+        </div>
+
+
       </footer>
 
       </div>
