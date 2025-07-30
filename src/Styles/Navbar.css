@@ -1,0 +1,50 @@
+.navbar {
+    position: fixed;
+    justify-content: center !important;
+    gap: 10rem;
+    color: #000000 !important;
+    background-color: rgb(255, 255, 255) !important;
+    box-shadow: 0 0 0.5 #0000;
+    height: 6rem;
+    width: 100%;
+    z-index: 100;
+}
+.linknav {
+    margin-left: 1rem;
+}
+
+.header-compte {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.usercompte {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.userIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid #000000;
+    border-radius: 50%;
+
+}
+
+.phoneNumber {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.phoneicon {
+    font-weight: 200 !important;
+}

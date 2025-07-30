@@ -1,0 +1,60 @@
+
+  
+  .map-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 100px;
+    width: 16rem;
+  }
+  
+  .togo-map {
+    
+  }
+  
+  .region {
+    fill: #add8e6; /* Couleur par défaut des régions (bleu clair) */
+    stroke: #333; /* Contour des régions */
+    stroke-width: 1;
+    transition: fill 0.2s ease-in-out; /* Transition douce pour le survol */
+  }
+  
+  .region:hover {
+    fill: #6495ed; 
+    border: 1px solid #9b0000 !important;
+    cursor: pointer;
+  }
+  
+  .region-info {
+    position: absolute;
+    border: 2px solid #ffffff2a;
+    border-radius: 10px;
+    margin-left: 13rem;
+    padding: 20px;
+    width: auto;
+    text-align: left;
+    background-color: #ffffffee;
+    color: #020123 !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    font-size: 13.8px;
+    font-weight: 300;
+    
+  
+  }
+  
+  .region-info h2 {
+    font-weight: 800;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #6495ed;
+  }
+  
+  .region-info p {
+    position: relative;
+  } 
+
+  .affiche-region {
+    color: #100E2C !important;
+    font-size: 18px;
+  }
