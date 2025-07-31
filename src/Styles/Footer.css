@@ -40,12 +40,9 @@ h4 {
     margin-top: 1rem;
     left: 8.6rem;
     border-radius: 9px !important;
-}
-
-.px-3 {
     position: absolute;
-
 }
+
 
 .footer-reseau-sociaux {
     display: flex;

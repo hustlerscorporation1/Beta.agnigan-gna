@@ -1,9 +1,12 @@
 .containt-accuiel {
-    width: 100%;
-    height: 200%;
-    background-color: blueviolet !important;
+    width: 100% !important;
+    height: auto;
+    background-color: aqua;
 }
 .containt-element .font-bold{
     margin-top: 5rem !important;
     
+}
+.containt-element {
+    width: 100% !important;
 }
