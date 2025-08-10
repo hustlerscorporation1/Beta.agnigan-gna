@@ -1,12 +1,229 @@
 .containt-accuiel {
-    width: 100% !important;
-    height: auto;
-    background-color: aqua;
+  width: 100% !important;
+  height: auto;
+  background-color: aqua;
 }
-.containt-element .font-bold{
-    margin-top: 5rem !important;
-    
+.containt-element .font-bold {
+  margin-top: 5rem !important;
 }
 .containt-element {
-    width: 100% !important;
+  width: 100% !important;
+}
+
+.playstore {
+  width: 9rem !important;
+  margin-top: 2rem !important;
+}
+
+.container-recherche {
+  margin-top: 32rem !important;
+  position: absolute !important;
+  max-width: 60rem !important;
+  justify-content: center !important;
+  padding: 3rem !important;
+  gap: 2rem !important;
+}
+
+.container-recherche select {
+  color: #000 !important;
+  width: 169px !important;
+  background-color: #f6f6f6 !important;
+}
+.container-recherche select option {
+  color: #000 !important;
+}
+
+.button-recherche {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1rem !important;
+}
+.search-icon-hero {
+  margin-top: 4rem !important;
+}
+
+.title-hero {
+  margin-top: 2rem !important;
+}
+
+.font-sans {
+  margin-top: 7rem !important ;
+}
+
+.section-veddete {
+  background-color: #e3e3e3 !important;
+  color: #000000 !important;
+  margin-bottom: 4rem !important;
+}
+
+.section-terrain {
+  gap: 3rem !important;
+  padding-top: 4rem !important;
+}
+
+.paragraph-veddete {
+  max-width: 50rem !important;
+  font-size: 13px !important;
+  margin-top: 1rem !important;
+}
+
+.voir-plus {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  color: #000 !important;
+  cursor: pointer !important;
+}
+
+.section-satisfaction-image img {
+  width: 29rem !important;
+  height: 19rem !important;
+  margin-left: 2.5rem !important;
+}
+.title-satisfaction {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  margin-left: 2rem !important;
+  gap: 1rem !important  ;
+  margin-left: 0.1rem !important;
+}
+
+.title-satisfaction p {
+  width: 29rem !important;
+}
+
+.section-client {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  gap: 5rem;
+}
+
+. {
+  width: 23rem;
+  height: 20rem;
+  border-radius: 1rem;
+}
+
+.first-image {
+  height: 250px !important;
+  border-radius: 3px 3px 3px 3px !important;
+}
+
+.title-vendre {
+  border-radius: 3px !important;
+}
+
+.info-client {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info-client-img img {
+  border-radius: 3px !important;
+  width: 20rem !important;
+  height: 17rem !important;
+}
+
+.temoignage {
+  position: relative;
+  background-image: url("../images/hero-image.jpg");
+  background-size: cover;
+  background-position: center;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.background-black {
+  background-color: rgba(0, 0, 0, 0.559) !important;
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  padding: 5rem !important;
+}
+.title-temoignage {
+  font-size: 2rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.nos-service {
+  height: 20rem !important;
+  gap: 2rem;
+  padding: 3rem !important;
+}
+
+.nos-service h3 {
+  font-size: 1.6rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.nos-service p {
+  font-size: 1.1rem !important;
+  color: #f0f0f0 !important;
+}
+.nos-service:hover {
+  transform: scale(1.05);
+  transition: 2s;
+}
+
+.five-ville-content {
+  display: flex;
+  width: 100% !important;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: 22rem;
+}
+
+.four-ville {
+  display: grid !important;
+  grid-template-columns: 300px 300px;
+  gap: 2rem;
+}
+
+.one-ville {
+  height: 100% !important;
+}
+
+.ville-terrain-card {
+  margin-bottom: 1.5rem;
+  width: 20rem;
+}
+
+.one-ville {
+  height: 100% !important;
+}
+
+.one-ville .ville-terrain-card {
+  min-height: 386px !important;
+  width: 300px !important;
+}
+.lome-terrain {
+  width: 23rem !important;
+}
+
+.Ville-fist-long {
+  min-height: 180px !important;
+  max-width: 250px !important;
+}
+
+.Ville-second-long {
+  min-height: 180px !important;
+  max-width: 250px !important;
+  margin-left: 3rem;
+}
+
+.aneho-ville {
+  min-height: 180px !important;
+  width: 22.9rem !important;
+  right: 4.3rem !important ;
+}
+
+.contact-title h2 {
+  font-size: 27px !important;
+  margin-bottom: 3rem !important;
 }

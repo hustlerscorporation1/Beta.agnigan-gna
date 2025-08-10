@@ -1,112 +1,104 @@
 .body-contact {
-    width: 100%;
-    height: 100%;
-    /* background-color: #034b4b; */
-    backdrop-filter: blur(20);
-
-    
+  width: 100%;
+  height: 100%;
+  /* background-color: #034b4b; */
+  backdrop-filter: blur(20);
 }
 .p-8 {
-    /* padding: 2rem; */
+  /* padding: 2rem; */
 }
 
 .gap-8 {
-    /* gap: 2rem; */
+  /* gap: 2rem; */
 }
 
-
-.contact-serction  {
-    display: flex;
-    justify-content: center;
-    /* align-items: center; */
-    border-radius: 10px 10px 10px 10px !important;
-    
+.contact-serction {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  border-radius: 10px 10px 10px 10px !important;
 }
 
-
-.formulaire-contact{
-    background-color: #100E2C !important;
-    color: #fff;
-    width: 20rem !important;
-    height: 32.9rem;
-    border-radius: 11px !important;
-    padding: 33px !important;
-    margin-top: 6rem;
-
+.formulaire-contact {
+  background-color: #100e2c !important;
+  color: #fff;
+  width: 20rem !important;
+  height: 32.9rem;
+  border-radius: 11px !important;
+  padding: 33px !important;
+  margin-top: 6rem;
 }
 
 .contact-info {
-    width: 24rem !important;
-    margin-left: 1rem;
-    margin-top: 8rem;
-    color: #fff !important;
+  width: 24rem !important;
+  margin-left: 1rem;
+  margin-top: 8rem;
+  color: #fff !important;
 }
 
 .mt-6 {
-    margin-top: 1px !important;
+  margin-top: 1px !important;
 }
 
 .search-locate {
-    margin-top: 6rem !important;
-    color: #100E2C;
-
+  margin-top: 6rem !important;
+  color: #100e2c;
 }
 
 .border {
-    width: 16rem;
+  width: 16rem;
 }
 
-
-.bg-white{
-    background-color: #f0efef;
+.bg-white {
+  background-color: #f0efef;
 }
 
 .space-y-3 {
-    color: #fff !important;
+  color: #fff !important;
 }
 
 .space-y-4 input {
-    color: #100E2C !important;
+  color: #100e2c !important;
 }
 
 .aside-icon {
-    fill: #100E2C !important;
+  fill: #100e2c !important;
 }
 
-.contetaint-bureau  {
-    border-radius: 15px 15px 0px 0px !important;
+.contetaint-bureau {
+  border-radius: 15px 15px 0px 0px !important;
 
-    width: 20rem !important;
+  width: 20rem !important;
 }
 
 .contetaint-bureau img {
-    width: 100% !important;
-    height: 17rem !important;
+  width: 100% !important;
+  height: 17rem !important;
 }
 
 .para-bureaux {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  text-align: center;
 }
 
-.text-2xl  {
-    margin-bottom: 0.5rem !important;
-    font-size: 35px !important;
+.text-2xl {
+  margin-bottom: 0.5rem !important;
+  font-size: 35px !important;
 }
 
-.bureau{
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
+.bureau {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
 }
 
 .logopartenaire {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 10rem;
-    height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10rem;
+  height: 5rem;
 }
