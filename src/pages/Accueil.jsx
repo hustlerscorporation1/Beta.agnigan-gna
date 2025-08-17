@@ -1,6 +1,6 @@
 // src/pages/Accueil.jsx
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -25,6 +25,10 @@ import heroImage from "../images/hero-image.jpg";
 import satisfaction from "../images/satisfaction.jpg";
 import Slde from "../components/Slde";
 import VideoBackground from "../pages/VideoBackgroud";
+import { motion } from "framer-motion";
+import AnimationImage from "../components/AnimationImage.jsx";
+
+import Typed from "typed.js";
 
 function Accueil() {
   const cities = [
@@ -54,20 +58,17 @@ function Accueil() {
   const services = [
     {
       titre: "Vérifier Un Terrain",
-      texte:
-        "Leo morbi faucibus mattis pharetra tellus velit ultricies duis rhoncus. Porttitor fermentum eu",
+      texte: "Verifier la localité d'un terrain adapté à votre besoin",
       bouton: "Vérification",
     },
     {
       titre: "Achetez un Terrain",
-      texte:
-        "Leo morbi faucibus mattis pharetra tellus velit ultricies duis rhoncus. Porttitor fermentum eu",
+      texte: "Acheter le terrain adapté à votre besoin et votre mode de vie",
       bouton: "Acheter",
     },
     {
       titre: "Vendre un Terrain",
-      texte:
-        "Leo morbi faucibus mattis pharetra tellus velit ultricies duis rhoncus. Porttitor fermentum eu",
+      texte: "Décrivez clairement votre terrain pour trouver l’acheteur idéal ",
       bouton: "Vendre",
     },
   ];
@@ -103,74 +104,107 @@ function Accueil() {
     // Ajoutez d'autres formats si nécessaire
   ];
 
+  const el = useRef(null); // élément cible
+  const typedInstance = useRef(null); // pour stocker l’instance
+
+  useEffect(() => {
+    typedInstance.current = new Typed(el.current, {
+      strings: [
+        "Bienvenue sur le site officiel d'achat et vente de Terrain au togo",
+        "Nous créons vos idées",
+        "Découvrez nos services",
+        "Contactez-nous",
+      ],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true,
+    });
+
+    return () => {
+      typedInstance.current.destroy();
+    };
+  }, []);
+
   return (
     <div className="body-accuiel">
       {/* Hero section */}
+      <AnimationImage />
       <div
-        className="relative w-full h-[500px] bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        className="hero relative w-full h-[500px] bg-cover bg-center"
+        style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}
       >
         {/* Overlay sombre pour le contraste du texte */}
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
         {/* Texte et boutons */}
         <div className="relative z-10 flex flex-col items-center justify-center text-white h-full px-4 text-center">
-          <h1 className="text-4xl font-bold mb-4 title-hero">
-            Trouvez un terrain
+          <h1 className="text-4xl font-bold mb-4 hero-title title-hero">
+            Anyigbã nya
             <br />
-            adapté à votre style de vie.
           </h1>
-          <p className="mb-6 max-w-2xl text-sm md:text-base">
-            Trouvez le terrain idéal, adapté à votre style de vie. En ville ou
-            en périphérie, nous vous aidons à concrétiser votre projet, là où
-            vous vous sentirez vraiment chez vous. Télécharger l'application
+          <p className="hero-para mb-6 max-w-2xl text-sm md:text-base">
+            Trouvez le terrain idéal, adapté à votre style de vie.
           </p>
-          <div className="flex gap-4 mb-8">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium playstore">
-              APP STORE
-            </button>
-            <button className="border border-white text-white px-6 py-2 rounded-full font-medium hover:bg-white hover:text-black transition playstore">
-              PLAY STORE
-            </button>
+          <div className=" appli-button ">
+            <div className="store">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium appstore">
+                APP STORE
+              </button>
+            </div>
+            <div className="play">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium playstore">
+                PLAY STORE
+              </button>
+            </div>
+          </div>
+
+          <div className="description-container">
+            <div className="trais">:</div>
+            <p>
+              <span ref={el}></span>
+            </p>
           </div>
 
           {/* Formulaire de recherche */}
           <div className="bg-white rounded-xl shadow-lg p-4 w-full max-w-4xl flex flex-wrap justify-between gap-4 container-recherche">
-            <select
+            <input
               className="border border-gray-300 rounded-md px-3 py-2 w-full sm:w-auto"
-              placeholder="Catégorie"
-            >
-              <option>Catégorie</option>
-              <option>Résidentiel</option>
-              <option>Commercial</option>
-            </select>
+              placeholder="Entrez vôtre zone précise"
+              style={{
+                width: "169px",
+                color: "#0000",
+              }}
+            />
             <select
               className="border border-gray-300 rounded-md px-3 py-2 w-full sm:w-auto"
               defaultValue=""
             >
-              <option value="" disabled>
-                Type de propriété
-              </option>
+              <option>Terrain résidentiel</option>
+
               <option>Terrain nu</option>
-              <option>Terrain viabilisé</option>
+              <option>Terrain Commercial</option>
+              <option>Terrain agricol</option>
+              <option>Terrain industriel</option>
+              <option>Terrain avec bâtiment existant</option>
             </select>
             <select
               className="border border-gray-300 rounded-md px-3 py-2 w-full sm:w-auto"
               placeholder="Emplacement"
             >
-              <option>Emplacement</option>
-              <option>Lomé</option>
+              <option>Maritime</option>
+              <option>Plateaux</option>
+              <option>Central</option>
               <option>Kara</option>
-              <option>Sokodé</option>
+              <option>Savane</option>
             </select>
 
             <button className="text-2xl text-gray-700 hover:text-black">
               {/* <FaSlidersH /> */}
-              <HiAdjustmentsHorizontal />
+              <HiAdjustmentsHorizontal className="search-icon" />
             </button>
 
             <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md button-recherche">
-              RECHERCHE{" "}
+              RECHERCHER{" "}
               <span className="search-icon">
                 <FaSearch />
               </span>
@@ -181,21 +215,65 @@ function Accueil() {
 
       <div className="font-sans">
         {/* Section 1: Header */}
-        <section className="text-center py-12 bg-gray-50 section-veddete">
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">
-            Découvrez votre propriété vedette
-          </h2>
-          <p className="text-gray-600 max-w-xl mx-auto paragraph-veddete">
-            Découvrez votre propriété vedette parmi nos meilleures offres. Que
-            vous cherchiez un terrain, une villa ou un immeuble, nous avons ce
-            qu'il vous faut. Sélectionnez parmi les propriétés les plus
-            attractives de la région et saisissez votre opportunité !
-          </p>
+        <section className="text-center py-12 bg-gray-50 section-veddete ">
+          <div className="valeur">
+            <div className="flex valeur-title">
+              <div className="trais" style={{ background: "#146c54" }}>
+                .
+              </div>
+              <h2 className="text-3xl font-bold text-gray-800 mb-2">
+                Trouvez votre propriété parmi nos{" "}
+                <span style={{ color: "#146c54" }}>meilleures offres</span>
+              </h2>
+            </div>
+            <p className="text-gray-600 max-w-xl mx-auto paragraph-veddete">
+              Que vous cherchiez à acheter ou vendre un terrain, une villa ou un
+              immeuble , nous avons ce qu'il vous faut. Sélectionnez parmi les
+              propriétés les plus attractives de la région et saisissez votre
+              opportunité !
+            </p>
+          </div>
+          <div className="cercle-container">
+            <div
+              className="cercle"
+              style={{
+                background: "#146c5501",
+                borderRadius: "50%",
+                width: "100px",
+                height: "100px",
+                margin: "0 auto",
+                border: "2px solid #146c54",
+              }}
+            ></div>
+            <div
+              className="cercle"
+              style={{
+                background: "#146c5501",
+                borderRadius: "50%",
+                width: "100px",
+                height: "100px",
+                margin: "0 auto",
+                border: "2px solid #146c54",
+              }}
+            ></div>
+            <div
+              className="cercle"
+              style={{
+                background: "#146c5501",
+                borderRadius: "50%",
+                width: "100px",
+                height: "100px",
+                margin: "0 auto",
+                border: "2px solid #146c54",
+              }}
+            ></div>
+          </div>
+          <div className="qodef-row-overlapping-text qodef-appear">TOGO!</div>
         </section>
 
         {/* Section 2: Cartes */}
-        <section className="bg-white py-12">
-          <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <section className="service bg-white py-12">
+          <div className=" fonctionnalite-containt max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {services.map((service, index) => (
               <div
                 key={index}
@@ -212,7 +290,7 @@ function Accueil() {
         </section>
 
         {/* Section 3: Satisfaction Plan */}
-        <section className="bg-indigo-950 text-white py-12 px-4">
+        <section className=" bg-indigo-950 text-white py-12 px-4">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 items-center gap-8 section-satisfaction-image">
             <img
               src={satisfaction}
@@ -220,16 +298,21 @@ function Accueil() {
               className="rounded-xl w-full h-auto"
             />
             <div className="title-satisfaction">
-              <h3 className="text-2xl font-bold mb-4">
-                Mettre en œuvre un plan pour assurer votre satisfaction !
-              </h3>
+              <div className="flex valeur-title">
+                <div className="trais" style={{ background: "#146c54" }}>
+                  .
+                </div>
+                <h3 className="text-2xl font-bold mb-4">
+                  Mettre en œuvre un plan pour assurer votre{" "}
+                  <span className="text-red-500">satisfaction !</span>
+                </h3>
+              </div>
               <p className="text-gray-300 mb-6">
                 Utilisez notre outil et réalisez la vision de vos rêves.
-                Saisissez l’opportunité qui s’offre à vous dès aujourd’hui. Sed
-                feugiat risus et pharetra adipiscing dictum.
+                Saisissez l’opportunité qui s’offre à vous dès aujourd’hui.
               </p>
               <button className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded text-white font-semibold">
-                Apprendre encore plus
+                Mieux comprendre
               </button>
             </div>
           </div>
@@ -241,9 +324,15 @@ function Accueil() {
             <div className="max-w-4xl mx-auto flex items-center bg-white shadow-lg rounded-lg overflow-hidden">
               {/* Texte */}
               <div className="w-1/2 p-8">
-                <h3 className="title-temoignage text-lg font-bold text-gray-800 mb-4">
-                  Ce que nos clients disent de nous
-                </h3>
+                <div className="flex gap-2">
+                  <div className="trais" style={{ background: "#146c54" }}>
+                    .
+                  </div>
+                  <h3 className="title-temoignage text-lg font-bold text-gray-800 mb-4">
+                    Ce que nos <span className="clients">clients</span> disent
+                    de nous
+                  </h3>
+                </div>
                 <p className="text-gray-600 italic mb-6">"{text}"</p>
                 <p className="font-semibold text-gray-800">{name}</p>
                 <p className="text-sm text-gray-500">{role}</p>
@@ -276,9 +365,9 @@ function Accueil() {
                   <span className="title-vendre absolute top-3 left-3 bg-green-500 text-white text-xs px-3 py-1 rounded-full font-semibold">
                     À Vendre
                   </span>
-                  <span className="absolute bottom-3 right-3 bg-red-600 text-white text-xs px-2 py-1 rounded-md">
+                  {/* <span className="absolute bottom-3 right-3 bg-red-600 text-white text-xs px-2 py-1 rounded-md">
                     Privé
-                  </span>
+                  </span> */}
                 </div>
 
                 {/* Infos */}
@@ -430,13 +519,20 @@ function Accueil() {
             }}
           >
             <div
-              className=" bg-black bg-opacity-70 p-6 rounded-xl text-white w-80"
+              className="contact-container bg-black bg-opacity-70 p-6 rounded-xl text-white w-80"
               style={{
                 zIndex: 10,
                 backgroundColor: "#100E2C",
               }}
             >
-              <h2 className="text-lg font-bold mb-3">Entrer en contact</h2>
+              <h2
+                className="text-lg font-bold mb-3"
+                style={{
+                  fontSize: "30px",
+                }}
+              >
+                Entrer en contact
+              </h2>
               <p className="text-sm mb-4">
                 Léo motivi faucibus mattis pharetra tellus velit ultricies duis
                 rhoncus.
@@ -461,7 +557,12 @@ function Accueil() {
                   className="px-3 py-2 rounded text-black"
                   placeholder="Votre message"
                 ></textarea>
-                <button className="bg-blue-600 hover:bg-blue-700 text-white rounded py-2 mt-2">
+                <button
+                  className="bg-blue-600 hover:bg-blue-700 text-white rounded py-2 mt-2"
+                  style={{
+                    backgroundColor: "",
+                  }}
+                >
                   Envoyer message
                 </button>
               </form>

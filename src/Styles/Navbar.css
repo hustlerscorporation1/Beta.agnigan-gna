@@ -1,13 +1,13 @@
 .navbar {
   position: fixed;
   justify-content: center !important;
-  gap: 10rem;
+  gap: 6rem;
   color: #000000 !important;
   background-color: rgb(255, 255, 255) !important;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.47) !important;
   height: 6rem;
   width: 100%;
-  z-index: 1000 !important;
+  z-index: 100000000 !important;
 }
 .linknav {
   margin-left: 1rem;
