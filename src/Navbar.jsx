@@ -12,13 +12,19 @@ import Apropos from "./pages/Apropos";
 import Contact from "./pages/Contact";
 import Declarer from "./pages/Declarer";
 import { useNavigate } from "react-router-dom";
-
+import { useState } from "react";
+import AppStore from "./images/Nappe mariage - Passion Décor.jpeg";
+import PlayStore from "./images/Google Play Badge Logo - PNG Logo Vector Brand Downloads (SVG, EPS).jpeg";
+import PlayButton from "./images/Play_Button_free_icons_designed_by_Freepik-removebg-preview.png"; // Assuming you have a play button image
+import CodeQR from "./images/Custom_QR_Code_Car_Decal_Personalized_Website_or_Social_Media_Business-removebg-preview.png"; // Assuming you have a QR code image
 export default function Navbar() {
   const navigate = useNavigate();
 
   const handleClick = () => {
     navigate("/Connexion");
   };
+
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="navbar bg-blue-600 text-white px-4 py-3 flex justify-between items-center">
@@ -71,7 +77,7 @@ export default function Navbar() {
             }`
           }
         >
-          Vérifier Propriété
+          Vérifier Avant
         </NavLink>
 
         <NavLink
@@ -145,12 +151,120 @@ export default function Navbar() {
         </div>
 
         <div className="usercompte">
-          <button className="flex items-center space-x-2">
+          <button
+            className="flex items-center space-x-2 px-4 py-2 bg-green-0 hover:bg-green-700 rounded-2xl shadow-lg transition-all duration-300"
+            style={{
+              border: "1px solid rgba(255, 255, 255, 0.81)",
+            }}
+            onClick={() => setIsOpen(true)}
+          >
             <div className="userIcon">
               <UserIcon className="usericon-l h-6 w-6 text-gray-500" />
             </div>
-            <p>Télécharger</p>
+            <p>L'application</p>
           </button>
+
+          <div className="overlay">
+            {/* Overlay */}
+            {isOpen && (
+              <div
+                className="fixed inset-0 flex items-center justify-center bg-black/60 z-50"
+                style={{
+                  backdropFilter: "blur(5px)",
+                  animationDuration: "0.5s",
+                  animationName: "fadeIn",
+                }}
+              >
+                {/* Popup container */}
+                <div
+                  className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 relative text-center
+                transform transition-all duration-600 ease-out scale-95 opacity-0 animate-popup"
+                >
+                  {/* Bouton fermer */}
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="absolute top-3 right-3 text-gray-600 hover:text-black text-2xl"
+                  >
+                    &times;
+                  </button>
+
+                  {/* QR code image */}
+
+                  <div className="flex justify-center mb-4">
+                    <img src={CodeQR} alt="QR Code" className="w-32 h-32" />
+                  </div>
+
+                  {/* Titre */}
+                  <h2 className="text-xl font-bold text-gray-900 mb-2">
+                    Télecharger l'App Anyigbã nya
+                  </h2>
+                  <p className="text-gray-600 mb-4">
+                    Pour avoir ton terrain en toute sécurité.
+                  </p>
+
+                  {/* Boutons Google Play et App Store */}
+                  <div className=" flex justify-center items-center gap-8">
+                    <a
+                      href=""
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex justify-center items-center absolute"
+                      style={{
+                        top: "12%",
+                        left: "12%",
+                        transform: "translate(-50%, -50%)",
+                      }}
+                    >
+                      <img
+                        src={PlayButton} // mets l’icône App Store dans /public
+                        alt="Demo"
+                        className="h-12"
+                        // style={{
+                        //   objectFit: "contain",
+                        //   maxWidth: "80%",
+                        //   maxHeight: "80%",
+                        // }}
+                      />
+                      <span>Demo</span>
+                    </a>
+
+                    <a
+                      href="https://play.google.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src={PlayStore} // l’icône Google Play dans
+                        alt="Google Play"
+                        className="h-12"
+                        // style={{
+                        //   objectFit: "contain",
+                        //   maxWidth: "80%",
+                        //   maxHeight: "80%",
+                        // }}
+                      />
+                    </a>
+                    <a
+                      href="https://apps.apple.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src={AppStore} //l’icône App Store dans
+                        alt="App Store"
+                        className="h-12"
+                        // style={{
+                        //   objectFit: "contain",
+                        //   maxWidth: "80%",
+                        //   maxHeight: "80%",
+                        // }}
+                      />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </nav>

@@ -13,6 +13,7 @@ import {
   FaTwitter,
   FaInstagram,
   FaSearch,
+  FaLinkedin,
 } from "react-icons/fa";
 import { SiTiktok } from "react-icons/si";
 import { HiAdjustmentsHorizontal } from "react-icons/hi2";
@@ -145,16 +146,12 @@ function Accueil() {
           <p className="hero-para mb-6 max-w-2xl text-sm md:text-base">
             Trouvez le terrain idéal, adapté à votre style de vie.
           </p>
-          <div className=" appli-button ">
+          <div className="appli-button">
             <div className="store">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium appstore">
-                APP STORE
-              </button>
+              <button className="appstore">Vérifie et achète</button>
             </div>
             <div className="play">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium playstore">
-                PLAY STORE
-              </button>
+              <button className="playstore">Procéder à une vente</button>
             </div>
           </div>
 
@@ -400,8 +397,7 @@ function Accueil() {
               Dans quelle ville vivras-tu pour réaliser ton rêve ?
             </h2>
             <p className="text-sm text-center text-gray-500 mb-10 max-w-md mx-auto">
-              Leo motivi faucibus mattis pharetra tellus velit ultricies duis
-              rhoncus. Porttitor fermentum eu urna eget.
+              Chaque rêve mérite une ville pour l’accueillir.
             </p>
 
             <div className="ville-terrain grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -534,28 +530,32 @@ function Accueil() {
                 Entrer en contact
               </h2>
               <p className="text-sm mb-4">
-                Léo motivi faucibus mattis pharetra tellus velit ultricies duis
-                rhoncus.
+                Discutez avec notre équipe et obtenez l’assistance dont vous
+                avez besoin
               </p>
               <form className="flex flex-col gap-2">
                 <input
                   className="px-3 py-2 rounded text-black"
                   type="text"
                   placeholder="Votre nom"
+                  required
                 />
                 <input
                   className="px-3 py-2 rounded text-black"
                   type="email"
                   placeholder="Votre Mail"
+                  required
                 />
                 <input
                   className="px-3 py-2 rounded text-black"
                   type="text"
                   placeholder="Votre numéro whatsapp"
+                  required
                 />
                 <textarea
                   className="px-3 py-2 rounded text-black"
                   placeholder="Votre message"
+                  required
                 ></textarea>
                 <button
                   className="bg-blue-600 hover:bg-blue-700 text-white rounded py-2 mt-2"
@@ -574,11 +574,12 @@ function Accueil() {
               }}
             >
               <h2 className="text-2xl font-bold mb-2">
-                Mettre en œuvre un plan pour assurer votre satisfaction !
+                Nous sommes à votre écoute pour répondre à toutes vos questions
+                et vous accompagner dans vos projets
               </h2>
               <p className="text-sm">
-                Arcu laoreet malesuada nunc eget. Fermentum ut dui etiam aliquam
-                habitant elit.
+                Un conseiller est toujours disponible pour vous guider dans vos
+                démarches.
               </p>
             </div>
             <div className="absolute inset-0 bg-black bg-opacity-40"></div>
@@ -613,16 +614,19 @@ function Accueil() {
           <div>
             <h4 className="font-semibold mb-2">Liens</h4>
             <p>
-              <a href="">Accueil</a>
+              <a href="/Accueil">Accueil</a>
             </p>
             <p>
-              <a href="">Propriétés</a>
+              <a href="/Propriete">Vérifier</a>
             </p>
             <p>
-              <a href="">À propos</a>
+              <a href="/declarer">Acheter</a>
             </p>
             <p>
-              <a href="">Contact</a>
+              <a href="/Apropos">À propos</a>
+            </p>
+            <p>
+              <a href="/Contact">Contact</a>
             </p>
           </div>
 
@@ -646,7 +650,7 @@ function Accueil() {
           <div className="logopartenaire">
             <img src={logopartenaire} alt="logopartenaire" />
           </div>
-          <p>© Copyright Hustler 2025. Conception par hustler cooperation</p>
+          <p> © Copyright Hustlers 2025. Conception de hustlers cooperation</p>
           <div className="footer-reseau-sociaux">
             <div>
               <a href="">
@@ -655,7 +659,7 @@ function Accueil() {
             </div>
             <div>
               <a href="">
-                <FaTwitter />
+                <FaLinkedin size={20} />
               </a>
             </div>
             <div>

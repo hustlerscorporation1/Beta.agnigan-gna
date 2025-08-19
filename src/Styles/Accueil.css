@@ -20,7 +20,7 @@
   text-align: left;
   line-height: 55px !important;
   letter-spacing: 0px;
-  margin-left: 16rem;
+  margin-left: 15rem;
 }
 .hero-para {
   z-index: 14;
@@ -41,7 +41,7 @@
   font-size: 30px !important;
   font-style: normal;
   margin-top: 3rem !important;
-  margin-left: 21rem;
+  margin-left: 16rem;
 }
 
 .appli-button {
@@ -49,17 +49,18 @@
   align-items: center;
   justify-content: center;
   gap: 0.1rem !important;
-  gap: 0px !important;
+  gap: 1rem !important;
   margin-top: 1rem;
   margin-right: 1rem;
+  width: 100rem !important;
 }
 .store {
   width: 10rem;
-  height: 2rem;
+  height: 3rem;
 }
 .play {
-  width: 10rem;
-  height: 2rem;
+  width: 12.5rem;
+  height: 3rem;
 }
 
 .playstore {

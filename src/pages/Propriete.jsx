@@ -183,30 +183,6 @@ function Propriete() {
                 ))}
               </MapContainer>
             </div>
-            {/* Property Listings */}
-            <div className="lg:col-span-1 space-y-6">
-              {properties.map((property) => (
-                <div
-                  key={property.id}
-                  className="flex-wrap justify-between bg-white rounded-lg shadow-md overflow-hidden"
-                >
-                  <img
-                    src={property.image}
-                    alt={property.title}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="p-4">
-                    <h3 className="font-bold text-lg mb-2">{property.title}</h3>
-                    <p className="text-blue-600 font-bold text-xl mb-4">
-                      {property.price}
-                    </p>
-                    <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
-                      Acheter
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>
