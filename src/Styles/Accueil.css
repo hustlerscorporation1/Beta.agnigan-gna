@@ -229,12 +229,6 @@ input {
   gap: 5rem;
 }
 
-. {
-  width: 23rem;
-  height: 20rem;
-  border-radius: 1rem;
-}
-
 .first-image {
   height: 250px !important;
   border-radius: 3px 3px 3px 3px !important;
