@@ -149,7 +149,7 @@ function Accueil() {
   }, []);
 
   return (
-    <div className="body-accuiel">
+    <div className="">
       {/* Hero section */}
       <AnimationImage />
       <div

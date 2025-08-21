@@ -96,9 +96,11 @@ function App() {
           </a>
         </p>
 
-        <button className="bg-green-600 text-white font-semibold py-2 rounded-md w-full hover:bg-blue-700 transition duration-300">
-          Envoyer
-        </button>
+        <a href="/Profil" className="text-blue-600 font-medium underline">
+          <button className="bg-green-600 text-white font-semibold py-2 rounded-md w-full hover:bg-blue-700 transition duration-300">
+            Envoyer
+          </button>
+        </a>
       </div>
 
       {/* Partie droite */}

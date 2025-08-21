@@ -93,6 +93,8 @@ function Propriete() {
                       onClick={handleClick}
                     />
                     <div className="font-bold">{property.title}</div>
+                    <div className="font-bold">{property.title}</div>
+                    <div className="font-bold">{property.title}</div>
                     <div className="text-blue-600">{property.price}</div>
                   </Popup>
                 </Marker>

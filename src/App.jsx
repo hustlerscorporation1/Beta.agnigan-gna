@@ -13,6 +13,7 @@ import MieuxComprendre from "./pages/MieuxComprendre";
 import ProcederVente from "./pages/ProcederVente";
 import MotPasseOublier from "./pages/MotePasseOublier";
 import CreeUnCompte from "./pages/CreeUnCompte";
+import Profil from "./pages/Profil";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/ProcederVente" element={<ProcederVente />} />
         <Route path="/MotPasseOublier" element={<MotPasseOublier />} />
         <Route path="/CreeUnCompte" element={<CreeUnCompte />} />
+        <Route path="/Profil" element={<Profil />} />
       </Routes>
 
       <div></div>
