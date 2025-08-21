@@ -78,7 +78,7 @@ function App() {
 
           <div>
             <a
-              href="/connexion"
+              href="/MotPasseOublier"
               className="text-blue-600 font-medium underline"
             >
               Mot de passe oublié
@@ -88,7 +88,10 @@ function App() {
 
         <p className="text-sm text-gray-500 mb-6">
           Vous n’avez pas de compte ?{" "}
-          <a href="/connexion" className="text-blue-600 font-medium underline">
+          <a
+            href="/CreeUnCompte"
+            className="text-blue-600 font-medium underline"
+          >
             Créez maintenant
           </a>
         </p>

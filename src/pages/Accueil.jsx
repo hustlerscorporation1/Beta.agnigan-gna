@@ -21,6 +21,11 @@ import { FaArrowRight } from "react-icons/fa";
 import { FaSlidersH } from "react-icons/fa";
 import "../Styles/Accueil.css";
 import "../Styles/Footer.css";
+import Lome from "../images/Lome.jpg";
+import Vogan from "../images/Vogan.jpg";
+import Aneho from "../images/Aneho.jpg";
+import Notse from "../images/Notse.jpg";
+import Tsevi from "../images/Tsévi.jpg";
 import logopartenaire from "../images/Logo_Hustler_AN-removebg-preview.png";
 import heroImage from "../images/hero-image.jpg";
 import satisfaction from "../images/satisfaction.jpg";
@@ -28,10 +33,27 @@ import Slde from "../components/Slde";
 import VideoBackground from "../pages/VideoBackgroud";
 import { motion } from "framer-motion";
 import AnimationImage from "../components/AnimationImage.jsx";
-
+import { useNavigate } from "react-router-dom";
 import Typed from "typed.js";
+import Client1 from "../images/Client 1.jpg";
+import Client2 from "../images/Client 2.jpg";
 
 function Accueil() {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/Dectailletairrain");
+  };
+
+  const MieuxComprendre = () => {
+    navigate("/MieuxComprendre");
+  };
+  const VerifierAchete = () => {
+    navigate("/Propriete");
+  };
+
+  const ProcederVente = () => {
+    navigate("/ProcederVente");
+  };
   const cities = [
     { name: "Lomé", image: "https://i.imgur.com/1.jpg", terrains: 32 },
     { name: "Vogan", image: "https://i.imgur.com/2.jpg", terrains: 32 },
@@ -46,13 +68,13 @@ function Accueil() {
       name: "AGBOSSOU Anani",
       role: "Client",
       text: "Arcu laoreet malesuada nunc eget. Fermentum et dui enim aliquam habitant elit euismod erat praesent. Tincidunt semper interdum faucibus cras.",
-      image: satisfaction,
+      image: Client1,
     },
     {
       name: "KOFFI Marie",
       role: "Designer",
       text: "Suspendisse potenti. Vivamus non eros vel lacus tempor pretium vitae id est. Donec vehicula quam vel ligula facilisis posuere.",
-      image: satisfaction,
+      image: Client2,
     },
   ];
 
@@ -148,10 +170,14 @@ function Accueil() {
           </p>
           <div className="appli-button">
             <div className="store">
-              <button className="appstore">Vérifie et achète</button>
+              <button className="appstore" onClick={VerifierAchete}>
+                Vérifie et achète
+              </button>
             </div>
             <div className="play">
-              <button className="playstore">Procéder à une vente</button>
+              <button className="playstore" onClick={ProcederVente}>
+                Procéder à une vente
+              </button>
             </div>
           </div>
 
@@ -278,7 +304,10 @@ function Accueil() {
               >
                 <h3 className="text-lg font-bold mb-3">{service.titre}</h3>
                 <p className="text-sm mb-6">{service.texte}</p>
-                <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium">
+                <button
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium"
+                  onClick={VerifierAchete}
+                >
                   {service.bouton}
                 </button>
               </div>
@@ -308,7 +337,10 @@ function Accueil() {
                 Utilisez notre outil et réalisez la vision de vos rêves.
                 Saisissez l’opportunité qui s’offre à vous dès aujourd’hui.
               </p>
-              <button className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded text-white font-semibold">
+              <button
+                className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded text-white font-semibold"
+                onClick={MieuxComprendre}
+              >
                 Mieux comprendre
               </button>
             </div>
@@ -318,7 +350,7 @@ function Accueil() {
         {/* Section 4: Témoignage */}
         <section className="bg-gray-100 py-10 px-4 temoignage">
           <div className="background-black">
-            <div className="max-w-4xl mx-auto flex items-center bg-white shadow-lg rounded-lg overflow-hidden">
+            <div className="max-w-4xl mx-auto h-[370px] flex items-center bg-white shadow-lg rounded-lg overflow-hidden">
               {/* Texte */}
               <div className="w-1/2 p-8">
                 <div className="flex gap-2">
@@ -337,11 +369,7 @@ function Accueil() {
 
               {/* Image */}
               <div className="w-1/2">
-                <img
-                  src={image}
-                  alt={name}
-                  className="w-full h-full object-cover"
-                />
+                <img src={image} alt={name} className=" h-full w-full " />
               </div>
             </div>
           </div>
@@ -380,7 +408,10 @@ function Accueil() {
                     <p className="text-xl font-semibold text-green-600">
                       250 000 000 FCFA
                     </p>
-                    <button className="bg-green-500 hover:bg-green-600 text-white text-sm font-medium px-4 py-2 rounded-lg">
+                    <button
+                      className="bg-green-500 hover:bg-green-600 text-white text-sm font-medium px-4 py-2 rounded-lg"
+                      onClick={handleClick}
+                    >
                       Acheter
                     </button>
                   </div>
@@ -409,9 +440,9 @@ function Accueil() {
                       style={{ minHeight: "180px", maxWidth: "480px" }}
                     >
                       <img
-                        src="https://i.imgur.com/1.jpg"
+                        src={Lome}
                         alt="Lomé"
-                        className="w-full h-32 object-cover"
+                        className="w-full h-[11.4rem] object-cover"
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3">
                         <span className="text-white font-semibold text-lg">
@@ -428,9 +459,9 @@ function Accueil() {
                       style={{ minHeight: "180px", maxWidth: "480px" }}
                     >
                       <img
-                        src="https://i.imgur.com/1.jpg"
+                        src={Tsevi}
                         alt="Lomé"
-                        className="w-full h-32 object-cover"
+                        className="w-full h-[11.3rem] object-cover"
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3">
                         <span className="text-white font-semibold text-lg">
@@ -449,9 +480,9 @@ function Accueil() {
                       style={{ minHeight: "180px", maxWidth: "480px" }}
                     >
                       <img
-                        src="https://i.imgur.com/1.jpg"
+                        src={Vogan}
                         alt="Lomé"
-                        className="w-full h-32 object-cover"
+                        className="w-full h-[11.4rem] object-cover"
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3">
                         <span className="text-white font-semibold text-lg">
@@ -465,12 +496,12 @@ function Accueil() {
 
                     <div
                       className="aneho-ville ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md"
-                      style={{ minHeight: "180px", maxWidth: "480px" }}
+                      style={{ minHeight: "80px", maxWidth: "480px" }}
                     >
                       <img
-                        src="https://i.imgur.com/1.jpg"
+                        src={Aneho}
                         alt="Lomé"
-                        className="w-full h-32 object-cover"
+                        className="w-full h-[11.3rem] object-cover"
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3">
                         <span className="text-white font-semibold text-lg">
@@ -489,9 +520,9 @@ function Accueil() {
                     style={{ minHeight: "180px", maxWidth: "480px" }}
                   >
                     <img
-                      src="https://i.imgur.com/1.jpg"
+                      src={Notse}
                       alt="Lomé"
-                      className="w-full h-32 object-cover"
+                      className="w-full h-[24rem] object-cover"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3">
                       <span className="text-white font-semibold text-lg">
@@ -518,7 +549,7 @@ function Accueil() {
               className="contact-container bg-black bg-opacity-70 p-6 rounded-xl text-white w-80"
               style={{
                 zIndex: 10,
-                backgroundColor: "#100E2C",
+                backgroundColor: "#100e2c",
               }}
             >
               <h2

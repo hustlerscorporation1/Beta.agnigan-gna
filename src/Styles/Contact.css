@@ -94,6 +94,13 @@
   justify-content: center;
   align-items: center;
 }
+.contetaint-bureau:hover {
+  transform: scale(1.05);
+  transition: all 0.9s ease-in-out;
+  background: #43a55d;
+  color: #fff !important;
+  border-radius: 15px 15px 15px 15px !important;
+}
 
 .logopartenaire {
   display: flex;

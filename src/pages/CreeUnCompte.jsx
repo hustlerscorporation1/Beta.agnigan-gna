@@ -20,7 +20,6 @@ function App() {
             }}
           />
         </div> */}
-
         <div className="text-2xl md:text-3xl font-bold mb-9">
           <h1
             className="text-3xl font-bold mb-8 "
@@ -29,10 +28,50 @@ function App() {
               fontSize: "2.5rem",
             }}
           >
-            Mot de passe oublié
+            S’inscrire
           </h1>
         </div>
-        {/* input mail */}
+
+        {/* Entrez votre nom */}
+        <div className="space-y-2 mb-5">
+          <label htmlFor="nom" className="text-sm font-medium text-gray-700">
+            Nom
+          </label>
+          <input
+            id="nom"
+            type="text"
+            placeholder="ex: Adoboe"
+            className="w-full border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        {/* Entrez votre prénom */}
+        <div className="space-y-2 mb-5">
+          <label htmlFor="prenom" className="text-sm font-medium text-gray-700">
+            Prénom
+          </label>
+          <input
+            id="prenom"
+            type="text"
+            placeholder="ex: Julien"
+            className="w-full border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        {/* Entrez votre numéro de téléphone */}
+        <div className="space-y-2 mb-5">
+          <label
+            htmlFor="telephone"
+            className="text-sm font-medium text-gray-700"
+          >
+            Numéro de téléphone
+          </label>
+          <input
+            id="telephone"
+            type="number"
+            placeholder="ex: +228 92 34 56 78"
+            className="w-full border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
         <div className="space-y-2 mb-5">
           <label htmlFor="email" className="text-sm font-medium text-gray-700">
             Entrez votre adresse mail
@@ -45,24 +84,37 @@ function App() {
           />
         </div>
 
-        <div
-          className="flex items-center justify-center  mb-20"
-          style={{
-            gap: "16rem",
-            fontSize: "0.8rem",
-          }}
-        >
-          <p className="text-sm text-gray-500 mb-6">
-            Entrez votre Adress Mail ; un mail vous sera envoyé vous permettant
-            de créer un nouveau mot de passe.
-          </p>
+        {/* Entrez votre mot de passe */}
+        <div className="space-y-2 mb-6">
+          <label htmlFor="email" className="text-sm font-medium text-gray-700">
+            Entrez votre mot de passe
+          </label>
+          <input
+            id="password"
+            type="password"
+            placeholder="eg: Pesn@s.p344"
+            className="w-full border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
         </div>
-        <button
-          className="bg-green-600  text-white font-semibold py-2 rounded-md w-full hover:bg-blue-700 transition duration-300"
-          style={{
-            marginTop: "0px",
-          }}
-        >
+        {/* Confirmer votre mot de passe */}
+        <div className="space-y-2 mb-6">
+          <label htmlFor="email" className="text-sm font-medium text-gray-700">
+            Confirmer votre mot de passe
+          </label>
+          <input
+            id="password"
+            type="password"
+            placeholder="eg: Pesn@s.p344"
+            className="w-full border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <p className="text-sm text-gray-500 mb-6">
+          Je dispose déjà d’un compte{" "}
+          <a href="/Connexion" className="text-blue-600 font-medium underline">
+            Se connecter
+          </a>
+        </p>
+        <button className="bg-green-600 text-white font-semibold py-2 rounded-md w-full hover:bg-blue-700 transition duration-300">
           Envoyer
         </button>
       </div>

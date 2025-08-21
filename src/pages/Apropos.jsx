@@ -16,6 +16,8 @@ import { SiTiktok } from "react-icons/si";
 import logopartenaire from "../images/Logo_Hustler_AN-removebg-preview.png";
 import heroImage from "../images/hero-image.jpg";
 import { color } from "framer-motion";
+import Client1 from "../images/Client 1.jpg";
+import Client2 from "../images/Client 2.jpg";
 
 const agents = [
   {
@@ -24,7 +26,7 @@ const agents = [
     office: "(228) 707-4989",
     mobile: "(228) 622-2842",
     email: "shrapnault@yahoo.ca",
-    image: "/agent1.jpg",
+    image: Client1,
   },
   {
     name: "ADOBOE Comlan Julien",
@@ -32,7 +34,7 @@ const agents = [
     office: "(228) 70 14 61 80",
     mobile: "(228) 99 05 58 75",
     email: "julien.adoboe@digital.gouv.tg",
-    image: "/agent3.jpg",
+    image: Client2,
   },
 ];
 
@@ -186,7 +188,7 @@ function Apropos() {
           {agents.map((agent, index) => (
             <div
               key={index}
-              className="w-[30rem] max-w-full  from-blue-50 via-white to-blue-100  rounded-xl p-6 flex gap-6 border border-blue-100"
+              className="w-[39rem] max-w-full h-[17rem] from-blue-50 via-white to-blue-100  rounded-xl p-6 flex gap-6 border border-blue-100"
               style={{
                 backgroundColor: "#f6f6f6",
               }}
@@ -194,7 +196,7 @@ function Apropos() {
               <img
                 src={agent.image}
                 alt={agent.name}
-                className="w-28 h-28 object-cover rounded-xl border-4 border-blue-200 shadow"
+                className="w-30 h-30 object-cover rounded-xl border-4 border-blue-200 shadow"
               />
               <div className="flex flex-col justify-between">
                 <div>
@@ -329,7 +331,7 @@ function Apropos() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <div
-            className=" text-white p-8 rounded-xl shadow-lg flex flex-col items-center"
+            className="w-[20rem] text-white p-8 rounded-xl h-[20rem] shadow-lg flex flex-col items-center"
             style={{
               background: "#f6f9fc",
               color: "#000000",
