@@ -15,12 +15,13 @@ import ProcederUnVente from "./pages/ProcederUneVente";
 import MotPasseOublier from "./pages/MotePasseOublier";
 import CreeUnCompte from "./pages/CreeUnCompte";
 import Profil from "./pages/Profil";
+import ChatBot from "./components/ChatBot";
 
 function App() {
   return (
     <div>
       <Navbar />
-
+      <ChatBot />
       <Routes>
         <Route path="/" element={<Accueil />} />
         <Route path="/propriete" element={<Propriete />} />

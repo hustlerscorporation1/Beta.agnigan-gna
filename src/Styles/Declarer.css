@@ -1,0 +1,5 @@
+.procedureAchat:hover {
+  background-color: #45a04900; /* Darker green on hover */
+  transform: scale(1.05);
+  border: 1px solid #ffffff;
+}

@@ -68,6 +68,12 @@ function Declarer() {
             neque facilis pariatur iure nulla quidem sed numquam temporibus
             molestias.
           </p>
+
+          <div>
+            <button className="procedureAchat bg-green-500 text-white mt-4 font-bold px-6 py-3 rounded-full transition">
+              Lire la procedure d'achat
+            </button>
+          </div>
         </div>
       </div>
 
