@@ -6,13 +6,14 @@ import { UserIcon } from "@heroicons/react/24/outline";
 import { FaPhone } from "react-icons/fa";
 import "./Styles/Navbar.css"; // Assuming you have a CSS file for styling
 import Logo from "./images/LOGO_AGNIGBAN_GNA Trs Noir.png"; // Adjust the path as necessary
-import Accueil from "./pages/Accueil";
+import Accueil from "./pages/Accueil.jsx";
 import Propriete from "./pages/Propriete";
 import Apropos from "./pages/Apropos";
 import Contact from "./pages/Contact";
 import Declarer from "./pages/Declarer";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { FaDownload } from "react-icons/fa";
 import AppStore from "./images/Nappe mariage - Passion Décor.jpeg";
 import PlayStore from "./images/Google Play Badge Logo - PNG Logo Vector Brand Downloads (SVG, EPS).jpeg";
 import PlayButton from "./images/Play_Button_free_icons_designed_by_Freepik-removebg-preview.png"; // Assuming you have a play button image
@@ -29,7 +30,7 @@ export default function Navbar() {
   return (
     <nav className="navbar bg-blue-600 text-white px-4 py-3 flex justify-between items-center">
       <div className="text-xl font-bold">
-        <a href="../pages/Accueil.jsx">
+        <a href="/">
           <img
             src={Logo}
             alt="logo"
@@ -43,7 +44,7 @@ export default function Navbar() {
 
       <div className="linknav hidden md:flex space-x-6">
         <NavLink
-          to="/Accueil"
+          to="/"
           className={({ isActive }) =>
             `relative inline-block px-2 py-1 transition-colors duration-300 ${
               isActive
@@ -154,14 +155,15 @@ export default function Navbar() {
           <button
             className="flex items-center space-x-2 px-4 py-2 bg-green-0 hover:bg-green-700 rounded-2xl shadow-lg transition-all duration-300"
             style={{
-              border: "1px solid rgba(255, 255, 255, 0.81)",
+              border: "1px solid rgba(0, 0, 0, 0.75)",
             }}
             onClick={() => setIsOpen(true)}
           >
             <div className="userIcon">
-              <UserIcon className="usericon-l h-6 w-6 text-gray-500" />
+              <FaDownload />
+              {/* <UserIcon className="usericon-l h-6 w-6 text-gray-500" /> */}
             </div>
-            <p>L'application</p>
+            <p>Télecharger l'App</p>
           </button>
 
           <div className="overlay">

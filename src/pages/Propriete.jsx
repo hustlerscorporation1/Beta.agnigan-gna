@@ -2,7 +2,16 @@ import React, { useState } from "react";
 import Navbar from "../Navbar";
 import "../Styles/Propriete.css";
 import "../Styles/Accueil.css";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  LayersControl,
+} from "react-leaflet";
+
+import "leaflet/dist/leaflet.css";
+
 import {
   FaMapMarkerAlt,
   FaPhone,
@@ -15,7 +24,6 @@ import {
 import { SiTiktok } from "react-icons/si";
 import { HiAdjustmentsHorizontal } from "react-icons/hi2";
 
-import "leaflet/dist/leaflet.css";
 import heroImage from "../images/hero-image.jpg";
 import logopartenaire from "../images/Logo_Hustler_AN-removebg-preview.png";
 import L from "leaflet";
@@ -66,25 +74,169 @@ function Propriete() {
     },
   ];
 
+  const [region, setRegion] = useState("");
+  const [prefecture, setPrefecture] = useState("");
+  const [commune, setCommune] = useState("");
+
+  // Données simplifiées du Togo
+  const regions = {
+    Maritime: {
+      Golfe: ["Lomé Commune", "Aflao-Sagbado", "Aflao-Gakli"],
+      Avé: ["Avé 1", "Avé 2", "Avé 3"],
+      Lacs: ["Aného", "Lacs 1", "Lacs 2"],
+    },
+    Plateaux: {
+      Agou: ["Agou 1", "Agou 2"],
+      Kloto: ["Kpalimé", "Kloto 1", "Kloto 2"],
+    },
+    Kara: {
+      Kozah: ["Kara Commune", "Pya"],
+      Bassar: ["Kabou", "Bassar Ville"],
+    },
+    Centrale: {
+      Tchamba: ["Tchamba 1", "Tchamba 2"],
+      Sotouboua: ["Sotouboua Ville", "Sotouboua Rurale"],
+    },
+    Savanes: {
+      Tone: ["Dapaong", "Tone 1", "Tone 2"],
+      Cinkassé: ["Cinkassé Ville", "Cinkassé Rurale"],
+    },
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Région: ${region}, Préfecture: ${prefecture}, Commune: ${commune}`);
+  };
+
+  const { BaseLayer } = LayersControl;
+
   return (
     <div className="">
       {/* Main Content */}
       <div className="">
-        <div className="flex flex-col lg:grid-cols-3 gap-8 top-20">
-          {/* Map */}
-          <div className="lg:col-span-2 h-[600px] rounded-lg overflow-hidden shadow-lg">
-            <MapContainer
-              center={[6.130419, 1.215829]}
-              zoom={13}
-              style={{ height: "100%", width: "100%" }}
-            >
-              <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-              {properties.map((property) => (
-                <Marker
-                  position={property.coordinates}
-                  key={property.id}
-                  className
+        <div className="flex flex-col w-full lg:grid-cols-3 gap-8 top-20">
+          {/* search content */}
+          <div className="max-full flex justify-right align-right mx-auto mt-[2.1rem] p-4 bg-white rounded-2xl shadow-lg border">
+            {" "}
+          </div>
+          <div
+            className="absolute z-index-10 max-w-sm mx-auto  p-4 bg-white rounded-2xl shadow-lg border"
+            style={{
+              zIndex: 10000000,
+              marginTop: "7rem",
+              marginLeft: "63rem",
+            }}
+          >
+            <h2 className="text-lg font-semibold text-gray-700 mb-4">
+              Zoomer sur un territoire
+            </h2>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Région */}
+              <div>
+                <label className="block text-gray-600 text-sm font-medium mb-1">
+                  Régions
+                </label>
+                <select
+                  value={region}
+                  onChange={(e) => {
+                    setRegion(e.target.value);
+                    setPrefecture("");
+                    setCommune("");
+                  }}
+                  className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 >
+                  <option value="">-- Choisir une région --</option>
+                  {Object.keys(regions).map((r) => (
+                    <option key={r} value={r}>
+                      {r}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Préfecture */}
+              <div>
+                <label className="block text-gray-600 text-sm font-medium mb-1">
+                  Préfectures
+                </label>
+                <select
+                  value={prefecture}
+                  onChange={(e) => {
+                    setPrefecture(e.target.value);
+                    setCommune("");
+                  }}
+                  disabled={!region}
+                  className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100"
+                >
+                  <option value="">-- Choisir une préfecture --</option>
+                  {region &&
+                    Object.keys(regions[region]).map((p) => (
+                      <option key={p} value={p}>
+                        {p}
+                      </option>
+                    ))}
+                </select>
+              </div>
+
+              {/* Commune */}
+              <div>
+                <label className="block text-gray-600 text-sm font-medium mb-1">
+                  Communes
+                </label>
+                <select
+                  value={commune}
+                  onChange={(e) => setCommune(e.target.value)}
+                  disabled={!prefecture}
+                  className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100"
+                >
+                  <option value="">-- Choisir une commune --</option>
+                  {prefecture &&
+                    regions[region][prefecture].map((c) => (
+                      <option key={c} value={c}>
+                        {c}
+                      </option>
+                    ))}
+                </select>
+              </div>
+
+              {/* Bouton */}
+              <button
+                type="submit"
+                className="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700 transition"
+              >
+                Valider
+              </button>
+            </form>
+          </div>
+
+          {/* Map */}
+          <div className="w-full lg:col-span-2 h-[600px] rounded-lg overflow-hidden shadow-lg">
+            <MapContainer
+              center={[8.6195, 0.8248]}
+              zoom={7}
+              style={{ height: "100vh", width: "100%" }}
+            >
+              <LayersControl position="bottomleft" className="bg-gray-100">
+                {/* Fond de carte OpenStreetMap */}
+                <BaseLayer checked name="OpenStreetMap">
+                  <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                </BaseLayer>
+
+                {/* Fond de carte CartoDB */}
+                <BaseLayer name="CartoDB">
+                  <TileLayer url="https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}{r}.png" />
+                </BaseLayer>
+
+                {/* Fond de carte Esri */}
+                <BaseLayer name="EsriWorldImagery">
+                  <TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" />
+                </BaseLayer>
+              </LayersControl>
+
+              {/* Ajout des propriétés */}
+              {properties.map((property) => (
+                <Marker position={property.coordinates} key={property.id}>
                   <Popup>
                     <img
                       src={property.image}
@@ -92,8 +244,6 @@ function Propriete() {
                       width="200"
                       onClick={handleClick}
                     />
-                    <div className="font-bold">{property.title}</div>
-                    <div className="font-bold">{property.title}</div>
                     <div className="font-bold">{property.title}</div>
                     <div className="text-blue-600">{property.price}</div>
                   </Popup>

@@ -33,3 +33,9 @@
   width: 100%;
   z-index: 10000;
 }
+
+.leaflet-bottom {
+  margin-left: 0rem !important;
+  margin-bottom: 26rem !important;
+  margin-top: 0 !important;
+}

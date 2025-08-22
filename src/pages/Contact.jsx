@@ -8,6 +8,7 @@ import {
   FaFacebook,
   FaTwitter,
   FaInstagram,
+  FaLinkedin,
 } from "react-icons/fa";
 import { SiTiktok } from "react-icons/si";
 import TogoMap from "../pages/TogoMap";
@@ -236,7 +237,6 @@ function Contact() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-gray-900 text-gray-300 px-8 py-10 text-sm">
         <div className="info-footer md:grid-cols-4 gap-6 mb-6">
           <div>
@@ -249,30 +249,41 @@ function Contact() {
             <h4 className="font-semibold mb-2">Trouvez-nous</h4>
             <p>8011 CDD, quartier Tokoin Wuiti</p>
             <p>MD 20743</p>
-            <p>Julien@hustler.tg</p>
+            <p>hustlerscorporation1@gmail.com</p>
           </div>
 
           <div>
             <h4 className="font-semibold mb-2">Property</h4>
-            <p>Terrain Lot 1</p>
-            <p>Terrain Lot 2</p>
-            <p>Terrain Lot 3</p>
-            <p>Terrain Lot 4</p>
+            <p>
+              <a href="./propriete">Terrain Lot 1</a>
+            </p>
+            <p>
+              <a href="./propriete">Terrain Lot 2</a>
+            </p>
+            <p>
+              <a href="./propriete">Terrain Lot 3</a>
+            </p>
+            <p>
+              <a href="./propriete">Terrain Lot 4</a>
+            </p>
           </div>
 
           <div>
             <h4 className="font-semibold mb-2">Liens</h4>
             <p>
-              <a href="">Accueil</a>
+              <a href="/">Accueil</a>
             </p>
             <p>
-              <a href="">Propriétés</a>
+              <a href="/Propriete">Vérifier</a>
             </p>
             <p>
-              <a href="">À propos</a>
+              <a href="/declarer">Acheter</a>
             </p>
             <p>
-              <a href="">Contact</a>
+              <a href="/Apropos">À propos</a>
+            </p>
+            <p>
+              <a href="/Contact">Contact</a>
             </p>
           </div>
 
@@ -296,7 +307,7 @@ function Contact() {
           <div className="logopartenaire">
             <img src={logopartenaire} alt="logopartenaire" />
           </div>
-          <p>© Copyright Hustler 2025. Conception par hustler cooperation</p>
+          <p> © Copyright Hustlers 2025. Conception de hustlers cooperation</p>
           <div className="footer-reseau-sociaux">
             <div>
               <a href="">
@@ -305,7 +316,7 @@ function Contact() {
             </div>
             <div>
               <a href="">
-                <FaTwitter />
+                <FaLinkedin size={20} />
               </a>
             </div>
             <div>

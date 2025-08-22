@@ -10,7 +10,8 @@ import Declarer from "./pages/Declarer";
 import Connexion from "./pages/Connexion";
 import Dectailletairrain from "./pages/DetailleTairrain";
 import MieuxComprendre from "./pages/MieuxComprendre";
-import ProcederVente from "./pages/ProcederVente";
+import ProcederUnVente from "./pages/ProcederUneVente";
+
 import MotPasseOublier from "./pages/MotePasseOublier";
 import CreeUnCompte from "./pages/CreeUnCompte";
 import Profil from "./pages/Profil";
@@ -21,7 +22,7 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/Accueil" element={<Accueil />} />
+        <Route path="/" element={<Accueil />} />
         <Route path="/propriete" element={<Propriete />} />
         <Route path="/Apropos" element={<Apropos />} />
         <Route path="/contact" element={<Contact />} />
@@ -29,7 +30,7 @@ function App() {
         <Route path="/connexion" element={<Connexion />} />
         <Route path="/Dectailletairrain" element={<Dectailletairrain />} />
         <Route path="/MieuxComprendre" element={<MieuxComprendre />} />
-        <Route path="/ProcederVente" element={<ProcederVente />} />
+        <Route path="/ProcederUnVente" element={<ProcederUnVente />} />
         <Route path="/MotPasseOublier" element={<MotPasseOublier />} />
         <Route path="/CreeUnCompte" element={<CreeUnCompte />} />
         <Route path="/Profil" element={<Profil />} />

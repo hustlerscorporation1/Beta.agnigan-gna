@@ -51,8 +51,8 @@ function Accueil() {
     navigate("/Propriete");
   };
 
-  const ProcederVente = () => {
-    navigate("/ProcederVente");
+  const ProcederUnVente = () => {
+    navigate("/ProcederUnVente");
   };
   const cities = [
     { name: "Lomé", image: "https://i.imgur.com/1.jpg", terrains: 32 },
@@ -166,16 +166,17 @@ function Accueil() {
             <br />
           </h1>
           <p className="hero-para mb-6 max-w-2xl text-sm md:text-base">
-            Trouvez le terrain idéal, adapté à votre style de vie.
+            Obtenir des informations fiables sur les titres fonciers des
+            terrains au Togo et choisir celle qui s’adapte à votre style de vie.
           </p>
           <div className="appli-button">
             <div className="store">
               <button className="appstore" onClick={VerifierAchete}>
-                Vérifie et achète
+                Vérifier et acheter
               </button>
             </div>
             <div className="play">
-              <button className="playstore" onClick={ProcederVente}>
+              <button className="playstore" onClick={ProcederUnVente}>
                 Procéder à une vente
               </button>
             </div>
@@ -631,21 +632,29 @@ function Accueil() {
             <h4 className="font-semibold mb-2">Trouvez-nous</h4>
             <p>8011 CDD, quartier Tokoin Wuiti</p>
             <p>MD 20743</p>
-            <p>Julien@hustler.tg</p>
+            <p>hustlerscorporation1@gmail.com</p>
           </div>
 
           <div>
             <h4 className="font-semibold mb-2">Property</h4>
-            <p>Terrain Lot 1</p>
-            <p>Terrain Lot 2</p>
-            <p>Terrain Lot 3</p>
-            <p>Terrain Lot 4</p>
+            <p>
+              <a href="./propriete">Terrain Lot 1</a>
+            </p>
+            <p>
+              <a href="./propriete">Terrain Lot 2</a>
+            </p>
+            <p>
+              <a href="./propriete">Terrain Lot 3</a>
+            </p>
+            <p>
+              <a href="./propriete">Terrain Lot 4</a>
+            </p>
           </div>
 
           <div>
             <h4 className="font-semibold mb-2">Liens</h4>
             <p>
-              <a href="/Accueil">Accueil</a>
+              <a href="/">Accueil</a>
             </p>
             <p>
               <a href="/Propriete">Vérifier</a>
