@@ -3,6 +3,7 @@ import "../App";
 import "../Styles/Accueil.css";
 import heroImage from "../images/hero-image.jpg";
 import Logo from "../images/LOGO_AGNIGBAN_GNA Trs Noir.png";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
@@ -110,9 +111,9 @@ function App() {
         </div>
         <p className="text-sm text-gray-500 mb-6">
           Je dispose déjà d’un compte{" "}
-          <a href="/Connexion" className="text-blue-600 font-medium underline">
+          <Link to="/Connexion" className="text-blue-600 font-medium underline">
             Se connecter
-          </a>
+          </Link>
         </p>
         <button className="bg-green-600 text-white font-semibold py-2 rounded-md w-full hover:bg-blue-700 transition duration-300">
           Envoyer

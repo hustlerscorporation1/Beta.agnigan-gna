@@ -3,6 +3,7 @@ import "../App";
 import "../Styles/Accueil.css";
 import heroImage from "../images/hero-image.jpg";
 import Logo from "../images/LOGO_AGNIGBAN_GNA Trs Noir.png";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
@@ -78,30 +79,30 @@ function App() {
           </div>
 
           <div>
-            <a
-              href="/MotPasseOublier"
+            <Link
+              to="/MotPasseOublier"
               className="text-blue-600 font-medium underline"
             >
               Mot de passe oublié
-            </a>
+            </Link>
           </div>
         </div>
 
         <p className="text-sm text-gray-500 mb-6">
           Vous n’avez pas de compte ?{" "}
-          <a
-            href="/CreeUnCompte"
+          <Link
+            to="/CreeUnCompte"
             className="text-blue-600 font-medium underline"
           >
             Créez maintenant
-          </a>
+          </Link>
         </p>
 
-        <a href="/Profil" className="text-blue-600 font-medium underline">
+        <Link to="/Profil" className="text-blue-600 font-medium underline">
           <button className="bg-green-600 text-white font-semibold py-2 rounded-md w-full hover:bg-blue-700 transition duration-300">
             Envoyer
           </button>
-        </a>
+        </Link>
       </div>
 
       {/* Partie droite */}

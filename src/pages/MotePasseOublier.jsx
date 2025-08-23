@@ -3,6 +3,7 @@ import "../App";
 import "../Styles/Accueil.css";
 import heroImage from "../images/hero-image.jpg";
 import Logo from "../images/LOGO_AGNIGBAN_GNA Trs Noir.png";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
