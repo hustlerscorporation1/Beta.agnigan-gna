@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "../Navbar";
 import "../Styles/Propriete.css";
 import "../Styles/Accueil.css";
 import {
@@ -11,33 +10,9 @@ import {
 } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
-
-import {
-  FaMapMarkerAlt,
-  FaPhone,
-  FaEnvelope,
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaSearch,
-} from "react-icons/fa";
-import { SiTiktok } from "react-icons/si";
-import { HiAdjustmentsHorizontal } from "react-icons/hi2";
-
 import heroImage from "../images/hero-image.jpg";
-import logopartenaire from "../images/Logo_Hustler_AN-removebg-preview.png";
-import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import Dectailletairrain from "./DetailleTairrain";
 import { useNavigate } from "react-router-dom";
-import {
-  MapPin,
-  Ruler,
-  FileText,
-  School,
-  Hospital,
-  ShoppingBag,
-} from "lucide-react";
 
 function Propriete() {
   const navigate = useNavigate();
@@ -114,102 +89,103 @@ function Propriete() {
     <div className="">
       {/* Main Content */}
       <div className="">
-        <div className="flex flex-col w-full lg:grid-cols-3 gap-8 top-20">
+        <div className="relative flex flex-col w-full lg:grid-cols-3 gap-8 top-20">
           {/* search content */}
 
-          <div
-            className="absolute z-index-10 max-w-sm mx-auto  p-4 bg-white rounded-2xl shadow-lg border"
-            style={{
-              zIndex: 10000000,
-              marginTop: "7rem",
-              marginLeft: "63rem",
-            }}
-          >
-            <h2 className="text-lg font-semibold text-gray-700 mb-4">
-              Zoomer sur un territoire
-            </h2>
+          <div className="absolute flex justify-end items-start w-full h-full pr-6">
+            <div
+              className="max-w-sm h-[390px] p-4 bg-white rounded-2xl shadow-lg border"
+              style={{
+                zIndex: "1000",
+                marginTop: "7rem",
+              }}
+            >
+              <h2 className="text-lg font-semibold text-gray-700 mb-4">
+                Zoomer sur un territoire
+              </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Région */}
-              <div>
-                <label className="block text-gray-600 text-sm font-medium mb-1">
-                  Régions
-                </label>
-                <select
-                  value={region}
-                  onChange={(e) => {
-                    setRegion(e.target.value);
-                    setPrefecture("");
-                    setCommune("");
-                  }}
-                  className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                >
-                  <option value="">-- Choisir une région --</option>
-                  {Object.keys(regions).map((r) => (
-                    <option key={r} value={r}>
-                      {r}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Préfecture */}
-              <div>
-                <label className="block text-gray-600 text-sm font-medium mb-1">
-                  Préfectures
-                </label>
-                <select
-                  value={prefecture}
-                  onChange={(e) => {
-                    setPrefecture(e.target.value);
-                    setCommune("");
-                  }}
-                  disabled={!region}
-                  className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100"
-                >
-                  <option value="">-- Choisir une préfecture --</option>
-                  {region &&
-                    Object.keys(regions[region]).map((p) => (
-                      <option key={p} value={p}>
-                        {p}
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Région */}
+                <div>
+                  <label className="block text-gray-600 text-sm font-medium mb-1">
+                    Régions
+                  </label>
+                  <select
+                    value={region}
+                    onChange={(e) => {
+                      setRegion(e.target.value);
+                      setPrefecture("");
+                      setCommune("");
+                    }}
+                    className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  >
+                    <option value="">-- Choisir une région --</option>
+                    {Object.keys(regions).map((r) => (
+                      <option key={r} value={r}>
+                        {r}
                       </option>
                     ))}
-                </select>
-              </div>
+                  </select>
+                </div>
 
-              {/* Commune */}
-              <div>
-                <label className="block text-gray-600 text-sm font-medium mb-1">
-                  Communes
-                </label>
-                <select
-                  value={commune}
-                  onChange={(e) => setCommune(e.target.value)}
-                  disabled={!prefecture}
-                  className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100"
+                {/* Préfecture */}
+                <div>
+                  <label className="block text-gray-600 text-sm font-medium mb-1">
+                    Préfectures
+                  </label>
+                  <select
+                    value={prefecture}
+                    onChange={(e) => {
+                      setPrefecture(e.target.value);
+                      setCommune("");
+                    }}
+                    disabled={!region}
+                    className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100"
+                  >
+                    <option value="">-- Choisir une préfecture --</option>
+                    {region &&
+                      Object.keys(regions[region]).map((p) => (
+                        <option key={p} value={p}>
+                          {p}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+
+                {/* Commune */}
+                <div>
+                  <label className="block text-gray-600 text-sm font-medium mb-1">
+                    Communes
+                  </label>
+                  <select
+                    value={commune}
+                    onChange={(e) => setCommune(e.target.value)}
+                    disabled={!prefecture}
+                    className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100"
+                  >
+                    <option value="">-- Choisir une commune --</option>
+                    {prefecture &&
+                      regions[region][prefecture].map((c) => (
+                        <option key={c} value={c}>
+                          {c}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+
+                {/* Bouton */}
+                <button
+                  type="submit"
+                  className="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700 transition"
                 >
-                  <option value="">-- Choisir une commune --</option>
-                  {prefecture &&
-                    regions[region][prefecture].map((c) => (
-                      <option key={c} value={c}>
-                        {c}
-                      </option>
-                    ))}
-                </select>
-              </div>
-
-              {/* Bouton */}
-              <button
-                type="submit"
-                className="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700 transition"
-              >
-                Valider
-              </button>
-            </form>
+                  Valider
+                </button>
+              </form>
+            </div>
           </div>
 
           {/* Map */}
-          <div className="w-full lg:col-span-2 h-[600px] rounded-lg overflow-hidden shadow-lg">
+          <div className="w-full lg:col-span-2 h-[100%] rounded-lg overflow-hidden shadow-lg">
             <MapContainer
               center={[8.6195, 0.8248]}
               zoom={7}

@@ -1,5 +1,5 @@
 .navbar {
-  position: fixed;
+  position: fixed !important;
   justify-content: center !important;
   gap: 5rem;
   color: #000000 !important;

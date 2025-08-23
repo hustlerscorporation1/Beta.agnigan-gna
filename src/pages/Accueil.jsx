@@ -619,8 +619,8 @@ function Accueil() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-300 px-8 py-10 text-sm">
-        <div className="info-footer md:grid-cols-4 gap-6 mb-6">
+      <footer className=" bg-gray-900 justify-between text-gray-300 px-8 py-10 text-sm">
+        <div className=" flex justify-between info-footer md:grid-cols-4 gap-6 mb-6">
           <div>
             <h4 className="font-semibold mb-2">Horaires d'ouverture</h4>
             <p>Lun-Ven: 09:00 - 20:00</p>

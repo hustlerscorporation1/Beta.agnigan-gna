@@ -36,11 +36,20 @@
 
 .leaflet-bottom {
   margin-left: 0rem !important;
-  margin-bottom: 26rem !important;
+  margin-bottom: 24rem !important;
   margin-top: 0 !important;
 }
 
 .marker {
   color: black !important;
   background-color: black !important;
+}
+
+.leaflet-control-zoom {
+  margin-top: 12rem !important;
+}
+
+.leaflet-control-attribution {
+  position: absolute !important;
+  margin-top: 0rem !important;
 }

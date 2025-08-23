@@ -26,7 +26,7 @@ function App() {
           <h1
             className="text-3xl font-bold mb-8 "
             style={{
-              marginTop: "1rem",
+              marginTop: "7rem",
               fontSize: "2.5rem",
             }}
           >

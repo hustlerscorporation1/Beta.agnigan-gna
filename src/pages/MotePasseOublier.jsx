@@ -10,18 +10,6 @@ function App() {
     <div className="flex flex-col md:flex-row min-h-screen">
       {/* Partie gauche */}
       <div className="w-full md:w-1/2 bg-white flex flex-col justify-center px-8 md:px-16 py-10">
-        {/* <div className="mb-10 absolute">
-          <img
-            src={Logo}
-            alt="logo"
-            style={{
-              width: "150px",
-              height: "150px",
-              marginBottom: "300px",
-            }}
-          />
-        </div> */}
-
         <div className="text-2xl md:text-3xl font-bold mb-9">
           <h1
             className="text-3xl font-bold mb-8 "
