@@ -280,14 +280,16 @@ input {
 }
 .nos-service:hover {
   background-color: #ffffff !important;
-  p {
-    color: #4f5967 !important;
-  }
-  h3 {
-    color: #d30731 !important;
-  }
   transform: scale(1.05);
   transition: 1s;
+}
+
+.nos-service:hover p {
+  color: #4f5967 !important;
+}
+
+.nos-service:hover h3 {
+  color: #d30731 !important;
 }
 
 .five-ville-content {
@@ -481,7 +483,7 @@ input {
   }
 
   /* Témoignages */
-  .temoignage .w-1/2 {
+  .temoignage {
     width: 100%;
   }
 
