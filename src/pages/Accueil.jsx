@@ -204,7 +204,6 @@ function Accueil() {
               defaultValue=""
             >
               <option>Terrain résidentiel</option>
-
               <option>Terrain nu</option>
               <option>Terrain Commercial</option>
               <option>Terrain agricol</option>
