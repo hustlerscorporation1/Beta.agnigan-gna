@@ -54,7 +54,7 @@ function Apropos() {
         <div
           className=" relative w-full h-80 md:h-[400px]"
           style={{
-            marginTop: "90px",
+            marginTop: "0px",
             height: "500px",
             background: "#f6f9fc1c",
           }}
@@ -68,7 +68,7 @@ function Apropos() {
           >
             <source src="/video-plan.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-br backdrop-blur-sm"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/70"></div>
           <div className="absolute top-8 left-8 z-10">
             <h2
               className="text-4xl font-extrabold text-white drop-shadow mb-2"

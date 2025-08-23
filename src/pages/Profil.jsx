@@ -3,6 +3,7 @@ import "../App";
 import "../Styles/Accueil.css";
 import heroImage from "../images/hero-image.jpg";
 import Logo from "../images/LOGO_AGNIGBAN_GNA Trs Noir.png";
+import { FaCog, FaShoppingCart, FaTags, FaMapMarkedAlt } from "react-icons/fa";
 
 function App() {
   const [activePage, setActivePage] = useState("evenements");
@@ -298,7 +299,7 @@ function App() {
       <div
         className="flex flex-1"
         style={{
-          marginTop: "6rem",
+          marginTop: "0rem",
           fontSize: "1.2rem",
         }}
       >
@@ -306,43 +307,43 @@ function App() {
         <aside className="w-[350px] bg-white border-r p-4  flex flex-col gap-3">
           <button
             onClick={() => setActivePage("evenements")}
-            className={`px-4 py-2 rounded text-left ${
+            className={`flex items-center gap-2 px-4 mt-4 py-2 rounded text-left ${
               activePage === "evenements"
                 ? "bg-green-700 text-white"
                 : "hover:bg-gray-100"
             }`}
           >
-            📅 Mes évènements
+            <FaMapMarkedAlt className="h-6 w-6 text-black-500" /> Mes terrains
           </button>
           <button
             onClick={() => setActivePage("paiements")}
-            className={`px-4 py-2 rounded text-left ${
+            className={`flex items-center gap-2 px-4 py-2 rounded text-left ${
               activePage === "paiements"
                 ? "bg-green-700 text-white"
                 : "hover:bg-gray-100"
             }`}
           >
-            💳 Mes paiements d'évènement
+            <FaShoppingCart className="h-6 w-6 text-black-500" /> Mes achats
           </button>
           <button
             onClick={() => setActivePage("hotels")}
-            className={`px-4 py-2 rounded text-left ${
+            className={`flex items-center gap-2 px-4 py-2 rounded text-left ${
               activePage === "hotels"
                 ? "bg-green-700 text-white"
                 : "hover:bg-gray-100"
             }`}
           >
-            🏨 Mes réservations d'hôtels
+            <FaTags className="h-6 w-6 text-black-500" /> Mes ventes
           </button>
           <button
             onClick={() => setActivePage("parametres")}
-            className={`px-4 py-2 rounded text-left ${
+            className={`flex items-center gap-2 px-4 py-2 rounded text-left ${
               activePage === "parametres"
                 ? "bg-green-700 text-white"
-                : "hover:bg-gray-100"
+                : "hover:bg-gray-100 "
             }`}
           >
-            ⚙️ Paramètres
+            <FaCog className="h-6 w-6 text-black-500" /> Paramètres
           </button>
           <button
             onClick={() => setActivePage("logout")}

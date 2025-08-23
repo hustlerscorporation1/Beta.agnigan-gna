@@ -1,5 +1,8 @@
 // src/components/Chatbot.jsx
 import { useState } from "react";
+import { FaComment } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,9 +45,9 @@ export default function Chatbot() {
       {/* Bouton flottant */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition"
+        className="bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-green-500 transition"
       >
-        💬
+        <FaComment className="h-6 w-6 text-white-500" />
       </button>
 
       {/* Fenêtre du chatbot */}
@@ -52,8 +55,10 @@ export default function Chatbot() {
         <div className="w-80 h-96 bg-white rounded-2xl shadow-lg flex flex-col absolute bottom-16 right-0">
           {/* En-tête */}
           <div className="bg-blue-600 text-white p-3 rounded-t-2xl flex justify-between items-center">
-            <h2 className="font-bold">Assistant de anyigban </h2>
-            <button onClick={() => setIsOpen(false)}>✖️</button>
+            <h2 className="font-bold">Assistant de Anyigbã nya</h2>
+            <button onClick={() => setIsOpen(false)}>
+              <FaTimes className="h-6 w-6 text-white-600" />
+            </button>
           </div>
 
           {/* Zone messages */}
@@ -83,7 +88,7 @@ export default function Chatbot() {
             />
             <button
               onClick={handleSend}
-              className="ml-2 bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition"
+              className="ml-2 bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-green-500 transition"
             >
               ➤
             </button>

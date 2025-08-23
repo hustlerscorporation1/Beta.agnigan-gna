@@ -116,9 +116,7 @@ function Propriete() {
       <div className="">
         <div className="flex flex-col w-full lg:grid-cols-3 gap-8 top-20">
           {/* search content */}
-          <div className="max-full flex justify-right align-right mx-auto mt-[2.1rem] p-4 bg-white rounded-2xl shadow-lg border">
-            {" "}
-          </div>
+
           <div
             className="absolute z-index-10 max-w-sm mx-auto  p-4 bg-white rounded-2xl shadow-lg border"
             style={{
@@ -236,7 +234,11 @@ function Propriete() {
 
               {/* Ajout des propriétés */}
               {properties.map((property) => (
-                <Marker position={property.coordinates} key={property.id}>
+                <Marker
+                  position={property.coordinates}
+                  key={property.id}
+                  className="marker bg-black"
+                >
                   <Popup>
                     <img
                       src={property.image}

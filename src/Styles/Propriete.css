@@ -39,3 +39,8 @@
   margin-bottom: 26rem !important;
   margin-top: 0 !important;
 }
+
+.marker {
+  color: black !important;
+  background-color: black !important;
+}

@@ -438,3 +438,146 @@ input {
   align-items: center;
   transition: box-shadow 0.3s, transform 0.3s;
 }
+
+/* responsive.css */
+
+/* MOBILE FIRST (small devices) */
+@media (max-width: 767px) {
+  /* Hero section */
+  .hero {
+    height: 400px;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-para {
+    font-size: 0.875rem;
+  }
+
+  .appli-button {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .store,
+  .play {
+    width: 100%;
+  }
+
+  /* Formulaire recherche */
+  .container-recherche {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .container-recherche input,
+  .container-recherche select,
+  .container-recherche button {
+    width: 100%;
+  }
+
+  /* Témoignages */
+  .temoignage .w-1/2 {
+    width: 100%;
+  }
+
+  .temoignage .background-black {
+    flex-direction: column;
+    height: auto;
+  }
+
+  /* Section villes */
+  .ville-terrain {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Contact + image */
+  .contact-title {
+    display: none !important;
+  }
+
+  .contact-container {
+    width: 90% !important;
+  }
+}
+
+/* TABLETTE (medium devices) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Hero section */
+  .hero {
+    height: 450px;
+    padding: 2rem 1rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-para {
+    font-size: 1rem;
+  }
+
+  .appli-button {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  /* Formulaire recherche */
+  .container-recherche {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .container-recherche input,
+  .container-recherche select {
+    width: calc(50% - 0.5rem);
+  }
+
+  .temoignage .background-black {
+    flex-direction: row;
+    height: 370px;
+  }
+
+  /* Section villes */
+  .ville-terrain {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .contact-title {
+    display: block !important;
+    font-size: 1rem;
+  }
+
+  .contact-container {
+    width: 70% !important;
+  }
+}
+
+/* BURGER MENU (nav responsive) */
+@media (max-width: 767px) {
+  .linknav {
+    display: none;
+  }
+
+  .navbar .burger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .navbar .linknav.active {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: #1e40af; /* bleu similaire à ton navbar */
+    padding: 1rem;
+    z-index: 50;
+  }
+}

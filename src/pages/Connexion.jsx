@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="flex flex-col md:flex-row min-h-screen">
       {/* Partie gauche */}
-      <div className="w-full md:w-1/2 bg-white flex flex-col justify-center px-8 md:px-16 py-10">
+      <div className="w-full md:w-1/2 bg-white flex flex-col  px-8 md:px-16 py-10">
         {/* <div className="mb-10 absolute">
           <img
             src={Logo}
@@ -25,7 +25,7 @@ function App() {
           <h1
             className="text-3xl font-bold mb-8 "
             style={{
-              marginTop: "7rem",
+              marginTop: "1rem",
               fontSize: "2.5rem",
             }}
           >
@@ -57,8 +57,9 @@ function App() {
         </div>
 
         <div
-          className="flex items-center justify-center  mb-20"
+          className="flex items-center mb-20"
           style={{
+            justifyContent: "space-between",
             gap: "16rem",
             fontSize: "0.8rem",
           }}
@@ -128,7 +129,7 @@ function App() {
               flexDirection: "column",
               justifyContent: "left",
               alignItems: "left",
-              marginTop: "10rem",
+              marginTop: "4rem",
               background: "#F7FAFC",
               borderRadius: "1rem",
               color: "#000",
@@ -156,8 +157,8 @@ function App() {
               backgroundColor: "#FFF",
               borderRadius: "0.5rem",
               zIndex: "1000",
-              marginTop: "24.5rem",
-              marginLeft: "21.2rem",
+              marginTop: "18.5rem",
+              marginLeft: "21.1rem",
               padding: "0.5rem",
             }}
           >

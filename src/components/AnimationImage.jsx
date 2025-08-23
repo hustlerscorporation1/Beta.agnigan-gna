@@ -16,7 +16,7 @@ const AnimationImage = () => {
         style={{
           position: "relative",
           width: "100%",
-          height: "640px",
+          height: "545px",
         }}
       />
     </div>
