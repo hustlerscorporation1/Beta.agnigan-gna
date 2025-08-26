@@ -149,7 +149,7 @@ function Accueil() {
   }, []);
 
   return (
-    <div className="">
+    <div className=" w-full">
       {/* Hero section */}
       <AnimationImage />
       <div
@@ -236,7 +236,7 @@ function Accueil() {
         </div>
       </div>
 
-      <div className="font-sans">
+      <div className="w-full font-sans">
         {/* Section 1: Header */}
         <section className="text-center py-12 bg-gray-50 section-veddete ">
           <div className="valeur">

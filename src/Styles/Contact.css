@@ -98,8 +98,14 @@
   transform: scale(1.05);
   transition: all 0.9s ease-in-out;
   background: #43a55d;
-  color: #fff !important;
+  color: #fff;
   border-radius: 15px 15px 15px 15px !important;
+}
+
+.contetaint-bureau:hover .titile-bureau {
+  transition: all 0.9s ease-in-out;
+  color: #fff !important;
+  transform: scale(1.05);
 }
 
 .logopartenaire {

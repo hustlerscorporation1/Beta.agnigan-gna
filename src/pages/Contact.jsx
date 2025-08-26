@@ -130,7 +130,7 @@ function Contact() {
               <FaPhone /> (+228) 90 05 58 75
             </li>
             <li className="flex items-center gap-2">
-              <FaEnvelope /> hustler@corporation.tg
+              <FaEnvelope /> hustlerscorporation1@gmail.com
             </li>
           </ul>
 
@@ -142,10 +142,10 @@ function Contact() {
               type="text"
               placeholder="Trouver une région"
             >
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="opel">Opel</option>
-              <option value="audi">Audi</option>
+              <option value="volvo">Maritime </option>
+              <option value="saab">Plateaux</option>
+              <option value="opel">Centrale</option>
+              <option value="audi">Kara</option>
             </select>
 
             {/* <input className="border px-3 py-2 rounded" type="text" placeholder="Trouver une région" /> */}
@@ -208,7 +208,9 @@ function Contact() {
           <div className="shadow contetaint-bureau rounded overflow-hidden">
             <img src={MonImagebureau1} alt="Lomé" />
             <div className="p-4">
-              <h3 className="font-semibold text-lg">Lomé Agoè</h3>
+              <h3 className="titile-bureau font-semibold text-red-600 text-lg">
+                Lomé Agoè
+              </h3>
               <p>555555, Agoè A. A, Togo</p>
               <p>Tél : +228 92-27-86-09</p>
               <p>Email : smartcity@corporation</p>
@@ -218,7 +220,9 @@ function Contact() {
           <div className="shadow contetaint-bureau rounded overflow-hidden">
             <img src={MonImagebureau2} alt="Kara" />
             <div className="p-4">
-              <h3 className="font-semibold text-lg">Kara</h3>
+              <h3 className="titile-bureau font-semibold text-red-600  text-lg">
+                Kara
+              </h3>
               <p>Ville de Kara, MD 66565</p>
               <p>Tél : +228 92-27-86-09</p>
               <p>Email : smartcity@corporation</p>
@@ -228,7 +232,9 @@ function Contact() {
           <div className="shadow contetaint-bureau rounded overflow-hidden">
             <img src={MonImagebureau3} alt="Vogan" />
             <div className="p-4">
-              <h3 className="font-semibold text-lg">Vogan, centre ville</h3>
+              <h3 className="titile-bureau font-semibold text-red-600  text-lg">
+                Vogan, centre ville
+              </h3>
               <p>Vogan centre ville, MD 77614</p>
               <p>Tél : +228 92-27-86-09</p>
               <p>Email : smartcity@corporation</p>
@@ -240,7 +246,7 @@ function Contact() {
       <footer className="bg-gray-900 text-gray-300 px-8 py-10 text-sm">
         <div className="info-footer md:grid-cols-4 gap-6 mb-6">
           <div>
-            <h4 className="font-semibold mb-2">Horaires d'ouverture</h4>
+            <h4 className="font-semibold  mb-2">Horaires d'ouverture</h4>
             <p>Lun-Ven: 09:00 - 20:00</p>
             <p>Sam-Dim: 09:00 - 14:00</p>
           </div>

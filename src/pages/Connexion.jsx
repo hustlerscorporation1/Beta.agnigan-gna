@@ -130,7 +130,7 @@ function App() {
               flexDirection: "column",
               justifyContent: "left",
               alignItems: "left",
-              marginTop: "4rem",
+              marginTop: "8rem",
               background: "#F7FAFC",
               borderRadius: "1rem",
               color: "#000",
@@ -158,7 +158,7 @@ function App() {
               backgroundColor: "#FFF",
               borderRadius: "0.5rem",
               zIndex: "1000",
-              marginTop: "18.5rem",
+              marginTop: "22.5rem",
               marginLeft: "21.1rem",
               padding: "0.5rem",
             }}
@@ -211,10 +211,10 @@ function App() {
               marginBottom: "1rem",
             }}
           >
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis odit
-            illo doloremque voluptates commodi, animi atque. Veritatis, beatae
-            fugiat illum obcaecati nihil nemo optio a dignissimos eos et non
-            doloremque.
+            La plateforme de confiance ou tu peux retrouver tous les
+            informations sur les terre togolaise et pour l'achat et la vente de
+            terrains au Togo. Nous vous garantissons des transactions 100%
+            sécurisées et des documents certifiés pour une paix d'esprit totale.
           </p>
         </div>
       </div>

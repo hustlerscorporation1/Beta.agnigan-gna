@@ -7,32 +7,26 @@ import { FaCog, FaShoppingCart, FaTags, FaMapMarkedAlt } from "react-icons/fa";
 
 function App() {
   const [activePage, setActivePage] = useState("evenements");
-  const [activeTab, setActiveTab] = useState("tous"); // Onglet actif pour "Mes évènements"
+  const [activeTab, setActiveTab] = useState("tousTerrain"); // Onglet actif pour "Mes évènements"
 
   const renderEvenements = () => {
     switch (activeTab) {
-      case "tous":
+      case "tousTerrain":
         return (
           <p>
-            Voici la liste de <b>tous</b> vos évènements.
+            Voici la liste de <b>tous</b> Vos Terrain.
           </p>
         );
-      case "encours":
+      case "encoursTerrain":
+        return <p>Voici la liste de tous vos demande .</p>;
+
+      case "avenirTerrain":
+        return <p>?????????????????.</p>;
+
+      case "passesTerrain":
         return (
           <p>
-            Voici vos évènements <b>en cours</b>.
-          </p>
-        );
-      case "avenir":
-        return (
-          <p>
-            Voici vos évènements <b>à venir</b>.
-          </p>
-        );
-      case "passes":
-        return (
-          <p>
-            Voici vos évènements <b>passés</b>.
+            Voici la liste de tous vos demande <b>passés</b>.
           </p>
         );
       default:
@@ -49,9 +43,9 @@ function App() {
             <ul className="flex gap-3 border-b mb-4">
               <li>
                 <button
-                  onClick={() => setActiveTab("tous")}
+                  onClick={() => setActiveTab("tousTerrain")}
                   className={`px-3 py-2 ${
-                    activeTab === "tous"
+                    activeTab === "tousTerrain"
                       ? "border-b-2 border-blue-600 font-semibold"
                       : ""
                   }`}
@@ -61,9 +55,9 @@ function App() {
               </li>
               <li>
                 <button
-                  onClick={() => setActiveTab("encours")}
+                  onClick={() => setActiveTab("encoursTerrain")}
                   className={`px-3 py-2 ${
-                    activeTab === "encours"
+                    activeTab === "encoursTerrain"
                       ? "border-b-2 border-blue-600 font-semibold"
                       : ""
                   }`}
@@ -73,21 +67,21 @@ function App() {
               </li>
               <li>
                 <button
-                  onClick={() => setActiveTab("avenir")}
+                  onClick={() => setActiveTab("avenirTerrain")}
                   className={`px-3 py-2 ${
-                    activeTab === "avenir"
+                    activeTab === "avenirTerrain"
                       ? "border-b-2 border-blue-600 font-semibold"
                       : ""
                   }`}
                 >
-                  À venir
+                  ????
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => setActiveTab("passes")}
+                  onClick={() => setActiveTab("passesTerrain")}
                   className={`px-3 py-2 ${
-                    activeTab === "passes"
+                    activeTab === "passesTerrain"
                       ? "border-b-2 border-blue-600 font-semibold"
                       : ""
                   }`}
@@ -113,6 +107,7 @@ function App() {
             <div className="mt-3">{renderEvenements()}</div>
           </div>
         );
+
       case "paiements":
         return (
           <div>
@@ -151,7 +146,7 @@ function App() {
                       : ""
                   }`}
                 >
-                  À venir
+                  ????
                 </button>
               </li>
               <li>
@@ -184,6 +179,7 @@ function App() {
             <div className="mt-3">{renderEvenements()}</div>
           </div>
         );
+
       case "hotels":
         return (
           <div>
@@ -222,7 +218,7 @@ function App() {
                       : ""
                   }`}
                 >
-                  À venir
+                  ?????
                 </button>
               </li>
               <li>
@@ -255,28 +251,118 @@ function App() {
             <div className="mt-3">{renderEvenements()}</div>
           </div>
         );
+
       case "parametres":
         return (
           <div>
             <p className="mb-2">Modifiez vos informations :</p>
             <form className="space-y-3">
-              <div>
-                <label className="block text-sm font-medium">Nom</label>
-                <input
-                  type="text"
-                  className="w-full border rounded px-2 py-1"
-                  defaultValue="Julien"
-                />
+              <div className="flex gap-[5rem]">
+                {/* Nom */}
+                <div>
+                  <label
+                    className="block mt-5 mb-2 text-sm font-medium"
+                    style={{
+                      color: "#000000",
+                    }}
+                  >
+                    Nom
+                  </label>
+                  <input
+                    type="text"
+                    className=" border rounded px-2 py-1"
+                    defaultValue="ADOBOE"
+                  />
+                </div>
+                {/* Prenom */}
+                <div>
+                  <label
+                    className="block mt-5 mb-2 text-sm font-medium"
+                    style={{
+                      color: "#000000",
+                    }}
+                  >
+                    Prénom
+                  </label>
+                  <input
+                    type="text"
+                    className=" border rounded px-2 py-1"
+                    defaultValue="Comlan Julien"
+                  />
+                </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium">Email</label>
-                <input
-                  type="email"
-                  className="w-full border rounded px-2 py-1"
-                  defaultValue="julien@example.com"
-                />
+              <div className="flex gap-[5rem] ">
+                {/* Mail */}
+                <div>
+                  <label
+                    className="block mt-5 mb-2 text-sm font-medium"
+                    style={{
+                      color: "#000000ff",
+                    }}
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    className=" border rounded px-2 py-1"
+                    defaultValue="julien@example.com"
+                  />
+                </div>
+
+                {/* numero */}
+                <div>
+                  <label
+                    className="block mt-5 mb-2 text-sm font-medium"
+                    style={{
+                      color: "#000000",
+                    }}
+                  >
+                    Numéro de Téléphone
+                  </label>
+                  <input
+                    type="text"
+                    className=" border rounded px-2 py-1"
+                    defaultValue="228 70 14 61 80"
+                  />
+                </div>
               </div>
-              <button className="bg-green-600 text-white px-4 py-2 rounded">
+
+              <div className="flex gap-[5rem] ">
+                {/* Mail */}
+                <div>
+                  <label
+                    className="block mt-5 mb-2 text-sm font-medium"
+                    style={{
+                      color: "#000000ff",
+                    }}
+                  >
+                    Mot de passe
+                  </label>
+                  <input
+                    type="password"
+                    className=" border rounded px-2 py-1"
+                    defaultValue="ZaDFF0;303@"
+                  />
+                </div>
+
+                {/* numero */}
+                <div>
+                  <label
+                    className="block mt-5 mb-2 text-sm font-medium"
+                    style={{
+                      color: "#000000",
+                    }}
+                  >
+                    Confirmer Mot de pas
+                  </label>
+                  <input
+                    type="password"
+                    className=" border rounded px-2 py-1"
+                    defaultValue=""
+                  />
+                </div>
+              </div>
+              <button className="bg-green-600 mt-5 text-white px-4 py-2 rounded">
                 Enregistrer
               </button>
             </form>
@@ -299,7 +385,7 @@ function App() {
       <div
         className="flex flex-1"
         style={{
-          marginTop: "0rem",
+          marginTop: "6rem",
           fontSize: "1.2rem",
         }}
       >
@@ -355,13 +441,18 @@ function App() {
 
         {/* Content */}
         <main className="flex-1 p-6">
-          <h2 className="font-bold text-xl mb-4">
+          <h2
+            className="font-bold text-red-600 text-xl mb-4"
+            style={{
+              fontSize: "23px",
+            }}
+          >
             {activePage === "evenements"
-              ? "Mes évènements"
+              ? "Mes Terrains"
               : activePage === "paiements"
-              ? "Mes paiements d'évènement"
+              ? "Mes Achat"
               : activePage === "hotels"
-              ? "Mes réservations d'hôtels"
+              ? "Mes Vents"
               : activePage === "parametres"
               ? "Paramètres"
               : "Déconnexion"}

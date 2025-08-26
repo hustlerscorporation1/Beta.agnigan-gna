@@ -1,4 +1,3 @@
-import React from "react";
 import {
   FaHome,
   FaMapMarkedAlt,
@@ -19,6 +18,9 @@ import heroImage from "../images/hero-image.jpg";
 import { color } from "framer-motion";
 import Client1 from "../images/Client 1.jpg";
 import Client2 from "../images/Client 2.jpg";
+import React, { useState, useEffect, useRef } from "react";
+
+import terrain from "../videos/Terrain du Sud __ Publicité TV (1).mp4";
 
 const agents = [
   {
@@ -40,6 +42,28 @@ const agents = [
 ];
 
 function Apropos() {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleTogglePlay = async () => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    // Si la vidéo est en pause → lecture avec son activé
+    if (v.paused) {
+      try {
+        v.muted = false; // réactiver le son
+        await v.play();
+        setIsPlaying(true);
+      } catch (err) {
+        console.error("Erreur lecture vidéo :", err);
+      }
+    } else {
+      v.pause();
+      setIsPlaying(false);
+    }
+  };
+
   return (
     <div className="">
       {/* Section vidéo premium */}
@@ -47,51 +71,60 @@ function Apropos() {
         className="video-section rounded-2xl overflow-hidden shadow-xl mb-12 border border-blue-200 bg-white"
         style={{
           width: "100%",
-          background: `url(${heroImage}) no-repeat center center`,
+          backgroundVideo: `url(${heroImage}) no-repeat center center`,
           backgroundSize: "cover",
         }}
       >
         <div
-          className=" relative w-full h-80 md:h-[400px]"
+          className="relative w-full h-80 md:h-[400px]"
           style={{
-            marginTop: "0px",
+            marginTop: "6rem",
             height: "500px",
             background: "#f6f9fc1c",
           }}
         >
           <video
-            className="absolute inset-0 w-full h-full object-cover"
-            autoPlay
-            muted
+            ref={videoRef}
+            className="absolute inset-0 w-full h-full object-cover cursor-pointer"
             loop
             playsInline
+            preload="metadata"
+            onClick={handleTogglePlay} // clique sur la vidéo aussi
           >
-            <source src="/video-plan.mp4" type="video/mp4" />
+            <source src={terrain} type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/70"></div>
-          <div className="absolute top-8 left-8 z-10">
-            <h2
-              className="text-4xl font-extrabold text-white drop-shadow mb-2"
-              style={{
-                color: "#ffe500",
-              }}
-            >
-              Qui Somme Nous
-            </h2>
-            <p className="text-white text-lg underline cursor-pointer">
-              Regarder la vidéo
-            </p>
-          </div>
-          <button
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white p-6 rounded-full shadow-2xl transition duration-300 z-10 border-4 border-white"
-            style={{
-              backgroundColor: "#43a55d",
-            }}
-          >
-            <svg width="40" height="40" fill="white" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          </button>
+
+          <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/70  pointer-events-none"></div>
+
+          {/* Titre + bouton → cachés quand la vidéo joue */}
+          {!isPlaying && (
+            <>
+              <div className="absolute top-8 left-8 z-10">
+                <h2
+                  className="text-4xl font-extrabold text-white drop-shadow mb-2"
+                  style={{ color: "#ffe500" }}
+                >
+                  Qui Somme Nous
+                </h2>
+                <p className="text-white text-lg underline cursor-pointer">
+                  Regarder la vidéo
+                </p>
+              </div>
+
+              {/* Bouton Play */}
+              <button
+                type="button"
+                onClick={handleTogglePlay}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-green-600 hover:bg-green-700 text-white p-6 rounded-full shadow-2xl transition duration-300 z-10 border-4 border-white pointer-events-auto"
+                aria-label="Lire la vidéo"
+              >
+                <svg width="40" height="40" fill="white" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </button>
+            </>
+          )}
+
           <div className="absolute bottom-8 left-8 z-10 max-w-lg">
             <p className="text-white text-base md:text-lg drop-shadow">
               Lorem ipsum dolor sit amet consectetur. Morbi quis habitant donec
@@ -169,6 +202,7 @@ function Apropos() {
             className="text-3xl font-extrabold mb-2"
             style={{
               color: "#d30731",
+              fontSize: "2.4rem",
             }}
           >
             Nos agents professionnels

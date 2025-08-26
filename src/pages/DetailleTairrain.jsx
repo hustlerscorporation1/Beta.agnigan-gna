@@ -164,9 +164,9 @@ const TerrainDetails = () => {
         {open && (
           <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 ">
             <div
-              className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-lg relative"
+              className="bg-white h p-8 rounded-2xl shadow-lg w-full max-w-lg relative"
               style={{
-                marginTop: "250px",
+                marginTop: "10rem",
               }}
             >
               <button
