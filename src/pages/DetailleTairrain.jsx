@@ -333,7 +333,10 @@ const TerrainDetails = () => {
         <div>
           <h3 className="text-lg font-semibold mb-3">Vidéo</h3>
           <video controls className="w-full rounded-lg shadow-md">
-            <source src="/terrain-video.mp4" type="video/mp4" />
+            <source
+              src="../videos/Terrain du Sud __ Publicité TV (1).mp4"
+              type="video/mp4"
+            />
             Votre navigateur ne supporte pas la lecture vidéo.
           </video>
         </div>
