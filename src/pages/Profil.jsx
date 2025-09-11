@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "../superbase/superbaseClient";
 import "../App";
 import "../Styles/Accueil.css";
 import heroImage from "../images/hero-image.jpg";
@@ -6,8 +8,33 @@ import Logo from "../images/LOGO_AGNIGBAN_GNA Trs Noir.png";
 import { FaCog, FaShoppingCart, FaTags, FaMapMarkedAlt } from "react-icons/fa";
 
 function App() {
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
   const [activePage, setActivePage] = useState("evenements");
-  const [activeTab, setActiveTab] = useState("tousTerrain"); // Onglet actif pour "Mes évènements"
+  const [activeTab, setActiveTab] = useState("tousTerrain");
+
+  useEffect(() => {
+    const getUser = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (!user) {
+        navigate("/Connexion");
+        return;
+      }
+      setUser(user);
+    };
+    getUser();
+  }, [navigate]);
+
+  const handleSignOut = async () => {
+    try {
+      await supabase.auth.signOut();
+      navigate("/");
+    } catch (error) {
+      console.error("Erreur lors de la déconnexion:", error);
+    }
+  };
 
   const renderEvenements = () => {
     switch (activeTab) {
@@ -431,12 +458,15 @@ function App() {
           >
             <FaCog className="h-6 w-6 text-black-500" /> Paramètres
           </button>
-          <button
-            onClick={() => setActivePage("logout")}
-            className="px-4 py-2 rounded text-left text-red-600 border w-[320px] border-red-500 hover:bg-red-50"
-          >
-            ⏻ Déconnexion
-          </button>
+
+          {user && (
+            <button
+              onClick={handleSignOut}
+              className="px-4 py-2 rounded text-left text-red-600 border w-[320px] border-red-500 hover:bg-red-50"
+            >
+              ⏻ Déconnexion
+            </button>
+          )}
         </aside>
 
         {/* Content */}

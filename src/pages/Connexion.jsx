@@ -1,11 +1,40 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../App";
 import "../Styles/Accueil.css";
 import heroImage from "../images/hero-image.jpg";
 import Logo from "../images/LOGO_AGNIGBAN_GNA Trs Noir.png";
 import { Link } from "react-router-dom";
+import { supabase } from "../superbase/superbaseClient";
 
 function App() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) throw error;
+
+      console.log("Connexion réussie :", data.user);
+      navigate("/profil");
+    } catch (error) {
+      console.error(error.message);
+      alert(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="flex flex-col md:flex-row min-h-screen">
       {/* Partie gauche */}
@@ -43,6 +72,8 @@ function App() {
             type="email"
             placeholder="example@gmail.com"
             className="w-full border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="space-y-2 mb-6">
@@ -54,6 +85,8 @@ function App() {
             type="password"
             placeholder="eg: Pesn@s.p344"
             className="w-full border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
@@ -98,11 +131,15 @@ function App() {
           </Link>
         </p>
 
-        <Link to="/Profil" className="text-blue-600 font-medium underline">
-          <button className="bg-green-600 text-white font-semibold py-2 rounded-md w-full hover:bg-blue-700 transition duration-300">
-            Envoyer
-          </button>
-        </Link>
+        <button
+          onClick={handleLogin}
+          disabled={isLoading}
+          className={`w-full py-2 rounded-md font-semibold transition duration-300 ${
+            isLoading ? "bg-gray-400" : "bg-green-600 hover:bg-blue-700"
+          } text-white`}
+        >
+          {isLoading ? "Connexion en cours..." : "Se connecter"}
+        </button>
       </div>
 
       {/* Partie droite */}

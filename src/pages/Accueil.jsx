@@ -28,6 +28,7 @@ import Notse from "../images/Notse.jpg";
 import Tsevi from "../images/Tsévi.jpg";
 import logopartenaire from "../images/Logo_Hustler_AN-removebg-preview.png";
 import heroImage from "../images/hero-image.jpg";
+import heroContact from "../images/Contact-page.jpg";
 import satisfaction from "../images/satisfaction.jpg";
 import Slde from "../components/Slde";
 import VideoBackground from "../pages/VideoBackgroud";
@@ -542,7 +543,7 @@ function Accueil() {
           <div
             className="relative w-full h-[500px] bg-cover bg-center flex items-center justify-center"
             style={{
-              backgroundImage: `url(${heroImage})`,
+              backgroundImage: `url(${heroContact})`,
             }}
           >
             <div

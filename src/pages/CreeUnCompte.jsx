@@ -1,26 +1,132 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../App";
 import "../Styles/Accueil.css";
 import heroImage from "../images/hero-image.jpg";
 import Logo from "../images/LOGO_AGNIGBAN_GNA Trs Noir.png";
 import { Link } from "react-router-dom";
+import { supabase } from "../superbase/superbaseClient";
 
 function App() {
+  // ---------- STATES ----------
+  const [form, setForm] = useState({
+    firstName: "", // prenom
+    lastName: "", // nom
+    phone: "", // telephone
+    email: "",
+    password: "",
+    confirmPassword: "",
+    channel: "email", // par défaut email pour l'OTP
+  });
+
+  const [otpStep, setOtpStep] = useState(false);
+  const [emailOtp, setEmailOtp] = useState("");
+  const [phoneOtp, setPhoneOtp] = useState("");
+  const [verificationChannel, setVerificationChannel] = useState("email");
+  const [isLoading, setIsLoading] = useState(false);
+  const [lastAttemptTime, setLastAttemptTime] = useState(0);
+  const [timeRemaining, setTimeRemaining] = useState(0);
+
+  // Timer pour le délai entre les tentatives
+  useEffect(() => {
+    let timer;
+    if (timeRemaining > 0) {
+      timer = setInterval(() => {
+        setTimeRemaining((prev) => Math.max(0, prev - 1));
+      }, 1000);
+    }
+    return () => clearInterval(timer);
+  }, [timeRemaining]);
+
+  // ---------- FONCTIONS ----------
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.id]: e.target.value });
+  };
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    // Vérifier le délai entre les tentatives
+    const currentTime = Date.now();
+    const timeSinceLastAttempt = currentTime - lastAttemptTime;
+
+    if (timeSinceLastAttempt < 60000) {
+      setTimeRemaining(Math.ceil((60000 - timeSinceLastAttempt) / 1000));
+      return;
+    }
+
+    if (form.password !== form.confirmPassword) {
+      alert("Les mots de passe ne correspondent pas !");
+      return;
+    }
+
+    setIsLoading(true);
+    setLastAttemptTime(currentTime);
+
+    try {
+      // Inscription avec Supabase Auth
+      const { data, error } = await supabase.auth.signUp({
+        email: form.email,
+        password: form.password,
+        phone: form.phone,
+        options: {
+          data: {
+            first_name: form.firstName,
+            last_name: form.lastName,
+          },
+          emailRedirectTo: `${window.location.origin}/auth/callback?redirectTo=/profil`,
+        },
+      });
+
+      if (error) throw error;
+
+      if (data.user) {
+        alert(
+          "Inscription réussie ! Un email de confirmation vous a été envoyé."
+        );
+        setOtpStep(true);
+      } else {
+        throw new Error("L'inscription a échoué.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Erreur lors de l'inscription: " + error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleVerifyOtp = async () => {
+    try {
+      // Vérification de l'OTP email
+      const { error: emailError } = await supabase.auth.verifyOtp({
+        email: form.email,
+        token: emailOtp,
+        type: "signup",
+      });
+
+      // Vérification de l'OTP téléphone
+      const { error: phoneError } = await supabase.auth.verifyOtp({
+        phone: form.phone,
+        token: phoneOtp,
+        type: "signup",
+      });
+
+      if (emailError) throw emailError;
+      if (phoneError) throw phoneError;
+
+      alert("Compte vérifié avec succès!");
+      window.location.href = "/connexion";
+    } catch (err) {
+      console.error(err);
+      alert("Erreur lors de la vérification: " + err.message);
+    }
+  };
+
+  // ---------- RENDER ----------
   return (
     <div className="flex flex-col md:flex-row min-h-screen">
       {/* Partie gauche */}
       <div className="w-full md:w-1/2 bg-white flex flex-col justify-center px-8 md:px-16 py-10">
-        {/* <div className="mb-10 absolute">
-          <img
-            src={Logo}
-            alt="logo"
-            style={{
-              width: "150px",
-              height: "150px",
-              marginBottom: "300px",
-            }}
-          />
-        </div> */}
         <div className="text-2xl md:text-3xl font-bold mb-9">
           <h1
             className="text-3xl font-bold mb-8 "
@@ -33,46 +139,58 @@ function App() {
           </h1>
         </div>
 
-        {/* Entrez votre nom */}
+        {/* NOM */}
         <div className="space-y-2 mb-5">
-          <label htmlFor="nom" className="text-sm font-medium text-gray-700">
+          <label
+            htmlFor="lastName"
+            className="text-sm font-medium text-gray-700"
+          >
             Nom
           </label>
           <input
-            id="nom"
+            id="lastName"
             type="text"
             placeholder="ex: Adoboe"
             className="w-full border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={form.lastName}
+            onChange={handleChange}
           />
         </div>
 
-        {/* Entrez votre prénom */}
+        {/* PRENOM */}
         <div className="space-y-2 mb-5">
-          <label htmlFor="prenom" className="text-sm font-medium text-gray-700">
+          <label
+            htmlFor="firstName"
+            className="text-sm font-medium text-gray-700"
+          >
             Prénom
           </label>
           <input
-            id="prenom"
+            id="firstName"
             type="text"
             placeholder="ex: Julien"
             className="w-full border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={form.firstName}
+            onChange={handleChange}
           />
         </div>
-        {/* Entrez votre numéro de téléphone */}
+
+        {/* TELEPHONE */}
         <div className="space-y-2 mb-5">
-          <label
-            htmlFor="telephone"
-            className="text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="phone" className="text-sm font-medium text-gray-700">
             Numéro de téléphone
           </label>
           <input
-            id="telephone"
-            type="number"
+            id="phone"
+            type="text"
             placeholder="ex: +228 92 34 56 78"
             className="w-full border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={form.phone}
+            onChange={handleChange}
           />
         </div>
+
+        {/* EMAIL */}
         <div className="space-y-2 mb-5">
           <label htmlFor="email" className="text-sm font-medium text-gray-700">
             Entrez votre adresse mail
@@ -82,12 +200,17 @@ function App() {
             type="email"
             placeholder="example@gmail.com"
             className="w-full border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={form.email}
+            onChange={handleChange}
           />
         </div>
 
-        {/* Entrez votre mot de passe */}
+        {/* PASSWORD */}
         <div className="space-y-2 mb-6">
-          <label htmlFor="email" className="text-sm font-medium text-gray-700">
+          <label
+            htmlFor="password"
+            className="text-sm font-medium text-gray-700"
+          >
             Entrez votre mot de passe
           </label>
           <input
@@ -95,29 +218,77 @@ function App() {
             type="password"
             placeholder="eg: Pesn@s.p344"
             className="w-full border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={form.password}
+            onChange={handleChange}
           />
         </div>
-        {/* Confirmer votre mot de passe */}
+
+        {/* CONFIRM PASSWORD */}
         <div className="space-y-2 mb-6">
-          <label htmlFor="email" className="text-sm font-medium text-gray-700">
+          <label
+            htmlFor="confirmPassword"
+            className="text-sm font-medium text-gray-700"
+          >
             Confirmer votre mot de passe
           </label>
           <input
-            id="password"
+            id="confirmPassword"
             type="password"
             placeholder="eg: Pesn@s.p344"
             className="w-full border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={form.confirmPassword}
+            onChange={handleChange}
           />
         </div>
+
         <p className="text-sm text-gray-500 mb-6">
           Je dispose déjà d’un compte{" "}
           <Link to="/Connexion" className="text-blue-600 font-medium underline">
             Se connecter
           </Link>
         </p>
-        <button className="bg-green-600 text-white font-semibold py-2 rounded-md w-full hover:bg-blue-700 transition duration-300">
-          Envoyer
-        </button>
+
+        {/* BOUTON ENVOYER */}
+        {!otpStep && (
+          <button
+            className={`w-full py-2 rounded-md font-semibold transition duration-300 ${
+              timeRemaining > 0
+                ? "bg-gray-400 cursor-not-allowed"
+                : isLoading
+                ? "bg-yellow-500"
+                : "bg-green-600 hover:bg-blue-700"
+            } text-white`}
+            onClick={handleRegister}
+            disabled={isLoading || timeRemaining > 0}
+          >
+            {isLoading ? (
+              "Inscription en cours..."
+            ) : timeRemaining > 0 ? (
+              <div className="flex flex-col W-full justify-center items-center">
+                <span>Veuillez patienter</span>
+                <span className="text-sm">
+                  {timeRemaining} secondes restantes
+                </span>
+              </div>
+            ) : (
+              "Envoyer"
+            )}
+          </button>
+        )}
+
+        {/* Message de confirmation */}
+        {otpStep && (
+          <div className="mt-5 text-center">
+            <h2 className="text-lg font-semibold mb-4">Vérifiez votre email</h2>
+            <p className="text-gray-600 mb-4">
+              Un lien de confirmation a été envoyé à votre adresse email.
+              Veuillez cliquer sur le lien pour activer votre compte.
+            </p>
+            <p className="text-sm text-gray-500">
+              Si vous ne recevez pas l'email, vérifiez votre dossier spam.
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Partie droite */}
@@ -127,7 +298,6 @@ function App() {
           backgroundImage: `url(${heroImage})`,
         }}
       >
-        {/* Overlay foncé */}
         <div
           className="absolute top-90 inset-0 bg-black/50"
           style={{
@@ -136,8 +306,6 @@ function App() {
             alignItems: "center",
           }}
         >
-          {/* Contenu */}
-
           <div
             className="relative z-10 p-8 text-white max-w-lg"
             style={{

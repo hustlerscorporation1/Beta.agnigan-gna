@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { UserIcon } from "@heroicons/react/24/outline";
 import { FaDownload, FaBars, FaTimes, FaUser } from "react-icons/fa";
+import { supabase } from "./superbase/superbaseClient";
 
 import "./Styles/Navbar.css";
 import Logo from "./images/LOGO_AGNIGBAN_GNA Trs Noir.png";
@@ -14,9 +15,53 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const [userFirstName, setUserFirstName] = useState("");
+
+  useEffect(() => {
+    // Vérifier si un utilisateur est connecté
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        setUser(session.user);
+        // Récupérer le prénom depuis les metadata
+        if (session.user.user_metadata?.first_name) {
+          setUserFirstName(session.user.user_metadata.first_name);
+        }
+      }
+    });
+
+    // Écouter les changements d'authentification
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user || null);
+      if (session?.user?.user_metadata?.first_name) {
+        setUserFirstName(session.user.user_metadata.first_name);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   const handleClick = () => {
-    navigate("/Connexion");
+    if (user) {
+      // Si connecté, redirection vers le profil
+      navigate("/profil");
+    } else {
+      // Si déconnecté, redirection vers la page de connexion
+      navigate("/Connexion");
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await supabase.auth.signOut();
+      setUser(null);
+      setUserFirstName("");
+      navigate("/");
+    } catch (error) {
+      console.error("Erreur lors de la déconnexion:", error);
+    }
   };
 
   return (
@@ -155,15 +200,14 @@ export default function Navbar() {
 
       {/* Partie droite (compte + bouton télécharger) */}
       <div className="header-compte hidden md:flex space-x-4">
-        <div className="usercompte">
-          <button
-            className="flex items-center space-x-2 "
-            onClick={handleClick}
-          >
+        <div className="usercompte relative">
+          <button className="flex items-center space-x-2" onClick={handleClick}>
             <div className="userIcon">
               <UserIcon className="usericon-l h-6 w-6 text-gray-500" />
             </div>
-            <p>Se Connecter</p>
+            <p className="usercompte-text" style={{ fontWeight: "bold" }}>
+              {user ? `${userFirstName}` : "Se Connecter"}
+            </p>
           </button>
         </div>
 

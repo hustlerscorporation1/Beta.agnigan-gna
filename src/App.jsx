@@ -16,6 +16,8 @@ import MotPasseOublier from "./pages/MotePasseOublier";
 import CreeUnCompte from "./pages/CreeUnCompte";
 import Profil from "./pages/Profil";
 import ChatBot from "./components/ChatBot";
+import { supabase } from "./superbase/superbaseClient";
+import AuthCallback from "./pages/AuthCallback";
 
 function App() {
   return (
@@ -35,6 +37,7 @@ function App() {
         <Route path="/MotPasseOublier" element={<MotPasseOublier />} />
         <Route path="/CreeUnCompte" element={<CreeUnCompte />} />
         <Route path="/Profil" element={<Profil />} />
+        <Route path="/auth/callback" element={<AuthCallback />} />
       </Routes>
 
       <div></div>
