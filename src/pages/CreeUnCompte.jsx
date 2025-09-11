@@ -64,6 +64,11 @@ function App() {
 
     try {
       // Inscription avec Supabase Auth
+
+      const redirectUrl = window.location.hostname.includes("localhost")
+        ? "http://localhost:3000"
+        : "https://sandbox-anyigba-nya.onrender.com";
+
       const { data, error } = await supabase.auth.signUp({
         email: form.email,
         password: form.password,
@@ -73,7 +78,7 @@ function App() {
             first_name: form.firstName,
             last_name: form.lastName,
           },
-          emailRedirectTo: `${window.location.origin}/auth/callback?redirectTo=/profil`,
+          options: { emailRedirectTo: redirectUrl },
         },
       });
 
