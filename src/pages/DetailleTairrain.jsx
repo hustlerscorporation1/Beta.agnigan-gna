@@ -460,13 +460,41 @@ const TerrainDetails = () => {
               </h3>
 
               {/* Exemple avec un iframe (tu peux remplacer par react-three-fiber) */}
-              <div className="w-full h-[500px]">
-                <iframe
+              <div className="w-full h-full">
+                <div className="w-full h-full sketchfab-embed-wrapper">
+                  <iframe
+                    className="w-full h-[40rem] rounded-lg border"
+                    title="Mountain terrain - Haytor Dartmoor National Park"
+                    frameBorder="0"
+                    allowFullScreen
+                    mozallowfullscreen="true"
+                    webkitallowfullscreen="true"
+                    allow="autoplay; fullscreen; xr-spatial-tracking"
+                    xr-spatial-tracking
+                    execution-while-out-of-viewport
+                    execution-while-not-rendered
+                    web-share
+                    src="https://sketchfab.com/models/6d15587128a5451d9e29d6b50061045e/embed"
+                  ></iframe>
+                  <p
+                    style={{
+                      fontSize: "13px",
+                      fontWeight: "normal",
+                      margin: "5px",
+                      color: "#4A4A4A",
+                    }}
+                  >
+                    Le terrain N°:111ETR4356POK de ADOBOE En 3D Toute Droit
+                    Réservers - 2023
+                  </p>
+                </div>
+
+                {/* <iframe
                   src="https://sketchfab.com/models/7w7p7j3d4e/embed"
                   title="Terrain 3D"
                   className="w-full h-full rounded-lg border"
                   allowFullScreen
-                ></iframe>
+                ></iframe> */}
               </div>
             </div>
           </div>
