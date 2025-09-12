@@ -1,10 +1,17 @@
 {
+  "version": 3,
+  "builds": [
+    {
+      "src": "build/**",
+      "use": "@render/react"
+    }
+  ],
   "routes": [
     {
       "handle": "filesystem"
     },
     {
-      "src": ".*",
+      "src": "/(.*)",
       "dest": "/index.html"
     }
   ]
