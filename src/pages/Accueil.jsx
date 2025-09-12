@@ -150,7 +150,7 @@ function Accueil() {
   }, []);
 
   return (
-    <div className=" w-full">
+    <div className=" containt-accuiel">
       {/* Hero section */}
       <AnimationImage />
       <div

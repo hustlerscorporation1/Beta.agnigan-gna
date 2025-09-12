@@ -176,7 +176,7 @@ function Contact() {
                     {/* Ajoutez d'autres informations ici */}
                   </>
                 ) : (
-                  <p className="affiche-region">
+                  <p className="affiche-region ">
                     <FaMapMarkerAlt className="aside-icon" />
                   </p>
                 )}

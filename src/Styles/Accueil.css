@@ -1,7 +1,10 @@
-.containt-accuiel {
+body {
+  overflow-x: hidden !important;
   width: 100% !important;
+}
+
+.containt-accuiel {
   height: auto;
-  background-color: aqua;
 }
 .containt-element .font-bold {
   margin-top: 5rem !important;

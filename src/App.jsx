@@ -11,6 +11,7 @@ import Connexion from "./pages/Connexion";
 import Dectailletairrain from "./pages/DetailleTairrain";
 import MieuxComprendre from "./pages/MieuxComprendre";
 import ProcederUnVente from "./pages/ProcederUneVente";
+import ProcederAchat from "./pages/ProcedeAchat";
 
 import MotPasseOublier from "./pages/MotePasseOublier";
 import CreeUnCompte from "./pages/CreeUnCompte";
@@ -38,6 +39,7 @@ function App() {
         <Route path="/CreeUnCompte" element={<CreeUnCompte />} />
         <Route path="/Profil" element={<Profil />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
+        <Route path="/ProcederAchat" element={<ProcederAchat />} />
       </Routes>
 
       <div></div>

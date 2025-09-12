@@ -53,3 +53,11 @@
   position: absolute !important;
   margin-top: 0rem !important;
 }
+
+.custom-marker {
+  transform-origin: center !important;
+  will-change: transform !important;
+}
+.leaflet-zoom-animated .custom-marker {
+  transform: scale(1) !important;
+}

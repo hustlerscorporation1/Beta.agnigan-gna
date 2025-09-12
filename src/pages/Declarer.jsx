@@ -34,6 +34,10 @@ function Declarer() {
   const ProcederVente = () => {
     navigate("/ProcederVente");
   };
+
+  const ProcederAchat = () => {
+    navigate("/ProcederAchat");
+  };
   return (
     <div className="body-declarer">
       {/* les produits */}
@@ -70,7 +74,10 @@ function Declarer() {
           </p>
 
           <div>
-            <button className="procedureAchat bg-green-500 text-white mt-4 font-bold px-6 py-3 rounded-full transition">
+            <button
+              onClick={ProcederAchat}
+              className="procedureAchat bg-green-500 text-white mt-4 font-bold px-6 py-3 rounded-full transition"
+            >
               Lire la procedure d'achat
             </button>
           </div>

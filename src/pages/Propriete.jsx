@@ -90,14 +90,7 @@ function Propriete() {
       acteur: "Mango – Savanes",
       coordinates: [10.850239, 0.18265],
     },
-    {
-      id: 9,
-      image: heroImage,
-      title: "Agbossou Kokouvi",
-      price: "Titre Foncier : Privé",
-      acteur: "Tsévié – Maritime",
-      coordinates: [6.134202, 1.164078],
-    },
+
     {
       id: 10,
       image: heroImage,
@@ -106,14 +99,7 @@ function Propriete() {
       acteur: "Bafilo – Kara",
       coordinates: [9.867747, 1.109543],
     },
-    {
-      id: 11,
-      image: heroImage,
-      title: "Kokouvi Amegah",
-      price: "Titre Foncier : En cours",
-      acteur: "Blitta – Centrale",
-      coordinates: [8.902283, 1.511016],
-    },
+
     {
       id: 12,
       image: heroImage,
@@ -186,22 +172,7 @@ function Propriete() {
       acteur: "Aného – Maritime",
       coordinates: [6.303018, 1.157843],
     },
-    {
-      id: 21,
-      image: heroImage,
-      title: "Kokouvi Mawuli",
-      price: "117 000 000 Fcfa",
-      acteur: "Dapaong – Savanes",
-      coordinates: [11.110665, 0.113823],
-    },
-    {
-      id: 22,
-      image: heroImage,
-      title: "Kokouvi Amegah",
-      price: "58 000 000 Fcfa",
-      acteur: "Mango – Savanes",
-      coordinates: [11.123839, 0.198906],
-    },
+
     {
       id: 23,
       image: heroImage,
@@ -226,14 +197,7 @@ function Propriete() {
       acteur: "Tchamba – Centrale",
       coordinates: [8.670927, 1.366167],
     },
-    {
-      id: 26,
-      image: heroImage,
-      title: "Sogan Vincent",
-      price: "55 000 000 Fcfa",
-      acteur: "Mango – Savanes",
-      coordinates: [10.935079, 0.446208],
-    },
+
     {
       id: 27,
       image: heroImage,
@@ -274,14 +238,7 @@ function Propriete() {
       acteur: "Tchamba – Centrale",
       coordinates: [8.762481, 1.368696],
     },
-    {
-      id: 32,
-      image: heroImage,
-      title: "Yaovi Komlan",
-      price: "138 000 000 Fcfa",
-      acteur: "Niamtougou – Kara",
-      coordinates: [9.538585, 1.433937],
-    },
+
     {
       id: 33,
       image: heroImage,
@@ -330,14 +287,7 @@ function Propriete() {
       acteur: "Sokodé – Centrale",
       coordinates: [9.054115, 1.589036],
     },
-    {
-      id: 39,
-      image: heroImage,
-      title: "Labante Mawuli",
-      price: "Titre Foncier : Privé",
-      acteur: "Lomé – Maritime",
-      coordinates: [6.204115, 0.96412],
-    },
+
     {
       id: 40,
       image: heroImage,
@@ -378,22 +328,7 @@ function Propriete() {
       acteur: "Sokodé – Centrale",
       coordinates: [8.903767, 1.39541],
     },
-    {
-      id: 45,
-      image: heroImage,
-      title: "Marvel Yendouma",
-      price: "177 000 000 Fcfa",
-      acteur: "Aného – Maritime",
-      coordinates: [6.048479, 1.135091],
-    },
-    {
-      id: 46,
-      image: heroImage,
-      title: "Yaovi Djidjoho",
-      price: "189 000 000 Fcfa",
-      acteur: "Lomé – Maritime",
-      coordinates: [6.132093, 1.16605],
-    },
+
     {
       id: 47,
       image: heroImage,
@@ -402,14 +337,7 @@ function Propriete() {
       acteur: "Atakpamé – Plateaux",
       coordinates: [6.701599, 0.668273],
     },
-    {
-      id: 48,
-      image: heroImage,
-      title: "Vincent Gnassingbé",
-      price: "49 000 000 Fcfa",
-      acteur: "Sokodé – Centrale",
-      coordinates: [8.482628, 1.156114],
-    },
+
     {
       id: 49,
       image: heroImage,
@@ -522,14 +450,7 @@ function Propriete() {
       acteur: "Bafilo – Kara",
       coordinates: [9.525692, 1.051758],
     },
-    {
-      id: 63,
-      image: heroImage,
-      title: "Vincent Gnassingbé",
-      price: "Titre Foncier : Libre",
-      acteur: "Aného – Maritime",
-      coordinates: [6.182363, 1.06313],
-    },
+
     {
       id: 64,
       image: heroImage,
@@ -546,14 +467,7 @@ function Propriete() {
       acteur: "Bafilo – Kara",
       coordinates: [9.328541, 1.352731],
     },
-    {
-      id: 66,
-      image: heroImage,
-      title: "Yendouma Sama",
-      price: "Titre Foncier : Privé",
-      acteur: "Lomé – Maritime",
-      coordinates: [6.053772, 1.347971],
-    },
+
     {
       id: 67,
       image: heroImage,
@@ -618,14 +532,7 @@ function Propriete() {
       acteur: "Sokodé – Centrale",
       coordinates: [8.853666, 1.228437],
     },
-    {
-      id: 75,
-      image: heroImage,
-      title: "Agbossou Gnassingbé",
-      price: "32 000 000 Fcfa",
-      acteur: "Mango – Savanes",
-      coordinates: [10.93096, 0.475215],
-    },
+
     {
       id: 76,
       image: heroImage,
@@ -682,30 +589,7 @@ function Propriete() {
       acteur: "Kpalimé – Plateaux",
       coordinates: [7.396741, 0.758245],
     },
-    {
-      id: 83,
-      image: heroImage,
-      title: "Sogan Afi",
-      price: "153 000 000 Fcfa",
-      acteur: "Badou – Plateaux",
-      coordinates: [7.574325, 1.249947],
-    },
-    {
-      id: 84,
-      image: heroImage,
-      title: "Yendouma Adjo",
-      price: "72 000 000 Fcfa",
-      acteur: "Mango – Savanes",
-      coordinates: [11.175718, 0.579782],
-    },
-    {
-      id: 85,
-      image: heroImage,
-      title: "Sogan Adjo",
-      price: "Titre Foncier : Privé",
-      acteur: "Dapaong – Savanes",
-      coordinates: [11.111274, 0.515972],
-    },
+
     {
       id: 86,
       image: heroImage,
@@ -722,14 +606,7 @@ function Propriete() {
       acteur: "Kpalimé – Plateaux",
       coordinates: [6.941184, 1.292225],
     },
-    {
-      id: 88,
-      image: heroImage,
-      title: "Sosougan Gnassingbé",
-      price: "20 000 000 Fcfa",
-      acteur: "Bafilo – Kara",
-      coordinates: [9.698825, 1.465914],
-    },
+
     {
       id: 89,
       image: heroImage,
@@ -754,14 +631,7 @@ function Propriete() {
       acteur: "Bafilo – Kara",
       coordinates: [9.528972, 1.119012],
     },
-    {
-      id: 92,
-      image: heroImage,
-      title: "Marvel Yendouma",
-      price: "149 000 000 Fcfa",
-      acteur: "Tsévié – Maritime",
-      coordinates: [6.175768, 1.518722],
-    },
+
     {
       id: 93,
       image: heroImage,
@@ -802,22 +672,7 @@ function Propriete() {
       acteur: "Dapaong – Savanes",
       coordinates: [10.906111, 0.018806],
     },
-    {
-      id: 98,
-      image: heroImage,
-      title: "Ayité Sama",
-      price: "Titre Foncier : Libre",
-      acteur: "Lomé – Maritime",
-      coordinates: [6.08064, 0.907461],
-    },
-    {
-      id: 99,
-      image: heroImage,
-      title: "Sogan Afi",
-      price: "78 000 000 Fcfa",
-      acteur: "Dapaong – Savanes",
-      coordinates: [10.522043, 0.051428],
-    },
+
     {
       id: 100,
       image: heroImage,
@@ -863,6 +718,15 @@ function Propriete() {
   };
 
   const { BaseLayer } = LayersControl;
+
+  const customDivIcon = L.divIcon({
+    html: `
+    <div class="custom-marker w-[12.5px] h-[12.5px] bg-red-600 rounded-full border-2 border-white shadow-md"></div>
+  `,
+    className: "",
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+  });
 
   return (
     <div className="">
@@ -993,6 +857,7 @@ function Propriete() {
                   position={property.coordinates}
                   key={property.id}
                   className="marker bg-black"
+                  icon={customDivIcon}
                 >
                   <Popup>
                     <img
