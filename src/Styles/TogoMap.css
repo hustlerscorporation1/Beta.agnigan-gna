@@ -15,11 +15,11 @@ path {
 
 .region {
   fill: #e1e1e1d3; /* Couleur par défaut des régions (bleu clair) */
-  stroke: #333; /* Contour des régions */
+
   stroke-width: 1;
   transition: fill 0.2s ease-in-out;
 
-  stroke: #1fad44 !important;
+  stroke: #000a63 !important;
   stroke-width: 5 !important; /* Transition douce pour le survol */
 }
 

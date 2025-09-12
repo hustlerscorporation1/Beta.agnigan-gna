@@ -150,7 +150,7 @@ function Contact() {
 
             {/* <input className="border px-3 py-2 rounded" type="text" placeholder="Trouver une région" /> */}
 
-            <button className="ml-2 bg-blue-600 text-white px-4 py-2 rounded">
+            <button className="ml-2 bg-green-600 text-white px-4 py-2 rounded">
               RECHERCHE
             </button>
           </div>

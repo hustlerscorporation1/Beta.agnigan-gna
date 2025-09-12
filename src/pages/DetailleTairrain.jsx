@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Dialog } from "@headlessui/react";
-import { X } from "lucide-react";
+import { AlignJustify, X } from "lucide-react";
 import "../App";
 import "../Styles/Accueil.css";
 import "../Styles/DetailleTairrain.css";
 import heroImage from "../images/hero-image.jpg";
+import PlanTerrain from "../images/implantation du projet sur le terrain_.jpeg";
 
 import logopartenaire from "../images/Logo_Hustler_AN-removebg-preview.png";
 import {
@@ -98,7 +99,7 @@ const TerrainDetails = () => {
           >
             Description
           </h3>
-          <p className="text-gray-600 leading-relaxed">
+          <p className="text-gray-600 text-justify leading-relaxed">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est id cum
             itaque odit eveniet dolores? At quaerat fugit explicabo quasi
             repudiandae pariatur dolorum omnis, obcaecati ea magni quos itaque
@@ -157,14 +158,39 @@ const TerrainDetails = () => {
                 Télécharger PDF
               </a>
             </div>
+
+            <div className="flex items-center justify-between bg-gray-50 p-4 rounded-lg shadow-sm">
+              <div>
+                <p className="font-medium">
+                  📄 Note d’Information Foncière – Parcelle N° [245]
+                </p>
+                <p className="text-sm text-gray-500">
+                  Superficie 400 m², zone résidentielle
+                </p>
+              </div>
+              <a
+                href="#"
+                className="text-blue-600 font-medium hover:underline"
+                download
+              >
+                Télécharger PDF
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Modal Formulaire */}
         {open && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 ">
+          <div
+            className="fixed inset-0 flex items-center justify-center bg-black/60 z-50"
+            style={{
+              backdropFilter: "blur(5px)",
+              animationDuration: "0.5s",
+              animationName: "fadeIn",
+            }}
+          >
             <div
-              className="bg-white h p-8 rounded-2xl shadow-lg w-full max-w-lg relative"
+              className="bg-white h p-8 rounded-2xl shadow-lg w-full max-w-lg absolute"
               style={{
                 marginTop: "10rem",
               }}
@@ -227,112 +253,190 @@ const TerrainDetails = () => {
       {/* second partie 3D */}
       <div className="max-w-6xl mx-auto p-6">
         {/* --- Description principale --- */}
-        <div className="bg-white shadow-md rounded-xl p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-3">
+        <div
+          className="flex bg-white shadow-md rounded-xl p-6 mb-8"
+          style={{
+            Display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+            AlignJustify: "center",
+          }}
+        >
+          <h2 className="text-2xl font-bold text-gray-800 mb-[3rem] text-center">
             Terrain à Vendre – Opportunité à Saisir !
           </h2>
-          <div className="space-y-2 text-gray-600">
-            <p>
-              📍 Localisation : <span className="font-medium">Agoè, Lomé</span>
-            </p>
-            <p>
-              📐 Superficie : <span className="font-medium">400 m²</span>
-            </p>
-            <p>
-              📑 Statut :{" "}
-              <span className="text-green-600 font-semibold">
-                Titre foncier disponible
-              </span>
-            </p>
-          </div>
+
+          {/* Infos principales */}
+          <table className="w-full border border-gray-200 rounded-lg overflow-hidden">
+            <tbody className="divide-y mb-6 divide-gray-200 text-gray-700">
+              <tr className="mb-6">
+                <td className="bg-gray-50 font-semibold px-4 py-2">
+                  📍 Localisation
+                </td>
+                <td className="px-4 py-2">Agoè, Lomé</td>
+              </tr>
+              <tr>
+                <td className="bg-gray-50 font-semibold px-4 py-2">
+                  📐 Superficie
+                </td>
+                <td className="px-4 py-2">400 m²</td>
+              </tr>
+              <tr>
+                <td className="bg-gray-50 font-semibold px-4 py-2">
+                  📑 Statut
+                </td>
+                <td className="px-4 py-2 text-green-600 font-semibold">
+                  Titre foncier disponible
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
           {/* Caractéristiques */}
-          <h3 className="mt-6 text-lg font-semibold text-gray-700">
-            Caractéristiques :
+          <h3 className="mt-8 text-lg font-semibold text-gray-800">
+            Caractéristiques
           </h3>
-          <ul className="list-disc ml-6 mt-2 space-y-1 text-gray-600">
-            <li>
-              Accès facile par voie principale –{" "}
-              <span className="text-blue-600 font-medium">80%</span>
-            </li>
-            <li>
-              Idéal pour construction résidentielle ou commerciale –{" "}
-              <span className="text-blue-600 font-medium">70%</span>
-            </li>
-            <li>
-              Belle vue / Terrain plat, Environnement calme et sécurisé –{" "}
-              <span className="text-blue-600 font-medium">100%</span>
-            </li>
-          </ul>
+          <table className="w-full border border-gray-200 rounded-lg mt-2">
+            <tbody className="divide-y divide-gray-200 text-gray-700">
+              <tr>
+                <td className="bg-gray-50 px-4 py-2">
+                  Accès facile par voie principale
+                </td>
+                <td className="px-4 py-2 text-blue-600 font-medium">80%</td>
+              </tr>
+              <tr>
+                <td className="bg-gray-50 px-4 py-2">
+                  Idéal pour construction résidentielle ou commerciale
+                </td>
+                <td className="px-4 py-2 text-blue-600 font-medium">70%</td>
+              </tr>
+              <tr>
+                <td className="bg-gray-50 px-4 py-2">
+                  Belle vue / Terrain plat, Environnement calme et sécurisé
+                </td>
+                <td className="px-4 py-2 text-blue-600 font-medium">100%</td>
+              </tr>
+            </tbody>
+          </table>
 
           {/* Proximité */}
-          <h3 className="mt-6 text-lg font-semibold text-gray-700">
-            À proximité :
+          <h3 className="mt-8 text-lg font-semibold text-gray-800">
+            À proximité
           </h3>
-          <ul className="mt-2 space-y-1 text-gray-600">
-            <li>
-              🏫 École Primaire Agoè –{" "}
-              <span className="font-medium">300 m</span>
-            </li>
-            <li>
-              🏥 Clinique Bon Secours –{" "}
-              <span className="font-medium">500 m</span>
-            </li>
-            <li>
-              🛒 Marché local, Pharmacie, Stations-services –{" "}
-              <span className="font-medium">moins de 1 km</span>
-            </li>
-          </ul>
+          <table className="w-full border border-gray-200 rounded-lg mt-2">
+            <tbody className="divide-y divide-gray-200 text-gray-700">
+              <tr>
+                <td className="bg-gray-50 px-4 py-2">🏫 École Primaire Agoè</td>
+                <td className="px-4 py-2">300 m</td>
+              </tr>
+              <tr>
+                <td className="bg-gray-50 px-4 py-2">
+                  🏥 Clinique Bon Secours
+                </td>
+                <td className="px-4 py-2">500 m</td>
+              </tr>
+              <tr>
+                <td className="bg-gray-50 px-4 py-2">
+                  🛒 Marché local, Pharmacie, Stations-services
+                </td>
+                <td className="px-4 py-2">moins de 1 km</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         {/* --- Plan du terrain --- */}
-        <div className="bg-indigo-950 text-white p-6 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
-          <div className="space-y-3">
-            <p className="text-lg">
-              📍{" "}
-              <span className="font-semibold">Parcelle bien située à Agoè</span>
-            </p>
-            <p>
-              À 5 minutes de la route principale, dans une zone résidentielle
-              calme et sécurisée.
-            </p>
-            <p className="text-lg">
-              📐{" "}
-              <span className="font-semibold">400 m² – Foncier disponible</span>
-            </p>
-            <p>Prêt à bâtir, viabilisé (eau, électricité, accès direct).</p>
-            <p className="text-lg">
-              🏡{" "}
-              <span className="font-semibold">Bon pour usage résidentiel</span>
-            </p>
-            <p>
-              Possibilité de construction : villa, appartements, bureaux ou
-              commerce.
-            </p>
-          </div>
-          <div className="bg-gray-900 rounded-lg p-2">
-            <img
-              src="/plan-terrain.png"
-              alt="Plan du terrain"
-              className="rounded-md w-64"
-            />
-          </div>
-        </div>
+        <div
+          className="flex  bg-white shadow-2xl rounded-2xl p-8 mb-10"
+          style={{
+            Display: "flex",
+            flexDirection: "column",
+            gap: "3rem",
+            AlignJustify: "center",
+          }}
+        >
+          <h2 className="text-2xl font-bold text-black-900 mb-6 text-center">
+            Parcelle bien située à Agoè
+          </h2>
 
-        {/* --- Bouton Voir en 3D --- */}
-        <div className="flex justify-center mb-8">
-          <button
-            onClick={() => setShow3D(true)}
-            className="px-6 py-3 bg-black text-white font-semibold rounded-lg shadow-md hover:bg-gray-800 transition"
-          >
-            Voir en 3D
-          </button>
+          <div className="grid justify-between md:grid-cols-2 gap">
+            {/* Tableau des infos */}
+            <table className="w-full border border-gray-200 rounded-lg overflow-hidden">
+              <tbody className="divide-y divide-gray-200 text-gray-700">
+                <tr>
+                  <td className="bg-gray-50 font-semibold px-[2rem] py-3">
+                    📍 Localisation
+                  </td>
+                  <td className="px-4 py-3">
+                    À 5 min de la route principale – Zone calme et sécurisée
+                  </td>
+                </tr>
+                <tr>
+                  <td className="bg-gray-50 font-semibold px-4 py-3">
+                    📐 Superficie
+                  </td>
+                  <td className="px-4 py-3">400 m²</td>
+                </tr>
+                <tr>
+                  <td className="bg-gray-50 font-semibold px-4 py-3">
+                    📑 Statut
+                  </td>
+                  <td className="px-4 py-3 text-green-600 font-semibold">
+                    Foncier disponible
+                  </td>
+                </tr>
+                <tr>
+                  <td className="bg-gray-50 font-semibold px-4 py-3">
+                    ⚡ Viabilisation
+                  </td>
+                  <td className="px-4 py-3">Eau, électricité, accès direct</td>
+                </tr>
+                <tr>
+                  <td className="bg-gray-50 font-semibold px-4 py-3">
+                    🏡 Usage
+                  </td>
+                  <td className="px-4 py-3">
+                    Résidentiel ou commercial (villa, appartements, bureaux,
+                    commerce)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            {/* Image premium */}
+            <div className="flex justify-center items-center  ">
+              <div className=" bg-gray-100 rounded-xl p-3 shadow-md hover:scale-105 transition-transform duration-300">
+                <img
+                  src={PlanTerrain}
+                  alt="Plan du terrain"
+                  className=" rounded-lg w-[27rem] object-cover"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className="flex justify-between mt-6 ">
+            <div>
+              <button className="px-6 py-3 bg-green-600 hover:bg-blue-500 text-white font-bold rounded-lg shadow-lg transition duration-300">
+                Demander plus d’infos
+              </button>
+            </div>
+            <div>
+              <button
+                onClick={() => setShow3D(true)}
+                className="px-6 py-3 bg-black text-white font-semibold rounded-lg shadow-md hover:bg-gray-800 transition"
+              >
+                Voir en 3D
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* --- Vidéo --- */}
-        <div>
+        <div className="h-[30rem]">
           <h3 className="text-lg font-semibold mb-3">Vidéo</h3>
-          <video controls className="w-full rounded-lg shadow-md">
+          <video controls className="w-full h-[27rem] rounded-lg shadow-md">
             <source
               src="../videos/Terrain du Sud __ Publicité TV (1).mp4"
               type="video/mp4"
