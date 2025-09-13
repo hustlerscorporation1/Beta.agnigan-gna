@@ -1,10 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import heroImage from "../images/Hero-agnigban_gna.jpg";
+import "../Styles/Accueil.css";
 
 const AnimationImage = () => {
   return (
-    <div>
+    <div className="animation-image-container">
       <motion.img
         src={heroImage}
         alt="Terrain à vendre"

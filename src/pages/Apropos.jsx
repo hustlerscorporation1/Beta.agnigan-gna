@@ -19,7 +19,7 @@ import { color } from "framer-motion";
 import Client1 from "../images/Client 1.jpg";
 import Client2 from "../images/Client 2.jpg";
 import React, { useState, useEffect, useRef } from "react";
-
+import { useNavigate } from "react-router-dom";
 import terrain from "../videos/Terrain du Sud __ Publicité TV (1).mp4";
 
 const agents = [
@@ -39,11 +39,31 @@ const agents = [
     email: "julien.adoboe@digital.gouv.tg",
     image: Client2,
   },
+  {
+    name: "ADOBOE Comlan Julien",
+    role: "Agent Foncier et Dev",
+    office: "(228) 70 14 61 80",
+    mobile: "(228) 99 05 58 75",
+    email: "julien.adoboe@digital.gouv.tg",
+    image: Client2,
+  },
+  {
+    name: "Terrell Norman",
+    role: "Agent Foncier",
+    office: "(228) 707-4989",
+    mobile: "(228) 622-2842",
+    email: "shrapnault@yahoo.ca",
+    image: Client1,
+  },
 ];
 
 function Apropos() {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const navigate = useNavigate();
+  const TrouveUnpropriete = () => {
+    navigate("/propriete");
+  };
 
   const handleTogglePlay = async () => {
     const v = videoRef.current;
@@ -212,18 +232,18 @@ function Apropos() {
           </p>
         </div>
         <div
-          className=""
+          className="agents-container flex flex-wrap  justify-center gap-6"
           style={{
-            justifyContent: "center",
             alignContent: "center",
-            display: "flex",
+
             gap: "2rem",
+            width: "100%",
           }}
         >
           {agents.map((agent, index) => (
             <div
               key={index}
-              className="w-[39rem] max-w-full h-[17rem] from-blue-50 via-white to-blue-100  rounded-xl p-6 flex gap-6 border border-blue-100"
+              className=" agentresponsive w-[39rem] max-w-full h-[17rem] from-blue-50 via-white to-blue-100  rounded-xl p-6 flex gap-6 border border-blue-100"
               style={{
                 backgroundColor: "#f6f6f6",
               }}
@@ -327,6 +347,7 @@ function Apropos() {
               lacinia aenean nec.
             </p>
             <button
+              onClick={() => navigate("/contact")}
               className="button-contact text-white font-semibold px-4 py-3 rounded-xl shadow transition"
               style={{
                 backgroundColor: "#ffe500",
@@ -373,7 +394,7 @@ function Apropos() {
             }}
           >
             <h4
-              className="text-lg font-extrabold "
+              className="text-lg font-extrabold  mb-4"
               style={{
                 color: "#43a55d",
               }}
@@ -384,15 +405,21 @@ function Apropos() {
               Leo morbi faucibus mattis pharetra tellus velit ultricies duis
               rhoncus. Porttitor fermentum eu
             </p>
-            <button
-              className=" hover:bg-green-600 text-white px-6 py-2 rounded-xl shadow transition "
-              style={{
-                border: "1px solid #000000ff",
-                color: "#000000",
-              }}
+            <a
+              href="https://dccfe.otr.tg/search-requisition"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Déclarer
-            </button>
+              <button
+                className=" hover:bg-green-600 hover:text-white-600  px-6 py-2 rounded-xl shadow transition "
+                style={{
+                  border: "1px solid #000000ff",
+                  color: "#000000",
+                }}
+              >
+                Déclarer
+              </button>
+            </a>
           </div>
           <div
             className="bg-blue-900 text-white p-8 rounded-xl shadow-lg flex flex-col items-center"
@@ -413,7 +440,10 @@ function Apropos() {
               Leo morbi faucibus mattis pharetra tellus velit ultricies duis
               rhoncus. Porttitor fermentum eu
             </p>
-            <button className="bg-yellow-500 hover:bg-green-600 text-white px-6 py-2 rounded-xl shadow transition">
+            <button
+              onClick={TrouveUnpropriete}
+              className="bg-yellow-500 hover:bg-green-600 text-white px-6 py-2 rounded-xl shadow transition"
+            >
               Trouver une propriété
             </button>
           </div>

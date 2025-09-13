@@ -38,6 +38,7 @@ import { useNavigate } from "react-router-dom";
 import Typed from "typed.js";
 import Client1 from "../images/Client 1.jpg";
 import Client2 from "../images/Client 2.jpg";
+import { useMediaQuery } from "react-responsive";
 
 function Accueil() {
   const navigate = useNavigate();
@@ -134,7 +135,7 @@ function Accueil() {
   useEffect(() => {
     typedInstance.current = new Typed(el.current, {
       strings: [
-        "Bienvenue sur le site officiel d'achat et vente de Terrain au togo",
+        "Bienvenue sur le site officiel d'achat et vente de Terrain au Togo",
         "Nous créons vos idées",
         "Découvrez nos services",
         "Contactez-nous",
@@ -237,7 +238,7 @@ function Accueil() {
         </div>
       </div>
 
-      <div className="w-full font-sans">
+      <div className="w-full font-sans ">
         {/* Section 1: Header */}
         <section className="text-center py-12 bg-gray-50 section-veddete ">
           <div className="valeur">
@@ -325,8 +326,11 @@ function Accueil() {
               className="rounded-xl w-full h-auto"
             />
             <div className="title-satisfaction">
-              <div className="flex valeur-title">
-                <div className="trais" style={{ background: "#146c54" }}>
+              <div className="flex valeur-title satisfaction">
+                <div
+                  className="trais"
+                  style={{ background: "#146c54", color: "#146c54" }}
+                >
                   .
                 </div>
                 <h3 className="text-2xl font-bold mb-4">
@@ -334,16 +338,18 @@ function Accueil() {
                   <span className="text-red-500">satisfaction !</span>
                 </h3>
               </div>
-              <p className="text-gray-300 mb-6">
+              <p className="text-gray-300 mb-6 satisfaction">
                 Utilisez notre outil et réalisez la vision de vos rêves.
                 Saisissez l’opportunité qui s’offre à vous dès aujourd’hui.
               </p>
-              <button
-                className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded text-white font-semibold"
-                onClick={MieuxComprendre}
-              >
-                Mieux comprendre
-              </button>
+              <div className="bouton-satisfaction satisfaction">
+                <button
+                  className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded text-white font-semibold satisfaction"
+                  onClick={MieuxComprendre}
+                >
+                  Mieux comprendre
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -351,21 +357,27 @@ function Accueil() {
         {/* Section 4: Témoignage */}
         <section className="bg-gray-100 py-10 px-4 temoignage">
           <div className="background-black">
-            <div className="max-w-4xl mx-auto h-[370px] flex items-center bg-white shadow-lg rounded-lg overflow-hidden">
+            <div className="temoignage-resp max-w-4xl mx-auto h-[370px] flex items-center bg-white shadow-lg rounded-lg overflow-hidden">
               {/* Texte */}
-              <div className="w-1/2 p-8">
-                <div className="flex gap-2">
+              <div className="w-1/2 p-8 temoignage-respWhite">
+                <div className="flex gap-2 temoignage-respWhite">
                   <div className="trais" style={{ background: "#146c54" }}>
                     .
                   </div>
-                  <h3 className="title-temoignage text-lg font-bold text-gray-800 mb-4">
+                  <h3 className="title-temoignage text-lg font-bold text-gray-800 mb-4 temoignage-respWhite">
                     Ce que nos <span className="clients">clients</span> disent
                     de nous
                   </h3>
                 </div>
-                <p className="text-gray-600 italic mb-6">"{text}"</p>
-                <p className="font-semibold text-gray-800">{name}</p>
-                <p className="text-sm text-gray-500">{role}</p>
+                <p className="text-gray-600 italic mb-6 temoignage-respWhite">
+                  "{text}"
+                </p>
+                <p className="font-semibold text-gray-800 temoignage-respWhite">
+                  {name}
+                </p>
+                <p className="text-sm text-gray-500 temoignage-respWhite">
+                  {role}
+                </p>
               </div>
 
               {/* Image */}
@@ -432,18 +444,18 @@ function Accueil() {
               Chaque rêve mérite une ville pour l’accueillir.
             </p>
 
-            <div className="ville-terrain grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              <div className="five-ville-content">
-                <div className="four-ville">
-                  <div className="two-ville">
+            <div className="ville-terrain grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto px-4">
+              <div className="five-ville-content flex gap-6">
+                <div className="four-ville flex flex-col gap-6">
+                  <div className="two-ville flex flex-col gap-6">
                     <div
-                      className="lome-terrain ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md"
+                      className="reponseWhitheVille lome-terrain ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md w-full sm:max-w-[480px]"
                       style={{ minHeight: "180px", maxWidth: "480px" }}
                     >
                       <img
                         src={Lome}
                         alt="Lomé"
-                        className="w-full h-[11.4rem] object-cover"
+                        className="w-full h-44 sm:h-[11.4rem] object-cover"
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3">
                         <span className="text-white font-semibold text-lg">
@@ -456,13 +468,13 @@ function Accueil() {
                     </div>
 
                     <div
-                      className="Ville-fist-long ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md"
+                      className="reponseWhitheVille Ville-fist-long ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md w-full sm:max-w-[480px]"
                       style={{ minHeight: "180px", maxWidth: "480px" }}
                     >
                       <img
                         src={Tsevi}
-                        alt="Lomé"
-                        className="w-full h-[11.3rem] object-cover"
+                        alt="Tsévié"
+                        className="w-full h-44 sm:h-[11.3rem] object-cover"
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3">
                         <span className="text-white font-semibold text-lg">
@@ -475,15 +487,15 @@ function Accueil() {
                     </div>
                   </div>
 
-                  <div>
+                  <div className="flex flex-col gap-6">
                     <div
-                      className="Ville-second-long ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md"
+                      className="reponseWhitheVille Ville-second-long ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md w-full sm:max-w-[480px]"
                       style={{ minHeight: "180px", maxWidth: "480px" }}
                     >
                       <img
                         src={Vogan}
-                        alt="Lomé"
-                        className="w-full h-[11.4rem] object-cover"
+                        alt="Vogan"
+                        className="w-full h-44 sm:h-[11.4rem] object-cover"
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3">
                         <span className="text-white font-semibold text-lg">
@@ -496,13 +508,13 @@ function Accueil() {
                     </div>
 
                     <div
-                      className="aneho-ville ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md"
+                      className=" reponseWhitheVille aneho-ville ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md w-full sm:max-w-[480px]"
                       style={{ minHeight: "80px", maxWidth: "480px" }}
                     >
                       <img
                         src={Aneho}
-                        alt="Lomé"
-                        className="w-full h-[11.3rem] object-cover"
+                        alt="Aného"
+                        className="w-full h-44 sm:h-[11.3rem] object-cover"
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3">
                         <span className="text-white font-semibold text-lg">
@@ -515,15 +527,16 @@ function Accueil() {
                     </div>
                   </div>
                 </div>
+
                 <div className="one-ville">
                   <div
-                    className="ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md"
-                    style={{ minHeight: "180px", maxWidth: "480px" }}
+                    className="reponseWhitheVille ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md w-full sm:max-w-[480px]"
+                    style={{ minHeight: "500px", maxWidth: "480px" }}
                   >
                     <img
                       src={Notse}
-                      alt="Lomé"
-                      className="w-full h-[24rem] object-cover"
+                      alt="Notsè"
+                      className="w-full h-64 sm:h-[24rem] object-cover"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3">
                       <span className="text-white font-semibold text-lg">

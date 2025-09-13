@@ -17,7 +17,7 @@ import MotPasseOublier from "./pages/MotePasseOublier";
 import CreeUnCompte from "./pages/CreeUnCompte";
 import Profil from "./pages/Profil";
 import ChatBot from "./components/ChatBot";
-import { supabase } from "./superbase/superbaseClient";
+
 import AuthCallback from "./pages/AuthCallback";
 
 function App() {

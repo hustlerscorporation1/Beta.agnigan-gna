@@ -10,8 +10,14 @@ import AppStore from "./images/Nappe mariage - Passion Décor.jpeg";
 import PlayStore from "./images/Google Play Badge Logo - PNG Logo Vector Brand Downloads (SVG, EPS).jpeg";
 import PlayButton from "./images/Play_Button_free_icons_designed_by_Freepik-removebg-preview.png";
 import CodeQR from "./images/Custom_QR_Code_Car_Decal_Personalized_Website_or_Social_Media_Business-removebg-preview.png";
+import { useMediaQuery } from "react-responsive";
 
 export default function Navbar() {
+  // --------------------RESPONSIVE-----------------------------
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
+  // --------------------------------------------------------------------
+
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -86,11 +92,11 @@ export default function Navbar() {
 
       {/* Liens Navigation */}
       <div
-        className={`linknav md:flex space-x-6 md:static absolute top-16 left-0 w-full md:w-auto bg-blue-600 md:bg-transparent transition-all duration-300 ease-in-out ${
-          menuOpen ? "block" : "hidden"
-        }`}
+        className={`linknav md:flex md:space-x-6 md:static absolute top-16 left-0 w-full md:w-auto 
+  bg-blue-600 md:bg-transparent transition-all duration-300 ease-in-out 
+  ${menuOpen ? "block" : "hidden"} z-40`}
       >
-        <ul className="flex flex-col md:flex-row md:items-center md:space-x-6 px-4 md:px-0">
+        <ul className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 px-4 md:px-0">
           <li>
             <NavLink
               to="/"
@@ -233,8 +239,8 @@ export default function Navbar() {
             >
               {/* Popup container */}
               <div
-                className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 relative text-center
-                transform transition-all duration-600 ease-out scale-95 opacity-0 animate-popup"
+                className="bg-white rounded-2xl shadow-2xl w-11/12 max-w-md p-6 relative text-center
+  transform transition-all duration-300 ease-out animate-popup"
               >
                 {/* Bouton fermer */}
                 <button
