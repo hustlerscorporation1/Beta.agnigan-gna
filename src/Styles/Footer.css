@@ -49,3 +49,315 @@ h4 {
   gap: 2rem;
   font-size: 1.1rem;
 }
+
+/* ========================================
+   RESPONSIVE DESIGN FOOTER - TOUS LES FORMATS
+======================================== */
+
+/* Mobile - Très petits écrans */
+@media (max-width: 480px) {
+  .info-footer {
+    flex-direction: column !important;
+    gap: 2rem !important;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  h4 {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+
+  .newsletter {
+    width: 100%;
+    align-items: center;
+  }
+
+  .footer-input {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    align-items: center;
+    margin-top: 0.5rem;
+    position: static !important;
+  }
+
+  .footer-input input {
+    width: 100% !important;
+    max-width: 250px;
+    margin-top: 0 !important;
+    border-radius: 8px;
+    height: 2.8rem;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .sabonne {
+    position: static !important;
+    left: auto !important;
+    margin-top: 0 !important;
+    height: 2.2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px !important;
+    font-size: 0.9rem;
+    width: auto;
+  }
+
+  .footer-reseau-sociaux {
+    gap: 1.5rem;
+    font-size: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Mobile Large */
+@media (min-width: 481px) and (max-width: 768px) {
+  .info-footer {
+    flex-direction: column !important;
+    gap: 2.5rem !important;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1.2rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .newsletter {
+    width: 100%;
+    align-items: center;
+  }
+
+  .footer-input {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    align-items: center;
+    margin-top: 0.8rem;
+    position: static !important;
+  }
+
+  .footer-input input {
+    width: 100% !important;
+    max-width: 300px;
+    margin-top: 0 !important;
+    border-radius: 10px;
+    height: 3rem;
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+
+  .sabonne {
+    position: static !important;
+    left: auto !important;
+    margin-top: 0 !important;
+    height: 2.4rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px !important;
+    font-size: 1rem;
+    width: auto;
+  }
+
+  .footer-reseau-sociaux {
+    gap: 1.8rem;
+    font-size: 1.1rem;
+    flex-wrap: wrap;
+  }
+}
+
+/* Tablette */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .info-footer {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    gap: 3rem !important;
+    justify-content: space-around;
+    padding: 2rem;
+  }
+
+  h4 {
+    font-size: 1.3rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .newsletter {
+    min-width: 250px;
+  }
+
+  .footer-input {
+    flex-direction: row !important;
+    gap: 0.5rem !important;
+    align-items: center;
+    margin-top: 1rem;
+    position: relative;
+  }
+
+  .footer-input input {
+    width: 200px !important;
+    margin-top: 0 !important;
+    border-radius: 10px;
+    height: 2.8rem;
+    padding: 0.7rem;
+  }
+
+  .sabonne {
+    position: absolute !important;
+    right: 5px !important;
+    top: 50% !important;
+    transform: translateY(-50%);
+    margin-top: 0 !important;
+    height: 2.2rem;
+    border-radius: 8px !important;
+  }
+
+  .footer-reseau-sociaux {
+    gap: 2rem;
+    font-size: 1.2rem;
+  }
+}
+
+/* Desktop Small */
+@media (min-width: 1025px) and (max-width: 1366px) {
+  .info-footer {
+    gap: 5rem !important;
+    padding: 2.5rem;
+  }
+
+  h4 {
+    font-size: 1.4rem !important;
+  }
+
+  .footer-input input {
+    width: 12rem !important;
+    height: 2.6rem;
+  }
+
+  .sabonne {
+    left: 7.5rem !important;
+    height: 1.9rem;
+  }
+
+  .footer-reseau-sociaux {
+    gap: 2.2rem;
+    font-size: 1.2rem;
+  }
+}
+
+/* Desktop Large */
+@media (min-width: 1367px) and (max-width: 1920px) {
+  .info-footer {
+    gap: 6rem !important;
+    padding: 3rem;
+  }
+
+  h4 {
+    font-size: 1.5rem !important;
+  }
+
+  .footer-input input {
+    width: 13rem !important;
+    height: 2.7rem;
+  }
+
+  .sabonne {
+    left: 8rem !important;
+    height: 1.9rem;
+  }
+
+  .footer-reseau-sociaux {
+    gap: 2.5rem;
+    font-size: 1.3rem;
+  }
+}
+
+/* Ultra Wide */
+@media (min-width: 1921px) {
+  .info-footer {
+    gap: 8rem !important;
+    padding: 4rem;
+  }
+
+  h4 {
+    font-size: 1.6rem !important;
+  }
+
+  .footer-input input {
+    width: 15rem !important;
+    height: 2.8rem;
+  }
+
+  .sabonne {
+    left: 9.5rem !important;
+    height: 2rem;
+  }
+
+  .footer-reseau-sociaux {
+    gap: 3rem;
+    font-size: 1.4rem;
+  }
+}
+
+/* Règles communes pour écrans tactiles */
+@media (max-width: 1024px) {
+  .footer-input input {
+    min-height: 44px !important;
+    font-size: 1rem !important;
+  }
+
+  .sabonne {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .footer-reseau-sociaux a,
+  .footer-reseau-sociaux button {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}
+
+/* Amélioration de la lisibilité */
+@media (max-width: 768px) {
+  .newsletter p,
+  .info-footer p {
+    font-size: 0.9rem !important;
+    line-height: 1.5;
+  }
+
+  .footer-reseau-sociaux {
+    margin-top: 1rem;
+  }
+}
+
+/* Optimisation pour les très petits écrans */
+@media (max-width: 320px) {
+  .info-footer {
+    gap: 1.5rem !important;
+    padding: 0.8rem;
+  }
+
+  h4 {
+    font-size: 1rem !important;
+  }
+
+  .footer-input input {
+    max-width: 200px;
+    font-size: 0.8rem;
+  }
+
+  .sabonne {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .footer-reseau-sociaux {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+}

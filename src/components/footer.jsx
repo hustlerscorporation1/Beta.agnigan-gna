@@ -41,115 +41,6 @@ import Client2 from "../images/Client 2.jpg";
 import { useMediaQuery } from "react-responsive";
 
 function Accueil() {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/Dectailletairrain");
-  };
-
-  const MieuxComprendre = () => {
-    navigate("/MieuxComprendre");
-  };
-  const VerifierAchete = () => {
-    navigate("/Propriete");
-  };
-
-  const ProcederUnVente = () => {
-    navigate("/ProcederUnVente");
-  };
-  const cities = [
-    { name: "Lomé", image: "https://i.imgur.com/1.jpg", terrains: 32 },
-    { name: "Vogan", image: "https://i.imgur.com/2.jpg", terrains: 32 },
-    { name: "Notsé", image: "https://i.imgur.com/3.jpg", terrains: 32 },
-    { name: "Tsévié", image: "https://i.imgur.com/4.jpg", terrains: 32 },
-    { name: "Aného", image: "https://i.imgur.com/5.jpg", terrains: 32 },
-  ];
-  const [index, setIndex] = useState(0);
-
-  const testimonials = [
-    {
-      name: "AGBOSSOU Anani",
-      role: "Client",
-      text: "Arcu laoreet malesuada nunc eget. Fermentum et dui enim aliquam habitant elit euismod erat praesent. Tincidunt semper interdum faucibus cras.",
-      image: Client1,
-    },
-    {
-      name: "KOFFI Marie",
-      role: "Designer",
-      text: "Suspendisse potenti. Vivamus non eros vel lacus tempor pretium vitae id est. Donec vehicula quam vel ligula facilisis posuere.",
-      image: Client2,
-    },
-  ];
-
-  const services = [
-    {
-      titre: "Vérifier Un Terrain",
-      texte: "Verifier la localité d'un terrain adapté à votre besoin",
-      bouton: "Vérification",
-    },
-    {
-      titre: "Achetez un Terrain",
-      texte: "Acheter le terrain adapté à votre besoin et votre mode de vie",
-      bouton: "Acheter",
-    },
-    {
-      titre: "Vendre un Terrain",
-      texte: "Décrivez clairement votre terrain pour trouver l’acheteur idéal ",
-      bouton: "Vendre",
-    },
-  ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % testimonials.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const { name, role, text, image } = testimonials[index];
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-  };
-
-  const videoSources = [
-    {
-      src: "../videos/Terrain du Sud __ Publicité TV (1).mp4",
-      type: "video/mp4",
-    },
-    {
-      src: "../videos/Terrain du Sud __ Publicité TV Webm",
-      type: "video/webm",
-    },
-    // Ajoutez d'autres formats si nécessaire
-  ];
-
-  const el = useRef(null); // élément cible
-  const typedInstance = useRef(null); // pour stocker l’instance
-
-  useEffect(() => {
-    typedInstance.current = new Typed(el.current, {
-      strings: [
-        "Bienvenue sur le site officiel d'achat et vente de Terrain au Togo",
-        "Nous créons vos idées",
-        "Découvrez nos services",
-        "Contactez-nous",
-      ],
-      typeSpeed: 50,
-      backSpeed: 25,
-      loop: true,
-    });
-
-    return () => {
-      typedInstance.current.destroy();
-    };
-  }, []);
-
   return (
     <div className=" containt-accuiel">
       {/* Hero section */}
@@ -159,17 +50,17 @@ function Accueil() {
         style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}
       >
         {/* Overlay sombre pour le contraste du texte */}
-        <div className="absolute inset-0 bg-black bg-opacity-50 w-full h-[640px] border-radius-[60px]"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
         {/* Texte et boutons */}
-        <div className="containt-element relative z-10 flex flex-col items-center justify-center text-white h-full px-4 text-center">
-          <h1 className="text-4xl font-bold mb-4 title-hero">
+        <div className="relative z-10 flex flex-col items-center justify-center text-white h-full px-4 text-center">
+          <h1 className="text-4xl font-bold mb-4 hero-title title-hero">
             Anyigbã nya
             <br />
           </h1>
           <p className="hero-para mb-6 max-w-2xl text-sm md:text-base">
             Obtenir des informations fiables sur les titres fonciers des
-            terrains au Togo et choisir celle qui s'adapte à votre style de vie.
+            terrains au Togo et choisir celle qui s’adapte à votre style de vie.
           </p>
           <div className="appli-button">
             <div className="store">
@@ -192,58 +83,48 @@ function Accueil() {
           </div>
 
           {/* Formulaire de recherche */}
-          <div className="bg-white rounded-xl shadow-lg p-4 w-full max-w-4xl flex justify-center items-center gap-4  container-recherche">
-            <div className="input-container-search">
-              <input
-                className="border border-gray-300 rounded-md px-3 py-2 w-full sm:w-auto"
-                placeholder="Entrez vôtre zone précise"
-                style={{
-                  width: "169px",
-                  color: "#0000",
-                }}
-              />
-            </div>
-            <div>
-              <select
-                className="border border-gray-300 rounded-md px-3 py-2 w-full sm:w-auto"
-                defaultValue=""
-              >
-                <option>Terrain résidentiel</option>
-                <option>Terrain nu</option>
-                <option>Terrain Commercial</option>
-                <option>Terrain agricol</option>
-                <option>Terrain industriel</option>
-                <option>Terrain avec bâtiment existant</option>
-              </select>
-            </div>
-            <div>
-              <select
-                className="border border-gray-300 rounded-md px-3 py-2 w-full sm:w-auto"
-                placeholder="Emplacement"
-              >
-                <option>Maritime</option>
-                <option>Plateaux</option>
-                <option>Central</option>
-                <option>Kara</option>
-                <option>Savane</option>
-              </select>
-            </div>
+          <div className="bg-white rounded-xl shadow-lg p-4 w-full max-w-4xl flex flex-wrap justify-between gap-4 container-recherche">
+            <input
+              className="border border-gray-300 rounded-md px-3 py-2 w-full sm:w-auto"
+              placeholder="Entrez vôtre zone précise"
+              style={{
+                width: "169px",
+                color: "#0000",
+              }}
+            />
+            <select
+              className="border border-gray-300 rounded-md px-3 py-2 w-full sm:w-auto"
+              defaultValue=""
+            >
+              <option>Terrain résidentiel</option>
+              <option>Terrain nu</option>
+              <option>Terrain Commercial</option>
+              <option>Terrain agricol</option>
+              <option>Terrain industriel</option>
+              <option>Terrain avec bâtiment existant</option>
+            </select>
+            <select
+              className="border border-gray-300 rounded-md px-3 py-2 w-full sm:w-auto"
+              placeholder="Emplacement"
+            >
+              <option>Maritime</option>
+              <option>Plateaux</option>
+              <option>Central</option>
+              <option>Kara</option>
+              <option>Savane</option>
+            </select>
 
-            <div className="icon-adjustment">
-              <button className="text-2xl text-gray-700 hover:text-black">
-                {/* <FaSlidersH /> */}
-                <HiAdjustmentsHorizontal className="search-icon" />
-              </button>
-            </div>
+            <button className="text-2xl text-gray-700 hover:text-black">
+              {/* <FaSlidersH /> */}
+              <HiAdjustmentsHorizontal className="search-icon" />
+            </button>
 
-            <div>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md button-recherche">
-                RECHERCHER{" "}
-                <span className="search-icon">
-                  <FaSearch />
-                </span>
-              </button>
-            </div>
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md button-recherche">
+              RECHERCHER{" "}
+              <span className="search-icon">
+                <FaSearch />
+              </span>
+            </button>
           </div>
         </div>
       </div>
@@ -336,7 +217,7 @@ function Accueil() {
               className="rounded-xl w-full h-auto"
             />
             <div className="title-satisfaction">
-              <div className="flex satisfaction">
+              <div className="flex valeur-title satisfaction">
                 <div
                   className="trais"
                   style={{ background: "#146c54", color: "#146c54" }}
@@ -398,13 +279,13 @@ function Accueil() {
           </div>
         </section>
 
-        <section className="section-client flex flex-wrap justify-center gap-6 px-4 mb-16 section-terrain">
+        <section className="flex flex-wrap justify-center gap-6 px-4 mb-16 section-terrain">
           {[1, 2, 3].map((i) => (
             <div
               key={i}
-              className="info-client bg-white rounded-lg shadow-md w-80 overflow-hidden"
+              className="bg-white rounded-lg shadow-md w-80 overflow-hidden"
             >
-              <div className="info-client-img bg-white rounded-lg shadow-md w-80 overflow-hidden max-w-sm rounded-2xl overflow-hidden shadow-lg border bg-white hover:shadow-xl transition-all duration-300">
+              <div className="bg-white rounded-lg shadow-md w-80 overflow-hidden max-w-sm rounded-2xl overflow-hidden shadow-lg border bg-white hover:shadow-xl transition-all duration-300">
                 {/* Image du terrain */}
                 <div
                   className="first-image relative h-48 bg-cover bg-center bg-white rounded-lg shadow-md w-80 overflow-hidden"
@@ -446,21 +327,22 @@ function Accueil() {
 
         <div className="bg-gray-100 min-h-screen">
           {/* Section villes */}
-          <div className="px-6 py-16 ville-reponsive">
-            <h2 className="text-2xl font-bold text-center text-gray-900 mb-2">
+          <div className="px-6 py-16">
+            <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-2">
               Dans quelle ville vivras-tu pour réaliser ton rêve ?
             </h2>
             <p className="text-sm text-center text-gray-500 mb-10 max-w-md mx-auto">
               Chaque rêve mérite une ville pour l’accueillir.
             </p>
 
-            <div className=" flex justify-center items-center w-full">
-              <div className="responsive flex justify-center items-center w-[80%]">
-                <div className=" flex flex-col justify-center w-full">
-                  {/* -----------1--------- */}
-
-                  <div className="two-ville flex  gap-6">
-                    <div className=" lome-terrain ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md w-full sm:max-w-[480px]">
+            <div className="ville-terrain grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto px-4">
+              <div className="five-ville-content flex gap-6">
+                <div className="four-ville flex flex-col gap-6">
+                  <div className="two-ville flex flex-col gap-6">
+                    <div
+                      className="reponseWhitheVille lome-terrain ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md w-full sm:max-w-[480px]"
+                      style={{ minHeight: "180px", maxWidth: "480px" }}
+                    >
                       <img
                         src={Lome}
                         alt="Lomé"
@@ -477,7 +359,7 @@ function Accueil() {
                     </div>
 
                     <div
-                      className="ville-terrain-responsive Ville-fist-long ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md w-full sm:max-w-[480px]"
+                      className="reponseWhitheVille Ville-fist-long ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md w-full sm:max-w-[480px]"
                       style={{ minHeight: "180px", maxWidth: "480px" }}
                     >
                       <img
@@ -496,11 +378,9 @@ function Accueil() {
                     </div>
                   </div>
 
-                  {/* -----------2--------- */}
-
-                  <div className="flex  two-ville gap-6">
+                  <div className="flex flex-col gap-6">
                     <div
-                      className="ville-terrain-responsive Ville-second-long ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md w-full sm:max-w-[480px]"
+                      className="reponseWhitheVille Ville-second-long ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md w-full sm:max-w-[480px]"
                       style={{ minHeight: "180px", maxWidth: "480px" }}
                     >
                       <img
@@ -519,8 +399,8 @@ function Accueil() {
                     </div>
 
                     <div
-                      className="ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md w-full sm:max-w-[480px]"
-                      style={{ minHeight: "80px", maxWidth: "370px" }}
+                      className=" reponseWhitheVille aneho-ville ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md w-full sm:max-w-[480px]"
+                      style={{ minHeight: "80px", maxWidth: "480px" }}
                     >
                       <img
                         src={Aneho}
@@ -541,13 +421,13 @@ function Accueil() {
 
                 <div className="one-ville">
                   <div
-                    className="ville-terrain-responsive ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md w-full sm:max-w-[480px]"
-                    style={{ Height: "500px", Width: "480px" }}
+                    className="reponseWhitheVille ville-terrain-card relative rounded-xl overflow-hidden bg-white shadow-md w-full sm:max-w-[480px]"
+                    style={{ minHeight: "500px", maxWidth: "480px" }}
                   >
                     <img
                       src={Notse}
                       alt="Notsè"
-                      className=" w-full h-64 sm:h-[24rem] object-cover"
+                      className="w-full h-64 sm:h-[24rem] object-cover"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3">
                       <span className="text-white font-semibold text-lg">

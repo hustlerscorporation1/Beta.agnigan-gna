@@ -3,6 +3,8 @@
 
 .leaflet-control-zoom {
   z-index: -1000 !important;
+  margin-top: 1rem !important;
+
 }
 
 .containt-map {
@@ -46,7 +48,7 @@
 }
 
 .leaflet-control-zoom {
-  margin-top: 12rem !important;
+  margin-top: 1rem !important;
 }
 
 .leaflet-control-attribution {
@@ -60,4 +62,222 @@
 }
 .leaflet-zoom-animated .custom-marker {
   transform: scale(1) !important;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN PROPRIETE - TOUS LES FORMATS
+======================================== */
+
+/* Mobile - Très petits écrans */
+@media (max-width: 480px) {
+  .containt-map {
+    height: 300px !important;
+    margin: 1rem 0;
+  }
+
+  .p-4 {
+    padding: 1rem !important;
+  }
+
+  .searche-bar {
+    margin-top: -4rem !important;
+    padding: 0 1rem;
+  }
+
+  .searche-contain {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .leaflet-bottom {
+    margin-bottom: 15rem !important;
+  }
+
+  .leaflet-control-zoom {
+    margin-top: 8rem !important;
+    transform: scale(0.8);
+  }
+
+  .leaflet-control-attribution {
+    font-size: 0.7rem !important;
+  }
+}
+
+/* Mobile Large */
+@media (min-width: 481px) and (max-width: 768px) {
+  .containt-map {
+    height: 350px !important;
+    margin: 1.5rem 0;
+  }
+
+  .p-4 {
+    padding: 1.5rem !important;
+  }
+
+  .searche-bar {
+    margin-top: -5rem !important;
+    padding: 0 1.5rem;
+  }
+
+  .searche-contain {
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .leaflet-bottom {
+    margin-bottom: 18rem !important;
+  }
+
+  .leaflet-control-zoom {
+    margin-top: 10rem !important;
+    transform: scale(0.9);
+  }
+
+  .leaflet-control-attribution {
+    font-size: 0.8rem !important;
+  }
+}
+
+/* Tablette */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .containt-map {
+    height: 400px !important;
+    margin: 2rem 0;
+  }
+
+  .p-4 {
+    padding: 2rem !important;
+  }
+
+  .searche-bar {
+    margin-top: -5.5rem !important;
+    padding: 0 2rem;
+  }
+
+  .searche-contain {
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+
+  .leaflet-bottom {
+    margin-bottom: 20rem !important;
+  }
+
+  .leaflet-control-zoom {
+    margin-top: 11rem !important;
+  }
+
+  .leaflet-control-attribution {
+    font-size: 0.9rem !important;
+  }
+}
+
+/* Desktop Small */
+@media (min-width: 1025px) and (max-width: 1366px) {
+  .containt-map {
+    height: 450px !important;
+  }
+
+  .searche-bar {
+    margin-top: -5.8rem !important;
+  }
+
+  .leaflet-bottom {
+    margin-bottom: 22rem !important;
+  }
+
+  .leaflet-control-zoom {
+    margin-top: 11.5rem !important;
+  }
+}
+
+/* Desktop Large */
+@media (min-width: 1367px) and (max-width: 1920px) {
+  .containt-map {
+    height: 500px !important;
+  }
+
+  .searche-bar {
+    margin-top: -6rem !important;
+  }
+
+  .leaflet-bottom {
+    margin-bottom: 24rem !important;
+  }
+
+  .leaflet-control-zoom {
+    margin-top: 12rem !important;
+  }
+}
+
+/* Ultra Wide */
+@media (min-width: 1921px) {
+  .containt-map {
+    height: 600px !important;
+  }
+
+  .searche-bar {
+    margin-top: -6.5rem !important;
+  }
+
+  .leaflet-bottom {
+    margin-bottom: 26rem !important;
+  }
+
+  .leaflet-control-zoom {
+    margin-top: 13rem !important;
+  }
+}
+
+/* Règles communes pour écrans tactiles */
+@media (max-width: 1024px) {
+  .leaflet-control-zoom a {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    line-height: 44px !important;
+    font-size: 1.2rem !important;
+  }
+
+  .custom-marker {
+    transform: scale(1.2) !important;
+  }
+
+  .marker {
+    cursor: pointer;
+  }
+}
+
+/* Amélioration de l'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  .custom-marker {
+    will-change: auto !important;
+  }
+  
+  .leaflet-zoom-animated .custom-marker {
+    transition: none !important;
+  }
+}
+
+/* Optimisation pour les très petits écrans */
+@media (max-width: 320px) {
+  .containt-map {
+    height: 250px !important;
+    margin: 0.5rem 0;
+  }
+
+  .searche-bar {
+    margin-top: -3rem !important;
+    padding: 0 0.5rem;
+  }
+
+  .leaflet-control-zoom {
+    margin-top: 6rem !important;
+    transform: scale(0.7);
+  }
+
+  .leaflet-bottom {
+    margin-bottom: 12rem !important;
+  }
 }

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FaComment } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
+import "../Styles/ChatBot.css";
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,43 +35,32 @@ export default function Chatbot() {
   };
 
   return (
-    <div
-      className="fixed bottom-5 right-5"
-      style={{
-        zIndex: 100000000000,
-        marginRight: "20px",
-        marginBottom: "20px",
-      }}
-    >
+    <div className="chatbot-container">
       {/* Bouton flottant */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-green-500 transition"
+        className="chatbot-button"
       >
-        <FaComment className="h-6 w-6 text-white-500" />
+        <FaComment className="h-6 w-6" />
       </button>
 
       {/* Fenêtre du chatbot */}
       {isOpen && (
-        <div className="w-80 h-96 bg-white rounded-2xl shadow-lg flex flex-col absolute bottom-16 right-0">
+        <div className="chatbot-window">
           {/* En-tête */}
-          <div className="bg-blue-600 text-white p-3 rounded-t-2xl flex justify-between items-center">
-            <h2 className="font-bold">Assistant de Anyigbã nya</h2>
-            <button onClick={() => setIsOpen(false)}>
-              <FaTimes className="h-6 w-6 text-white-600" />
+          <div className="chatbot-header">
+            <h2>Assistant de Anyigbã nya</h2>
+            <button onClick={() => setIsOpen(false)} className="chatbot-close">
+              <FaTimes className="h-5 w-5" />
             </button>
           </div>
 
           {/* Zone messages */}
-          <div className="flex-1 p-3 overflow-y-auto space-y-2">
+          <div className="chatbot-messages">
             {messages.map((msg, index) => (
               <div
                 key={index}
-                className={`p-2 rounded-lg max-w-[75%] ${
-                  msg.sender === "bot"
-                    ? "bg-gray-200 text-left"
-                    : "bg-blue-500 text-white ml-auto text-right"
-                }`}
+                className={`chatbot-message ${msg.sender}`}
               >
                 {msg.text}
               </div>
@@ -78,17 +68,18 @@ export default function Chatbot() {
           </div>
 
           {/* Champ d'entrée */}
-          <div className="p-3 border-t flex">
+          <div className="chatbot-input-container">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Écrire un message..."
-              className="flex-1 p-2 border rounded-lg focus:outline-none"
+              className="chatbot-input"
+              onKeyPress={(e) => e.key === 'Enter' && handleSend()}
             />
             <button
               onClick={handleSend}
-              className="ml-2 bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-green-500 transition"
+              className="chatbot-send"
             >
               ➤
             </button>

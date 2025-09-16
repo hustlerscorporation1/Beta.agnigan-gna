@@ -65,3 +65,308 @@ path {
   color: #100e2c !important;
   font-size: 18px;
 }
+
+/* ========================================
+   RESPONSIVE DESIGN TOGO MAP - TOUS LES FORMATS
+======================================== */
+
+/* Mobile - Très petits écrans */
+@media (max-width: 480px) {
+  .map-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 50px;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .togo-map {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+  }
+
+  .togo-map svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .region {
+    stroke-width: 3 !important;
+  }
+
+  .region-info {
+    position: relative;
+    margin-left: 0 !important;
+    margin-top: 1rem;
+    padding: 15px;
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .region-info h2 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  .region-info p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .affiche-region {
+    font-size: 14px !important;
+    text-align: center;
+  }
+}
+
+/* Mobile Large */
+@media (min-width: 481px) and (max-width: 768px) {
+  .map-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 60px;
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .togo-map {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+  }
+
+  .togo-map svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .region {
+    stroke-width: 4 !important;
+  }
+
+  .region-info {
+    position: relative;
+    margin-left: 0 !important;
+    margin-top: 1.5rem;
+    padding: 18px;
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    font-size: 13px;
+  }
+
+  .region-info h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .region-info p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .affiche-region {
+    font-size: 16px !important;
+  }
+}
+
+/* Tablette */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .map-container {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 25px;
+    margin-top: 80px;
+    width: 100%;
+    padding: 2rem;
+    justify-content: center;
+  }
+
+  .togo-map {
+    width: 400px;
+    height: auto;
+  }
+
+  .togo-map svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .region {
+    stroke-width: 4 !important;
+  }
+
+  .region-info {
+    margin-left: 2rem !important;
+    padding: 20px;
+    width: 300px;
+    font-size: 13.5px;
+  }
+
+  .region-info h2 {
+    font-size: 1.3rem;
+  }
+
+  .region-info p {
+    font-size: 1rem;
+  }
+
+  .affiche-region {
+    font-size: 17px !important;
+  }
+}
+
+/* Desktop Small */
+@media (min-width: 1025px) and (max-width: 1366px) {
+  .map-container {
+    gap: 28px;
+    margin-top: 90px;
+    width: 18rem;
+  }
+
+  .togo-map {
+    width: 450px;
+  }
+
+  .region-info {
+    margin-left: 10rem !important;
+    padding: 22px;
+    font-size: 14px;
+  }
+
+  .region-info h2 {
+    font-size: 1.4rem;
+  }
+
+  .affiche-region {
+    font-size: 18px !important;
+  }
+}
+
+/* Desktop Large */
+@media (min-width: 1367px) and (max-width: 1920px) {
+  .map-container {
+    gap: 30px;
+    margin-top: 100px;
+    width: 20rem;
+  }
+
+  .togo-map {
+    width: 500px;
+  }
+
+  .region-info {
+    margin-left: 12rem !important;
+    padding: 24px;
+    font-size: 14.5px;
+  }
+
+  .region-info h2 {
+    font-size: 1.5rem;
+  }
+
+  .affiche-region {
+    font-size: 19px !important;
+  }
+}
+
+/* Ultra Wide */
+@media (min-width: 1921px) {
+  .map-container {
+    gap: 35px;
+    margin-top: 120px;
+    width: 24rem;
+  }
+
+  .togo-map {
+    width: 600px;
+  }
+
+  .region-info {
+    margin-left: 15rem !important;
+    padding: 28px;
+    font-size: 15px;
+  }
+
+  .region-info h2 {
+    font-size: 1.6rem;
+  }
+
+  .affiche-region {
+    font-size: 20px !important;
+  }
+}
+
+/* Règles communes pour écrans tactiles */
+@media (max-width: 1024px) {
+  .region {
+    cursor: pointer;
+    transition: fill 0.3s ease-in-out;
+  }
+
+  .region:hover {
+    fill: #9b0000;
+    stroke: #17d349 !important;
+  }
+
+  .region-info {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+  }
+
+  .region-info:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Amélioration de l'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  .region {
+    transition: none;
+  }
+  
+  .region-info {
+    transition: none;
+  }
+  
+  .region-info:hover {
+    transform: none;
+  }
+}
+
+/* Optimisation pour les très petits écrans */
+@media (max-width: 320px) {
+  .map-container {
+    margin-top: 30px;
+    padding: 0.8rem;
+    gap: 10px;
+  }
+
+  .togo-map {
+    max-width: 250px;
+  }
+
+  .region-info {
+    padding: 12px;
+    max-width: 250px;
+    font-size: 11px;
+  }
+
+  .region-info h2 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+
+  .region-info p {
+    font-size: 0.8rem;
+  }
+
+  .affiche-region {
+    font-size: 12px !important;
+  }
+}

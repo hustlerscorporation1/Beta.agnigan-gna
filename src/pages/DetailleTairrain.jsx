@@ -100,20 +100,18 @@ const TerrainDetails = () => {
             Description
           </h3>
           <p className="text-gray-600 text-justify leading-relaxed">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est id cum
-            itaque odit eveniet dolores? At quaerat fugit explicabo quasi
-            repudiandae pariatur dolorum omnis, obcaecati ea magni quos itaque
-            ipsum? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Provident dicta sit nesciunt in necessitatibus voluptatem aut
-            commodi, assumenda illo incidunt pariatur adipisci facere rem
-            eligendi sapiente inventore consequuntur aspernatur. Perspiciatis.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae
-            quas deserunt, nobis ab et magni! Modi dolores neque delectus quod,
-            explicabo quia, officia vel praesentium tenetur assumenda, illo
-            dolorum atque? Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Nam nesciunt sapiente distinctio non soluta facere deleniti
-            porro eveniet? Dolores fugiat ducimus corrupti minus nesciunt totam
-            esse autem sequi distinctio id.
+            Terrain de 400 m² situé à Agoè, avec titre foncier disponible et
+            garanti. Il bénéficie d’un excellent emplacement, facilement
+            accessible par route, à seulement quelques minutes des axes
+            principaux. Bien délimité, ce terrain dispose d’un titre foncier en
+            règle, d’une accessibilité facilitée grâce à des routes praticables
+            et à la proximité des transports, et se trouve dans un quartier
+            calme en plein développement. Il est idéal aussi bien pour un projet
+            d’habitation, agricole, commercial que pour un investissement. Cette
+            parcelle représente une opportunité unique pour sécuriser un
+            patrimoine dans une zone en pleine expansion, offrant à la fois une
+            valeur ajoutée à long terme et une mise en valeur immédiate pour vos
+            projets.
           </p>
         </div>
 

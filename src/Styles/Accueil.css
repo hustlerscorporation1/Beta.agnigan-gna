@@ -6,9 +6,7 @@ body {
 .containt-accuiel {
   height: auto;
 }
-.containt-element .font-bold {
-  margin-top: 5rem !important;
-}
+
 .containt-element {
   width: 100% !important;
 }
@@ -16,26 +14,18 @@ body {
   width: 100%;
   height: 40rem !important;
 }
-.hero-title {
-  text-shadow: black 0.1em 0.1em 0.2em;
-  font-size: 100px !important;
-  font-weight: 800;
-  text-align: left;
-  line-height: 55px !important;
-  letter-spacing: 0px;
-  margin-left: 14rem;
-}
+
 .hero-para {
   font-family: "Montserrat";
   color: rgba(255, 255, 255, 0.824);
   text-decoration: none;
-  text-align: left;
+  text-align: center;
   line-height: 35px;
   font-weight: 400 !important;
   font-size: 23px !important;
   font-style: normal;
   margin-top: 3rem !important;
-  margin-left: 19rem;
+  margin-bottom: 2rem !important;
 }
 
 .appli-button {
@@ -44,9 +34,9 @@ body {
   justify-content: center;
   gap: 0.1rem !important;
   gap: 1rem !important;
-  margin-top: 1rem;
+  margin-top: rem;
   margin-right: 1rem;
-  width: 100rem !important;
+  width: 100% !important;
 }
 .store {
   width: 12rem;
@@ -105,13 +95,18 @@ body {
 }
 
 .container-recherche {
-  margin-top: 40rem !important;
-  position: absolute !important;
-  max-width: 60rem !important;
-  justify-content: center !important;
-  padding: 3rem !important;
-  gap: 2rem !important;
+  gap: 1rem;
   background-color: #43a55d !important;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  width: 90% !important;
+  height: 100rem !important;
+  padding: 3rem !important;
+
+  margin-top: 10rem;
+
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .container-recherche select {
@@ -137,7 +132,12 @@ input {
 }
 
 .title-hero {
-  margin-top: 2rem !important;
+  text-shadow: black 0.1em 0.1em 0.2em;
+  font-size: 100px !important;
+  font-weight: 800;
+  line-height: 55px !important;
+  letter-spacing: 0px;
+  margin-top: 14rem !important;
 }
 
 .font-sans {
@@ -196,6 +196,10 @@ input {
   gap: 0.5rem !important;
   color: #000 !important;
   cursor: pointer !important;
+}
+.satisfaction {
+  display: flex !important;
+  gap: 1rem !important;
 }
 
 .section-satisfaction-image img {
@@ -305,22 +309,19 @@ input {
 }
 
 .four-ville {
-  display: grid !important;
+  display: grid;
   grid-template-columns: 300px 300px;
   gap: 2rem;
 }
 
 .one-ville {
   height: 100% !important;
+  height: 100% !important;
 }
 
 .ville-terrain-card {
   margin-bottom: 1.5rem;
   width: 20rem;
-}
-
-.one-ville {
-  height: 100% !important;
 }
 
 .one-ville .ville-terrain-card {
@@ -339,13 +340,11 @@ input {
 .Ville-second-long {
   min-height: 180px !important;
   max-width: 250px !important;
-  margin-left: 3rem;
 }
 
 .aneho-ville {
   min-height: 180px !important;
-  width: 22.9rem !important;
-  right: 4.3rem !important ;
+  max-width: 250px !important;
 }
 
 .contact-title h2 {
@@ -444,237 +443,206 @@ input {
   transition: box-shadow 0.3s, transform 0.3s;
 }
 
-/* responsive.css */
+/* ===============================================
+Responsive Navbar CSS
+=============================================== */
 
-@media (max-width: 768px) {
-  .hero {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    text-align: center !important;
-    height: auto !important;
-    min-height: 420px !important;
-    padding: 1rem !important;
+@media screen and (max-width: 412px) {
+  .title-hero {
+    font-size: 60px !important;
+    margin-top: 26rem !important;
   }
-
-  .hero .hero-title {
-    margin: 0 !important;
-    margin-top: -2rem !important;
-    font-size: 3rem !important;
-    line-height: 2.2rem !important;
-  }
-
   .hero-para {
-    margin-left: 0 !important;
-    width: 20rem !important;
-    text-align: center !important;
-    font-size: 0.9rem !important;
+    font-size: 18px !important;
+    margin-top: 2rem !important;
   }
-
-  .animation-image-container {
-    height: 20rem !important;
-  }
-
   .appli-button {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: auto !important;
-    flex-direction: column;
-    gap: 0.8rem;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    margin-top: 2rem !important;
   }
-
   .description-container {
-    display: none !important  ;
-    margin-left: 0 !important;
-  }
-  .container-recherche {
-    width: 20rem !important;
-    flex-direction: column;
-    justify-content: center !important;
-    gap: 1rem;
-    margin-top: 48.5rem !important;
-  }
-
-  .container-recherche input,
-  .container-recherche select,
-  .container-recherche button {
-    width: 100% !important;
-  }
-
-  /* Section Vedette */
-
-  .section-veddete {
-    display: flex !important ;
-    flex-direction: column !important;
-    text-align: center !important;
-    height: auto !important;
-    gap: 2rem !important;
-    margin: 0 !important;
-    margin-top: 20rem !important;
-  }
-
-  .qodef-row-overlapping-text {
-    position: absolute !important;
-    margin-top: 50rem !important;
-    left: 2rem !important;
-    font-size: 120px !important;
-  }
-  .cercle-container {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    position: relative !important;
-    gap: 1rem;
-    margin-left: 0 !important;
-  }
-
-  .valeur {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: left !important;
-    text-align: left !important;
-    width: auto !important;
-    margin: 0 !important ;
-  }
-
-  .valeur-title {
-    margin-top: 22rem !important;
-    font-size: 1.4rem;
-  }
-  .valeur-title h2 {
-    font-size: 1.6rem !important;
-    width: 20rem !important;
-  }
-
-  .paragraph-veddete {
-    font-size: 0.85rem;
-    margin-left: 2rem !important;
-    margin-top: 5px;
-    padding: 0 1rem;
-    width: 20rem !important;
-    align-items: center !important;
-    text-align: justify;
-  }
-
-  /* plan de satisfaction */
-
-  .section-satisfaction-image {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    width: 100% !important;
-    height: auto !important;
-    margin: 0 !important;
-  }
-
-  .section-satisfaction-image img {
-    width: 23rem !important;
-    height: 14rem !important;
-    margin: 0 !important;
-  }
-
-  .title-satisfaction {
-    height: 100% !important;
-  }
-
-  .title-satisfaction p {
-    width: auto !important;
-  }
-
-  .satisfaction {
-    margin: 0 !important;
-    padding: 0 2rem 0 !important;
-  }
-
-  /* Témoignages */
-  .background-black {
-    margin: 0 !important;
-  }
-  .temoignage-resp {
-    position: relative !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100% !important;
-    height: auto !important;
-    padding: 2rem !important;
-    margin-left: 0 !important;
-  }
-
-  .temoignage-respWhite {
-    width: 100% !important;
-    margin: 0 !important;
-  }
-
-  /* Section villes */
-  .ville-terrain {
-    width: 100% !important;
-    grid-template-columns: 1fr !important;
-  }
-
-  .five-ville-content,
-  .four-ville {
-    display: flex !important;
-    flex-direction: column !important;
-    margin: 0 !important;
-    padding: 0 1rem !important;
-    gap: 2rem !important;
-  }
-  .reponseWhitheVille {
-    width: 20rem !important;
-    height: 21rem !important;
-  }
-
-  .reponseWhitheVille img {
-    width: 20rem !important;
-    height: 20rem !important;
-  }
-
-  /* Contact */
-  .contact-container {
-    width: 100% !important;
-    margin: 0 1rem;
-  }
-
-  .contact-title {
     display: none;
   }
 
-  /* Footer */
-  .info-footer {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .footer-input {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .hero {
-    height: 400px;
-  }
-
-  .hero .hero-title {
-    font-size: 2rem;
-  }
-
-  .hero .hero-para {
-    font-size: 1rem;
-  }
-
   .container-recherche {
-    flex-wrap: wrap;
+    gap: 1rem !important ;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    margin-top: 3rem !important;
+    padding: 2rem !important;
+    height: auto !important;
   }
 
-  .ville-terrain {
-    grid-template-columns: repeat(2, 1fr) !important;
+  .icon-adjustment {
+    display: none !important;
+  }
+
+  .container-recherche select,
+  input,
+  .input-container-search {
+    width: 20rem !important;
+  }
+
+  .appstore {
+    width: 11rem !important;
+    padding: 0.5rem !important;
+  }
+
+  .button-recherche {
+    width: 14rem !important;
+    padding: 0.5rem !important;
+  }
+
+  .section-veddete {
+    flex-direction: column !important;
+    height: auto !important;
+    gap: 2rem !important;
+    padding: 2rem !important;
+  }
+
+  .valeur {
+    justify-content: left !important;
+    margin-left: 1rem !important;
+    width: 98% !important;
+  }
+
+  .valeur-title h2 {
+    font-size: 33px !important;
+    margin-top: 6rem !important;
+    margin-bottom: 2rem !important;
+    width: 100% !important;
+  }
+  .trais {
+    margin-top: 6rem !important;
+    height: 6.6rem !important;
+  }
+  .paragraph-veddete {
+    font-size: 16px !important;
+    margin-top: 1rem !important;
+    text-align: justify;
+    margin: 0 !important;
+  }
+  .cercle-container {
+    display: flex !important;
+    gap: 1rem !important;
+    margin: 0 !important;
+  }
+  .qodef-row-overlapping-text {
+    position: absolute !important;
+    margin-top: 30rem !important;
+    font-weight: 800;
+    left: 0rem !important;
+    margin-left: 0.8rem !important;
+    font-size: 120px !important;
+    color: #ffe600fc;
+  }
+
+  .section-satisfaction-image {
+    flex-direction: column !important;
+    height: auto !important;
+    gap: 2rem !important;
+    padding: 0rem !important;
+  }
+
+  .section-satisfaction-image {
+    width: 100% !important;
+  }
+  .section-satisfaction-image img {
+    width: 100% !important;
+    height: auto !important;
+    margin-left: 0rem !important;
+  }
+
+  .title-satisfaction {
+    margin-left: 0rem !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .satisfaction {
+    gap: 1rem !important;
+  }
+
+  .satisfaction .trais {
+    left: 1rem !important;
+    margin: 0 !important;
+  }
+
+  .title-satisfaction h3 {
+    text-align: left !important;
+    width: 90% !important;
+    font-size: 2rem !important;
+  }
+
+  .title-satisfaction p {
+    width: 100% !important;
+    text-align: left !important;
+  }
+
+  .temoignage-resp {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 2rem !important;
+  }
+
+  .temoignage-resp img {
+    width: 40rem !important;
+  }
+
+  .responsive {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 2rem !important;
+  }
+
+  .responsive img {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .one-ville {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .one-ville img {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .ville-reponsive {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  .two-ville {
+    flex-direction: column !important;
+    gap: 2rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  .ville-terrain-responsive {
+    max-width: 100% !important;
+  }
+  .one-ville .ville-terrain-responsive {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .one-ville .ville-terrain-responsive img {
+    width: 100% !important;
+    height: 100% !important;
   }
 }
