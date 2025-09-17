@@ -92,14 +92,15 @@ export default function Navbar() {
 
       {/* Liens Navigation */}
       <div
-        className={`linknav md:flex md:space-x-6 md:static absolute top-16 left-0 w-full md:w-auto 
-  bg-blue-600 md:bg-transparent transition-all duration-300 ease-in-out 
-  ${menuOpen ? "block" : "hidden"} z-40`}
+        className={`reponsive-nav linknav md:flex md:space-x-6 md:static absolute top-16 left-0 w-full md:w-auto 
+          bg-white md:bg-transparent transition-all duration-300 ease-in-out 
+          ${menuOpen ? "block" : "hidden"} z-40`}
       >
         <ul className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 px-4 md:px-0">
           <li>
             <NavLink
               to="/"
+              onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
                 `relative inline-block px-2 py-1 transition-colors duration-300 ${
                   isActive
@@ -121,6 +122,7 @@ export default function Navbar() {
           <li>
             <NavLink
               to="/propriete"
+              onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
                 `relative inline-block px-2 py-1 transition-colors duration-300 ${
                   isActive
@@ -142,6 +144,7 @@ export default function Navbar() {
           <li>
             <NavLink
               to="/declarer"
+              onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
                 `relative inline-block px-2 py-1 transition-colors duration-300 ${
                   isActive
@@ -163,6 +166,7 @@ export default function Navbar() {
           <li>
             <NavLink
               to="/Apropos"
+              onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
                 `relative inline-block px-2 py-1 transition-colors duration-300 ${
                   isActive
@@ -184,6 +188,7 @@ export default function Navbar() {
           <li>
             <NavLink
               to="/contact"
+              onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
                 `relative inline-block px-2 py-1 transition-colors duration-300 ${
                   isActive
@@ -202,11 +207,44 @@ export default function Navbar() {
             </NavLink>
           </li>
         </ul>
+        {/* Partie compte et bouton télécharger visible uniquement sur mobile */}
+        <div className="reponsive-tele md:hidden flex flex-col items-start space-y-4 px-4 mt-4 border-t border-white/30 pt-4">
+          <div className="usercompte relative">
+            <button
+              className="flex items-center space-x-2"
+              onClick={() => {
+                handleClick();
+                setMenuOpen(false); // ferme le menu
+              }}
+            >
+              <div className="userIcon">
+                <UserIcon className="usericon-l h-6 w-6 text-gray-200" />
+              </div>
+              <p className="usercompte-text font-bold">
+                {user ? `${userFirstName}` : "Se Connecter"}
+              </p>
+            </button>
+          </div>
+
+          <div className="usercompte">
+            <button
+              className="flex items-center space-x-2 px-4 py-2 bg-green-0 hover:bg-green-700 hover:text-white rounded-[10px] shadow-lg transition-all duration-300"
+              style={{ border: "1px solid rgba(255, 255, 255, 0.75)" }}
+              onClick={() => {
+                setIsOpen(true); // ton popup existant
+                setMenuOpen(false); // ferme le menu
+              }}
+            >
+              <FaDownload />
+              <p>Télécharger l'App</p>
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Partie droite (compte + bouton télécharger) */}
       <div className="header-compte hidden md:flex space-x-4">
-        <div className="usercompte relative">
+        <div className="usercompte relative ">
           <button className="flex items-center space-x-2" onClick={handleClick}>
             <div className="userIcon">
               <UserIcon className="usericon-l h-6 w-6 text-gray-500" />

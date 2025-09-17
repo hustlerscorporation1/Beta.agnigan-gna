@@ -17,10 +17,30 @@
   color: "#ffffff";
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 413px) {
+  .video-section {
+    max-width: 100% !important;
+  }
   .agentresponsive {
+    background-color: rgb(246, 246, 246);
+    flex-direction: column;
+    width: auto;
+    height: auto;
+  }
+  .trais {
+    margin-top: 0.5rem !important;
+    height: 4rem !important;
+  }
+  .declarer {
+    width: 100% !important;
+  }
+  .footer-input {
     display: flex !important;
+    width: 100% !important;
+  }
+
+  .footer-container {
     flex-direction: column !important;
-    align-items: center !important;
+    text-align: center !important;
   }
 }

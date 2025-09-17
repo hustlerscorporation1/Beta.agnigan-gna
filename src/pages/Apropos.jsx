@@ -18,8 +18,10 @@ import heroImage from "../images/hero-image.jpg";
 import { color } from "framer-motion";
 import Client1 from "../images/Client 1.jpg";
 import Client2 from "../images/Client 2.jpg";
+import "../Styles/Apropos.css";
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+
 import terrain from "../videos/Terrain du Sud __ Publicité TV (1).mp4";
 
 const agents = [
@@ -385,9 +387,9 @@ function Apropos() {
             rhoncus. Porttitor fermentum eu urna eget
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className=" grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <div
-            className="w-[20rem] text-white p-8 rounded-xl h-[20rem] shadow-lg flex flex-col items-center"
+            className="declarer w-[20rem] text-white p-8 rounded-xl h-[20rem] shadow-lg flex flex-col items-center"
             style={{
               background: "#f6f9fc",
               color: "#000000",
@@ -570,7 +572,7 @@ function Apropos() {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 pt-4 flex justify-between items-center">
+        <div className="footer-container border-t border-gray-700 pt-4 flex justify-between items-center">
           <div className="logopartenaire">
             <img src={logopartenaire} alt="logopartenaire" />
           </div>

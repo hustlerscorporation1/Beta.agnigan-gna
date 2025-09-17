@@ -13,8 +13,10 @@ import "leaflet/dist/leaflet.css";
 import heroImage from "../images/hero-image.jpg";
 import "leaflet/dist/leaflet.css";
 import { useNavigate } from "react-router-dom";
+import { XMarkIcon, FunnelIcon } from "@heroicons/react/24/outline";
 
 function Propriete() {
+  const [showFilter, setShowFilter] = useState(true);
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/Dectailletairrain");
@@ -735,39 +737,36 @@ function Propriete() {
         <div className="relative flex flex-col w-full lg:grid-cols-3 gap-8 top-20">
           {/* search content */}
 
-          <div className="absolute flex justify-end items-start w-full h-full pr-6">
+          {/* Icône toggle */}
+          <button
+            onClick={() => setShowFilter(!showFilter)}
+            className="absolute top-3 right-3 z-50 p-2 rounded-full bg-white shadow hover:bg-gray-100 "
+            style={{ zIndex: "1001", marginRight: "20px", marginTop: "30px" }}
+          >
+            {showFilter ? (
+              <XMarkIcon className="h-6 w-6 text-gray-600" />
+            ) : (
+              <FunnelIcon className="h-6 w-6 text-gray-600" />
+            )}
+          </button>
+
+          {showFilter && (
             <div
-              className="max-w-sm h-[390px] p-4 bg-white rounded-2xl shadow-lg border"
-              style={{
-                zIndex: "1000",
-                marginTop: "7rem",
-              }}
+              className="responsive-filter max-w-sm h-[390px] p-4 bg-white rounded-2xl shadow-lg border absolute right-6 top-12"
+              style={{ zIndex: "1000" }}
             >
               <h2 className="text-lg font-semibold text-gray-700 mb-4">
                 Zoomer sur un territoire
               </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
                 {/* Région */}
                 <div>
                   <label className="block text-gray-600 text-sm font-medium mb-1">
                     Régions
                   </label>
-                  <select
-                    value={region}
-                    onChange={(e) => {
-                      setRegion(e.target.value);
-                      setPrefecture("");
-                      setCommune("");
-                    }}
-                    className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                  >
-                    <option value="">-- Choisir une région --</option>
-                    {Object.keys(regions).map((r) => (
-                      <option key={r} value={r}>
-                        {r}
-                      </option>
-                    ))}
+                  <select className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    <option>-- Choisir une région --</option>
                   </select>
                 </div>
 
@@ -776,22 +775,8 @@ function Propriete() {
                   <label className="block text-gray-600 text-sm font-medium mb-1">
                     Préfectures
                   </label>
-                  <select
-                    value={prefecture}
-                    onChange={(e) => {
-                      setPrefecture(e.target.value);
-                      setCommune("");
-                    }}
-                    disabled={!region}
-                    className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100"
-                  >
-                    <option value="">-- Choisir une préfecture --</option>
-                    {region &&
-                      Object.keys(regions[region]).map((p) => (
-                        <option key={p} value={p}>
-                          {p}
-                        </option>
-                      ))}
+                  <select className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100">
+                    <option>-- Choisir une préfecture --</option>
                   </select>
                 </div>
 
@@ -800,19 +785,8 @@ function Propriete() {
                   <label className="block text-gray-600 text-sm font-medium mb-1">
                     Communes
                   </label>
-                  <select
-                    value={commune}
-                    onChange={(e) => setCommune(e.target.value)}
-                    disabled={!prefecture}
-                    className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100"
-                  >
-                    <option value="">-- Choisir une commune --</option>
-                    {prefecture &&
-                      regions[region][prefecture].map((c) => (
-                        <option key={c} value={c}>
-                          {c}
-                        </option>
-                      ))}
+                  <select className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100">
+                    <option>-- Choisir une commune --</option>
                   </select>
                 </div>
 
@@ -825,7 +799,7 @@ function Propriete() {
                 </button>
               </form>
             </div>
-          </div>
+          )}
 
           {/* Map */}
           <div className="w-full lg:col-span-2 h-[100%] rounded-lg overflow-hidden shadow-lg">

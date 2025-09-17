@@ -579,20 +579,42 @@ Responsive Navbar CSS
     width: 100% !important;
     text-align: left !important;
   }
+  .background-black {
+    padding: 20px !important;
+  }
 
   .temoignage-resp {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    width: auto !important;
+    width: 100% !important;
     height: auto !important;
     margin: 0 !important;
-    padding: 2rem !important;
+    padding: 0 !important;
   }
 
-  .temoignage-resp img {
-    width: 40rem !important;
+  .temoignage-respWhite {
+    width: 100% !important;
+  }
+
+  .temoignage-respWhite .trais {
+    height: 3.2rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 1rem !important  ;
+  }
+
+  .temoignage-resp-img {
+    padding: 1rem !important;
+    width: 100% !important;
+  }
+  .temoignage-resp-img img {
+    width: 100% !important;
+    border-radius: 10px !important;
+  }
+
+  .lome-terrain {
+    width: 100% !important;
   }
 
   .responsive {
@@ -617,11 +639,6 @@ Responsive Navbar CSS
     width: 100% !important;
   }
 
-  .one-ville img {
-    width: 100% !important;
-    height: 100% !important;
-  }
-
   .ville-reponsive {
     padding: 0 !important;
     margin: 0 !important;
@@ -643,6 +660,21 @@ Responsive Navbar CSS
   }
   .one-ville .ville-terrain-responsive img {
     width: 100% !important;
-    height: 100% !important;
+    max-height: 100% !important;
+    height: 24rem !important;
+  }
+
+  .input-contact-responsive {
+    width: 272px !important;
+  }
+
+  .footer-input {
+    display: flex !important;
+    width: 100% !important;
+  }
+
+  .footer-container {
+    flex-direction: column !important;
+    text-align: center !important;
   }
 }

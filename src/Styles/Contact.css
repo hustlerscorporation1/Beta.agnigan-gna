@@ -120,6 +120,12 @@
    RESPONSIVE DESIGN CONTACT - TOUS LES FORMATS
 ======================================== */
 
+@media screen and (max-width: 412px) {
+  .formulaire-contact {
+    margin-top: 30rem !important;
+  }
+}
+
 /* Mobile - Très petits écrans */
 @media (max-width: 480px) {
   .body-contact {

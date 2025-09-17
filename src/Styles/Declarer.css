@@ -3,3 +3,22 @@
   transform: scale(1.05);
   border: 1px solid #ffffff;
 }
+
+@media screen and (max-width: 413px) {
+  .responsive-title {
+    font-size: 40px !important;
+  }
+  .responsive-para {
+    font-size: 16px !important;
+  }
+
+  .footer-input {
+    display: flex !important;
+    width: 100% !important;
+  }
+
+  .footer-container {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+}

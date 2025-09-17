@@ -370,7 +370,7 @@ function Accueil() {
             <div className="temoignage-resp max-w-4xl mx-auto h-[370px] flex items-center bg-white shadow-lg rounded-lg overflow-hidden">
               {/* Texte */}
               <div className="w-1/2 p-8 temoignage-respWhite">
-                <div className="flex gap-2 temoignage-respWhite">
+                <div className="flex gap-2 ">
                   <div className="trais" style={{ background: "#146c54" }}>
                     .
                   </div>
@@ -391,7 +391,7 @@ function Accueil() {
               </div>
 
               {/* Image */}
-              <div className="w-1/2">
+              <div className="w-1/2 temoignage-resp-img ">
                 <img src={image} alt={name} className=" h-full w-full " />
               </div>
             </div>
@@ -570,13 +570,7 @@ function Accueil() {
               backgroundImage: `url(${heroContact})`,
             }}
           >
-            <div
-              className="contact-container bg-black bg-opacity-70 p-6 rounded-xl text-white w-80"
-              style={{
-                zIndex: 10,
-                backgroundColor: "#100e2c",
-              }}
-            >
+            <div className="contact-container bg-black bg-opacity-10 p-6 rounded-xl text-white w-80">
               <h2
                 className="text-lg font-bold mb-3"
                 style={{
@@ -591,19 +585,19 @@ function Accueil() {
               </p>
               <form className="flex flex-col gap-2">
                 <input
-                  className="px-3 py-2 rounded text-black"
+                  className="input-contact-responsive px-3 py-2 rounded text-black"
                   type="text"
                   placeholder="Votre nom"
                   required
                 />
                 <input
-                  className="px-3 py-2 rounded text-black"
+                  className="input-contact-responsive px-3 py-2 rounded text-black"
                   type="email"
                   placeholder="Votre Mail"
                   required
                 />
                 <input
-                  className="px-3 py-2 rounded text-black"
+                  className="input-contact-responsive px-3 py-2 rounded text-black"
                   type="text"
                   placeholder="Votre numéro whatsapp"
                   required
@@ -645,7 +639,7 @@ function Accueil() {
 
       {/* Footer */}
       <footer className=" bg-gray-900 justify-between text-gray-300 px-8 py-10 text-sm">
-        <div className=" flex justify-between info-footer md:grid-cols-4 gap-6 mb-6">
+        <div className="  flex justify-between info-footer md:grid-cols-4 gap-6 mb-6">
           <div>
             <h4 className="font-semibold mb-2">Horaires d'ouverture</h4>
             <p>Lun-Ven: 09:00 - 20:00</p>
@@ -698,19 +692,23 @@ function Accueil() {
             <h4>Newsletter</h4>
             <p>Abonnez-vous à notre newsletter</p>
             <div className="footer-input">
-              <input
-                type="email"
-                placeholder="Votre email"
-                className="px-3 py-1 rounded text-black"
-              />
-              <button className="sabonne bg-blue-600 px-3 py-1 rounded text-white">
-                S'abonner
-              </button>
+              <div>
+                <input
+                  type="email"
+                  placeholder="Votre email"
+                  className="px-3 py-1 rounded text-black"
+                />
+              </div>
+              <div>
+                <button className="sabonne bg-blue-600 px-3 py-1 rounded text-white">
+                  S'abonner
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-700 pt-4 flex justify-between items-center">
+        <div className="footer-container border-t border-gray-700 pt-4 flex justify-between items-center">
           <div className="logopartenaire">
             <img src={logopartenaire} alt="logopartenaire" />
           </div>

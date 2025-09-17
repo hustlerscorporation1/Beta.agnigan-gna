@@ -51,9 +51,9 @@ function Declarer() {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
         {/* Texte et boutons */}
-        <div className="relative z-10 flex flex-col items-center justify-center text-white h-full px-4 text-center">
+        <div className=" relative z-10 flex flex-col items-center justify-center text-white h-full px-4 text-center">
           <h1
-            className="text-4xl font-bold mb-7  "
+            className="responsive-title text-4xl font-bold mb-7  "
             style={{
               fontSize: "5rem",
             }}
@@ -62,7 +62,7 @@ function Declarer() {
             <br />
           </h1>
           <p
-            className=" mb-6 max-w-2xl  text-sm md:text-base"
+            className="responsive-para mb-6 max-w-2xl  text-sm md:text-base"
             style={{
               marginTop: "0.5rem",
               fontSize: "1.2rem",
@@ -130,7 +130,7 @@ function Declarer() {
         ))}
       </section>
       <footer className="bg-gray-900 text-gray-300 px-8 py-10 text-sm">
-        <div className="info-footer md:grid-cols-4 gap-6 mb-6">
+        <div className=" info-footer md:grid-cols-4 gap-6 mb-6">
           <div>
             <h4 className="font-semibold mb-2">Horaires d'ouverture</h4>
             <p>Lun-Ven: 09:00 - 20:00</p>
@@ -195,7 +195,7 @@ function Declarer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 pt-4 flex justify-between items-center">
+        <div className="footer-container border-t border-gray-700 pt-4 flex justify-between items-center">
           <div className="logopartenaire">
             <img src={logopartenaire} alt="logopartenaire" />
           </div>

@@ -4,7 +4,6 @@
 .leaflet-control-zoom {
   z-index: -1000 !important;
   margin-top: 1rem !important;
-
 }
 
 .containt-map {
@@ -69,6 +68,16 @@
 ======================================== */
 
 /* Mobile - Très petits écrans */
+
+@media screen and (max-width: 413px) {
+  .responsive-filter {
+    max-width: 60% !important;
+    height: auto !important;
+    margin-top: 1rem !important;
+    margin-left: 13rem;
+  }
+}
+
 @media (max-width: 480px) {
   .containt-map {
     height: 300px !important;
@@ -254,7 +263,7 @@
   .custom-marker {
     will-change: auto !important;
   }
-  
+
   .leaflet-zoom-animated .custom-marker {
     transition: none !important;
   }
