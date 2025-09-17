@@ -25,7 +25,7 @@
     background-color: rgb(246, 246, 246);
     flex-direction: column;
     width: auto;
-    height: auto;
+    height: auto !important;
   }
   .trais {
     margin-top: 0.5rem !important;
