@@ -82,22 +82,22 @@ function Contact() {
           <br />
           <form className="space-y-4">
             <input
-              className="w-full border px-4 py-2 rounded"
+              className="input-contact-responsive w-full border px-4 py-2 rounded"
               type="text"
               placeholder="Votre nom"
             />
             <input
-              className="w-full border px-4 py-2 rounded"
+              className="input-contact-responsive w-full border px-4 py-2 rounded"
               type="email"
               placeholder="Votre e-mail"
             />
             <input
-              className="w-full border px-4 py-2 rounded"
+              className="input-contact-responsive w-full border px-4 py-2 rounded"
               type="tel"
               placeholder="Votre numéro"
             />
             <textarea
-              className="w-full border px-4 py-2 rounded"
+              className=" input-contact-responsive w-full border px-4 py-2 rounded"
               placeholder="Votre message"
               rows="4"
             />
@@ -150,9 +150,9 @@ function Contact() {
 
             {/* <input className="border px-3 py-2 rounded" type="text" placeholder="Trouver une région" /> */}
 
-            <button className="ml-2 bg-green-600 text-white px-4 py-2 rounded">
+            {/* <button className="ml-2 bg-green-600 text-white px-4 py-2 rounded">
               RECHERCHE
-            </button>
+            </button> */}
           </div>
         </div>
 
@@ -309,7 +309,7 @@ function Contact() {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 pt-4 flex justify-between items-center">
+        <div className="footer-container border-t border-gray-700 pt-4 flex justify-between items-center">
           <div className="logopartenaire">
             <img src={logopartenaire} alt="logopartenaire" />
           </div>

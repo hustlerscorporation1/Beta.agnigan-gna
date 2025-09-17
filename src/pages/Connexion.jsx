@@ -6,6 +6,7 @@ import heroImage from "../images/hero-image.jpg";
 import Logo from "../images/LOGO_AGNIGBAN_GNA Trs Noir.png";
 import { Link } from "react-router-dom";
 import { supabase } from "../superbase/superbaseClient";
+import "../Styles/connexion.css";
 
 function App() {
   const navigate = useNavigate();
@@ -91,7 +92,7 @@ function App() {
         </div>
 
         <div
-          className="flex items-center mb-20"
+          className="desk flex items-center mb-20"
           style={{
             justifyContent: "space-between",
             gap: "16rem",
@@ -102,8 +103,7 @@ function App() {
             <input
               id="password"
               type="checkbox"
-              placeholder="eg: Pesn@s.p344"
-              className="w-full border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               style={{
                 width: "15px",
               }}
@@ -119,6 +119,30 @@ function App() {
               Mot de passe oublié
             </Link>
           </div>
+        </div>
+
+        {/* mobile */}
+        <div
+          className="souvenir-de-moi"
+          style={{
+            fontSize: "0.8rem",
+            width: "100%",
+          }}
+        >
+          <div className=" flex">
+            <div>
+              <input id="password" type="checkbox" className=" " />
+            </div>
+            <p>Se souvenir de moi</p>
+          </div>
+        </div>
+        <div>
+          <Link
+            to="/MotPasseOublier"
+            className="text-blue-600 font-medium underline"
+          >
+            Mot de passe oublié
+          </Link>
         </div>
 
         <p className="text-sm text-gray-500 mb-6">
@@ -247,6 +271,7 @@ function App() {
               textAlign: "left",
               marginBottom: "1rem",
             }}
+            className="repsponsive-para"
           >
             La plateforme de confiance ou tu peux retrouver tous les
             informations sur les terre togolaise et pour l'achat et la vente de

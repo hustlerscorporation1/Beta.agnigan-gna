@@ -38,12 +38,12 @@ const TerrainDetails = () => {
       <div className="max-w-6xl mx-auto p-6 ">
         {/* Header */}
         <div
-          className="flex justify-between items-center"
+          className="responsive-title-prie flex justify-between items-center"
           style={{
             marginTop: "100px",
           }}
         >
-          <div className="flex flex-col space-y-2">
+          <div className=" flex flex-col space-y-2">
             <div>
               <button
                 onClick={() => setOpen(true)}
@@ -62,6 +62,38 @@ const TerrainDetails = () => {
               250 000 000 Fcfa
             </p>
             <p className="text-sm mb- text-gray-400">100 000 Fcfa / m²</p>
+          </div>
+        </div>
+
+        {/* mobile */}
+        <div
+          className="responsive-title-mobile flex justify-between items-left"
+          style={{
+            marginTop: "100px",
+          }}
+        >
+          <div className=" containte-title flex flex-col space-y-2">
+            <div>
+              <button
+                onClick={() => setOpen(true)}
+                className="bg-green-500 text-white px-5 py-2 rounded-lg font-semibold hover:bg-green-600 shadow-md transition"
+              >
+                Acheter
+              </button>
+            </div>
+            <h2 className="title-titre text-2xl font-bold text-gray-800">
+              Terrain à Agoè – 400 m², Titre Foncier
+            </h2>
+            <p className="text-lg mb-3 text-gray-500">ID : 123423EDDT34TRY</p>
+          </div>
+          <div className="mb-[1rem]">
+            <p className="text-3xl font-bold text-blue-700 mt-2 mb-[0.5rem]">
+              250 000 000 Fcfa
+            </p>
+            <p className="text-sm mb- text-gray-400">
+              Commition sur le terrain :{" "}
+              <span className="font-bold text-black ">100 000 Fcfa / m²</span>
+            </p>
           </div>
         </div>
 
@@ -180,7 +212,7 @@ const TerrainDetails = () => {
         {/* Modal Formulaire */}
         {open && (
           <div
-            className="fixed inset-0 flex items-center justify-center bg-black/60 z-50"
+            className="fixed inset-0 flex items-center justify-center bg-black/60 overflow-y-auto mt-[5rem] z-50"
             style={{
               backdropFilter: "blur(5px)",
               animationDuration: "0.5s",
@@ -265,26 +297,22 @@ const TerrainDetails = () => {
           </h2>
 
           {/* Infos principales */}
-          <table className="w-full border border-gray-200 rounded-lg overflow-hidden">
-            <tbody className="divide-y mb-6 divide-gray-200 text-gray-700">
-              <tr className="mb-6">
-                <td className="bg-gray-50 font-semibold px-4 py-2">
-                  📍 Localisation
+          <table className="w-full border border-gray-200 rounded-lg mt-2">
+            <tbody className="divide-y divide-gray-200 text-gray-700">
+              <tr>
+                <td className="bg-gray-50 px-4 py-2">📍 Localisation</td>
+                <td className="px-4 py-2 text-blue-600 font-medium">
+                  Agoè, Lomé
                 </td>
-                <td className="px-4 py-2">Agoè, Lomé</td>
               </tr>
               <tr>
-                <td className="bg-gray-50 font-semibold px-4 py-2">
-                  📐 Superficie
-                </td>
-                <td className="px-4 py-2">400 m²</td>
+                <td className="bg-gray-50 px-4 py-2">📐 Superficie</td>
+                <td className="px-4 py-2 text-blue-600 font-medium">400 m²</td>
               </tr>
               <tr>
-                <td className="bg-gray-50 font-semibold px-4 py-2">
-                  📑 Statut
-                </td>
-                <td className="px-4 py-2 text-green-600 font-semibold">
-                  Titre foncier disponible
+                <td className="bg-gray-50 px-4 py-2">📑 Statut</td>
+                <td className="px-4 py-2 text-green-600 font-medium">
+                  Foncier disponible
                 </td>
               </tr>
             </tbody>
@@ -359,41 +387,32 @@ const TerrainDetails = () => {
 
           <div className="grid justify-between md:grid-cols-2 gap">
             {/* Tableau des infos */}
-            <table className="w-full border border-gray-200 rounded-lg overflow-hidden">
+            <table className="w-full border border-gray-200 rounded-lg mt-2">
               <tbody className="divide-y divide-gray-200 text-gray-700">
                 <tr>
-                  <td className="bg-gray-50 font-semibold px-[2rem] py-3">
-                    📍 Localisation
-                  </td>
-                  <td className="px-4 py-3">
+                  <td className="bg-gray-50 px-4 py-2"> Localisation</td>
+                  <td className="px-4 py-2 text-blue-600 font-medium">
                     À 5 min de la route principale – Zone calme et sécurisée
                   </td>
                 </tr>
+
                 <tr>
-                  <td className="bg-gray-50 font-semibold px-4 py-3">
-                    📐 Superficie
-                  </td>
-                  <td className="px-4 py-3">400 m²</td>
-                </tr>
-                <tr>
-                  <td className="bg-gray-50 font-semibold px-4 py-3">
-                    📑 Statut
-                  </td>
-                  <td className="px-4 py-3 text-green-600 font-semibold">
-                    Foncier disponible
+                  <td className="bg-gray-50 px-4 py-2"> Viabilisation</td>
+                  <td className="px-4 py-2 text-blue-600 font-medium">
+                    Eau, électricité, accès direct
                   </td>
                 </tr>
+
                 <tr>
-                  <td className="bg-gray-50 font-semibold px-4 py-3">
-                    ⚡ Viabilisation
+                  <td className="bg-gray-50 px-4 py-2">
+                    Belle vue / Terrain plat, Environnement calme et sécurisé
                   </td>
-                  <td className="px-4 py-3">Eau, électricité, accès direct</td>
+                  <td className="px-4 py-2 text-blue-600 font-medium">100%</td>
                 </tr>
+
                 <tr>
-                  <td className="bg-gray-50 font-semibold px-4 py-3">
-                    🏡 Usage
-                  </td>
-                  <td className="px-4 py-3">
+                  <td className="bg-gray-50 px-4 py-2"> Usage</td>
+                  <td className="px-4 py-2 text-blue-600 font-medium">
                     Résidentiel ou commercial (villa, appartements, bureaux,
                     commerce)
                   </td>
@@ -414,9 +433,9 @@ const TerrainDetails = () => {
           </div>
 
           {/* Call to Action */}
-          <div className="flex justify-between mt-6 ">
-            <div>
-              <button className="px-6 py-3 bg-green-600 hover:bg-blue-500 text-white font-bold rounded-lg shadow-lg transition duration-300">
+          <div className="button-info-demande flex justify-between mt-6 ">
+            <div className="">
+              <button className=" mb-3 px-6 py-3 bg-green-600 hover:bg-blue-500 text-white font-bold rounded-lg shadow-lg transition duration-300">
                 Demander plus d’infos
               </button>
             </div>
@@ -425,7 +444,7 @@ const TerrainDetails = () => {
                 onClick={() => setShow3D(true)}
                 className="px-6 py-3 bg-black text-white font-semibold rounded-lg shadow-md hover:bg-gray-800 transition"
               >
-                Voir en 3D
+                Voir en réel
               </button>
             </div>
           </div>
@@ -445,8 +464,8 @@ const TerrainDetails = () => {
 
         {/* --- Modal 3D --- */}
         {show3D && (
-          <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-            <div className="bg-white rounded-xl shadow-xl p-6 w-11/12 md:w-3/4 relative">
+          <div className=" fixed inset-0 bg-black/60 flex items-center justify-center overflow-y-auto z-50">
+            <div className="mt-[25rem] bg-white rounded-xl shadow-xl p-6 w-11/20 md:w-3/4  relative">
               <button
                 onClick={() => setShow3D(false)}
                 className="absolute top-3 right-3 text-gray-600 hover:text-red-600 text-xl"
@@ -564,7 +583,7 @@ const TerrainDetails = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 pt-4 flex justify-between items-center">
+        <div className="footer-container border-t border-gray-700 pt-4 flex justify-between items-center">
           <div className="logopartenaire">
             <img src={logopartenaire} alt="logopartenaire" />
           </div>
