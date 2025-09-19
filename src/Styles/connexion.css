@@ -23,3 +23,25 @@
     text-align: justify !important;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .desk {
+    display: none;
+  }
+  .souvenir-de-moi {
+    display: flex !important;
+  }
+
+  .carre-price-standard {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center !important;
+    margin-left: 0 !important;
+    width: 20rem;
+  }
+
+  .repsponsive-para {
+    text-align: justify !important;
+  }
+}

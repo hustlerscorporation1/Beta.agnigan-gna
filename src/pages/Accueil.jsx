@@ -34,6 +34,7 @@ import Slde from "../components/Slde";
 import VideoBackground from "../pages/VideoBackgroud";
 import { motion } from "framer-motion";
 import AnimationImage from "../components/AnimationImage.jsx";
+import FooterContaint from "../components/footerContaint.jsx";
 import { useNavigate } from "react-router-dom";
 import Typed from "typed.js";
 import Client1 from "../images/Client 1.jpg";
@@ -636,9 +637,11 @@ function Accueil() {
           </div>
         </div>
       </div>
+      <FooterContaint />
 
       {/* Footer */}
-      <footer className=" bg-gray-900 justify-between text-gray-300 px-8 py-10 text-sm">
+
+      {/* <footer className=" bg-gray-900 justify-between text-gray-300 px-8 py-10 text-sm">
         <div className="  flex justify-between info-footer md:grid-cols-4 gap-6 mb-6">
           <div>
             <h4 className="font-semibold mb-2">Horaires d'ouverture</h4>
@@ -736,7 +739,7 @@ function Accueil() {
             </div>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }

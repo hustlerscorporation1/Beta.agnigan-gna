@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import "../App";
 import "../Styles/Accueil.css";
+import "../Styles/CreeUnCompte.css";
 import heroImage from "../images/hero-image.jpg";
 import Logo from "../images/LOGO_AGNIGBAN_GNA Trs Noir.png";
 import { Link } from "react-router-dom";
 import { supabase } from "../superbase/superbaseClient";
+import "react-phone-input-2/lib/style.css";
+import PhoneInput from "react-phone-input-2";
 
 function App() {
   // ---------- STATES ----------
@@ -41,6 +44,7 @@ function App() {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.id]: e.target.value });
   };
+  const [phone, setPhone] = useState("");
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -125,6 +129,17 @@ function App() {
       console.error(err);
       alert("Erreur lors de la vérification: " + err.message);
     }
+
+    const [form, setForm] = useState({
+      phone: "",
+    });
+
+    const handleChange = (value) => {
+      setForm((prev) => ({
+        ...prev,
+        phone: value,
+      }));
+    };
   };
 
   // ---------- RENDER ----------
@@ -185,14 +200,40 @@ function App() {
           <label htmlFor="phone" className="text-sm font-medium text-gray-700">
             Numéro de téléphone
           </label>
-          <input
-            id="phone"
-            type="text"
-            placeholder="ex: +228 92 34 56 78"
-            className="w-full border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={form.phone}
-            onChange={handleChange}
-          />
+
+          <div className="flex gap-2">
+            {/* Sélecteur de pays avec drapeaux */}
+            <PhoneInput
+              country={"tg"} // 🇹🇬 Togo par défaut
+              value={form.countryCode}
+              onChange={(value, country) => {
+                setForm((prev) => ({
+                  ...prev,
+                  countryCode: `+${country.dialCode}`, // ex: +228
+                }));
+              }}
+              enableSearch={true} // permet de chercher un pays dans la liste
+              inputClass="!hidden" // on cache le champ input auto-généré
+              buttonClass="!border !border-gray-300 !rounded-md"
+              dropdownClass="!text-sm"
+            />
+
+            {/* Champ numéro local */}
+            <input
+              id="phone"
+              name="phone"
+              type="text"
+              placeholder="92 34 56 78"
+              className="w-full border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={form.phone}
+              onChange={handleChange}
+            />
+          </div>
+
+          {/* Pour afficher le numéro complet */}
+          <p className="text-xs text-gray-500 mt-1">
+            Numéro complet : {form.countryCode} {form.phone}
+          </p>
         </div>
 
         {/* EMAIL */}

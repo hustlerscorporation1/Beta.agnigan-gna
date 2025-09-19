@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "../superbase/superbaseClient";
 import "../App";
 import "../Styles/Accueil.css";
-import heroImage from "../images/hero-image.jpg";
-import Logo from "../images/LOGO_AGNIGBAN_GNA Trs Noir.png";
 import { FaCog, FaShoppingCart, FaTags, FaMapMarkedAlt } from "react-icons/fa";
 
 function App() {
@@ -13,6 +11,7 @@ function App() {
   const [activePage, setActivePage] = useState("evenements");
   const [activeTab, setActiveTab] = useState("tousTerrain");
 
+  // Récupérer utilisateur connecté
   useEffect(() => {
     const getUser = async () => {
       const {
@@ -22,7 +21,27 @@ function App() {
         navigate("/Connexion");
         return;
       }
-      setUser(user);
+
+      console.log("Utilisateur connecté :", user.id);
+      // Récupérer les infos depuis la table "profiles"
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", user.id)
+        .single();
+
+      if (error) {
+        console.error(error);
+      } else {
+        setUser({
+          id: user.id,
+          nom: data.nom || "",
+          prenom: data.prenom || "",
+          email: data.email || "",
+          telephone: data.telephone || "",
+          password: "", // ne jamais récupérer le mot de passe réel
+        });
+      }
     };
     getUser();
   }, [navigate]);
@@ -36,24 +55,70 @@ function App() {
     }
   };
 
+  // Gestion changement input
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // Sauvegarde les modifications
+  const handleSave = async (e) => {
+    e.preventDefault();
+    console.log("State user au moment de la sauvegarde :", user);
+
+    // Vérification mot de passe si besoin
+    if (user.password && user.password !== user.confirmPassword) {
+      alert("Les mots de passe ne correspondent pas !");
+      return;
+    }
+    // if (!user.id) {
+    //   alert(
+    //     "Impossible de mettre à jour le profil : ID utilisateur manquant !"
+    //   );
+    //   return;
+    // }
+
+    const phoneValue =
+      user.telephone && user.telephone.trim() !== ""
+        ? parseInt(user.telephone.replace(/\D/g, ""))
+        : null;
+
+    const mailValue =
+      user.email && user.telephone.trim() !== ""
+        ? parseInt(user.email.replace(/\D/g, ""))
+        : null;
+
+    const { error } = await supabase
+      .from("profiles")
+      .update({
+        first_name: user.nom || null,
+        last_name: user.prenom || null,
+        phone: phoneValue,
+        email: mailValue,
+      })
+
+      .eq("id", user.id);
+
+    if (error) alert("Erreur lors de la mise à jour : " + error.message);
+    else alert("Profil mis à jour !");
+  };
+
   const renderEvenements = () => {
     switch (activeTab) {
       case "tousTerrain":
         return (
           <p>
-            Voici la liste de <b>tous</b> Vos Terrain.
+            Voici la liste de <b>tous</b> vos terrains.
           </p>
         );
       case "encoursTerrain":
-        return <p>Voici la liste de tous vos demande .</p>;
-
+        return <p>Voici la liste de tous vos demandes en cours.</p>;
       case "avenirTerrain":
-        return <p>?????????????????.</p>;
-
+        return <p>Voici vos prochains terrains.</p>;
       case "passesTerrain":
         return (
           <p>
-            Voici la liste de tous vos demande <b>passés</b>.
+            Voici la liste de vos demandes <b>passées</b>.
           </p>
         );
       default:
@@ -64,9 +129,11 @@ function App() {
   const renderContent = () => {
     switch (activePage) {
       case "evenements":
+      case "paiements":
+      case "hotels":
         return (
           <div>
-            {/* Onglets de navigation */}
+            {/* Onglets */}
             <ul className="flex gap-3 border-b mb-4">
               <li>
                 <button
@@ -101,7 +168,7 @@ function App() {
                       : ""
                   }`}
                 >
-                  ????
+                  À venir
                 </button>
               </li>
               <li>
@@ -118,7 +185,7 @@ function App() {
               </li>
             </ul>
 
-            {/* Zone de recherche */}
+            {/* Recherche */}
             <div className="flex gap-2 bg-white p-4 rounded-xl shadow mb-4">
               <input
                 type="text"
@@ -130,151 +197,7 @@ function App() {
               </button>
             </div>
 
-            {/* Contenu selon l’onglet */}
-            <div className="mt-3">{renderEvenements()}</div>
-          </div>
-        );
-
-      case "paiements":
-        return (
-          <div>
-            {/* Onglets de navigation */}
-            <ul className="flex gap-3 border-b mb-4">
-              <li>
-                <button
-                  onClick={() => setActiveTab("tous")}
-                  className={`px-3 py-2 ${
-                    activeTab === "tous"
-                      ? "border-b-2 border-blue-600 font-semibold"
-                      : ""
-                  }`}
-                >
-                  Tous
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => setActiveTab("encours")}
-                  className={`px-3 py-2 ${
-                    activeTab === "encours"
-                      ? "border-b-2 border-blue-600 font-semibold"
-                      : ""
-                  }`}
-                >
-                  En cours
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => setActiveTab("avenir")}
-                  className={`px-3 py-2 ${
-                    activeTab === "avenir"
-                      ? "border-b-2 border-blue-600 font-semibold"
-                      : ""
-                  }`}
-                >
-                  ????
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => setActiveTab("passes")}
-                  className={`px-3 py-2 ${
-                    activeTab === "passes"
-                      ? "border-b-2 border-blue-600 font-semibold"
-                      : ""
-                  }`}
-                >
-                  Passés
-                </button>
-              </li>
-            </ul>
-
-            {/* Zone de recherche */}
-            <div className="flex gap-2 bg-white p-4 rounded-xl shadow mb-4">
-              <input
-                type="text"
-                placeholder="Rechercher..."
-                className="flex-1 border-none outline-none"
-              />
-              <button className="bg-yellow-400 px-4 py-2 rounded font-semibold">
-                Rechercher
-              </button>
-            </div>
-
-            {/* Contenu selon l’onglet */}
-            <div className="mt-3">{renderEvenements()}</div>
-          </div>
-        );
-
-      case "hotels":
-        return (
-          <div>
-            {/* Onglets de navigation */}
-            <ul className="flex gap-3 border-b mb-4">
-              <li>
-                <button
-                  onClick={() => setActiveTab("tous")}
-                  className={`px-3 py-2 ${
-                    activeTab === "tous"
-                      ? "border-b-2 border-blue-600 font-semibold"
-                      : ""
-                  }`}
-                >
-                  Tous
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => setActiveTab("encours")}
-                  className={`px-3 py-2 ${
-                    activeTab === "encours"
-                      ? "border-b-2 border-blue-600 font-semibold"
-                      : ""
-                  }`}
-                >
-                  En cours
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => setActiveTab("avenir")}
-                  className={`px-3 py-2 ${
-                    activeTab === "avenir"
-                      ? "border-b-2 border-blue-600 font-semibold"
-                      : ""
-                  }`}
-                >
-                  ?????
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => setActiveTab("passes")}
-                  className={`px-3 py-2 ${
-                    activeTab === "passes"
-                      ? "border-b-2 border-blue-600 font-semibold"
-                      : ""
-                  }`}
-                >
-                  Passés
-                </button>
-              </li>
-            </ul>
-
-            {/* Zone de recherche */}
-            <div className="flex gap-2 bg-white p-4 rounded-xl shadow mb-4">
-              <input
-                type="text"
-                placeholder="Rechercher..."
-                className="flex-1 border-none outline-none"
-              />
-              <button className="bg-yellow-400 px-4 py-2 rounded font-semibold">
-                Rechercher
-              </button>
-            </div>
-
-            {/* Contenu selon l’onglet */}
+            {/* Contenu */}
             <div className="mt-3">{renderEvenements()}</div>
           </div>
         );
@@ -283,118 +206,128 @@ function App() {
         return (
           <div>
             <p className="mb-2">Modifiez vos informations :</p>
-            <form className="space-y-3">
+            <form
+              className="space-y-3"
+              onSubmit={handleSave} // directement handleSave reçoit l'événement
+            >
               <div className="flex gap-[5rem]">
                 {/* Nom */}
                 <div>
                   <label
                     className="block mt-5 mb-2 text-sm font-medium"
-                    style={{
-                      color: "#000000",
-                    }}
+                    style={{ color: "#000000" }}
                   >
                     Nom
                   </label>
                   <input
                     type="text"
-                    className=" border rounded px-2 py-1"
-                    defaultValue="ADOBOE"
+                    name="nom"
+                    className="border rounded px-2 py-1"
+                    value={user?.nom || ""}
+                    onChange={handleChange}
                   />
                 </div>
-                {/* Prenom */}
+
+                {/* Prénom */}
                 <div>
                   <label
                     className="block mt-5 mb-2 text-sm font-medium"
-                    style={{
-                      color: "#000000",
-                    }}
+                    style={{ color: "#000000" }}
                   >
                     Prénom
                   </label>
                   <input
                     type="text"
-                    className=" border rounded px-2 py-1"
-                    defaultValue="Comlan Julien"
+                    name="prenom"
+                    className="border rounded px-2 py-1"
+                    value={user?.prenom || ""}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
-              <div className="flex gap-[5rem] ">
-                {/* Mail */}
+
+              <div className="flex gap-[5rem]">
+                {/* Email */}
                 <div>
                   <label
                     className="block mt-5 mb-2 text-sm font-medium"
-                    style={{
-                      color: "#000000ff",
-                    }}
+                    style={{ color: "#000000ff" }}
                   >
                     Email
                   </label>
                   <input
                     type="email"
-                    className=" border rounded px-2 py-1"
-                    defaultValue="julien@example.com"
+                    name="email"
+                    className="border rounded px-2 py-1"
+                    value={user?.email || ""}
+                    onChange={handleChange} // maintenant modifiable
                   />
                 </div>
 
-                {/* numero */}
+                {/* Téléphone */}
                 <div>
                   <label
                     className="block mt-5 mb-2 text-sm font-medium"
-                    style={{
-                      color: "#000000",
-                    }}
+                    style={{ color: "#000000" }}
                   >
                     Numéro de Téléphone
                   </label>
                   <input
                     type="text"
-                    className=" border rounded px-2 py-1"
-                    defaultValue="228 70 14 61 80"
+                    name="telephone"
+                    className="border rounded px-2 py-1"
+                    value={user?.telephone || ""}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
 
-              <div className="flex gap-[5rem] ">
-                {/* Mail */}
+              <div className="flex gap-[5rem]">
+                {/* Mot de passe */}
                 <div>
                   <label
                     className="block mt-5 mb-2 text-sm font-medium"
-                    style={{
-                      color: "#000000ff",
-                    }}
+                    style={{ color: "#000000ff" }}
                   >
                     Mot de passe
                   </label>
                   <input
                     type="password"
-                    className=" border rounded px-2 py-1"
-                    defaultValue="ZaDFF0;303@"
+                    name="password"
+                    className="border rounded px-2 py-1"
+                    value={user?.password || ""}
+                    onChange={handleChange}
                   />
                 </div>
 
-                {/* numero */}
+                {/* Confirmer mot de passe */}
                 <div>
                   <label
                     className="block mt-5 mb-2 text-sm font-medium"
-                    style={{
-                      color: "#000000",
-                    }}
+                    style={{ color: "#000000" }}
                   >
-                    Confirmer Mot de pas
+                    Confirmer Mot de passe
                   </label>
                   <input
                     type="password"
-                    className=" border rounded px-2 py-1"
-                    defaultValue=""
+                    name="confirmPassword"
+                    className="border rounded px-2 py-1"
+                    value={user?.confirmPassword || ""}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
-              <button className="bg-green-600 mt-5 text-white px-4 py-2 rounded">
+
+              <button
+                type="submit"
+                className="bg-green-600 mt-5 text-white px-4 py-2 rounded"
+              >
                 Enregistrer
               </button>
             </form>
           </div>
         );
+
       case "logout":
         return (
           <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded">
@@ -408,16 +341,12 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* Main */}
       <div
         className="flex flex-1"
-        style={{
-          marginTop: "6rem",
-          fontSize: "1.2rem",
-        }}
+        style={{ marginTop: "6rem", fontSize: "1.2rem" }}
       >
         {/* Sidebar */}
-        <aside className="w-[350px] bg-white border-r p-4  flex flex-col gap-3">
+        <aside className="w-[350px] bg-white border-r p-4 flex flex-col gap-3">
           <button
             onClick={() => setActivePage("evenements")}
             className={`flex items-center gap-2 px-4 mt-4 py-2 rounded text-left ${
@@ -453,7 +382,7 @@ function App() {
             className={`flex items-center gap-2 px-4 py-2 rounded text-left ${
               activePage === "parametres"
                 ? "bg-green-700 text-white"
-                : "hover:bg-gray-100 "
+                : "hover:bg-gray-100"
             }`}
           >
             <FaCog className="h-6 w-6 text-black-500" /> Paramètres
@@ -473,19 +402,17 @@ function App() {
         <main className="flex-1 p-6">
           <h2
             className="font-bold text-red-600 text-xl mb-4"
-            style={{
-              fontSize: "23px",
-            }}
+            style={{ fontSize: "23px" }}
           >
             {activePage === "evenements"
               ? "Mes Terrains"
               : activePage === "paiements"
               ? "Mes Achat"
               : activePage === "hotels"
-              ? "Mes Vents"
+              ? "Mes Ventes"
               : activePage === "parametres"
               ? "Paramètres"
-              : "Déconnexion"}
+              : "Déconnexion "}
           </h2>
           <div>{renderContent()}</div>
         </main>

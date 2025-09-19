@@ -164,3 +164,48 @@
     text-align: center !important;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .formulaire-contact {
+    margin-top: 8rem !important;
+    width: 100% !important;
+  }
+  .contact-info {
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.8rem;
+    margin-left: 1rem;
+  }
+  .search-locate {
+    display: flex;
+    margin-top: 3rem !important;
+  }
+  .map-container {
+    margin: 0 !important;
+  }
+
+  .para-bureaux {
+    max-width: 100% !important;
+  }
+  .para-bureaux p {
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important;
+    text-align: justify;
+  }
+  .bureau {
+    flex-direction: column !important;
+    margin-top: 4rem;
+  }
+  .input-contact-responsive {
+    width: 272px !important;
+  }
+  .footer-input {
+    display: flex !important;
+    width: 100% !important;
+  }
+
+  .footer-container {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+}

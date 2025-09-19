@@ -678,3 +678,235 @@ Responsive Navbar CSS
     text-align: center !important;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .title-hero {
+    font-size: 60px !important;
+    margin-top: 26rem !important;
+  }
+  .hero-para {
+    font-size: 18px !important;
+    margin-top: 2rem !important;
+  }
+  .appli-button {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    margin-top: 2rem !important;
+  }
+  .description-container {
+    display: none;
+  }
+
+  .container-recherche {
+    gap: 1rem !important ;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    margin-top: 3rem !important;
+    padding: 2rem !important;
+    height: auto !important;
+  }
+
+  .icon-adjustment {
+    display: none !important;
+  }
+
+  .container-recherche select,
+  input,
+  .input-container-search {
+    width: 20rem !important;
+  }
+
+  .appstore {
+    width: 11rem !important;
+    padding: 0.5rem !important;
+  }
+
+  .button-recherche {
+    width: 14rem !important;
+    padding: 0.5rem !important;
+  }
+
+  .section-veddete {
+    flex-direction: column !important;
+    height: auto !important;
+    gap: 2rem !important;
+    padding: 2rem !important;
+  }
+
+  .valeur {
+    justify-content: left !important;
+    margin-left: 1rem !important;
+    width: 98% !important;
+  }
+
+  .valeur-title h2 {
+    font-size: 33px !important;
+    margin-top: 6rem !important;
+    margin-bottom: 2rem !important;
+    width: 100% !important;
+  }
+  .trais {
+    margin-top: 6rem !important;
+    height: 6.6rem !important;
+  }
+  .paragraph-veddete {
+    font-size: 16px !important;
+    margin-top: 1rem !important;
+    text-align: justify;
+    margin: 0 !important;
+  }
+  .cercle-container {
+    display: flex !important;
+    gap: 1rem !important;
+    margin: 0 !important;
+  }
+  .qodef-row-overlapping-text {
+    position: absolute !important;
+    margin-top: 30rem !important;
+    font-weight: 800;
+    left: 0rem !important;
+    margin-left: 0.8rem !important;
+    font-size: 120px !important;
+    color: #ffe600fc;
+  }
+
+  .section-satisfaction-image {
+    flex-direction: column !important;
+    height: auto !important;
+    gap: 2rem !important;
+    padding: 0rem !important;
+  }
+
+  .section-satisfaction-image {
+    width: 100% !important;
+  }
+  .section-satisfaction-image img {
+    width: 100% !important;
+    height: auto !important;
+    margin-left: 0rem !important;
+  }
+
+  .title-satisfaction {
+    margin-left: 0rem !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .satisfaction {
+    gap: 1rem !important;
+  }
+
+  .satisfaction .trais {
+    left: 1rem !important;
+    margin: 0 !important;
+  }
+
+  .title-satisfaction h3 {
+    text-align: left !important;
+    width: 90% !important;
+    font-size: 2rem !important;
+  }
+
+  .title-satisfaction p {
+    width: 100% !important;
+    text-align: left !important;
+  }
+  .background-black {
+    padding: 20px !important;
+  }
+
+  .temoignage-resp {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .temoignage-respWhite {
+    width: 100% !important;
+  }
+
+  .temoignage-respWhite .trais {
+    height: 3.2rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 1rem !important  ;
+  }
+
+  .temoignage-resp-img {
+    padding: 1rem !important;
+    width: 100% !important;
+  }
+  .temoignage-resp-img img {
+    width: 100% !important;
+    border-radius: 10px !important;
+  }
+
+  .lome-terrain {
+    width: 100% !important;
+  }
+
+  .responsive {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 2rem !important;
+  }
+
+  .responsive img {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .one-ville {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .ville-reponsive {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  .two-ville {
+    flex-direction: column !important;
+    gap: 2rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  .ville-terrain-responsive {
+    max-width: 100% !important;
+  }
+  .one-ville .ville-terrain-responsive {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .one-ville .ville-terrain-responsive img {
+    width: 100% !important;
+    max-height: 100% !important;
+    height: 24rem !important;
+  }
+
+  .input-contact-responsive {
+    width: 272px !important;
+  }
+
+  .footer-input {
+    display: flex !important;
+    width: 100% !important;
+  }
+
+  .footer-container {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+}

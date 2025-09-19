@@ -35,3 +35,37 @@
     text-align: center !important;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .responsive-title-prie {
+    display: none !important;
+  }
+
+  .responsive-title-mobile {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .title-titre {
+    font-size: 1.5rem !important;
+  }
+
+  .containte-title {
+    justify-content: left !important;
+    text-align: left !important;
+  }
+
+  .button-info-demande {
+    flex-direction: column !important;
+  }
+
+  .footer-input {
+    display: flex !important;
+    width: 100% !important;
+  }
+
+  .footer-container {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+}

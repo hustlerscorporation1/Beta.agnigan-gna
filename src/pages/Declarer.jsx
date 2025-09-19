@@ -4,6 +4,7 @@ import "../Styles/Declarer.css";
 import AnimationImage from "../components/AnimationImage.jsx";
 import heroImage from "../images/hero-image.jpg";
 import { useNavigate } from "react-router-dom";
+import FooterContaint from "../components/footerContaint";
 import logopartenaire from "../images/Logo_Hustler_AN-removebg-preview.png";
 import {
   FaMapMarkerAlt,
@@ -48,7 +49,7 @@ function Declarer() {
         style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}
       >
         {/* Overlay sombre pour le contraste du texte */}
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
 
         {/* Texte et boutons */}
         <div className=" relative z-10 flex flex-col items-center justify-center text-white h-full px-4 text-center">
@@ -65,12 +66,13 @@ function Declarer() {
             className="responsive-para mb-6 max-w-2xl  text-sm md:text-base"
             style={{
               marginTop: "0.5rem",
-              fontSize: "1.2rem",
+              fontSize: "1rem",
+              width: "80",
             }}
           >
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe
-            neque facilis pariatur iure nulla quidem sed numquam temporibus
-            molestias.
+            Trouvez le terrain qui vous correspond, avec des informations
+            claires et vérifiées. Chaque annonce est soigneusement contrôlée
+            pour vous offrir transparence et fiabilité dans vos choix.
           </p>
 
           <div>
@@ -129,101 +131,8 @@ function Declarer() {
           </div>
         ))}
       </section>
-      <footer className="bg-gray-900 text-gray-300 px-8 py-10 text-sm">
-        <div className=" info-footer md:grid-cols-4 gap-6 mb-6">
-          <div>
-            <h4 className="font-semibold mb-2">Horaires d'ouverture</h4>
-            <p>Lun-Ven: 09:00 - 20:00</p>
-            <p>Sam-Dim: 09:00 - 14:00</p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-2">Trouvez-nous</h4>
-            <p>8011 CDD, quartier Tokoin Wuiti</p>
-            <p>MD 20743</p>
-            <p>hustlerscorporation1@gmail.com</p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-2">Property</h4>
-            <p>
-              <a href="./propriete">Terrain Lot 1</a>
-            </p>
-            <p>
-              <a href="./propriete">Terrain Lot 2</a>
-            </p>
-            <p>
-              <a href="./propriete">Terrain Lot 3</a>
-            </p>
-            <p>
-              <a href="./propriete">Terrain Lot 4</a>
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-2">Liens</h4>
-            <p>
-              <a href="/">Accueil</a>
-            </p>
-            <p>
-              <a href="/Propriete">Vérifier</a>
-            </p>
-            <p>
-              <a href="/declarer">Acheter</a>
-            </p>
-            <p>
-              <a href="/Apropos">À propos</a>
-            </p>
-            <p>
-              <a href="/Contact">Contact</a>
-            </p>
-          </div>
-
-          <div className="newsletter gap-2">
-            <h4>Newsletter</h4>
-            <p>Abonnez-vous à notre newsletter</p>
-            <div className="footer-input">
-              <input
-                type="email"
-                placeholder="Votre email"
-                className="px-3 py-1 rounded text-black"
-              />
-              <button className="sabonne bg-blue-600 px-3 py-1 rounded text-white">
-                S'abonner
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div className="footer-container border-t border-gray-700 pt-4 flex justify-between items-center">
-          <div className="logopartenaire">
-            <img src={logopartenaire} alt="logopartenaire" />
-          </div>
-          <p> © Copyright Hustlers 2025. Conception de hustlers cooperation</p>
-          <div className="footer-reseau-sociaux">
-            <div>
-              <a href="">
-                <FaFacebook />
-              </a>
-            </div>
-            <div>
-              <a href="">
-                <FaLinkedin size={20} />
-              </a>
-            </div>
-            <div>
-              <a href="">
-                <FaInstagram />
-              </a>
-            </div>
-            <div>
-              <a href="">
-                <SiTiktok />
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {/* Footer */}
+      <FooterContaint />
     </div>
   );
 }

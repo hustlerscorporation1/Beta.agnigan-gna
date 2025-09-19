@@ -16,6 +16,8 @@ import ProcederAchat from "./pages/ProcedeAchat";
 import MotPasseOublier from "./pages/MotePasseOublier";
 import CreeUnCompte from "./pages/CreeUnCompte";
 import Profil from "./pages/Profil";
+import footerContaint from "./components/footerContaint";
+
 import ChatBot from "./components/ChatBot";
 
 import AuthCallback from "./pages/AuthCallback";
