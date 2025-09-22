@@ -15,6 +15,14 @@ import {
   FaSearch,
   FaLinkedin,
 } from "react-icons/fa";
+import { XMarkIcon, FunnelIcon } from "@heroicons/react/24/outline";
+// ---------------------------------------------------------------------------
+import { FaMap, FaGlobeAfrica } from "react-icons/fa";
+import { MdLocationOn } from "react-icons/md";
+import { HiOutlineLocationMarker } from "react-icons/hi";
+import { GiWorld } from "react-icons/gi";
+// -------------------------------------------------------------------------
+
 import { SiTiktok } from "react-icons/si";
 import { HiAdjustmentsHorizontal } from "react-icons/hi2";
 import { FaArrowRight } from "react-icons/fa";
@@ -42,6 +50,7 @@ import Client2 from "../images/Client 2.jpg";
 import { useMediaQuery } from "react-responsive";
 
 function Accueil() {
+  const [showFilter, setShowFilter] = useState(true);
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/Dectailletairrain");
@@ -160,7 +169,7 @@ function Accueil() {
         style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}
       >
         {/* Overlay sombre pour le contraste du texte */}
-        <div className="absolute inset-0 bg-black bg-opacity-50 w-full h-[640px] border-radius-[60px]"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-30 w-full h-[640px] border-radius-[60px]"></div>
 
         {/* Texte et boutons */}
         <div className="containt-element relative z-10 flex flex-col items-center justify-center text-white h-full px-4 text-center">
@@ -194,34 +203,74 @@ function Accueil() {
 
           {/* Formulaire de recherche */}
           <div className="bg-white rounded-xl shadow-lg p-4 w-full max-w-4xl flex justify-center items-center gap-4  container-recherche">
-            <div className="input-container-search">
-              <input
-                className="border border-gray-300 rounded-md px-3 py-2 w-full sm:w-auto"
-                placeholder="Entrez vôtre zone précise"
+            <div
+              className="relative flex items-center input-container-search"
+              style={{ width: "fit-content" }}
+            >
+              {/* Icône à l'intérieur de l'input */}
+              <GiWorld
+                className="absolute left-3 top-1/2 transform -translate-y-1/2"
                 style={{
-                  width: "169px",
-                  color: "#0000",
+                  color: "#0000008f",
+                  pointerEvents: "none", // pour que les clics passent à l'input
+                }}
+              />
+
+              <input
+                className="border border-gray-300 rounded-md pl-10 pr-3 py-2 w-full sm:w-auto"
+                placeholder="Entrez votre zone précise"
+                style={{
+                  width: "200px",
+                  color: "#000", // Assure que le texte est visible
                 }}
               />
             </div>
-            <div>
+            <div className="relative w-fit">
+              {/* Icône positionnée à l'intérieur */}
+              <FaMap
+                className="absolute left-3 top-1/2 transform -translate-y-1/2"
+                style={{
+                  color: "#0000008f",
+                  pointerEvents: "none",
+                  fontSize: "16px",
+                }}
+              />
+
               <select
-                className="border border-gray-300 rounded-md px-3 py-2 w-full sm:w-auto"
+                className="border border-gray-300 rounded-md pl-10 pr-3 py-2 w-full sm:w-auto"
                 defaultValue=""
+                style={{ width: "220px" }}
               >
+                <option value="" disabled hidden>
+                  Choisir un type de terrain
+                </option>
                 <option>Terrain résidentiel</option>
                 <option>Terrain nu</option>
-                <option>Terrain Commercial</option>
-                <option>Terrain agricol</option>
+                <option>Terrain commercial</option>
+                <option>Terrain agricole</option>
                 <option>Terrain industriel</option>
                 <option>Terrain avec bâtiment existant</option>
               </select>
             </div>
-            <div>
+            <div className="relative w-fit">
+              {/* Icône placée à gauche dans le champ */}
+              <MdLocationOn
+                className="absolute left-3 top-1/2 transform -translate-y-1/2"
+                style={{
+                  color: "#0000008f",
+                  pointerEvents: "none",
+                  fontSize: "18px",
+                }}
+              />
+
               <select
-                className="border border-gray-300 rounded-md px-3 py-2 w-full sm:w-auto"
-                placeholder="Emplacement"
+                className="border border-gray-300 rounded-md pl-10 pr-3 py-2 w-full sm:w-auto"
+                defaultValue=""
+                style={{ width: "200px" }}
               >
+                <option value="" disabled hidden>
+                  Choisir une région
+                </option>
                 <option>Maritime</option>
                 <option>Plateaux</option>
                 <option>Central</option>
@@ -230,11 +279,74 @@ function Accueil() {
               </select>
             </div>
 
-            <div className="icon-adjustment">
-              <button className="text-2xl text-gray-700 hover:text-black">
-                {/* <FaSlidersH /> */}
-                <HiAdjustmentsHorizontal className="search-icon" />
+            <div className="">
+              <button
+                onClick={() => setShowFilter(!showFilter)}
+                className="relative  z-50 p-2 rounded-full bg-white shadow hover:bg-gray-100 "
+              >
+                {showFilter ? (
+                  <XMarkIcon className="h-6 w-6 text-gray-600" />
+                ) : (
+                  <FunnelIcon className="h-6 w-6 text-gray-600" />
+                )}
               </button>
+              {/* -----------------------------------le pop formulaire ------------------------ */}
+              {showFilter && (
+                <div
+                  className="responsive-filter max-w-sm h-[auto] p-4 bg-white rounded-2xl shadow-lg border absolute "
+                  style={{ zIndex: "1000" }}
+                >
+                  <h2
+                    className="text-lg mt-4 font-semibold text-red-700 mb-4"
+                    style={{
+                      fontSize: "20px",
+                    }}
+                  >
+                    PLUS DE PRECISION
+                  </h2>
+
+                  <form
+                    onSubmit={(e) => e.preventDefault()}
+                    className="space-y-7 w-[100%]"
+                  >
+                    {/* recherche par Nom du proprietaire  */}
+                    <div className="w-[100%]">
+                      <input
+                        className="border border-gray-300 rounded-md pl-4 pr-3 py-2 w-full sm:w-auto"
+                        placeholder="Nom du propriétaire"
+                        style={{
+                          width: "100%",
+                          color: "#000",
+                        }}
+                      />
+                    </div>
+
+                    {/* Zone  */}
+                    <div className="w-[100%]">
+                      <input
+                        className="border border-gray-300 rounded-md pl-4 pr-3 py-2 w-full sm:w-auto"
+                        placeholder="Proche de ..../"
+                        style={{
+                          width: "100%",
+                          color: "#000",
+                        }}
+                      />
+                    </div>
+
+                    {/* Commune */}
+                    <div className="w-[100%]">
+                      <input
+                        className="border border-gray-300 rounded-md pl-4 pr-3 py-2 w-full sm:w-auto"
+                        placeholder="Statut du terrain"
+                        style={{
+                          width: "100%",
+                          color: "#000",
+                        }}
+                      />
+                    </div>
+                  </form>
+                </div>
+              )}
             </div>
 
             <div>
@@ -637,109 +749,9 @@ function Accueil() {
           </div>
         </div>
       </div>
-      <FooterContaint />
 
       {/* Footer */}
-
-      {/* <footer className=" bg-gray-900 justify-between text-gray-300 px-8 py-10 text-sm">
-        <div className="  flex justify-between info-footer md:grid-cols-4 gap-6 mb-6">
-          <div>
-            <h4 className="font-semibold mb-2">Horaires d'ouverture</h4>
-            <p>Lun-Ven: 09:00 - 20:00</p>
-            <p>Sam-Dim: 09:00 - 14:00</p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-2">Trouvez-nous</h4>
-            <p>8011 CDD, quartier Tokoin Wuiti</p>
-            <p>MD 20743</p>
-            <p>hustlerscorporation1@gmail.com</p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-2">Property</h4>
-            <p>
-              <a href="./propriete">Terrain Lot 1</a>
-            </p>
-            <p>
-              <a href="./propriete">Terrain Lot 2</a>
-            </p>
-            <p>
-              <a href="./propriete">Terrain Lot 3</a>
-            </p>
-            <p>
-              <a href="./propriete">Terrain Lot 4</a>
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-2">Liens</h4>
-            <p>
-              <a href="/">Accueil</a>
-            </p>
-            <p>
-              <a href="/Propriete">Vérifier</a>
-            </p>
-            <p>
-              <a href="/declarer">Acheter</a>
-            </p>
-            <p>
-              <a href="/Apropos">À propos</a>
-            </p>
-            <p>
-              <a href="/Contact">Contact</a>
-            </p>
-          </div>
-
-          <div className="newsletter gap-2">
-            <h4>Newsletter</h4>
-            <p>Abonnez-vous à notre newsletter</p>
-            <div className="footer-input">
-              <div>
-                <input
-                  type="email"
-                  placeholder="Votre email"
-                  className="px-3 py-1 rounded text-black"
-                />
-              </div>
-              <div>
-                <button className="sabonne bg-blue-600 px-3 py-1 rounded text-white">
-                  S'abonner
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="footer-container border-t border-gray-700 pt-4 flex justify-between items-center">
-          <div className="logopartenaire">
-            <img src={logopartenaire} alt="logopartenaire" />
-          </div>
-          <p> © Copyright Hustlers 2025. Conception de hustlers cooperation</p>
-          <div className="footer-reseau-sociaux">
-            <div>
-              <a href="">
-                <FaFacebook />
-              </a>
-            </div>
-            <div>
-              <a href="">
-                <FaLinkedin size={20} />
-              </a>
-            </div>
-            <div>
-              <a href="">
-                <FaInstagram />
-              </a>
-            </div>
-            <div>
-              <a href="">
-                <SiTiktok />
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer> */}
+      <FooterContaint />
     </div>
   );
 }
