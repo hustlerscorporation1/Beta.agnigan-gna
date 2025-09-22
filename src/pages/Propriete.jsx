@@ -10,7 +10,12 @@ import {
   Polygon,
   useMap,
 } from "react-leaflet";
-import { getRegions, getPrefectures, getCommunes, getTerritoryData } from "../data/togoTerritories";
+import {
+  getRegions,
+  getPrefectures,
+  getCommunes,
+  getTerritoryData,
+} from "../data/togoTerritories";
 import { getTerritoryPolygon } from "../data/togoPolygons";
 
 import "leaflet/dist/leaflet.css";
@@ -691,7 +696,7 @@ function Propriete() {
   // Composant pour contrôler la carte
   const MapController = ({ center, zoom, bounds }) => {
     const map = useMap();
-    
+
     React.useEffect(() => {
       if (bounds) {
         map.fitBounds(bounds, { padding: [20, 20] });
@@ -699,7 +704,7 @@ function Propriete() {
         map.setView(center, zoom);
       }
     }, [map, center, zoom, bounds]);
-    
+
     return null;
   };
 
@@ -709,7 +714,7 @@ function Propriete() {
     setSelectedRegion(region);
     setSelectedPrefecture("");
     setSelectedCommune("");
-    
+
     if (region) {
       const territoryData = getTerritoryData(region);
       if (territoryData && mapRef.current) {
@@ -722,7 +727,7 @@ function Propriete() {
     const prefecture = e.target.value;
     setSelectedPrefecture(prefecture);
     setSelectedCommune("");
-    
+
     if (prefecture && selectedRegion) {
       const territoryData = getTerritoryData(selectedRegion, prefecture);
       if (territoryData && mapRef.current) {
@@ -734,9 +739,13 @@ function Propriete() {
   const handleCommuneChange = (e) => {
     const commune = e.target.value;
     setSelectedCommune(commune);
-    
+
     if (commune && selectedRegion && selectedPrefecture) {
-      const territoryData = getTerritoryData(selectedRegion, selectedPrefecture, commune);
+      const territoryData = getTerritoryData(
+        selectedRegion,
+        selectedPrefecture,
+        commune
+      );
       if (territoryData && mapRef.current) {
         mapRef.current.setView(territoryData.center, territoryData.zoom);
       }
@@ -746,7 +755,11 @@ function Propriete() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (selectedRegion || selectedPrefecture || selectedCommune) {
-      const territoryData = getTerritoryData(selectedRegion, selectedPrefecture, selectedCommune);
+      const territoryData = getTerritoryData(
+        selectedRegion,
+        selectedPrefecture,
+        selectedCommune
+      );
       if (territoryData && mapRef.current) {
         mapRef.current.setView(territoryData.center, territoryData.zoom);
       }
@@ -764,139 +777,294 @@ function Propriete() {
 
   const { BaseLayer } = LayersControl;
 
+  // Icône personnalisé type "GPS"
   const customDivIcon = L.divIcon({
     html: `
-    <div class="custom-marker w-[12.5px] h-[12.5px] bg-red-600 rounded-full border-2 border-white shadow-md"></div>
-  `,
+      <div class="relative flex items-center justify-center">
+        <!-- Cercle extérieur -->
+        <div class="w-3 h-3 bg-[#7A94A4] rounded-full border border-white flex items-center justify-center">
+          <!-- Cercle intérieur -->
+          <div class="w-1 h-1 bg-white rounded-full"></div>
+        </div>
+      </div>
+    `,
     className: "",
-    iconSize: [24, 24],
-    iconAnchor: [12, 12],
+    iconSize: [12, 12], // taille totale
+    iconAnchor: [6, 6], // centre exact
   });
 
   return (
-    <div className="">
+    <div className="min-h-screen overflow-x-hidden">
       {/* Main Content */}
-      <div className="">
-        <div className="relative flex flex-col w-full lg:grid-cols-3 gap-8 top-20">
+      <div className="relative">
+        <div className="relative flex flex-col w-full h-screen pt-20">
           {/* search content */}
 
           {/* Icône toggle */}
           <button
             onClick={() => setShowFilter(!showFilter)}
-            className="absolute top-3 right-3 z-50 p-2 rounded-full bg-white shadow hover:bg-gray-100 "
-            style={{ zIndex: "1001", marginRight: "20px", marginTop: "30px" }}
+            className="flex items-center justify-center fixed top-[7rem] right-[5rem] z-50 p-3  bg-gradient-to-br from-white to-gray-50 shadow-xl hover:shadow-2xl border border-gray-200 hover:border-blue-300 transition-all duration-300 transform hover:scale-110 group"
+            style={{
+              zIndex: "1001",
+              borderRadius: "100%",
+              width: "3rem",
+              height: "3rem",
+            }}
           >
             {showFilter ? (
-              <XMarkIcon className="h-6 w-6 text-gray-600" />
+              <XMarkIcon className="h-6 w-6 text-gray-600 group-hover:text-red-500 transition-colors duration-300" />
             ) : (
-              <FunnelIcon className="h-6 w-6 text-gray-600" />
+              <FunnelIcon className="h-6 w-6 text-gray-600 group-hover:text-blue-500 transition-colors duration-300" />
             )}
           </button>
 
           {showFilter && (
             <div
-              className="responsive-filter max-w-sm h-[390px] p-4 bg-white rounded-2xl shadow-lg border absolute right-6 top-12"
+              className="fixed top-[10rem] right-[4rem] w-80 max-w-[calc(100vw-2rem)] p-4 bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-2xl border border-gray-200 backdrop-blur-sm max-h-[calc(100vh-12rem)] overflow-y-auto"
               style={{ zIndex: "1000" }}
             >
-              <h2 className="text-lg font-semibold text-gray-700 mb-4">
-                Zoomer sur un territoire
-              </h2>
+              <div className="flex items-center mb-4">
+                {/* <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mr-2"></div> */}
+                <h2 className="text-lg font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+                  Explorer le Togo
+                </h2>
+              </div>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Région */}
-                <div>
-                  <label className="block text-gray-600 text-sm font-medium mb-1">
+                <div className="relative">
+                  <label className="block text-gray-700 text-sm font-semibold mb-2 flex items-center">
+                    {/* <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span> */}
                     Régions
                   </label>
-                  <select 
-                    value={selectedRegion}
-                    onChange={handleRegionChange}
-                    className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                  >
-                    <option value="">-- Choisir une région --</option>
-                    {getRegions().map((region) => (
-                      <option key={region} value={region}>
-                        {region}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={selectedRegion}
+                      onChange={handleRegionChange}
+                      className="w-full border-2 border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none transition-all duration-300 bg-white shadow-sm hover:shadow-md appearance-none cursor-pointer"
+                    >
+                      <option value="">🌍 Sélectionner une région</option>
+                      {getRegions().map((region) => (
+                        <option key={region} value={region}>
+                          📍 {region}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
+                      <svg
+                        className="w-5 h-5 text-gray-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Préfecture */}
-                <div>
-                  <label className="block text-gray-600 text-sm font-medium mb-1">
+                <div className="relative">
+                  <label className="block text-gray-700 text-sm font-semibold mb-2 flex items-center">
+                    {/* <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span> */}
                     Préfectures
                   </label>
-                  <select 
-                    value={selectedPrefecture}
-                    onChange={handlePrefectureChange}
-                    disabled={!selectedRegion}
-                    className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100"
-                  >
-                    <option value="">-- Choisir une préfecture --</option>
-                    {selectedRegion && getPrefectures(selectedRegion).map((prefecture) => (
-                      <option key={prefecture} value={prefecture}>
-                        {prefecture}
+                  <div className="relative">
+                    <select
+                      value={selectedPrefecture}
+                      onChange={handlePrefectureChange}
+                      disabled={!selectedRegion}
+                      className="w-full border-2 border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 focus:outline-none transition-all duration-300 bg-white shadow-sm hover:shadow-md appearance-none cursor-pointer disabled:bg-gray-50 disabled:text-gray-400 disabled:cursor-not-allowed"
+                    >
+                      <option value="">
+                        {selectedRegion
+                          ? "🏛️ Choisir une préfecture"
+                          : "⏳ Sélectionnez d'abord une région"}
                       </option>
-                    ))}
-                  </select>
+                      {selectedRegion &&
+                        getPrefectures(selectedRegion).map((prefecture) => (
+                          <option key={prefecture} value={prefecture}>
+                            🏢 {prefecture}
+                          </option>
+                        ))}
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
+                      <svg
+                        className="w-5 h-5 text-gray-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Commune */}
-                <div>
-                  <label className="block text-gray-600 text-sm font-medium mb-1">
+                <div className="relative">
+                  <label className="block text-gray-700 text-sm font-semibold mb-2 flex items-center">
+                    {/* <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span> */}
                     Communes
                   </label>
-                  <select 
-                    value={selectedCommune}
-                    onChange={handleCommuneChange}
-                    disabled={!selectedPrefecture}
-                    className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100"
-                  >
-                    <option value="">-- Choisir une commune --</option>
-                    {selectedRegion && selectedPrefecture && getCommunes(selectedRegion, selectedPrefecture).map((commune) => (
-                      <option key={commune} value={commune}>
-                        {commune}
+                  <div className="relative">
+                    <select
+                      value={selectedCommune}
+                      onChange={handleCommuneChange}
+                      disabled={!selectedPrefecture}
+                      className="w-full border-2 border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500 focus:outline-none transition-all duration-300 bg-white shadow-sm hover:shadow-md appearance-none cursor-pointer disabled:bg-gray-50 disabled:text-gray-400 disabled:cursor-not-allowed"
+                    >
+                      <option value="">
+                        {selectedPrefecture
+                          ? "🏘️ Choisir une commune"
+                          : "⏳ Sélectionnez d'abord une préfecture"}
                       </option>
-                    ))}
-                  </select>
+                      {selectedRegion &&
+                        selectedPrefecture &&
+                        getCommunes(selectedRegion, selectedPrefecture).map(
+                          (commune) => (
+                            <option key={commune} value={commune}>
+                              🏠 {commune}
+                            </option>
+                          )
+                        )}
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
+                      <svg
+                        className="w-5 h-5 text-gray-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Boutons */}
-                <div className="flex gap-2">
+                <div className="flex gap-2 pt-2">
                   <button
                     type="submit"
-                    className="flex-1 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700 transition"
+                    className="flex-1 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold text-sm rounded-xl shadow-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center"
                   >
-                    Valider
+                    <svg
+                      className="w-4 h-4 mr-1.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                      />
+                    </svg>
+                    Explorer
                   </button>
                   <button
                     type="button"
                     onClick={handleReset}
-                    className="flex-1 py-2 bg-gray-500 text-white font-semibold rounded-lg shadow hover:bg-gray-600 transition"
+                    className="flex-1 py-2.5 bg-gradient-to-r from-gray-500 to-gray-600 text-white font-semibold text-sm rounded-xl shadow-lg hover:from-gray-600 hover:to-gray-700 transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center"
                   >
-                    Réinitialiser
+                    <svg
+                      className="w-4 h-4 mr-1.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                      />
+                    </svg>
+                    Reset
                   </button>
                 </div>
+
+                {/* Indicateur de sélection */}
+                {(selectedRegion || selectedPrefecture || selectedCommune) && (
+                  <div className="mt-3 p-2.5 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl border border-green-200">
+                    <div className="text-xs font-medium text-green-800 mb-1">
+                      Sélection actuelle :
+                    </div>
+                    <div className="text-xs text-green-600 flex flex-wrap gap-1">
+                      {selectedRegion && (
+                        <span className="inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full text-xs">
+                          📍 {selectedRegion}
+                        </span>
+                      )}
+                      {selectedPrefecture && (
+                        <span className="inline-block bg-green-100 text-green-800 px-2 py-0.5 rounded-full text-xs">
+                          🏢 {selectedPrefecture}
+                        </span>
+                      )}
+                      {selectedCommune && (
+                        <span className="inline-block bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full text-xs">
+                          🏠 {selectedCommune}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                )}
               </form>
             </div>
           )}
 
           {/* Map */}
-          <div className="w-full lg:col-span-2 h-[100%] rounded-lg overflow-hidden shadow-lg">
+          <div className="w-full h-full">
             <MapContainer
               center={[8.6195, 0.8248]}
               zoom={7}
-              style={{ height: "100vh", width: "100%" }}
+              style={{ height: "100%", width: "100%" }}
               ref={mapRef}
             >
-              <MapController 
-                center={selectedRegion || selectedPrefecture || selectedCommune ? 
-                  getTerritoryData(selectedRegion, selectedPrefecture, selectedCommune)?.center : null}
-                zoom={selectedRegion || selectedPrefecture || selectedCommune ? 
-                  getTerritoryData(selectedRegion, selectedPrefecture, selectedCommune)?.zoom : null}
-                bounds={selectedRegion || selectedPrefecture || selectedCommune ? 
-                  getTerritoryData(selectedRegion, selectedPrefecture, selectedCommune)?.bounds : null}
+              <MapController
+                center={
+                  selectedRegion || selectedPrefecture || selectedCommune
+                    ? getTerritoryData(
+                        selectedRegion,
+                        selectedPrefecture,
+                        selectedCommune
+                      )?.center
+                    : null
+                }
+                zoom={
+                  selectedRegion || selectedPrefecture || selectedCommune
+                    ? getTerritoryData(
+                        selectedRegion,
+                        selectedPrefecture,
+                        selectedCommune
+                      )?.zoom
+                    : null
+                }
+                bounds={
+                  selectedRegion || selectedPrefecture || selectedCommune
+                    ? getTerritoryData(
+                        selectedRegion,
+                        selectedPrefecture,
+                        selectedCommune
+                      )?.bounds
+                    : null
+                }
               />
               <LayersControl position="bottomleft" className="bg-gray-100">
                 {/* Fond de carte OpenStreetMap */}
@@ -916,18 +1084,25 @@ function Propriete() {
               </LayersControl>
 
               {/* Polygones des territoires */}
-              {selectedRegion && (() => {
-                const polygon = getTerritoryPolygon(selectedRegion, selectedPrefecture);
-                if (polygon) {
-                  return (
-                    <Polygon
-                      positions={polygon.coordinates[0].map(coord => [coord[1], coord[0]])}
-                      pathOptions={polygon.style}
-                    />
+              {selectedRegion &&
+                (() => {
+                  const polygon = getTerritoryPolygon(
+                    selectedRegion,
+                    selectedPrefecture
                   );
-                }
-                return null;
-              })()}
+                  if (polygon) {
+                    return (
+                      <Polygon
+                        positions={polygon.coordinates[0].map((coord) => [
+                          coord[1],
+                          coord[0],
+                        ])}
+                        pathOptions={polygon.style}
+                      />
+                    );
+                  }
+                  return null;
+                })()}
 
               {/* Ajout des propriétés */}
               {properties.map((property) => (
