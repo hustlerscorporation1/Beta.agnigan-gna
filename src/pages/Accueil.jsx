@@ -50,7 +50,7 @@ import Client2 from "../images/Client 2.jpg";
 import { useMediaQuery } from "react-responsive";
 
 function Accueil() {
-  const [showFilter, setShowFilter] = useState(true);
+  const [showFilter, setShowFilter] = useState(false);
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/Dectailletairrain");
@@ -293,7 +293,7 @@ function Accueil() {
               {/* -----------------------------------le pop formulaire ------------------------ */}
               {showFilter && (
                 <div
-                  className="responsive-filter max-w-sm h-[auto] p-4 bg-white rounded-2xl shadow-lg border absolute "
+                  className=" max-w-sm h-[auto] p-4 bg-white rounded-2xl shadow-lg border absolute "
                   style={{ zIndex: "1000" }}
                 >
                   <h2
