@@ -122,7 +122,7 @@ function App() {
         </div>
 
         {/* mobile */}
-        <div
+        {/* <div
           className="souvenir-de-moi"
           style={{
             fontSize: "0.8rem",
@@ -135,15 +135,15 @@ function App() {
             </div>
             <p>Se souvenir de moi</p>
           </div>
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <Link
             to="/MotPasseOublier"
             className="text-blue-600 font-medium underline"
           >
             Mot de passe oublié
           </Link>
-        </div>
+        </div> */}
 
         <p className="text-sm text-gray-500 mb-6">
           Vous n’avez pas de compte ?{" "}
