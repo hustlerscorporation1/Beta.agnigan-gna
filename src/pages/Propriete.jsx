@@ -1034,7 +1034,7 @@ function Propriete() {
             <MapContainer
               center={[8.6195, 0.8248]}
               zoom={7}
-              style={{ height: "100%", width: "100%" }}
+              style={{ height: "100vh", width: "100%" }}
               ref={mapRef}
             >
               <MapController
