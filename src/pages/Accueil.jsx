@@ -297,9 +297,11 @@ function Accueil() {
                   style={{ zIndex: "1000" }}
                 >
                   <h2
-                    className="text-lg mt-4 font-semibold text-red-700 mb-4"
+                    className="text-lg mt-4 font-semibold text-green-700 mb-4"
                     style={{
                       fontSize: "20px",
+
+                      fontWeight: "800",
                     }}
                   >
                     PLUS DE PRECISION

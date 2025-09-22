@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "../Styles/Propriete.css";
 import "../Styles/Accueil.css";
 import {
@@ -7,9 +7,14 @@ import {
   Marker,
   Popup,
   LayersControl,
+  Polygon,
+  useMap,
 } from "react-leaflet";
+import { getRegions, getPrefectures, getCommunes, getTerritoryData } from "../data/togoTerritories";
+import { getTerritoryPolygon } from "../data/togoPolygons";
 
 import "leaflet/dist/leaflet.css";
+import L from "leaflet";
 import heroImage from "../images/hero-image.jpg";
 import "leaflet/dist/leaflet.css";
 import { useNavigate } from "react-router-dom";
@@ -298,14 +303,7 @@ function Propriete() {
       acteur: "Tchamba – Centrale",
       coordinates: [9.145064, 1.410804],
     },
-    {
-      id: 41,
-      image: heroImage,
-      title: "Labante Yendouma",
-      price: "Titre Foncier : En cours",
-      acteur: "Bafilo – Kara",
-      coordinates: [9.921823, 1.384957],
-    },
+
     {
       id: 42,
       image: heroImage,
@@ -685,38 +683,83 @@ function Propriete() {
     },
   ];
 
-  const [region, setRegion] = useState("");
-  const [prefecture, setPrefecture] = useState("");
-  const [commune, setCommune] = useState("");
+  const [selectedRegion, setSelectedRegion] = useState("");
+  const [selectedPrefecture, setSelectedPrefecture] = useState("");
+  const [selectedCommune, setSelectedCommune] = useState("");
+  const mapRef = useRef(null);
 
-  // Données simplifiées du Togo
-  const regions = {
-    Maritime: {
-      Golfe: ["Lomé Commune", "Aflao-Sagbado", "Aflao-Gakli"],
-      Avé: ["Avé 1", "Avé 2", "Avé 3"],
-      Lacs: ["Aného", "Lacs 1", "Lacs 2"],
-    },
-    Plateaux: {
-      Agou: ["Agou 1", "Agou 2"],
-      Kloto: ["Kpalimé", "Kloto 1", "Kloto 2"],
-    },
-    Kara: {
-      Kozah: ["Kara Commune", "Pya"],
-      Bassar: ["Kabou", "Bassar Ville"],
-    },
-    Centrale: {
-      Tchamba: ["Tchamba 1", "Tchamba 2"],
-      Sotouboua: ["Sotouboua Ville", "Sotouboua Rurale"],
-    },
-    Savanes: {
-      Tone: ["Dapaong", "Tone 1", "Tone 2"],
-      Cinkassé: ["Cinkassé Ville", "Cinkassé Rurale"],
-    },
+  // Composant pour contrôler la carte
+  const MapController = ({ center, zoom, bounds }) => {
+    const map = useMap();
+    
+    React.useEffect(() => {
+      if (bounds) {
+        map.fitBounds(bounds, { padding: [20, 20] });
+      } else if (center && zoom) {
+        map.setView(center, zoom);
+      }
+    }, [map, center, zoom, bounds]);
+    
+    return null;
+  };
+
+  // Gestion des sélections
+  const handleRegionChange = (e) => {
+    const region = e.target.value;
+    setSelectedRegion(region);
+    setSelectedPrefecture("");
+    setSelectedCommune("");
+    
+    if (region) {
+      const territoryData = getTerritoryData(region);
+      if (territoryData && mapRef.current) {
+        mapRef.current.setView(territoryData.center, territoryData.zoom);
+      }
+    }
+  };
+
+  const handlePrefectureChange = (e) => {
+    const prefecture = e.target.value;
+    setSelectedPrefecture(prefecture);
+    setSelectedCommune("");
+    
+    if (prefecture && selectedRegion) {
+      const territoryData = getTerritoryData(selectedRegion, prefecture);
+      if (territoryData && mapRef.current) {
+        mapRef.current.setView(territoryData.center, territoryData.zoom);
+      }
+    }
+  };
+
+  const handleCommuneChange = (e) => {
+    const commune = e.target.value;
+    setSelectedCommune(commune);
+    
+    if (commune && selectedRegion && selectedPrefecture) {
+      const territoryData = getTerritoryData(selectedRegion, selectedPrefecture, commune);
+      if (territoryData && mapRef.current) {
+        mapRef.current.setView(territoryData.center, territoryData.zoom);
+      }
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Région: ${region}, Préfecture: ${prefecture}, Commune: ${commune}`);
+    if (selectedRegion || selectedPrefecture || selectedCommune) {
+      const territoryData = getTerritoryData(selectedRegion, selectedPrefecture, selectedCommune);
+      if (territoryData && mapRef.current) {
+        mapRef.current.setView(territoryData.center, territoryData.zoom);
+      }
+    }
+  };
+
+  const handleReset = () => {
+    setSelectedRegion("");
+    setSelectedPrefecture("");
+    setSelectedCommune("");
+    if (mapRef.current) {
+      mapRef.current.setView([8.6195, 0.8248], 7);
+    }
   };
 
   const { BaseLayer } = LayersControl;
@@ -759,14 +802,23 @@ function Propriete() {
                 Zoomer sur un territoire
               </h2>
 
-              <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Région */}
                 <div>
                   <label className="block text-gray-600 text-sm font-medium mb-1">
                     Régions
                   </label>
-                  <select className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    <option>-- Choisir une région --</option>
+                  <select 
+                    value={selectedRegion}
+                    onChange={handleRegionChange}
+                    className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  >
+                    <option value="">-- Choisir une région --</option>
+                    {getRegions().map((region) => (
+                      <option key={region} value={region}>
+                        {region}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
@@ -775,8 +827,18 @@ function Propriete() {
                   <label className="block text-gray-600 text-sm font-medium mb-1">
                     Préfectures
                   </label>
-                  <select className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100">
-                    <option>-- Choisir une préfecture --</option>
+                  <select 
+                    value={selectedPrefecture}
+                    onChange={handlePrefectureChange}
+                    disabled={!selectedRegion}
+                    className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100"
+                  >
+                    <option value="">-- Choisir une préfecture --</option>
+                    {selectedRegion && getPrefectures(selectedRegion).map((prefecture) => (
+                      <option key={prefecture} value={prefecture}>
+                        {prefecture}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
@@ -785,18 +847,37 @@ function Propriete() {
                   <label className="block text-gray-600 text-sm font-medium mb-1">
                     Communes
                   </label>
-                  <select className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100">
-                    <option>-- Choisir une commune --</option>
+                  <select 
+                    value={selectedCommune}
+                    onChange={handleCommuneChange}
+                    disabled={!selectedPrefecture}
+                    className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100"
+                  >
+                    <option value="">-- Choisir une commune --</option>
+                    {selectedRegion && selectedPrefecture && getCommunes(selectedRegion, selectedPrefecture).map((commune) => (
+                      <option key={commune} value={commune}>
+                        {commune}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
-                {/* Bouton */}
-                <button
-                  type="submit"
-                  className="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700 transition"
-                >
-                  Valider
-                </button>
+                {/* Boutons */}
+                <div className="flex gap-2">
+                  <button
+                    type="submit"
+                    className="flex-1 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700 transition"
+                  >
+                    Valider
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleReset}
+                    className="flex-1 py-2 bg-gray-500 text-white font-semibold rounded-lg shadow hover:bg-gray-600 transition"
+                  >
+                    Réinitialiser
+                  </button>
+                </div>
               </form>
             </div>
           )}
@@ -807,7 +888,16 @@ function Propriete() {
               center={[8.6195, 0.8248]}
               zoom={7}
               style={{ height: "100vh", width: "100%" }}
+              ref={mapRef}
             >
+              <MapController 
+                center={selectedRegion || selectedPrefecture || selectedCommune ? 
+                  getTerritoryData(selectedRegion, selectedPrefecture, selectedCommune)?.center : null}
+                zoom={selectedRegion || selectedPrefecture || selectedCommune ? 
+                  getTerritoryData(selectedRegion, selectedPrefecture, selectedCommune)?.zoom : null}
+                bounds={selectedRegion || selectedPrefecture || selectedCommune ? 
+                  getTerritoryData(selectedRegion, selectedPrefecture, selectedCommune)?.bounds : null}
+              />
               <LayersControl position="bottomleft" className="bg-gray-100">
                 {/* Fond de carte OpenStreetMap */}
                 <BaseLayer checked name="OpenStreetMap">
@@ -824,6 +914,20 @@ function Propriete() {
                   <TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" />
                 </BaseLayer>
               </LayersControl>
+
+              {/* Polygones des territoires */}
+              {selectedRegion && (() => {
+                const polygon = getTerritoryPolygon(selectedRegion, selectedPrefecture);
+                if (polygon) {
+                  return (
+                    <Polygon
+                      positions={polygon.coordinates[0].map(coord => [coord[1], coord[0]])}
+                      pathOptions={polygon.style}
+                    />
+                  );
+                }
+                return null;
+              })()}
 
               {/* Ajout des propriétés */}
               {properties.map((property) => (
