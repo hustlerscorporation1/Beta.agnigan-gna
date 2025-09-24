@@ -174,7 +174,7 @@ function Accueil() {
         {/* Texte et boutons */}
         <div className="containt-element relative z-10 flex flex-col items-center justify-center text-white h-full px-4 text-center">
           <h1 className="text-4xl font-bold mb-4 title-hero">
-            Anyigbã nya
+            Agnigban Gna
             <br />
           </h1>
           <p className="hero-para mb-6 max-w-2xl text-sm md:text-base">
@@ -282,7 +282,7 @@ function Accueil() {
             <div className="">
               <button
                 onClick={() => setShowFilter(!showFilter)}
-                className="relative  z-50 p-2 rounded-full bg-white shadow hover:bg-gray-100 "
+                className="relative z-50 p-2 rounded-full bg-white shadow hover:bg-gray-100 "
               >
                 {showFilter ? (
                   <XMarkIcon className="h-6 w-6 text-gray-600" />
