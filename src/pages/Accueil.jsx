@@ -103,7 +103,8 @@ function Accueil() {
     },
     {
       titre: "Vendre un Terrain",
-      texte: "Décrivez clairement votre terrain pour trouver l’acheteur idéal ",
+      texte:
+        "Décrivez clairement votre terrain pour trouver l’acheteur idéal. ",
       bouton: "Vendre",
     },
   ];
