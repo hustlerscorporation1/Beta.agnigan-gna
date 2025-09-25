@@ -4,10 +4,11 @@ import "../Styles/Accueil.css";
 
 // Importe tes images ici
 import image1 from "../images/Hero-agnigban_gna.jpg";
-import image2 from "../images/Aneho.jpg";
-import image3 from "../images/LOGO_AGNIGBAN_GNA Trs Noir.png";
+import image2 from "../images/Terrain-dans-n'importe-quelle-localité(4).jpg";
+import image3 from "../images/Terrains-Agricols-(2).jpg";
+import image4 from "../images/implantation du projet sur le terrain_.jpeg";
 
-const images = [image1, image2, image3]; // Ajoute ici toutes tes images
+const images = [image1, image2, image3, image4];
 
 // Animation combinée : slide + scale + opacity
 const slideVariants = {
