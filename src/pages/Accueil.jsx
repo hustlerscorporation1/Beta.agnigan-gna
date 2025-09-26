@@ -178,10 +178,10 @@ function Accueil() {
             Agnigban Gna
             <br />
           </h1>
-          <p className="hero-para mb-6 max-w-2xl text-sm md:text-base">
+          {/* <p className="hero-para mb-6 max-w-2xl text-sm md:text-base">
             Obtenir des informations fiables sur les titres fonciers des
             terrains au Togo et choisir celle qui s'adapte à votre style de vie.
-          </p>
+          </p> */}
           <div className="appli-button">
             <div className="store">
               <button className="appstore" onClick={VerifierAchete}>

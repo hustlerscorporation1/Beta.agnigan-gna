@@ -34,32 +34,34 @@ body {
   justify-content: center;
   gap: 0.1rem !important;
   gap: 1rem !important;
-  margin-top: rem;
+  margin-top: 11rem;
   margin-right: 1rem;
   width: 100% !important;
 }
 .store {
-  width: 12rem;
+  width: 15rem;
   height: 3rem;
 }
 .play {
-  width: 12.5rem;
+  width: 15rem;
   height: 3rem;
 }
 
 .playstore {
+  padding: 25px !important;
   border: 1px solid #fff !important;
   background-color: transparent !important;
   color: #fff !important;
-  padding: 0.5rem 1rem !important;
+  font-size: 18px !important;
   border-radius: 9999px !important;
   transition: background-color 0.3s ease !important;
 }
 .appstore {
+  padding: 25px !important;
   border: 1px solid #00000000 !important;
   background-color: #ffe500 !important;
   color: #000000 !important;
-  padding: 0.5rem 1rem !important;
+  font-size: 18px !important;
   border-radius: 9999px !important;
 }
 
@@ -86,7 +88,7 @@ body {
   padding: 10px;
   gap: 0.4rem;
   margin-left: 40rem;
-  margin-top: 22rem;
+  margin-top: 30rem;
   border-radius: 5px;
 }
 
