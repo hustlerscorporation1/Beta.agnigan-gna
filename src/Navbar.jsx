@@ -5,7 +5,7 @@ import { FaDownload, FaBars, FaTimes, FaUser } from "react-icons/fa";
 import { supabase } from "./superbase/superbaseClient";
 
 import "./Styles/Navbar.css";
-import Logo from "./images/LOGO_AGNIGBAN_GNA Trs Noir.png";
+import Logo from "./images/LOGO_AGNIGBAN_GNA Trs Noir2 (2).png";
 import AppStore from "./images/Nappe mariage - Passion Décor.jpeg";
 import PlayStore from "./images/Google Play Badge Logo - PNG Logo Vector Brand Downloads (SVG, EPS).jpeg";
 import PlayButton from "./images/Play_Button_free_icons_designed_by_Freepik-removebg-preview.png";
@@ -78,7 +78,7 @@ export default function Navbar() {
           <img
             src={Logo}
             alt="logo"
-            style={{ width: "150px", height: "auto" }}
+            style={{ width: "80px", height: "auto", marginLeft: "2rem" }}
           />
         </a>
       </div>
