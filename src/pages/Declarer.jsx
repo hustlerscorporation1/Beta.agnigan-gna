@@ -49,10 +49,10 @@ function Declarer() {
         style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}
       >
         {/* Overlay sombre pour le contraste du texte */}
-        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-45"></div>
 
         {/* Texte et boutons */}
-        <div className=" relative z-10 flex flex-col items-center justify-center text-white h-full px-4 text-center">
+        <div className=" relative z-10 flex flex-col gap-[10rem] items-center justify-center text-white h-full px-4 text-center">
           <h1
             className="responsive-title text-4xl font-bold mb-7  "
             style={{
@@ -62,18 +62,6 @@ function Declarer() {
             Acheter en toute confiance
             <br />
           </h1>
-          <p
-            className="responsive-para mb-6 max-w-2xl  text-sm md:text-base"
-            style={{
-              marginTop: "0.5rem",
-              fontSize: "1rem",
-              width: "80",
-            }}
-          >
-            Trouvez le terrain qui vous correspond, avec des informations
-            claires et vérifiées. Chaque annonce est soigneusement contrôlée
-            pour vous offrir transparence et fiabilité dans vos choix.
-          </p>
 
           <div>
             <button

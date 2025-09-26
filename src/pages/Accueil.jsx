@@ -170,7 +170,7 @@ function Accueil() {
         style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}
       >
         {/* Overlay sombre pour le contraste du texte */}
-        <div className="absolute inset-0 bg-black bg-opacity-30 w-full h-[640px] border-radius-[60px]"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-45 w-full h-[640px] border-radius-[60px]"></div>
 
         {/* Texte et boutons */}
         <div className="containt-element relative z-10 flex flex-col items-center justify-center text-white h-full px-4 text-center">

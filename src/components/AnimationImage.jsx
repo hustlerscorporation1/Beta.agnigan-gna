@@ -11,9 +11,9 @@ import image4 from "../images/Terrains-avec-maison-(3).jpg";
 const images = [image1, image2, image3, image4];
 const texts = [
   "Obtenir des informations fiables sur les titres fonciers des terrains au Togo et choisir celle qui s'adapte à votre style de vie.",
-  "Vous possédez une terre agricole à vendre ou cherchez un espace pour vos projets agricoles ? Notre plateforme vous connecte directement aux acheteurs et vendeurs sérieux, avec toutes les informations nécessaires pour une transaction sécurisée.",
-  "Que vous souhaitiez mettre en vente une maison déjà bâtie ou acheter un terrain avec une construction existante, trouvez facilement des opportunités fiables et adaptées à vos besoins, validées par nos équipes.",
-  "De Lomé à cinkassé, recherchez des terrains sur tout le territoire Togolais. Notre solution vous offre une visibilité nationale et facilite vos recherches où que vous soyez et où que vous souhaitez etre.",
+  "De Lomé à Cinkassé, trouvez votre terrain idéal partout au Togo. Notre solution vous offre une visibilité nationale, facilitant vos recherches où que vous soyez.",
+  "Notre plateforme met directement en relation acheteurs et vendeurs de terres agricoles. Vous trouvez toutes les informations essentielles pour concrétiser vos projets de manière simple et sérieuse.",
+  "Maison bâtie ou terrain avec construction, trouvez facilement des opportunités fiables et validées. Notre plateforme vous garantit des acheteurs adaptées à vos besoins.",
 ];
 
 // Animation combinée : slide + scale + opacity
@@ -109,7 +109,7 @@ const AnimationImage = () => {
             fontSize: "20px",
             maxWidth: "60%",
             textAlign: "center",
-            zIndex: "10000",
+            zIndex: "10",
             padding: "10px",
             borderRadius: "8px",
           }}

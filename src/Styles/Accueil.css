@@ -36,15 +36,16 @@ body {
   gap: 1rem !important;
   margin-top: 11rem;
   margin-right: 1rem;
+  z-index: 10000;
   width: 100% !important;
 }
 .store {
   width: 15rem;
-  height: 3rem;
+  height: 2rem;
 }
 .play {
   width: 15rem;
-  height: 3rem;
+  height: 2rem;
 }
 
 .playstore {
@@ -52,8 +53,9 @@ body {
   border: 1px solid #fff !important;
   background-color: transparent !important;
   color: #fff !important;
-  font-size: 18px !important;
+  font-size: 17px !important;
   border-radius: 9999px !important;
+  font-weight: bold;
   transition: background-color 0.3s ease !important;
 }
 .appstore {
@@ -61,21 +63,22 @@ body {
   border: 1px solid #00000000 !important;
   background-color: #ffe500 !important;
   color: #000000 !important;
-  font-size: 18px !important;
+  font-size: 17px !important;
   border-radius: 9999px !important;
+  font-weight: bold;
 }
 
 .playstore:hover {
   background-color: #ffe500 !important;
   color: #000 !important;
   border: 1px solid #00000000 !important;
-  font-weight: bold;
+  font-weight: 300;
 }
 .appstore:hover {
   background-color: #ffe60000 !important;
   color: #ffffff !important;
   border: 1px solid #ffffff !important;
-  font-weight: bold;
+  font-weight: 300;
 }
 
 .description-container {
