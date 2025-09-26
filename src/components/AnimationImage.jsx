@@ -6,7 +6,7 @@ import "../Styles/Accueil.css";
 import image1 from "../images/Hero-agnigban_gna.jpg";
 import image2 from "../images/Terrain-dans-n'importe-quelle-localité(4).jpg";
 import image3 from "../images/Terrains-Agricols-(2).jpg";
-import image4 from "../images/implantation du projet sur le terrain_.jpeg";
+import image4 from "../images/Terrains-avec-maison-(3).jpg";
 
 const images = [image1, image2, image3, image4];
 
