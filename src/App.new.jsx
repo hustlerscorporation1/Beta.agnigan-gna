@@ -2,22 +2,17 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ROUTES } from './config/constants';
 
-// New Pages
+// Pages
 import Home from './pages/Home';
+import Properties from './pages/Properties';
 import About from './pages/About';
-import Contact from './pages/Contact/index';
+import Contact from './pages/Contact';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
 import ForgotPassword from './pages/Auth/ForgotPassword';
 import Profile from './pages/Auth/Profile';
 
-// Properties page with map
-import PropertiesWithMap from './pages/Properties/PropertiesWithMap';
-
-// Property Detail (new)
-import PropertyDetail from './pages/PropertyDetail';
-
-// Old pages (compatibility)
+// Old pages (to be migrated)
 import Declarer from './pages/Declarer';
 import Dectailletairrain from './pages/DetailleTairrain';
 import MieuxComprendre from './pages/MieuxComprendre';
@@ -34,9 +29,9 @@ function App() {
       <ChatBot />
       
       <Routes>
-        {/* New Routes with modern design */}
+        {/* New Routes */}
         <Route path={ROUTES.HOME} element={<Home />} />
-        <Route path={ROUTES.PROPERTIES} element={<PropertiesWithMap />} />
+        <Route path={ROUTES.PROPERTIES} element={<Properties />} />
         <Route path={ROUTES.ABOUT} element={<About />} />
         <Route path={ROUTES.CONTACT} element={<Contact />} />
         <Route path={ROUTES.LOGIN} element={<Login />} />
@@ -44,23 +39,15 @@ function App() {
         <Route path={ROUTES.FORGOT_PASSWORD} element={<ForgotPassword />} />
         <Route path={ROUTES.PROFILE} element={<Profile />} />
         
-        {/* Property Detail */}
-        <Route path="/property/:id" element={<PropertyDetail />} />
-        
-        {/* Buy and Sell Process Pages */}
-        <Route path={ROUTES.BUY_PROCESS} element={<ProcederAchat />} />
-        <Route path={ROUTES.SELL_PROCESS} element={<ProcederUnVente />} />
-        <Route path={ROUTES.DECLARE_PROPERTY} element={<Declarer />} />
-        
-        {/* Old Routes (for backward compatibility) */}
-        <Route path="/propriete" element={<PropertiesWithMap />} />
+        {/* Old Routes (compatibility) */}
+        <Route path="/propriete" element={<Properties />} />
         <Route path="/Apropos" element={<About />} />
         <Route path="/connexion" element={<Login />} />
         <Route path="/CreeUnCompte" element={<Register />} />
         <Route path="/MotPasseOublier" element={<ForgotPassword />} />
         <Route path="/Profil" element={<Profile />} />
         <Route path="/declarer" element={<Declarer />} />
-        <Route path="/Dectailletairrain" element={<PropertyDetail />} />
+        <Route path="/Dectailletairrain" element={<Dectailletairrain />} />
         <Route path="/MieuxComprendre" element={<MieuxComprendre />} />
         <Route path="/ProcederUnVente" element={<ProcederUnVente />} />
         <Route path="/ProcederAchat" element={<ProcederAchat />} />

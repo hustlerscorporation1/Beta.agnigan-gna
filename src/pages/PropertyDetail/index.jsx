@@ -1,0 +1,492 @@
+import React, { useState, useEffect } from 'react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  MapPinIcon,
+  CurrencyDollarIcon,
+  HomeIcon,
+  DocumentTextIcon,
+  PhoneIcon,
+  EnvelopeIcon,
+  UserIcon,
+  XMarkIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ArrowLeftIcon
+} from '@heroicons/react/24/outline';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+import Layout from '../../components/layout/Layout';
+import Container from '../../components/ui/Container';
+import Card, { CardContent } from '../../components/ui/Card';
+import Button from '../../components/ui/Button';
+import Input from '../../components/ui/Input';
+import Badge from '../../components/ui/Badge';
+import { properties } from '../../data/properties';
+import { ROUTES } from '../../config/constants';
+
+// Fix Leaflet marker icon
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+});
+
+const PropertyDetail = () => {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const propertyId = parseInt(searchParams.get('id'));
+  
+  const property = properties.find(p => p.id === propertyId);
+  
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showContactForm, setShowContactForm] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+
+  const statusColors = {
+    available: 'success',
+    pending: 'warning',
+    private: 'danger'
+  };
+
+  const statusLabels = {
+    available: 'Disponible',
+    pending: 'En cours',
+    private: 'Privé'
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  if (!property) {
+    return (
+      <Layout>
+        <Container className="py-20 text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Terrain non trouvé</h2>
+          <Button onClick={() => navigate(ROUTES.PROPERTIES)}>
+            Retour aux propriétés
+          </Button>
+        </Container>
+      </Layout>
+    );
+  }
+
+  const images = property.images || [property.image];
+
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission
+    console.log('Form submitted:', formData);
+    setShowContactForm(false);
+    alert('Votre demande a été envoyée avec succès !');
+  };
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  return (
+    <Layout>
+      {/* Back Button */}
+      <section className="bg-gray-50 py-4 border-b">
+        <Container>
+          <Button
+            variant="ghost"
+            icon={ArrowLeftIcon}
+            onClick={() => navigate(ROUTES.PROPERTIES)}
+          >
+            Retour aux propriétés
+          </Button>
+        </Container>
+      </section>
+
+      {/* Header */}
+      <section className="bg-white py-8 border-b">
+        <Container>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-3">
+                <Badge variant={statusColors[property.status]}>
+                  {statusLabels[property.status]}
+                </Badge>
+                <span className="text-sm text-gray-500">ID: {property.id}</span>
+              </div>
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                {property.title}
+              </h1>
+              <div className="flex items-center text-gray-600">
+                <MapPinIcon className="h-5 w-5 mr-2" />
+                <span className="text-lg">{property.acteur}</span>
+              </div>
+            </div>
+            <div className="text-right">
+              <p className="text-sm text-gray-500 mb-1">Prix</p>
+              <p className="text-4xl font-bold text-primary-600">{property.price}</p>
+              <p className="text-sm text-gray-500 mt-1">Surface: {property.surface}</p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Image Gallery */}
+      <section className="bg-gray-50 py-8">
+        <Container>
+          <div className="grid md:grid-cols-3 gap-4">
+            {/* Main Image */}
+            <div className="md:col-span-2 relative group">
+              <motion.div
+                key={currentImageIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                className="relative h-[500px] rounded-xl overflow-hidden"
+              >
+                <img
+                  src={images[currentImageIndex]}
+                  alt={property.title}
+                  className="w-full h-full object-cover"
+                />
+                
+                {/* Navigation Arrows */}
+                {images.length > 1 && (
+                  <>
+                    <button
+                      onClick={handlePrevImage}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all opacity-0 group-hover:opacity-100"
+                    >
+                      <ChevronLeftIcon className="h-6 w-6 text-gray-800" />
+                    </button>
+                    <button
+                      onClick={handleNextImage}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all opacity-0 group-hover:opacity-100"
+                    >
+                      <ChevronRightIcon className="h-6 w-6 text-gray-800" />
+                    </button>
+                  </>
+                )}
+
+                {/* Image Counter */}
+                <div className="absolute bottom-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
+                  {currentImageIndex + 1} / {images.length}
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Thumbnails & Map */}
+            <div className="space-y-4 z-10">
+              {/* Thumbnails */}
+              <div className="grid grid-cols-2 gap-2">
+                {images.slice(0, 4).map((img, index) => (
+                  <motion.div
+                    key={index}
+                    whileHover={{ scale: 1.05 }}
+                    className={`h-32 rounded-lg overflow-hidden cursor-pointer border-2 ${
+                      index === currentImageIndex ? 'border-primary-600' : 'border-transparent'
+                    }`}
+                    onClick={() => setCurrentImageIndex(index)}
+                  >
+                    <img src={img} alt={`Vue ${index + 1}`} className="w-full h-full object-cover" />
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Map */}
+              <Card className="overflow-hidden z-3 h-64">
+                <MapContainer
+                  center={property.coordinates}
+                  zoom={15}
+                  style={{ height: '100%', width: '100%' }}
+                  scrollWheelZoom={false}
+                >
+                  <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                  <Marker position={property.coordinates}>
+                    <Popup>{property.title}</Popup>
+                  </Marker>
+                </MapContainer>
+              </Card>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Main Content */}
+      <section className="section-padding bg-white">
+        <Container>
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Left Column - Details */}
+            <div className="lg:col-span-2 space-y-8">
+              {/* Description */}
+              <Card>
+                <CardContent className="p-6">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Description</h2>
+                  <p className="text-gray-600 leading-relaxed text-justify">
+                    {property.description || `Magnifique terrain de ${property.surface} situé à ${property.acteur} dans la région ${property.region}. 
+                    Ce terrain offre une excellente opportunité d'investissement dans une zone en plein développement. 
+                    Avec tous les documents en règle et un accès facile, c'est l'emplacement idéal pour votre projet immobilier.
+                    Le quartier bénéficie de toutes les commodités nécessaires et d'un excellent potentiel de valorisation.`}
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Caractéristiques */}
+              <Card>
+                <CardContent className="p-6">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Caractéristiques</h2>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="flex items-start space-x-3">
+                      <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <HomeIcon className="h-5 w-5 text-primary-600" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900">Surface</p>
+                        <p className="text-gray-600">{property.surface}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start space-x-3">
+                      <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <MapPinIcon className="h-5 w-5 text-primary-600" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900">Région</p>
+                        <p className="text-gray-600">{property.region}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start space-x-3">
+                      <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <DocumentTextIcon className="h-5 w-5 text-primary-600" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900">Statut</p>
+                        <p className="text-gray-600">{statusLabels[property.status]}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start space-x-3">
+                      <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <CurrencyDollarIcon className="h-5 w-5 text-primary-600" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900">Prix</p>
+                        <p className="text-gray-600">{property.price}</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Documents */}
+              {property.documents && property.documents.length > 0 && (
+                <Card>
+                  <CardContent className="p-6">
+                    <h2 className="text-2xl font-bold text-gray-900 mb-4">Documents Disponibles</h2>
+                    <div className="space-y-3">
+                      {property.documents.map((doc, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                        >
+                          <div className="flex items-center space-x-3">
+                            <DocumentTextIcon className="h-6 w-6 text-primary-600" />
+                            <div>
+                              <p className="font-medium text-gray-900">{doc.name}</p>
+                              <p className="text-sm text-gray-500">{doc.description}</p>
+                            </div>
+                          </div>
+                          <Button variant="ghost" size="sm">
+                            Télécharger
+                          </Button>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
+            </div>
+
+            {/* Right Column - Contact */}
+            <div className="lg:col-span-1">
+              <div className="sticky top-24 space-y-6">
+                {/* Contact Card */}
+                <Card>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">Intéressé ?</h3>
+                    <p className="text-gray-600 mb-6">
+                      Contactez-nous pour plus d'informations sur ce terrain ou pour planifier une visite.
+                    </p>
+                    <div className="space-y-3">
+                      <Button
+                        variant="primary"
+                        fullWidth
+                        size="lg"
+                        onClick={() => setShowContactForm(true)}
+                      >
+                        Demander des informations
+                      </Button>
+                      <Button
+                        variant="outline"
+                        fullWidth
+                        icon={PhoneIcon}
+                        onClick={() => window.location.href = 'tel:+22890000000'}
+                      >
+                        Appeler maintenant
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Seller Info */}
+                <Card>
+                  <CardContent className="p-6">
+                    <h3 className="text-lg font-bold text-gray-900 mb-4">Vendeur</h3>
+                    <div className="flex items-center space-x-3 mb-4">
+                      <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
+                        <UserIcon className="h-6 w-6 text-primary-600" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900">{property.acteur}</p>
+                        <p className="text-sm text-gray-500">Agent vérifié</p>
+                      </div>
+                    </div>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-center text-gray-600">
+                        <MapPinIcon className="h-4 w-4 mr-2" />
+                        {property.region}, Togo
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Safety Tips */}
+                <Card className="bg-primary-50 border-primary-200">
+                  <CardContent className="p-6">
+                    <h3 className="text-lg font-bold text-gray-900 mb-3">💡 Conseils de sécurité</h3>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-start">
+                        <span className="text-primary-600 mr-2">•</span>
+                        <span>Vérifiez toujours les documents du terrain</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-primary-600 mr-2">•</span>
+                        <span>Visitez le terrain avant tout engagement</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-primary-600 mr-2">•</span>
+                        <span>Ne payez jamais sans contrat officiel</span>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Contact Form Modal */}
+      <AnimatePresence>
+        {showContactForm && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4"
+            onClick={() => setShowContactForm(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto"
+            >
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-2xl font-bold text-gray-900">Demande d'information</h2>
+                  <button
+                    onClick={() => setShowContactForm(false)}
+                    className="text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    <XMarkIcon className="h-6 w-6" />
+                  </button>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <Input
+                    label="Nom complet"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    icon={UserIcon}
+                  />
+
+                  <Input
+                    label="Email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    icon={EnvelopeIcon}
+                  />
+
+                  <Input
+                    label="Téléphone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    icon={PhoneIcon}
+                  />
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                      Message
+                    </label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows="4"
+                      className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all"
+                      placeholder={`Je suis intéressé par le terrain "${property.title}"`}
+                    />
+                  </div>
+
+                  <Button type="submit" variant="primary" fullWidth size="lg">
+                    Envoyer la demande
+                  </Button>
+                </form>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </Layout>
+  );
+};
+
+export default PropertyDetail;

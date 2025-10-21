@@ -73,7 +73,7 @@ export default function Navbar() {
   return (
     <nav className="navbar  bg-blue-600 text-white px-4 py-3 flex justify-between items-center relative">
       {/* Logo */}
-      <div className="text-xl font-bold">
+      <div className="logo text-xl font-bold">
         <a href="/">
           <img
             src={Logo}

@@ -69,12 +69,20 @@
 
 /* Mobile - Très petits écrans */
 
+@media screen and (max-width: 360px) {
+  .responsive-filter {
+    max-width: 60% !important;
+    height: auto !important;
+    margin-top: 1rem !important;
+    margin-left: 1rem;
+  }
+}
 @media screen and (max-width: 413px) {
   .responsive-filter {
     max-width: 60% !important;
     height: auto !important;
     margin-top: 1rem !important;
-    margin-left: 13rem;
+    margin-left: 1rem;
   }
 }
 

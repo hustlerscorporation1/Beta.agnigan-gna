@@ -1,100 +1,286 @@
-import { useState } from "react";
-import "../App";
-import "../Styles/Accueil.css";
-import "../Styles/ProcederUneVente.css";
-import FooterContaint from "../components/footerContaint";
-import {
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaSearch,
-  FaLinkedin,
-} from "react-icons/fa";
-import { SiTiktok } from "react-icons/si";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { 
+  CurrencyDollarIcon,
+  DocumentTextIcon,
+  PhotoIcon,
+  MapPinIcon,
+  PencilSquareIcon,
+  UserGroupIcon,
+  CheckCircleIcon,
+  ShieldCheckIcon,
+  ClockIcon,
+  ChartBarIcon
+} from '@heroicons/react/24/outline';
+import Layout from '../components/layout/Layout';
+import Button from '../components/ui/Button';
+import Container from '../components/ui/Container';
+import { ROUTES } from '../config/constants';
 
-import heroImage from "../images/hero-image.jpg";
-import logopartenaire from "../images/Logo_Hustler_AN-removebg-preview.png";
+const ProcessusVente = () => {
+  const navigate = useNavigate();
 
-const ProcederVente = () => {
   const steps = [
     {
-      title: "1. Titre de l’Annonce",
-      description: "Exemple : Terrain de 500m² à Kégué - Opportunité à saisir",
+      number: 1,
+      icon: PencilSquareIcon,
+      title: "Préparation de l'annonce",
+      description: "Créez un titre accrocheur et une description détaillée de votre terrain pour attirer les acheteurs potentiels.",
+      color: "orange",
+      tips: [
+        "Titre clair et précis (ex: Terrain 500m² à Kégué)",
+        "Description détaillée du terrain",
+        "Mentionnez les avantages et proximités"
+      ]
     },
     {
-      title: "2. Faire une description du terrain",
-      description:
-        "Assurez-vous que le titre foncier est authentique et conforme aux réglementations.",
+      number: 2,
+      icon: DocumentTextIcon,
+      title: "Vérification des documents",
+      description: "Rassemblez et vérifiez tous les documents légaux nécessaires pour prouver la légalité de votre terrain.",
+      color: "blue",
+      tips: [
+        "Titre foncier original et authentique",
+        "Certificat de propriété",
+        "Plan cadastral à jour"
+      ]
     },
     {
-      title: "3. Négociation et accord",
-      description:
-        "Discutez le prix avec le vendeur et signez un accord de vente clair.",
+      number: 3,
+      icon: PhotoIcon,
+      title: "Photos et localisation",
+      description: "Ajoutez des photos de qualité et indiquez précisément la localisation de votre terrain sur la carte.",
+      color: "green",
+      tips: [
+        "Photos HD de plusieurs angles",
+        "Localisation GPS précise",
+        "Photos de l'environnement"
+      ]
     },
     {
-      title: "4. Finalisation et paiement",
-      description:
-        "Effectuez le paiement et finalisez la transaction légalement.",
+      number: 4,
+      icon: CurrencyDollarIcon,
+      title: "Fixation du prix",
+      description: "Déterminez un prix compétitif basé sur le marché local et les caractéristiques de votre terrain.",
+      color: "purple",
+      tips: [
+        "Étudiez les prix du marché",
+        "Considérez la localisation",
+        "Soyez prêt à négocier"
+      ]
     },
     {
-      title: "5. Transfert officiel",
-      description:
-        "Enregistrez le terrain à votre nom auprès des autorités foncières.",
+      number: 5,
+      icon: UserGroupIcon,
+      title: "Gestion des acheteurs",
+      description: "Répondez aux demandes, organisez des visites et négociez avec les acheteurs intéressés.",
+      color: "indigo",
+      tips: [
+        "Répondez rapidement aux messages",
+        "Organisez des visites sécurisées",
+        "Négociez de bonne foi"
+      ]
     },
+    {
+      number: 6,
+      icon: CheckCircleIcon,
+      title: "Finalisation de la vente",
+      description: "Signez les documents de vente, effectuez le transfert de propriété et recevez votre paiement.",
+      color: "green",
+      tips: [
+        "Signez devant notaire",
+        "Vérifiez le paiement",
+        "Transférez le titre foncier"
+      ]
+    }
+  ];
+
+  const benefits = [
+    {
+      icon: ChartBarIcon,
+      title: "Visibilité maximale",
+      description: "Votre annonce est visible par des milliers d'acheteurs potentiels"
+    },
+    {
+      icon: ShieldCheckIcon,
+      title: "Transactions sécurisées",
+      description: "Nous vérifions tous les documents pour des ventes sécurisées"
+    },
+    {
+      icon: ClockIcon,
+      title: "Vente rapide",
+      description: "Vendez votre terrain rapidement grâce à notre plateforme efficace"
+    }
   ];
   return (
-    <div className=" w-full ">
-      <div className="f">
-        <div className="min-h-screen bg-gray-50">
-          {/* Header */}
-          <header className="bg-green-600 text-white py-12 text-center">
-            <h1 className="text-4xl mt-[6rem] font-bold mb-2">
-              Procédure de Vente de Terrain
-            </h1>
-            <p className="text-lg">
-              Suivez ces étapes pour Vendre ton terrain en toute sécurité
-            </p>
-            <button className="bg-white text-green-600 mt-4 font-bold px-6 py-3 rounded-full hover:bg-gray-100 transition">
-              Procéder maintenant
-            </button>
-          </header>
-
-          {/* Steps Section */}
-          <section className="max-w-6xl mx-auto px-4 py-16">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {steps.map((step, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300"
-                >
-                  <h2 className="text-xl font-semibold text-green-700 mb-4">
-                    {step.title}
-                  </h2>
-                  <p className="text-gray-600">{step.description}</p>
-                </div>
-              ))}
+    <Layout>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-orange-50 to-yellow-50">
+      {/* Hero Header */}
+      <section className="relative bg-gradient-to-r from-orange-600 to-red-600 text-white py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-black opacity-10"></div>
+        <Container className="relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <div className="flex justify-center mb-6">
+              <CurrencyDollarIcon className="h-20 w-20" />
             </div>
-          </section>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 mt-16">
+              Processus de Vente d'un Terrain
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-orange-100">
+              Suivez ces 6 étapes pour vendre votre terrain rapidement et en toute sécurité
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                variant="primary"
+                size="lg"
+                onClick={() => navigate(ROUTES.DECLARE_PROPERTY)}
+                className="bg-white text-orange-600 hover:bg-gray-100"
+              >
+                Publier une annonce
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => navigate(ROUTES.CONTACT)}
+                className="border-white text-white hover:bg-white hover:text-orange-600"
+              >
+                Nous contacter
+              </Button>
+            </div>
+          </motion.div>
+        </Container>
+      </section>
 
-          {/* CTA Section */}
-          <section className="bg-green-600 text-white py-12 text-center">
-            <h2 className="text-2xl font-bold mb-4">
+      {/* Benefits Section */}
+      <Container className="py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid md:grid-cols-3 gap-8 mb-16"
+        >
+          {benefits.map((benefit, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2 }}
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <benefit.icon className="h-12 w-12 text-orange-600 mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2">{benefit.title}</h3>
+              <p className="text-gray-600">{benefit.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </Container>
+
+      {/* Steps Section */}
+      <Container className="py-16">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Les 6 Étapes du Processus de Vente
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Un parcours simple et efficace pour vendre votre terrain au meilleur prix
+          </p>
+        </motion.div>
+
+        <div className="space-y-12">
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.number}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center`}
+            >
+              {/* Step Number and Icon */}
+              <div className="flex-shrink-0">
+                <div className={`relative w-32 h-32 bg-gradient-to-br from-${step.color}-400 to-${step.color}-600 rounded-2xl flex items-center justify-center shadow-xl`}>
+                  <div className="absolute -top-3 -right-3 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
+                    <span className="text-2xl font-bold text-gray-900">{step.number}</span>
+                  </div>
+                  <step.icon className="h-16 w-16 text-white" />
+                </div>
+              </div>
+
+              {/* Step Content */}
+              <div className="flex-1 bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">{step.title}</h3>
+                <p className="text-gray-600 mb-4 text-lg">{step.description}</p>
+                <div className="space-y-2">
+                  <p className="font-semibold text-gray-700">Conseils pratiques:</p>
+                  <ul className="space-y-1">
+                    {step.tips.map((tip, tipIndex) => (
+                      <li key={tipIndex} className="flex items-start">
+                        <CheckCircleIcon className="h-5 w-5 text-orange-600 mt-0.5 mr-2 flex-shrink-0" />
+                        <span className="text-gray-600">{tip}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </Container>
+
+      {/* CTA Section */}
+      <section className="relative bg-gradient-to-r from-orange-600 to-red-600 text-white py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-black opacity-10"></div>
+        <Container className="relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Prêt à vendre votre terrain ?
             </h2>
-            <p className="mb-6">
-              Contactez-nous pour obtenir toutes les informations fiables sur
-              les titres fonciers.
+            <p className="text-xl mb-8 text-orange-100">
+              Publiez votre annonce dès maintenant et touchez des milliers d'acheteurs potentiels.
+              Notre équipe vous accompagne tout au long du processus!
             </p>
-            <button className="bg-white text-green-600 font-bold px-6 py-3 rounded-full hover:bg-gray-100 transition">
-              Contactez-nous
-            </button>
-          </section>
-        </div>
-      </div>
-      {/* Footer */}
-      <FooterContaint />
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                variant="primary"
+                size="xl"
+                onClick={() => navigate(ROUTES.DECLARE_PROPERTY)}
+                className="bg-white text-orange-600 hover:bg-gray-100"
+              >
+                Publier mon annonce
+              </Button>
+              <Button
+                variant="outline"
+                size="xl"
+                onClick={() => navigate(ROUTES.CONTACT)}
+                className="border-white text-white hover:bg-white hover:text-orange-600"
+              >
+                Contactez-nous
+              </Button>
+            </div>
+          </motion.div>
+        </Container>
+      </section>
+
     </div>
+    </Layout>
   );
 };
 
-export default ProcederVente;
+export default ProcessusVente;

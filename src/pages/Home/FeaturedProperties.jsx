@@ -1,0 +1,184 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { MapPinIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import Card, { CardContent } from '../../components/ui/Card';
+import Container from '../../components/ui/Container';
+import Button from '../../components/ui/Button';
+import Badge from '../../components/ui/Badge';
+import { ROUTES, CITIES } from '../../config/constants';
+
+const FeaturedProperties = () => {
+  const navigate = useNavigate();
+
+  // Mock data - sera remplacé par des données réelles de Supabase
+  const featuredProperties = [
+    {
+      id: 1,
+      title: 'Terrain Résidentiel - Lomé',
+      location: 'Lomé, Agoènyivé',
+      surface: '500 m²',
+      price: '15,000,000 FCFA',
+      image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800',
+      status: 'available',
+      featured: true
+    },
+    {
+      id: 2,
+      title: 'Terrain Commercial - Vogan',
+      location: 'Vogan, Centre-ville',
+      surface: '800 m²',
+      price: '25,000,000 FCFA',
+      image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800',
+      status: 'available',
+      featured: true
+    },
+    {
+      id: 3,
+      title: 'Terrain Agricole - Notsé',
+      location: 'Notsé, Périphérie',
+      surface: '2000 m²',
+      price: '8,000,000 FCFA',
+      image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800',
+      status: 'available',
+      featured: true
+    },
+    {
+      id: 4,
+      title: 'Terrain Résidentiel - Tsévié',
+      location: 'Tsévié, Nouveau Quartier',
+      surface: '600 m²',
+      price: '12,000,000 FCFA',
+      image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800',
+      status: 'available',
+      featured: true
+    }
+  ];
+
+  const statusColors = {
+    available: 'success',
+    sold: 'danger',
+    reserved: 'warning'
+  };
+
+  const statusLabels = {
+    available: 'Disponible',
+    sold: 'Vendu',
+    reserved: 'Réservé'
+  };
+
+  return (
+    <section className="section-padding gradient-bg">
+      <Container>
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            Terrains <span className="text-gradient">En Vedette</span>
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Découvrez notre sélection de terrains premium dans toutes les régions du Togo
+          </p>
+        </motion.div>
+
+        {/* Properties Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {featuredProperties.map((property, index) => (
+            <motion.div
+              key={property.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
+              <Card hover className="h-full overflow-hidden group cursor-pointer" onClick={() => navigate(`${ROUTES.PROPERTIES}/${property.id}`)}>
+                {/* Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={property.image}
+                    alt={property.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <Badge variant={statusColors[property.status]}>
+                      {statusLabels[property.status]}
+                    </Badge>
+                  </div>
+                </div>
+
+                <CardContent className="p-5">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-1">
+                    {property.title}
+                  </h3>
+                  
+                  <div className="flex items-center text-sm text-gray-600 mb-3">
+                    <MapPinIcon className="h-4 w-4 mr-1" />
+                    {property.location}
+                  </div>
+
+                  <div className="flex justify-between items-center mb-4 pb-4 border-b border-gray-200">
+                    <div>
+                      <div className="text-xs text-gray-500">Surface</div>
+                      <div className="text-sm font-semibold text-gray-900">{property.surface}</div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-xs text-gray-500">Prix</div>
+                      <div className="text-sm font-semibold text-primary-600">{property.price}</div>
+                    </div>
+                  </div>
+
+                  <Button variant="ghost" size="sm" fullWidth>
+                    Voir détails
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Cities Quick Access */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
+          <h3 className="text-xl font-semibold text-gray-900 mb-6">
+            Explorez par ville
+          </h3>
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            {CITIES.map((city) => (
+              <Button
+                key={city.id}
+                variant="outline"
+                size="sm"
+                onClick={() => navigate(`${ROUTES.PROPERTIES}?city=${city.slug}`)}
+              >
+                <MapPinIcon className="h-4 w-4 mr-2" />
+                {city.name}
+              </Button>
+            ))}
+          </div>
+
+          <Button
+            variant="primary"
+            size="lg"
+            icon={ArrowRightIcon}
+            iconPosition="right"
+            onClick={() => navigate(ROUTES.PROPERTIES)}
+          >
+            Voir tous les terrains
+          </Button>
+        </motion.div>
+      </Container>
+    </section>
+  );
+};
+
+export default FeaturedProperties;
