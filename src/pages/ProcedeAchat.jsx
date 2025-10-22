@@ -16,6 +16,7 @@ import Layout from '../components/layout/Layout';
 import Button from '../components/ui/Button';
 import Container from '../components/ui/Container';
 import { ROUTES } from '../config/constants';
+import heroBgImage from '../images/hero-image.jpg';
 
 const ProcessusAchat = () => {
   const navigate = useNavigate();
@@ -118,7 +119,12 @@ const ProcessusAchat = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-green-50">
       {/* Hero Header */}
       <section className="relative bg-gradient-to-r from-green-600 to-blue-600 text-white py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${heroBgImage})` }}
+        ></div>
+        <div className="absolute inset-0 bg-green-600/70"></div>
         <Container className="relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -140,7 +146,7 @@ const ProcessusAchat = () => {
                 variant="primary"
                 size="lg"
                 onClick={() => navigate(ROUTES.PROPERTIES)}
-                className="bg-white text-green-600 hover:bg-gray-100"
+                className="bg-white text-black hover:bg-gray-100"
               >
                 Explorer les terrains
               </Button>
@@ -214,7 +220,7 @@ const ProcessusAchat = () => {
                   <div className="absolute -top-3 -right-3 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
                     <span className="text-2xl font-bold text-gray-900">{step.number}</span>
                   </div>
-                  <step.icon className="h-16 w-16 text-white" />
+                  <step.icon className="h-16 w-16 text-green-600" />
                 </div>
               </div>
 
@@ -261,7 +267,7 @@ const ProcessusAchat = () => {
                 variant="primary"
                 size="xl"
                 onClick={() => navigate(ROUTES.PROPERTIES)}
-                className="bg-white text-green-600 hover:bg-gray-100"
+                className="bg-white text-black hover:bg-gray-100"
               >
                 Voir les terrains disponibles
               </Button>

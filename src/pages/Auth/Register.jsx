@@ -7,7 +7,8 @@ import {
   LockClosedIcon,
   PhoneIcon,
   EyeIcon,
-  EyeSlashIcon
+  EyeSlashIcon,
+  CheckCircleIcon
 } from '@heroicons/react/24/outline';
 import { supabase } from '../../superbase/superbaseClient';
 import Layout from '../../components/layout/Layout';
@@ -75,10 +76,10 @@ const Register = () => {
       if (error) throw error;
 
       setSuccess(true);
-      // Redirect after 2 seconds
+      // Redirect after 5 seconds to give user time to read the message
       setTimeout(() => {
         navigate(ROUTES.LOGIN);
-      }, 2000);
+      }, 5000);
     } catch (error) {
       setError(error.message || 'Une erreur est survenue lors de l\'inscription');
     } finally {
@@ -126,14 +127,41 @@ const Register = () => {
                   )}
 
                   {success && (
-                    <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                      <p className="text-green-800 text-sm">
-                        ✓ Inscription réussie ! Vérifiez votre email pour confirmer votre compte.
-                        Redirection en cours...
-                      </p>
-                    </div>
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="p-6 bg-green-50 border-2 border-green-400 rounded-lg shadow-md"
+                    >
+                      <div className="flex items-start space-x-3">
+                        <CheckCircleIcon className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                        <div className="flex-1">
+                          <h3 className="text-lg font-bold text-green-900 mb-2">
+                            🎉 Compte créé avec succès !
+                          </h3>
+                          <div className="text-green-800 space-y-2">
+                            <p className="font-medium">
+                              Bienvenue sur Agnigban Gna !
+                            </p>
+                            <p className="text-sm">
+                              📧 <strong>Étape importante :</strong> Un email de vérification a été envoyé à <strong>{formData.email}</strong>
+                            </p>
+                            <p className="text-sm">
+                              ✅ Veuillez consulter votre boîte de réception et cliquer sur le lien de vérification pour activer votre compte.
+                            </p>
+                            <p className="text-xs text-green-700 mt-3 italic">
+                              💡 Pensez à vérifier vos spams si vous ne trouvez pas l'email.
+                            </p>
+                            <p className="text-xs text-green-600 mt-2">
+                              Redirection vers la page de connexion dans quelques secondes...
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
                   )}
 
+                  {!success && (
+                  <>
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-4">
                       <Input
@@ -305,6 +333,8 @@ const Register = () => {
                       Se connecter
                     </Link>
                   </div>
+                  </>
+                  )}
                 </CardContent>
               </Card>
             </motion.div>

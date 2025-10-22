@@ -17,6 +17,7 @@ import Layout from '../components/layout/Layout';
 import Button from '../components/ui/Button';
 import Container from '../components/ui/Container';
 import { ROUTES } from '../config/constants';
+import heroBgImage from '../images/Terrain-dans-n\'importe-quelle-localité(4).jpg';
 
 const ProcessusVente = () => {
   const navigate = useNavigate();
@@ -118,7 +119,12 @@ const ProcessusVente = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-orange-50 to-yellow-50">
       {/* Hero Header */}
       <section className="relative bg-gradient-to-r from-orange-600 to-red-600 text-white py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${heroBgImage})` }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-900/80 to-red-900/80"></div>
         <Container className="relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -140,7 +146,7 @@ const ProcessusVente = () => {
                 variant="primary"
                 size="lg"
                 onClick={() => navigate(ROUTES.DECLARE_PROPERTY)}
-                className="bg-white text-orange-600 hover:bg-gray-100"
+                className="bg-white text-black hover:bg-gray-100 hover:text-white"
               >
                 Publier une annonce
               </Button>
@@ -148,7 +154,7 @@ const ProcessusVente = () => {
                 variant="outline"
                 size="lg"
                 onClick={() => navigate(ROUTES.CONTACT)}
-                className="border-white text-white hover:bg-white hover:text-orange-600"
+                className="border-white text-white hover:bg-white hover:text-black"
               >
                 Nous contacter
               </Button>
@@ -214,7 +220,7 @@ const ProcessusVente = () => {
                   <div className="absolute -top-3 -right-3 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
                     <span className="text-2xl font-bold text-gray-900">{step.number}</span>
                   </div>
-                  <step.icon className="h-16 w-16 text-white" />
+                  <step.icon className="h-16 w-16 text-green-600" />
                 </div>
               </div>
 
@@ -261,7 +267,7 @@ const ProcessusVente = () => {
                 variant="primary"
                 size="xl"
                 onClick={() => navigate(ROUTES.DECLARE_PROPERTY)}
-                className="bg-white text-orange-600 hover:bg-gray-100"
+                className="bg-white text-black hover:bg-gray-100 hover:text-white"
               >
                 Publier mon annonce
               </Button>

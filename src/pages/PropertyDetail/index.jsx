@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   MapPinIcon,
@@ -12,7 +12,8 @@ import {
   XMarkIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-  ArrowLeftIcon
+  ArrowLeftIcon,
+  ShoppingCartIcon
 } from '@heroicons/react/24/outline';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -35,14 +36,15 @@ L.Icon.Default.mergeOptions({
 });
 
 const PropertyDetail = () => {
-  const [searchParams] = useSearchParams();
+  const { id } = useParams();
   const navigate = useNavigate();
-  const propertyId = parseInt(searchParams.get('id'));
+  const propertyId = parseInt(id);
   
   const property = properties.find(p => p.id === propertyId);
   
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showContactForm, setShowContactForm] = useState(false);
+  const [mapLayer, setMapLayer] = useState('osm'); // 'osm', 'cartodb', 'esri'
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -104,6 +106,25 @@ const PropertyDetail = () => {
     });
   };
 
+  // Map layers configuration
+  const mapLayers = {
+    osm: {
+      name: 'OpenStreetMap',
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    },
+    cartodb: {
+      name: 'CartoDB',
+      url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    },
+    esri: {
+      name: 'Esri World Imagery',
+      url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    }
+  };
+
   return (
     <Layout>
       {/* Back Button */}
@@ -128,7 +149,9 @@ const PropertyDetail = () => {
                 <Badge variant={statusColors[property.status]}>
                   {statusLabels[property.status]}
                 </Badge>
-                <span className="text-sm text-gray-500">ID: {property.id}</span>
+                <Badge variant="default" className="bg-gray-900 text-white">
+                  ID: {property.id}
+                </Badge>
               </div>
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
                 {property.title}
@@ -188,6 +211,7 @@ const PropertyDetail = () => {
                 <div className="absolute bottom-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
                   {currentImageIndex + 1} / {images.length}
                 </div>
+                
               </motion.div>
             </div>
 
@@ -210,19 +234,58 @@ const PropertyDetail = () => {
               </div>
 
               {/* Map */}
-              <Card className="overflow-hidden z-3 h-64">
-                <MapContainer
-                  center={property.coordinates}
-                  zoom={15}
-                  style={{ height: '100%', width: '100%' }}
-                  scrollWheelZoom={false}
-                >
-                  <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                  <Marker position={property.coordinates}>
-                    <Popup>{property.title}</Popup>
-                  </Marker>
-                </MapContainer>
-              </Card>
+              <div>
+                <div className="mb-3 flex gap-2 flex-wrap">
+                  <button
+                    onClick={() => setMapLayer('osm')}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                      mapLayer === 'osm'
+                        ? 'bg-primary-600 text-white shadow-md'
+                        : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+                    }`}
+                  >
+                    🗺️ OSM
+                  </button>
+                  <button
+                    onClick={() => setMapLayer('cartodb')}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                      mapLayer === 'cartodb'
+                        ? 'bg-primary-600 text-white shadow-md'
+                        : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+                    }`}
+                  >
+                    🌍 CartoDB
+                  </button>
+                  <button
+                    onClick={() => setMapLayer('esri')}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                      mapLayer === 'esri'
+                        ? 'bg-primary-600 text-white shadow-md'
+                        : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+                    }`}
+                  >
+                    🛫 Satellite
+                  </button>
+                </div>
+   
+                <Card className="overflow-hidden z-3 h-64">
+                  <MapContainer
+                    center={property.coordinates}
+                    zoom={15}
+                    style={{ height: '100%', width: '100%' }}
+                    scrollWheelZoom={false}
+                  >
+                    <TileLayer 
+                      key={mapLayer}
+                      url={mapLayers[mapLayer].url}
+                      attribution={mapLayers[mapLayer].attribution}
+                    />
+                    <Marker position={property.coordinates}>
+                      <Popup>{property.title}</Popup>
+                    </Marker>
+                  </MapContainer>
+                </Card>
+              </div>
             </div>
           </div>
         </Container>
@@ -330,13 +393,28 @@ const PropertyDetail = () => {
                 {/* Contact Card */}
                 <Card>
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">Intéressé ?</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">
+                      {property.status === 'available' ? 'Acheter ce terrain' : 'Intéressé ?'}
+                    </h3>
                     <p className="text-gray-600 mb-6">
-                      Contactez-nous pour plus d'informations sur ce terrain ou pour planifier une visite.
+                      {property.status === 'available' 
+                        ? 'Ce terrain est disponible à la vente. Contactez-nous pour finaliser votre achat.'
+                        : 'Contactez-nous pour plus d\'informations sur ce terrain ou pour planifier une visite.'}
                     </p>
                     <div className="space-y-3">
+                      {property.status === 'available' && (
+                        <Button
+                          variant="success"
+                          fullWidth
+                          size="lg"
+                          icon={ShoppingCartIcon}
+                          onClick={() => setShowContactForm(true)}
+                        >
+                          Acheter maintenant
+                        </Button>
+                      )}
                       <Button
-                        variant="primary"
+                        variant={property.status === 'available' ? 'outline' : 'primary'}
                         fullWidth
                         size="lg"
                         onClick={() => setShowContactForm(true)}

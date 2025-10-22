@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import "../Styles/Accueil.css";
 
 // Importe tes images ici
 import image1 from "../images/Hero-agnigban_gna.jpg";

@@ -78,11 +78,11 @@ const CallToAction = () => {
               <div className="text-primary-200">Terrains disponibles</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-2">1000+</div>
+              <div className="text-4xl font-bold mb-2">0+</div>
               <div className="text-primary-200">Clients satisfaits</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-2">98%</div>
+              <div className="text-4xl font-bold mb-2">0%</div>
               <div className="text-primary-200">Taux de satisfaction</div>
             </div>
             <div>

@@ -12,7 +12,7 @@ export const SOCIAL_LINKS = {
 };
 
 export const CONTACT_INFO = {
-  phone: "+228 XX XX XX XX",
+  phone: "+228 70 14 61 80",
   email: "contact@anyigbanya.com",
   address: "Lomé, Togo"
 };
@@ -20,9 +20,11 @@ export const CONTACT_INFO = {
 export const ROUTES = {
   HOME: "/",
   PROPERTIES: "/proprietes",
-  PROPERTY_DETAIL: "/propriete/:id",
+  PROPERTY_DETAIL: "/property", // Base path, add /:id for route definition
   ABOUT: "/a-propos",
   CONTACT: "/contact",
+  BLOG: "/blog",
+  BLOG_DETAIL: "/blog", // Base path, add /:id for route definition
   LOGIN: "/connexion",
   REGISTER: "/inscription",
   FORGOT_PASSWORD: "/mot-de-passe-oublie",

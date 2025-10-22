@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import {
   ShieldCheckIcon,
@@ -11,8 +11,11 @@ import {
 import Layout from '../../components/layout/Layout';
 import Container from '../../components/ui/Container';
 import Card, { CardContent } from '../../components/ui/Card';
+import heroVideo from '../../videos/Terrain du Sud __ Publicité TV Webm.webm';
 
 const About = () => {
+  const videoRef = useRef(null);
+
   const values = [
     {
       icon: ShieldCheckIcon,
@@ -35,6 +38,31 @@ const About = () => {
       description: 'Votre satisfaction est notre plus grande récompense et motivation.'
     }
   ];
+
+  const partners = [
+    {
+      img: '/images/partner1.png',
+      title: 'Transparence',
+      description: 'Nous garantissons une totale transparence dans toutes nos transactions et processus.'
+    },
+    {
+      img: '/images/partner2.png',
+      title: 'Confiance',
+      description: 'La confiance de nos clients est notre priorité. Nous travaillons avec intégrité.'
+    },
+    {
+      img: '/images/partner3.png',
+      title: 'Excellence',
+      description: 'Nous visons l\'excellence dans chaque aspect de notre service client.'
+    },
+    {
+      img: '/images/partner4.png',
+      title: 'Satisfaction',
+      description: 'Votre satisfaction est notre plus grande récompense et motivation.'
+    }
+  ];
+
+  
 
   const stats = [
     { number: '5+', label: 'Années d\'expérience' },
@@ -66,21 +94,67 @@ const About = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white py-20 md:py-28">
-        <Container>
+      {/* Hero Section with Video */}
+      <section className="relative h-[600px] md:h-[700px] overflow-hidden">
+        {/* Video Background */}
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src={heroVideo} type="video/webm" />
+          Votre navigateur ne supporte pas les vidéos HTML5.
+        </video>
+        
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-primary-900/70"></div>
+        
+        {/* Content */}
+        <Container className="relative z-10 h-full flex items-center justify-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center max-w-4xl mx-auto"
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-4xl mx-auto text-white"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-lg"
+            >
               À Propos de Nous
-            </h1>
-            <p className="text-lg md:text-xl text-primary-100 leading-relaxed">
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="text-lg md:text-xl leading-relaxed drop-shadow-md"
+            >
               Nous sommes la première plateforme digitale dédiée à l'achat et la vente de terrains au Togo.
               Notre mission est de rendre l'accès à la propriété foncière simple, sécurisé et transparent.
-            </p>
+            </motion.p>
+            
+            {/* Scroll Indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 1 }}
+              className="mt-12"
+            >
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ repeat: Infinity, duration: 2 }}
+                className="inline-block"
+              >
+                <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center p-2">
+                  <div className="w-1 h-3 bg-white rounded-full"></div>
+                </div>
+              </motion.div>
+            </motion.div>
           </motion.div>
         </Container>
       </section>
@@ -162,6 +236,51 @@ const About = () => {
                     </h3>
                     <p className="text-gray-600">
                       {value.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Nos partenaires */}
+      <section className="section-padding gradient-bg">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Nos <span className="text-gradient">Partenaires</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Les partenaires qui nous soutiennent
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {partners.map((partner, index) => (
+              <motion.div
+                key={partner.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Card hover className="h-full text-center">
+                  <CardContent className="p-6">
+                    <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <img src={partner.img} alt={partner.title} />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                      {partner.title}
+                    </h3>
+                    <p className="text-gray-600">
+                      {partner.description}
                     </p>
                   </CardContent>
                 </Card>

@@ -17,13 +17,15 @@ import PropertiesWithMap from './pages/Properties/PropertiesWithMap';
 // Property Detail (new)
 import PropertyDetail from './pages/PropertyDetail';
 
-// Old pages (compatibility)
+// Process pages
 import Declarer from './pages/Declarer';
-import Dectailletairrain from './pages/DetailleTairrain';
-import MieuxComprendre from './pages/MieuxComprendre';
 import ProcederUnVente from './pages/ProcederUneVente';
 import ProcederAchat from './pages/ProcedeAchat';
 import AuthCallback from './pages/AuthCallback';
+
+// Blog pages
+import Blog from './pages/Blog';
+import BlogDetail from './pages/Blog/BlogDetail';
 
 // Components
 import ChatBot from './components/ChatBot';
@@ -45,25 +47,18 @@ function App() {
         <Route path={ROUTES.PROFILE} element={<Profile />} />
         
         {/* Property Detail */}
-        <Route path="/property/:id" element={<PropertyDetail />} />
+        <Route path={`${ROUTES.PROPERTY_DETAIL}/:id`} element={<PropertyDetail />} />
+        
+        {/* Blog */}
+        <Route path={ROUTES.BLOG} element={<Blog />} />
+        <Route path={`${ROUTES.BLOG_DETAIL}/:slug`} element={<BlogDetail />} />
         
         {/* Buy and Sell Process Pages */}
         <Route path={ROUTES.BUY_PROCESS} element={<ProcederAchat />} />
         <Route path={ROUTES.SELL_PROCESS} element={<ProcederUnVente />} />
         <Route path={ROUTES.DECLARE_PROPERTY} element={<Declarer />} />
         
-        {/* Old Routes (for backward compatibility) */}
-        <Route path="/propriete" element={<PropertiesWithMap />} />
-        <Route path="/Apropos" element={<About />} />
-        <Route path="/connexion" element={<Login />} />
-        <Route path="/CreeUnCompte" element={<Register />} />
-        <Route path="/MotPasseOublier" element={<ForgotPassword />} />
-        <Route path="/Profil" element={<Profile />} />
-        <Route path="/declarer" element={<Declarer />} />
-        <Route path="/Dectailletairrain" element={<PropertyDetail />} />
-        <Route path="/MieuxComprendre" element={<MieuxComprendre />} />
-        <Route path="/ProcederUnVente" element={<ProcederUnVente />} />
-        <Route path="/ProcederAchat" element={<ProcederAchat />} />
+        {/* Auth Callback */}
         <Route path="/auth/callback" element={<AuthCallback />} />
       </Routes>
     </div>

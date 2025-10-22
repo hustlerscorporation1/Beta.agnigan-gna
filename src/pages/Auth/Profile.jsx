@@ -266,7 +266,7 @@ const Profile = () => {
               {/* User Properties */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Mes terrains déclarés</CardTitle>
+                  <CardTitle>Mes actions </CardTitle>
                 </CardHeader>
 
                 <CardContent className="p-6">

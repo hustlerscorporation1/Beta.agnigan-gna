@@ -7,64 +7,30 @@ import Container from '../../components/ui/Container';
 import Button from '../../components/ui/Button';
 import Badge from '../../components/ui/Badge';
 import { ROUTES, CITIES } from '../../config/constants';
+import { properties } from '../../data/properties';
 
 const FeaturedProperties = () => {
   const navigate = useNavigate();
 
-  // Mock data - sera remplacé par des données réelles de Supabase
-  const featuredProperties = [
-    {
-      id: 1,
-      title: 'Terrain Résidentiel - Lomé',
-      location: 'Lomé, Agoènyivé',
-      surface: '500 m²',
-      price: '15,000,000 FCFA',
-      image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800',
-      status: 'available',
-      featured: true
-    },
-    {
-      id: 2,
-      title: 'Terrain Commercial - Vogan',
-      location: 'Vogan, Centre-ville',
-      surface: '800 m²',
-      price: '25,000,000 FCFA',
-      image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800',
-      status: 'available',
-      featured: true
-    },
-    {
-      id: 3,
-      title: 'Terrain Agricole - Notsé',
-      location: 'Notsé, Périphérie',
-      surface: '2000 m²',
-      price: '8,000,000 FCFA',
-      image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800',
-      status: 'available',
-      featured: true
-    },
-    {
-      id: 4,
-      title: 'Terrain Résidentiel - Tsévié',
-      location: 'Tsévié, Nouveau Quartier',
-      surface: '600 m²',
-      price: '12,000,000 FCFA',
-      image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800',
-      status: 'available',
-      featured: true
-    }
-  ];
+  // Sélectionner les 4 premiers terrains disponibles comme terrains en vedette
+  const featuredProperties = properties
+    .filter(property => property.status === 'available')
+    .slice(0, 4)
+    .map(property => ({
+      ...property,
+      location: property.acteur // Utiliser acteur comme location
+    }));
 
   const statusColors = {
     available: 'success',
-    sold: 'danger',
-    reserved: 'warning'
+    private: 'danger',
+    pending: 'warning'
   };
 
   const statusLabels = {
     available: 'Disponible',
-    sold: 'Vendu',
-    reserved: 'Réservé'
+    private: 'Privé',
+    pending: 'En cours'
   };
 
   return (
@@ -96,7 +62,7 @@ const FeaturedProperties = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <Card hover className="h-full overflow-hidden group cursor-pointer" onClick={() => navigate(`${ROUTES.PROPERTIES}/${property.id}`)}>
+              <Card hover className="h-full overflow-hidden group cursor-pointer" onClick={() => navigate(`${ROUTES.PROPERTY_DETAIL}/${property.id}`)}>
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden">
                   <img
@@ -104,6 +70,11 @@ const FeaturedProperties = () => {
                     alt={property.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
+                  <div className="absolute top-4 left-4">
+                    <Badge variant="default" className="bg-black/70 text-black-600 border-0 backdrop-blur-sm">
+                      ID: {property.id}
+                    </Badge>
+                  </div>
                   <div className="absolute top-4 right-4">
                     <Badge variant={statusColors[property.status]}>
                       {statusLabels[property.status]}

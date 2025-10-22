@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { EnvelopeIcon, LockClosedIcon, EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
+import { EnvelopeIcon, LockClosedIcon, EyeIcon, EyeSlashIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 import { supabase } from '../../superbase/superbaseClient';
 import Layout from '../../components/layout/Layout';
 import Container from '../../components/ui/Container';
@@ -15,6 +15,9 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+  const [showResendButton, setShowResendButton] = useState(false);
+  const [resendLoading, setResendLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -26,6 +29,7 @@ const Login = () => {
       [e.target.name]: e.target.value
     });
     setError(''); // Clear error on input change
+    setShowResendButton(false); // Hide resend button when user types
   };
 
   const handleSubmit = async (e) => {
@@ -41,8 +45,21 @@ const Login = () => {
 
       if (error) throw error;
 
-      // Redirect to profile or home page
-      navigate(ROUTES.PROFILE);
+      // Vérifier si l'email est confirmé
+      if (data.user && !data.user.email_confirmed_at) {
+        setError('Veuillez vérifier votre adresse email avant de vous connecter. Un email de vérification vous a été envoyé lors de votre inscription. Pensez à vérifier vos spams.');
+        setShowResendButton(true);
+        // Déconnecter l'utilisateur
+        await supabase.auth.signOut();
+        setIsLoading(false);
+        return;
+      }
+
+      setSuccess(true);
+      // Redirect to profile after 2 seconds
+      setTimeout(() => {
+        navigate(ROUTES.PROFILE);
+      }, 2000);
     } catch (error) {
       setError(error.message || 'Une erreur est survenue lors de la connexion');
     } finally {
@@ -61,6 +78,32 @@ const Login = () => {
       if (error) throw error;
     } catch (error) {
       setError('Erreur lors de la connexion avec Google');
+    }
+  };
+
+  const handleResendVerification = async () => {
+    setResendLoading(true);
+    try {
+      const { error } = await supabase.auth.resend({
+        type: 'signup',
+        email: formData.email
+      });
+      
+      if (error) throw error;
+      
+      setError('');
+      setSuccess(true);
+      setShowResendButton(false);
+      
+      // Afficher un message de succès temporaire
+      setTimeout(() => {
+        setSuccess(false);
+        setError('Email de vérification renvoyé ! Veuillez vérifier votre boîte de réception.');
+      }, 100);
+    } catch (error) {
+      setError('Erreur lors de l\'envoi de l\'email de vérification. Veuillez réessayer.');
+    } finally {
+      setResendLoading(false);
     }
   };
 
@@ -85,10 +128,44 @@ const Login = () => {
                 <CardContent className="p-8">
                   {error && (
                     <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                      <p className="text-red-800 text-sm">{error}</p>
+                      <p className="text-red-800 text-sm mb-3">{error}</p>
+                      {showResendButton && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={handleResendVerification}
+                          loading={resendLoading}
+                          disabled={resendLoading}
+                          className="bg-white"
+                        >
+                          📧 Renvoyer l'email de vérification
+                        </Button>
+                      )}
                     </div>
                   )}
 
+                  {success && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="p-6 bg-green-50 border-2 border-green-400 rounded-lg shadow-md mb-6"
+                    >
+                      <div className="flex items-start space-x-3">
+                        <CheckCircleIcon className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                        <div className="flex-1">
+                          <h3 className="text-lg font-bold text-green-900 mb-2">
+                            🎉 Connexion réussie !
+                          </h3>
+                          <p className="text-green-800 text-sm">
+                            Bienvenue ! Redirection vers votre profil...
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {!success && (
+                  <>
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <Input
                       label="Adresse email"
@@ -144,7 +221,7 @@ const Login = () => {
                       size="lg"
                       fullWidth
                       loading={isLoading}
-                      disabled={isLoading}
+                      disabled={isLoading || success}
                     >
                       Se connecter
                     </Button>
@@ -165,6 +242,7 @@ const Login = () => {
                         variant="outline"
                         fullWidth
                         onClick={handleGoogleLogin}
+                        disabled={success}
                       >
                         <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
                           <path
@@ -198,6 +276,8 @@ const Login = () => {
                       Créer un compte
                     </Link>
                   </div>
+                  </>
+                  )}
                 </CardContent>
               </Card>
             </motion.div>

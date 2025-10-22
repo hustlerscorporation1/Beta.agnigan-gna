@@ -32,7 +32,13 @@ export const properties = [
     location: "Mango",
     region: "Savanes",
     coordinates: [10.619586, 0.562733],
-    surface: "750 m²"
+    surface: "750 m²",
+    description: "Terrain de 750 m² à Mango dans la région des Savanes. Titre foncier en cours de finalisation. Excellent emplacement pour projet résidentiel ou commercial.",
+    documents: [
+      { name: "Demande de titre foncier", description: "Document de demande en cours de traitement" },
+      { name: "Plan de situation", description: "Plan de localisation du terrain" },
+      { name: "Relevé topographique", description: "Document technique du terrain" }
+    ]
   },
   {
     id: 3,
@@ -65,7 +71,13 @@ export const properties = [
     location: "Kara",
     region: "Kara",
     coordinates: [9.587885, 1.035059],
-    surface: "600 m²"
+    surface: "600 m²",
+    description: "Terrain privé de 600 m² situé à Kara. Titre foncier établi et sécurisé. Idéal pour construction personnelle.",
+    documents: [
+      { name: "Titre Foncier", description: "Document officiel du titre foncier privé" },
+      { name: "Plan cadastral", description: "Plan cadastral certifié" },
+      { name: "Certificat de propriété", description: "Attestation de propriété" }
+    ]
   },
   {
     id: 5,
@@ -78,7 +90,14 @@ export const properties = [
     location: "Badou",
     region: "Plateaux",
     coordinates: [6.87456, 0.8787],
-    surface: "1200 m²"
+    surface: "1200 m²",
+    description: "Grand terrain de 1200 m² disponible à Badou. Zone résidentielle calme avec tous les services à proximité. Documents complets et prêts pour transaction.",
+    documents: [
+      { name: "Certificat de propriété", description: "Document certifiant la propriété" },
+      { name: "Plan de bornage", description: "Plan délimitant le terrain" },
+      { name: "Attestation de non-litige", description: "Confirmation d'absence de contentieux" },
+      { name: "Plan cadastral", description: "Plan cadastral du terrain" }
+    ]
   },
   {
     id: 6,
@@ -91,7 +110,14 @@ export const properties = [
     location: "Badou",
     region: "Plateaux",
     coordinates: [6.968875, 1.026543],
-    surface: "900 m²"
+    surface: "900 m²",
+    description: "Terrain de 900 m² à Badou, région des Plateaux. Bien situé avec accès facile. Tous les documents disponibles pour transaction immédiate.",
+    documents: [
+      { name: "Titre de propriété", description: "Document officiel de propriété" },
+      { name: "Plan de situation", description: "Plan de localisation" },
+      { name: "Relevé topographique", description: "Document technique" },
+      { name: "Certificat de conformité", description: "Attestation de conformité" }
+    ]
   },
   {
     id: 7,
@@ -104,7 +130,13 @@ export const properties = [
     location: "Atakpamé",
     region: "Plateaux",
     coordinates: [7.654419, 0.962045],
-    surface: "650 m²"
+    surface: "650 m²",
+    description: "Terrain de 650 m² à Atakpamé. Quartier en plein essor avec infrastructure développée. Documentation complète disponible.",
+    documents: [
+      { name: "Certificat de propriété", description: "Document certifiant la propriété" },
+      { name: "Plan cadastral", description: "Plan cadastral officiel" },
+      { name: "Autorisation de construire", description: "Pré-autorisation de construction" }
+    ]
   },
   {
     id: 8,
@@ -117,7 +149,13 @@ export const properties = [
     location: "Mango",
     region: "Savanes",
     coordinates: [10.850239, 0.18265],
-    surface: "450 m²"
+    surface: "450 m²",
+    description: "Terrain compact de 450 m² à Mango. Parfait pour petite construction. Prix attractif avec documentation en règle.",
+    documents: [
+      { name: "Certificat de propriété", description: "Document certifiant la propriété" },
+      { name: "Plan de bornage", description: "Plan détaillé du terrain" },
+      { name: "Attestation de viabilité", description: "Confirmation des accès aux réseaux" }
+    ]
   },
   {
     id: 9,
@@ -130,7 +168,13 @@ export const properties = [
     location: "Tsévié",
     region: "Maritime",
     coordinates: [6.134202, 1.164078],
-    surface: "550 m²"
+    surface: "550 m²",
+    description: "Terrain privé de 550 m² à Tsévié, région Maritime. Titre foncier sécurisé. Proche de toutes commodités.",
+    documents: [
+      { name: "Titre Foncier", description: "Document officiel du titre foncier privé" },
+      { name: "Plan cadastral", description: "Plan cadastral certifié" },
+      { name: "Certificat de propriété", description: "Attestation de propriété" }
+    ]
   },
   {
     id: 10,
@@ -143,7 +187,13 @@ export const properties = [
     location: "Bafilo",
     region: "Kara",
     coordinates: [9.867747, 1.109543],
-    surface: "700 m²"
+    surface: "700 m²",
+    description: "Terrain de 700 m² à Bafilo. Titre foncier en cours de finalisation. Bon potentiel d'investissement.",
+    documents: [
+      { name: "Demande de titre foncier", description: "Document de demande en traitement" },
+      { name: "Plan de situation", description: "Plan de localisation du terrain" },
+      { name: "Relevé topographique", description: "Document technique du terrain" }
+    ]
   },
   {
     id: 11,
@@ -156,7 +206,13 @@ export const properties = [
     location: "Blitta",
     region: "Centrale",
     coordinates: [8.902283, 1.511016],
-    surface: "600 m²"
+    surface: "600 m²",
+    description: "Terrain de 600 m² à Blitta, région Centrale. Procédure de titre foncier en cours. Emplacement stratégique.",
+    documents: [
+      { name: "Demande de titre foncier", description: "Dossier de demande en cours" },
+      { name: "Plan de situation", description: "Localisation du terrain" },
+      { name: "Attestation de possession", description: "Document provisoire de possession" }
+    ]
   },
   {
     id: 12,
@@ -169,7 +225,14 @@ export const properties = [
     location: "Sokodé",
     region: "Centrale",
     coordinates: [8.992611, 0.939704],
-    surface: "850 m²"
+    surface: "850 m²",
+    description: "Terrain de 850 m² à Sokodé. Zone commerciale en développement. Documentation complète pour transaction rapide.",
+    documents: [
+      { name: "Certificat de propriété", description: "Document certifiant la propriété" },
+      { name: "Plan cadastral", description: "Plan cadastral du terrain" },
+      { name: "Autorisation de construire", description: "Pré-autorisation disponible" },
+      { name: "Attestation de viabilité", description: "Accès aux réseaux confirmé" }
+    ]
   },
   {
     id: 13,
@@ -182,7 +245,15 @@ export const properties = [
     location: "Atakpamé",
     region: "Plateaux",
     coordinates: [6.893691, 1.091363],
-    surface: "1500 m²"
+    surface: "1500 m²",
+    description: "Grand terrain de 1500 m² à Atakpamé. Idéal pour grand projet immobilier. Tous documents disponibles.",
+    documents: [
+      { name: "Titre de propriété", description: "Document officiel de propriété" },
+      { name: "Plan cadastral", description: "Plan cadastral certifié" },
+      { name: "Plan de bornage", description: "Délimitation précise du terrain" },
+      { name: "Autorisation de construire", description: "Pré-autorisation de construction" },
+      { name: "Certificat de conformité", description: "Attestation de conformité urbaine" }
+    ]
   },
   {
     id: 14,
@@ -195,7 +266,14 @@ export const properties = [
     location: "Sokodé",
     region: "Centrale",
     coordinates: [8.710915, 1.025952],
-    surface: "1100 m²"
+    surface: "1100 m²",
+    description: "Terrain spacieux de 1100 m² à Sokodé. Quartier calme et sécurisé. Documentation complète.",
+    documents: [
+      { name: "Certificat de propriété", description: "Document certifiant la propriété" },
+      { name: "Plan cadastral", description: "Plan cadastral officiel" },
+      { name: "Plan de bornage", description: "Délimitation du terrain" },
+      { name: "Attestation de non-litige", description: "Absence de contentieux" }
+    ]
   },
   {
     id: 15,
@@ -208,7 +286,15 @@ export const properties = [
     location: "Lomé",
     region: "Maritime",
     coordinates: [6.424712, 0.921836],
-    surface: "1000 m²"
+    surface: "1000 m²",
+    description: "Terrain de 1000 m² à Lomé, capitale du Togo. Emplacement premium pour projet résidentiel ou commercial. Documentation complète.",
+    documents: [
+      { name: "Certificat de propriété", description: "Document certifiant la propriété" },
+      { name: "Plan cadastral", description: "Plan cadastral certifié" },
+      { name: "Autorisation de construire", description: "Pré-autorisation de construction" },
+      { name: "Plan de bornage", description: "Délimitation précise" },
+      { name: "Attestation de viabilité", description: "Accès à tous les réseaux" }
+    ]
   },
   {
     id: 16,
@@ -221,7 +307,13 @@ export const properties = [
     location: "Blitta",
     region: "Centrale",
     coordinates: [8.691007, 1.004937],
-    surface: "500 m²"
+    surface: "500 m²",
+    description: "Terrain de 500 m² à Blitta. Prix compétitif pour cette zone. Documentation disponible pour transaction rapide.",
+    documents: [
+      { name: "Certificat de propriété", description: "Document certifiant la propriété" },
+      { name: "Plan de situation", description: "Plan de localisation" },
+      { name: "Relevé topographique", description: "Document technique" }
+    ]
   },
   {
     id: 17,
@@ -234,7 +326,13 @@ export const properties = [
     location: "Badou",
     region: "Plateaux",
     coordinates: [7.675154, 1.20691],
-    surface: "450 m²"
+    surface: "450 m²",
+    description: "Terrain de 450 m² à Badou. Terrain compact idéal pour petite résidence. Documents en règle.",
+    documents: [
+      { name: "Certificat de propriété", description: "Document certifiant la propriété" },
+      { name: "Plan cadastral", description: "Plan cadastral du terrain" },
+      { name: "Plan de bornage", description: "Délimitation du terrain" }
+    ]
   },
   {
     id: 18,
@@ -247,7 +345,14 @@ export const properties = [
     location: "Kpalimé",
     region: "Plateaux",
     coordinates: [7.172321, 0.891784],
-    surface: "600 m²"
+    surface: "600 m²",
+    description: "Terrain privé de 600 m² à Kpalimé. Ville touristique avec cadre verdoyant. Titre foncier sécurisé.",
+    documents: [
+      { name: "Titre Foncier", description: "Document officiel du titre foncier privé" },
+      { name: "Plan cadastral", description: "Plan cadastral certifié" },
+      { name: "Certificat de propriété", description: "Attestation de propriété" },
+      { name: "Plan de bornage", description: "Délimitation du terrain" }
+    ]
   },
   {
     id: 19,
@@ -260,7 +365,13 @@ export const properties = [
     location: "Mango",
     region: "Savanes",
     coordinates: [10.829896, 0.494578],
-    surface: "700 m²"
+    surface: "700 m²",
+    description: "Terrain privé de 700 m² à Mango, région des Savanes. Titre foncier établi. Bon emplacement.",
+    documents: [
+      { name: "Titre Foncier", description: "Document officiel du titre foncier privé" },
+      { name: "Plan cadastral", description: "Plan cadastral officiel" },
+      { name: "Certificat de propriété", description: "Attestation de propriété" }
+    ]
   },
   {
     id: 20,
@@ -273,7 +384,14 @@ export const properties = [
     location: "Aného",
     region: "Maritime",
     coordinates: [6.303018, 1.157843],
-    surface: "550 m²"
+    surface: "550 m²",
+    description: "Terrain de 550 m² à Aného. Titre foncier en cours de finalisation. Ville côtière avec potentiel touristique.",
+    documents: [
+      { name: "Demande de titre foncier", description: "Document de demande en cours de traitement" },
+      { name: "Plan de situation", description: "Plan de localisation du terrain" },
+      { name: "Relevé topographique", description: "Document technique" },
+      { name: "Attestation de possession", description: "Document provisoire" }
+    ]
   },
 ];
 
