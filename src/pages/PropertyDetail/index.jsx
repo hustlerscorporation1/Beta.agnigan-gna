@@ -13,7 +13,10 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   ArrowLeftIcon,
-  ShoppingCartIcon
+  ShoppingCartIcon,
+  CubeIcon,
+  PlayCircleIcon,
+  VideoCameraIcon
 } from '@heroicons/react/24/outline';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -44,6 +47,8 @@ const PropertyDetail = () => {
   
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showContactForm, setShowContactForm] = useState(false);
+  const [show3DView, setShow3DView] = useState(false);
+  const [showVideoModal, setShowVideoModal] = useState(false);
   const [mapLayer, setMapLayer] = useState('osm'); // 'osm', 'cartodb', 'esri'
   const [formData, setFormData] = useState({
     name: '',
@@ -231,6 +236,28 @@ const PropertyDetail = () => {
                     <img src={img} alt={`Vue ${index + 1}`} className="w-full h-full object-cover" />
                   </motion.div>
                 ))}
+              </div>
+
+              {/* Boutons 3D et Vidéo */}
+              <div className="grid grid-cols-2 gap-2">
+                <Button
+                  variant="outline"
+                  fullWidth
+                  icon={CubeIcon}
+                  onClick={() => setShow3DView(true)}
+                  className="bg-primary-600 text-white hover:text-primary-600 border-0"
+                >
+                  Voir en Réalité
+                </Button>
+                <Button
+                  variant="outline"
+                  fullWidth
+                  icon={VideoCameraIcon}
+                  onClick={() => setShowVideoModal(true)}
+                  className="bg-white text-primary-600 hover:text-primary-600 border-0"
+                >
+                  Voir la vidéo
+                </Button>
               </div>
 
               {/* Map */}
@@ -558,6 +585,158 @@ const PropertyDetail = () => {
                     Envoyer la demande
                   </Button>
                 </form>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Modal Vue 3D */}
+      <AnimatePresence>
+        {show3DView && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShow3DView(false)}
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl max-h-[90vh] overflow-hidden"
+            >
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-3">
+                    <CubeIcon className="h-8 w-8 text-blue-600" />
+                    <h2 className="text-2xl font-bold text-gray-900">Visite Virtuelle 3D</h2>
+                  </div>
+                  <button
+                    onClick={() => setShow3DView(false)}
+                    className="text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    <XMarkIcon className="h-6 w-6" />
+                  </button>
+                </div>
+
+                {/* Vue 3D Iframe ou Contenu */}
+                <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-8 h-[600px] flex flex-col items-center justify-center border-2 border-dashed border-blue-300">
+                  <CubeIcon className="h-24 w-24 text-blue-400 mb-6 animate-bounce" />
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                    Visite 3D Interactive
+                  </h3>
+                  <p className="text-gray-600 mb-6 text-center max-w-md">
+                    Explorez ce terrain en 3D avec une vue à 360°. Déplacez-vous librement et découvrez chaque détail.
+                  </p>
+                  
+                  {/* Placeholder - À remplacer par une vraie intégration 3D */}
+                  <div className="grid grid-cols-2 gap-4 w-full max-w-2xl">
+                    <div className="bg-white p-4 rounded-lg shadow-md text-center">
+                      <p className="text-sm text-gray-600 mb-2">Surface totale</p>
+                      <p className="text-xl font-bold text-blue-600">{property.surface}</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg shadow-md text-center">
+                      <p className="text-sm text-gray-600 mb-2">Localisation</p>
+                      <p className="text-xl font-bold text-blue-600">{property.region}</p>
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-gray-500 mt-6 italic">
+                    💡 Astuce: Cette vue 3D sera disponible prochainement avec une visite interactive complète
+                  </p>
+                  
+                  {/* Pour intégrer une vraie vue 3D, décommentez et ajoutez votre URL:
+                  <iframe
+                    src="URL_DE_LA_VISITE_3D"
+                    className="w-full h-full rounded-lg"
+                    frameBorder="0"
+                    allowFullScreen
+                  ></iframe>
+                  */}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Modal Vidéo */}
+      <AnimatePresence>
+        {showVideoModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowVideoModal(false)}
+            className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden"
+            >
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-3">
+                    <VideoCameraIcon className="h-8 w-8 text-red-600" />
+                    <h2 className="text-2xl font-bold text-gray-900">Vidéo du Terrain</h2>
+                  </div>
+                  <button
+                    onClick={() => setShowVideoModal(false)}
+                    className="text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    <XMarkIcon className="h-6 w-6" />
+                  </button>
+                </div>
+
+                {/* Vidéo du terrain */}
+                <div className="bg-gray-900 rounded-xl overflow-hidden aspect-video">
+                  {/* Placeholder - À remplacer par une vraie vidéo */}
+                  <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-red-900 to-pink-900 text-white">
+                    <PlayCircleIcon className="h-32 w-32 mb-6 animate-pulse" />
+                    <h3 className="text-2xl font-bold mb-3">Visite Vidéo du Terrain</h3>
+                    <p className="text-red-100 mb-4 text-center max-w-md px-4">
+                      Découvrez ce magnifique terrain en vidéo HD avec des vues aériennes et au sol.
+                    </p>
+                    <p className="text-sm text-red-200 italic">
+                      📹 La vidéo sera disponible prochainement
+                    </p>
+                  </div>
+
+                  {/* Pour intégrer une vraie vidéo YouTube, décommentez et ajoutez votre ID:
+                  <iframe
+                    className="w-full h-full"
+                    src="https://www.youtube.com/embed/VIDEO_ID"
+                    title="Vidéo du terrain"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                  */}
+
+                  {/* Pour une vidéo locale, décommentez:
+                  <video
+                    className="w-full h-full"
+                    controls
+                    autoPlay
+                    src="/videos/terrain-video.mp4"
+                  >
+                    Votre navigateur ne supporte pas la vidéo.
+                  </video>
+                  */}
+                </div>
+
+                <div className="mt-6 p-4 bg-red-50 rounded-lg">
+                  <p className="text-sm text-gray-700">
+                    <strong>📹 À propos de cette vidéo:</strong> Cette visite vidéo vous permet de voir le terrain sous tous les angles. 
+                    Idéal pour avoir une première impression avant de planifier votre visite sur place.
+                  </p>
+                </div>
               </div>
             </motion.div>
           </motion.div>

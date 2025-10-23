@@ -1,0 +1,50 @@
+========================================
+  NETTOYAGE DU DASHBOARD
+========================================
+
+Le Dashboard Admin a été déplacé dans une application séparée.
+
+EMPLACEMENT DU NOUVEAU DASHBOARD:
+C:\Users\DELL\Desktop\anygba_admin_dashboard
+
+
+POUR SUPPRIMER LE DASHBOARD DE CE PROJET:
+========================================
+
+Option 1 (Automatique):
+  Double-cliquez sur: remove-dashboard.bat
+
+Option 2 (Manuelle):
+  Supprimez le dossier:
+  c:\Users\DELL\Desktop\anygba_nya\src\pages\Dashboard
+
+
+VERIFICATION:
+========================================
+
+✓ Aucune route vers le dashboard dans App.jsx
+✓ Aucune constante DASHBOARD dans constants.js
+✓ Le dashboard n'est référencé nulle part dans le code
+
+→ Suppression 100% sûre !
+
+
+APRES SUPPRESSION:
+========================================
+
+1. Votre site principal (anygba_nya) sera allégé
+2. Le dashboard restera fonctionnel dans son propre projet
+3. Les deux projets pourront évoluer indépendamment
+
+
+DEMARRER LE DASHBOARD:
+========================================
+
+cd C:\Users\DELL\Desktop\anygba_admin_dashboard
+npm install
+npm start
+
+Connexion: admin@agnigbangna.com / admin123
+
+
+========================================

@@ -8,7 +8,12 @@ import {
   MapPinIcon,
   PencilIcon,
   HomeIcon,
-  ClockIcon
+  ClockIcon,
+  BellIcon,
+  CheckCircleIcon,
+  ExclamationCircleIcon,
+  InformationCircleIcon,
+  XMarkIcon
 } from '@heroicons/react/24/outline';
 import { supabase } from '../../superbase/superbaseClient';
 import Layout from '../../components/layout/Layout';
@@ -32,6 +37,40 @@ const Profile = () => {
     phone: '',
     address: ''
   });
+  const [notifications, setNotifications] = useState([
+    {
+      id: 1,
+      type: 'success',
+      title: 'Nouvelle demande d\'information',
+      message: 'Un acheteur est intéressé par votre terrain à Lomé',
+      time: 'Il y a 5 minutes',
+      read: false
+    },
+    {
+      id: 2,
+      type: 'info',
+      title: 'Terrain publié avec succès',
+      message: 'Votre terrain "Terrain Résidentiel à Agoènyivé" est maintenant en ligne',
+      time: 'Il y a 2 heures',
+      read: false
+    },
+    {
+      id: 3,
+      type: 'warning',
+      title: 'Action requise',
+      message: 'Veuillez mettre à jour vos documents pour le terrain à Vogan',
+      time: 'Il y a 1 jour',
+      read: true
+    },
+    {
+      id: 4,
+      type: 'success',
+      title: 'Visite programmée',
+      message: 'Une visite est prévue le 25 octobre pour votre terrain',
+      time: 'Il y a 2 jours',
+      read: true
+    }
+  ]);
 
   useEffect(() => {
     loadUser();
@@ -59,10 +98,59 @@ const Profile = () => {
   };
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const markAsRead = (notificationId) => {
+    setNotifications(prev =>
+      prev.map(notif =>
+        notif.id === notificationId ? { ...notif, read: true } : notif
+      )
+    );
+  };
+
+  const deleteNotification = (notificationId) => {
+    setNotifications(prev =>
+      prev.filter(notif => notif.id !== notificationId)
+    );
+  };
+
+  const markAllAsRead = () => {
+    setNotifications(prev =>
+      prev.map(notif => ({ ...notif, read: true }))
+    );
+  };
+
+  const unreadCount = notifications.filter(n => !n.read).length;
+
+  const getNotificationIcon = (type) => {
+    switch (type) {
+      case 'success':
+        return CheckCircleIcon;
+      case 'warning':
+        return ExclamationCircleIcon;
+      case 'info':
+        return InformationCircleIcon;
+      default:
+        return BellIcon;
+    }
+  };
+
+  const getNotificationColor = (type) => {
+    switch (type) {
+      case 'success':
+        return 'text-green-600 bg-green-100';
+      case 'warning':
+        return 'text-orange-600 bg-orange-100';
+      case 'info':
+        return 'text-blue-600 bg-blue-100';
+      default:
+        return 'text-gray-600 bg-gray-100';
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -169,7 +257,7 @@ const Profile = () => {
                       fullWidth
                       onClick={() => navigate(ROUTES.DECLARE_PROPERTY)}
                     >
-                      Déclarer un terrain
+                      Vendre un terrain
                     </Button>
                   </div>
                 </CardContent>
@@ -307,8 +395,103 @@ const Profile = () => {
                         variant="primary"
                         onClick={() => navigate(ROUTES.DECLARE_PROPERTY)}
                       >
-                        Déclarer mon premier terrain
+                        Vendez votre premier terrain
                       </Button>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+
+              {/* Notifications Section */}
+              <Card>
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <CardTitle>Notifications</CardTitle>
+                      {unreadCount > 0 && (
+                        <Badge variant="danger" className="rounded-full px-2 py-0.5 text-xs">
+                          {unreadCount}
+                        </Badge>
+                      )}
+                    </div>
+                    {unreadCount > 0 && (
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={markAllAsRead}
+                      >
+                        Tout marquer comme lu
+                      </Button>
+                    )}
+                  </div>
+                </CardHeader>
+
+                <CardContent className="p-6">
+                  {notifications.length > 0 ? (
+                    <div className="space-y-3">
+                      {notifications.map((notification) => {
+                        const Icon = getNotificationIcon(notification.type);
+                        return (
+                          <motion.div
+                            key={notification.id}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, x: -100 }}
+                            className={`p-4 rounded-lg border transition-all ${
+                              notification.read
+                                ? 'bg-white border-gray-200'
+                                : 'bg-blue-50 border-blue-200 shadow-sm'
+                            }`}
+                          >
+                            <div className="flex items-start gap-3">
+                              <div className={`p-2 rounded-lg ${getNotificationColor(notification.type)}`}>
+                                <Icon className="h-5 w-5" />
+                              </div>
+                              
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-start justify-between gap-2">
+                                  <h4 className={`font-semibold ${
+                                    notification.read ? 'text-gray-700' : 'text-gray-900'
+                                  }`}>
+                                    {notification.title}
+                                  </h4>
+                                  <button
+                                    onClick={() => deleteNotification(notification.id)}
+                                    className="text-gray-400 hover:text-red-600 transition-colors flex-shrink-0"
+                                  >
+                                    <XMarkIcon className="h-4 w-4" />
+                                  </button>
+                                </div>
+                                <p className="text-sm text-gray-600 mt-1">
+                                  {notification.message}
+                                </p>
+                                <div className="flex items-center gap-3 mt-2">
+                                  <p className="text-xs text-gray-500 flex items-center">
+                                    <ClockIcon className="h-3 w-3 mr-1" />
+                                    {notification.time}
+                                  </p>
+                                  {!notification.read && (
+                                    <button
+                                      onClick={() => markAsRead(notification.id)}
+                                      className="text-xs text-blue-600 hover:text-blue-800 font-medium"
+                                    >
+                                      Marquer comme lu
+                                    </button>
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className="text-center py-8">
+                      <BellIcon className="h-12 w-12 text-gray-300 mx-auto mb-3" />
+                      <p className="text-gray-600">Aucune notification pour le moment</p>
+                      <p className="text-sm text-gray-500 mt-1">
+                        Vous serez notifié des nouvelles demandes et mises à jour
+                      </p>
                     </div>
                   )}
                 </CardContent>

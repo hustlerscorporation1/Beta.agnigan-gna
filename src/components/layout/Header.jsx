@@ -78,8 +78,8 @@ const Header = () => {
   const navLinks = [
     { name: 'Accueil', path: ROUTES.HOME },
     { name: 'Propriétés', path: ROUTES.PROPERTIES },
-    { name: 'Blog', path: ROUTES.BLOG },
     { name: 'À propos', path: ROUTES.ABOUT },
+    { name: 'Blog', path: ROUTES.BLOG },
     { name: 'Contact', path: ROUTES.CONTACT }
   ];
 
@@ -152,7 +152,7 @@ const Header = () => {
               icon={ArrowDownTrayIcon}
               onClick={() => setShowDownloadModal(true)}
             >
-              Télécharger
+              Télécharger l'App
             </Button>
             
             {user ? (
@@ -219,6 +219,8 @@ const Header = () => {
                 </Button>
               </>
             )}
+
+            
           </div>
 
           {/* Mobile Menu Button */}
@@ -421,6 +423,23 @@ const Header = () => {
 
                   {/* Content */}
                   <div className="p-6 space-y-4">
+                    {/* Google Play Button */}
+                    <a
+                      href="#"
+                      className="flex items-center p-4 bg-gray-900 hover:bg-gray-800 text-white rounded-xl transition-all transform hover:scale-105 group"
+                    >
+                      <div className="flex-shrink-0 mr-4">
+                        <svg className="h-12 w-12" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                        </svg>
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-xs text-gray-300">Disponible sur</p>
+                        <p className="text-xl font-semibold">Google Play</p>
+                      </div>
+                      <ArrowDownTrayIcon className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                    
                     {/* App Store Button */}
                     <a
                       href="#"
@@ -438,22 +457,6 @@ const Header = () => {
                       <ArrowDownTrayIcon className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </a>
 
-                    {/* Google Play Button */}
-                    <a
-                      href="#"
-                      className="flex items-center p-4 bg-gray-900 hover:bg-gray-800 text-white rounded-xl transition-all transform hover:scale-105 group"
-                    >
-                      <div className="flex-shrink-0 mr-4">
-                        <svg className="h-12 w-12" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
-                        </svg>
-                      </div>
-                      <div className="flex-1">
-                        <p className="text-xs text-gray-300">Disponible sur</p>
-                        <p className="text-xl font-semibold">Google Play</p>
-                      </div>
-                      <ArrowDownTrayIcon className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </a>
 
                     {/* Features */}
                     <div className="pt-4 border-t border-gray-200">

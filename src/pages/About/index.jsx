@@ -42,22 +42,22 @@ const About = () => {
   const partners = [
     {
       img: '/images/partner1.png',
-      title: 'Transparence',
+      title: 'OTR Togo',
       description: 'Nous garantissons une totale transparence dans toutes nos transactions et processus.'
     },
     {
       img: '/images/partner2.png',
-      title: 'Confiance',
+      title: 'CADRAC',
       description: 'La confiance de nos clients est notre priorité. Nous travaillons avec intégrité.'
     },
     {
       img: '/images/partner3.png',
-      title: 'Excellence',
+      title: 'CIR',
       description: 'Nous visons l\'excellence dans chaque aspect de notre service client.'
     },
     {
       img: '/images/partner4.png',
-      title: 'Satisfaction',
+      title: 'Ministère de l\'Intérieure',
       description: 'Votre satisfaction est notre plus grande récompense et motivation.'
     }
   ];
@@ -65,10 +65,10 @@ const About = () => {
   
 
   const stats = [
-    { number: '5+', label: 'Années d\'expérience' },
-    { number: '500+', label: 'Terrains vendus' },
-    { number: '1000+', label: 'Clients satisfaits' },
-    { number: '98%', label: 'Taux de satisfaction' }
+    { number: '0+', label: 'Années d\'expérience' },
+    { number: '0+', label: 'Terrains vendus' },
+    { number: '0+', label: 'Clients satisfaits' },
+    { number: '0%', label: 'Taux de satisfaction' }
   ];
 
   const team = [
@@ -273,7 +273,7 @@ const About = () => {
               >
                 <Card hover className="h-full text-center">
                   <CardContent className="p-6">
-                    <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-32 h-32 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
                       <img src={partner.img} alt={partner.title} />
                     </div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">

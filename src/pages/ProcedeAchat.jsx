@@ -124,7 +124,7 @@ const ProcessusAchat = () => {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroBgImage})` }}
         ></div>
-        <div className="absolute inset-0 bg-green-600/70"></div>
+        <div className="absolute inset-0 bg-green-600"></div>
         <Container className="relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

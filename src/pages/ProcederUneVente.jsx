@@ -118,13 +118,13 @@ const ProcessusVente = () => {
     <Layout>
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-orange-50 to-yellow-50">
       {/* Hero Header */}
-      <section className="relative bg-gradient-to-r from-orange-600 to-red-600 text-white py-20 overflow-hidden">
+      <section className="relative bg-green-600 text-white py-20 overflow-hidden">
         {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-green-600 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroBgImage})` }}
         ></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-900/80 to-red-900/80"></div>
+        <div className="absolute inset-0  bg-green-600 from-green-600 to-green-600"></div>
         <Container className="relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -143,10 +143,10 @@ const ProcessusVente = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                variant="primary"
+                variant="outline"
                 size="lg"
                 onClick={() => navigate(ROUTES.DECLARE_PROPERTY)}
-                className="bg-white text-black hover:bg-gray-100 hover:text-white"
+                className=" border-none bg-white text-green-600 hover:bg-gray-100 hover:text-black"
               >
                 Publier une annonce
               </Button>
