@@ -1,34 +1,36 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
   MagnifyingGlassIcon,
   CalendarIcon,
   ClockIcon,
   TagIcon,
   UserIcon,
-  ArrowRightIcon
-} from '@heroicons/react/24/outline';
-import Layout from '../../components/layout/Layout';
-import Container from '../../components/ui/Container';
-import Card, { CardContent } from '../../components/ui/Card';
-import Button from '../../components/ui/Button';
-import Input from '../../components/ui/Input';
-import Badge from '../../components/ui/Badge';
-import { ROUTES } from '../../config/constants';
-import { blogPosts, blogCategories } from '../../data/blogPosts';
+  ArrowRightIcon,
+} from "@heroicons/react/24/outline";
+import Layout from "../../components/layout/Layout";
+import Container from "../../components/ui/Container";
+import Card, { CardContent } from "../../components/ui/Card";
+import Button from "../../components/ui/Button";
+import Input from "../../components/ui/Input";
+import Badge from "../../components/ui/Badge";
+import { ROUTES } from "../../config/constants";
+import { blogPosts, blogCategories } from "../../data/blogPosts";
 
 const Blog = () => {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   // Filtrer les articles
-  const filteredPosts = blogPosts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory === 'all' || 
-                           post.category.toLowerCase() === selectedCategory.toLowerCase();
+  const filteredPosts = blogPosts.filter((post) => {
+    const matchesSearch =
+      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory =
+      selectedCategory === "all" ||
+      post.category.toLowerCase() === selectedCategory.toLowerCase();
     return matchesSearch && matchesCategory;
   });
 
@@ -40,8 +42,8 @@ const Blog = () => {
 
   // Formater la date
   const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('fr-FR', options);
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString("fr-FR", options);
   };
 
   return (
@@ -61,7 +63,7 @@ const Blog = () => {
             <p className="text-xl text-primary-100 mb-8">
               Conseils, guides et actualités sur l'immobilier au Togo
             </p>
-            
+
             {/* Search Bar */}
             <div className="max-w-xl mx-auto">
               <Input
@@ -69,7 +71,7 @@ const Blog = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 icon={MagnifyingGlassIcon}
-                className="bg-white"
+                className="bg-white text-gray-900"
               />
             </div>
           </motion.div>
@@ -87,8 +89,8 @@ const Blog = () => {
                   onClick={() => setSelectedCategory(category.slug)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
                     selectedCategory === category.slug
-                      ? 'bg-primary-600 text-white shadow-md'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? "bg-primary-600 text-white shadow-md"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
                   {category.name}
@@ -100,7 +102,7 @@ const Blog = () => {
       </section>
 
       {/* Featured Article */}
-      {!searchQuery && selectedCategory === 'all' && (
+      {!searchQuery && selectedCategory === "all" && (
         <section className="section-padding bg-gray-50">
           <Container>
             <motion.div
@@ -108,7 +110,9 @@ const Blog = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Article en vedette</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                Article en vedette
+              </h2>
               <Card hover className="overflow-hidden group cursor-pointer">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="relative h-80 md:h-auto overflow-hidden">
@@ -121,12 +125,12 @@ const Blog = () => {
                       <Badge variant="success">{featuredPost.category}</Badge>
                     </div>
                   </div>
-                  
+
                   <CardContent className="p-8 flex flex-col justify-center">
                     <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors">
                       {featuredPost.title}
                     </h3>
-                    
+
                     <p className="text-gray-600 mb-6 line-clamp-3">
                       {featuredPost.excerpt}
                     </p>
@@ -157,7 +161,9 @@ const Blog = () => {
                       variant="primary"
                       icon={ArrowRightIcon}
                       iconPosition="right"
-                      onClick={() => navigate(`${ROUTES.BLOG_DETAIL}/${featuredPost.slug}`)}
+                      onClick={() =>
+                        navigate(`${ROUTES.BLOG_DETAIL}/${featuredPost.slug}`)
+                      }
                     >
                       Lire l'article
                     </Button>
@@ -174,10 +180,9 @@ const Blog = () => {
         <Container>
           <div className="mb-8">
             <h2 className="text-2xl font-bold text-gray-900">
-              {searchQuery || selectedCategory !== 'all' 
+              {searchQuery || selectedCategory !== "all"
                 ? `Résultats (${filteredPosts.length})`
-                : 'Derniers articles'
-              }
+                : "Derniers articles"}
             </h2>
           </div>
 
@@ -194,7 +199,9 @@ const Blog = () => {
                   <Card
                     hover
                     className="h-full overflow-hidden group cursor-pointer"
-                    onClick={() => navigate(`${ROUTES.BLOG_DETAIL}/${post.slug}`)}
+                    onClick={() =>
+                      navigate(`${ROUTES.BLOG_DETAIL}/${post.slug}`)
+                    }
                   >
                     {/* Image */}
                     <div className="relative h-48 overflow-hidden">
@@ -259,8 +266,8 @@ const Blog = () => {
               <Button
                 variant="primary"
                 onClick={() => {
-                  setSearchQuery('');
-                  setSelectedCategory('all');
+                  setSearchQuery("");
+                  setSelectedCategory("all");
                 }}
               >
                 Réinitialiser les filtres
@@ -280,11 +287,10 @@ const Blog = () => {
             transition={{ duration: 0.6 }}
             className="max-w-2xl mx-auto text-center"
           >
-            <h2 className="text-3xl font-bold mb-4">
-              Restez informé
-            </h2>
+            <h2 className="text-3xl font-bold mb-4">Restez informé</h2>
             <p className="text-primary-100 mb-8">
-              Recevez nos derniers articles et conseils directement dans votre boîte mail
+              Recevez nos derniers articles et conseils directement dans votre
+              boîte mail
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <Input

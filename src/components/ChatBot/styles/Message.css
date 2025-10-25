@@ -1,0 +1,174 @@
+.message {
+  display: flex;
+  margin-bottom: 0.75rem;
+  max-width: 85%;
+  animation: messageIn 0.3s ease-out;
+  animation-fill-mode: both;
+}
+
+.message.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.message.bot {
+  align-self: flex-start;
+}
+
+.message-content {
+  padding: 0.75rem 1rem;
+  border-radius: 18px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  position: relative;
+  word-wrap: break-word;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.message.user .message-content {
+  background-color: #4a6cf7;
+  color: white;
+  border-top-right-radius: 4px;
+  margin-left: 0.5rem;
+}
+
+.message.bot .message-content {
+  background-color: #f1f3f5;
+  color: #212529;
+  border-top-left-radius: 4px;
+  margin-right: 0.5rem;
+}
+
+/* Animation de frappe pour les messages du bot */
+.message.bot .typing-indicator {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: #f1f3f5;
+  border-radius: 18px;
+  border-top-left-radius: 4px;
+}
+
+/* Bulle de message avec flèche */
+.message .message-content::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.message.user .message-content::after {
+  right: -8px;
+  top: 10px;
+  border-width: 8px 0 8px 8px;
+  border-color: transparent transparent transparent #4a6cf7;
+}
+
+.message.bot .message-content::after {
+  left: -8px;
+  top: 10px;
+  border-width: 8px 8px 8px 0;
+  border-color: transparent #f1f3f5 transparent transparent;
+}
+
+/* Animation d'entrée des messages */
+@keyframes messageIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation de frappe */
+@keyframes typing {
+  0%, 100% { 
+    opacity: 0.4; 
+    transform: translateY(0); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: translateY(-2px); 
+  }
+}
+
+.typing-indicator span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #6c757d;
+  margin: 0 2px;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Style pour les liens dans les messages */
+.message-content a {
+  color: #4a6cf7;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.message.user .message-content a {
+  color: #e6f0ff;
+  text-decoration: underline;
+}
+
+/* Style pour les listes dans les messages */
+.message-content ul, 
+.message-content ol {
+  padding-left: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.message-content li {
+  margin-bottom: 0.25rem;
+}
+
+/* Style pour les messages de statut (chargement, erreur) */
+.message.status {
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.message .status-content {
+  font-size: 0.8rem;
+  color: #6c757d;
+  background-color: #f8f9fa;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* Style pour les messages d'erreur */
+.message.error .message-content {
+  background-color: #fff5f5;
+  color: #f03e3e;
+  border: 1px solid #ffd8d8;
+}
+
+/* Style pour les messages de succès */
+.message.success .message-content {
+  background-color: #f0fff4;
+  color: #2f9e44;
+  border: 1px solid #c6f6d5;
+}
+
+/* Style pour les messages d'information */
+.message.info .message-content {
+  background-color: #f0f7ff;
+  color: #1971c2;
+  border: 1px solid #d0ebff;
+}

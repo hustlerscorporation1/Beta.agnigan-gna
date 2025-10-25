@@ -30,12 +30,18 @@ import BlogDetail from './pages/Blog/BlogDetail';
 // Components
 import ChatBot from './components/ChatBot';
 
+// Admin
+import AdminApp from './admin/AdminApp';
+
 function App() {
   return (
     <div className="app">
       <ChatBot />
       
       <Routes>
+        {/* Admin Routes */}
+        <Route path="/admin/*" element={<AdminApp />} />
+        
         {/* New Routes with modern design */}
         <Route path={ROUTES.HOME} element={<Home />} />
         <Route path={ROUTES.PROPERTIES} element={<PropertiesWithMap />} />

@@ -1,34 +1,34 @@
-// src/components/Chatbot.jsx
-import { useState } from "react";
-import { FaComment } from "react-icons/fa";
-import { FaHome } from "react-icons/fa";
-import { FaTimes } from "react-icons/fa";
-import {
-  getRegions,
-  getPrefectures,
-  getCommunes,
-} from "../data/togoTerritories";
-import "../Styles/ChatBot.css";
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { useChat } from './ChatBot/hooks/useChat';
+import ChatButton from './ChatBot/components/ChatButton';
+import ChatWindow from './ChatBot/components/ChatWindow';
+import { botConfig } from './ChatBot/config/config';
 
-export default function Chatbot() {
+const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    {
-      sender: "bot",
-      text: "Bonjour 👋 Je suis votre assistant virtuel d'Anyigbã nya ! Je peux vous aider avec :\n\n🏠 Informations sur les propriétés\n🗺️ Données territoriales du Togo\n📍 Localisation des terrains\n💰 Prix et titres fonciers\n\nQue souhaitez-vous savoir ?",
-    },
-  ]);
-  const [input, setInput] = useState("");
+  const [unreadCount, setUnreadCount] = useState(0);
+  const { messages, isTyping, sendMessage } = useChat();
+
+  // Gestion des messages non lus
+  useEffect(() => {
+    if (!isOpen && messages.length > 1) {
+      setUnreadCount(prev => prev + 1);
+    } else if (isOpen) {
+      setUnreadCount(0);
+    }
+  }, [messages, isOpen]);
+
+  const handleSendMessage = (message) => {
+    sendMessage(message);
+  };
+
+  const toggleChat = () => {
+    setIsOpen(!isOpen);
+  };
 
   // Données complètes des propriétés du site
   const properties = [
-    {
-      id: 1,
-      title: "Adjonou Kokouvi",
-      price: "Titre Foncier : Privé",
-      location: "Kara – Kara",
-      coordinates: [9.386519, 1.001796],
-    },
     {
       id: 2,
       title: "Sogan Kokouvi",
@@ -1118,47 +1118,24 @@ RÈGLES :
 
   return (
     <div className="chatbot-container">
-      {/* Bouton flottant */}
-      <button onClick={() => setIsOpen(!isOpen)} className="chatbot-button">
-        <FaComment className="h-6 w-6" />
-      </button>
-
-      {/* Fenêtre du chatbot */}
       {isOpen && (
-        <div className="chatbot-window">
-          {/* En-tête */}
-          <div className="chatbot-header">
-            <h2>Assistant de Anyigbã nya</h2>
-            <button onClick={() => setIsOpen(false)} className="chatbot-close">
-              <FaTimes className="h-5 w-5" />
-            </button>
-          </div>
-
-          {/* Zone messages */}
-          <div className="chatbot-messages">
-            {messages.map((msg, index) => (
-              <div key={index} className={`chatbot-message ${msg.sender}`}>
-                {msg.text}
-              </div>
-            ))}
-          </div>
-
-          {/* Champ d'entrée */}
-          <div className="chatbot-input-container">
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Écrire un message..."
-              className="chatbot-input"
-              onKeyPress={(e) => e.key === "Enter" && handleSend()}
-            />
-            <button onClick={handleSend} className="chatbot-send">
-              ➤
-            </button>
-          </div>
-        </div>
+        <ChatWindow 
+          messages={messages}
+          isTyping={isTyping}
+          onSendMessage={handleSendMessage}
+        />
       )}
+      <ChatButton 
+        isOpen={isOpen} 
+        onClick={toggleChat} 
+        unreadCount={unreadCount} 
+      />
     </div>
   );
-}
+};
+
+ChatBot.propTypes = {
+  // Add prop types here if needed
+};
+
+export default ChatBot;

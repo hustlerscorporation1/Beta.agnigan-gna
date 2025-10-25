@@ -1,17 +1,17 @@
-import React, { useRef } from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
 import {
   ShieldCheckIcon,
   UserGroupIcon,
   BuildingOfficeIcon,
   HeartIcon,
   SparklesIcon,
-  TrophyIcon
-} from '@heroicons/react/24/outline';
-import Layout from '../../components/layout/Layout';
-import Container from '../../components/ui/Container';
-import Card, { CardContent } from '../../components/ui/Card';
-import heroVideo from '../../videos/Terrain du Sud __ Publicité TV Webm.webm';
+  TrophyIcon,
+} from "@heroicons/react/24/outline";
+import Layout from "../../components/layout/Layout";
+import Container from "../../components/ui/Container";
+import Card, { CardContent } from "../../components/ui/Card";
+import heroVideo from "../../videos/Terrain du Sud __ Publicité TV Webm.webm";
 
 const About = () => {
   const videoRef = useRef(null);
@@ -19,77 +19,86 @@ const About = () => {
   const values = [
     {
       icon: ShieldCheckIcon,
-      title: 'Transparence',
-      description: 'Nous garantissons une totale transparence dans toutes nos transactions et processus.'
+      title: "Transparence",
+      description:
+        "Nous garantissons une totale transparence dans toutes nos transactions et processus.",
     },
     {
       icon: HeartIcon,
-      title: 'Confiance',
-      description: 'La confiance de nos clients est notre priorité. Nous travaillons avec intégrité.'
+      title: "Confiance",
+      description:
+        "La confiance de nos clients est notre priorité. Nous travaillons avec intégrité.",
     },
     {
       icon: SparklesIcon,
-      title: 'Excellence',
-      description: 'Nous visons l\'excellence dans chaque aspect de notre service client.'
+      title: "Excellence",
+      description:
+        "Nous visons l'excellence dans chaque aspect de notre service client.",
     },
     {
       icon: TrophyIcon,
-      title: 'Satisfaction',
-      description: 'Votre satisfaction est notre plus grande récompense et motivation.'
-    }
+      title: "Satisfaction",
+      description:
+        "Votre satisfaction est notre plus grande récompense et motivation.",
+    },
   ];
 
   const partners = [
     {
-      img: '/images/partner1.png',
-      title: 'OTR Togo',
-      description: 'Nous garantissons une totale transparence dans toutes nos transactions et processus.'
+      img: "/images/partner1.png",
+      title: "OTR Togo",
+      description:
+        "Nous garantissons une totale transparence dans toutes nos transactions et processus.",
     },
     {
-      img: '/images/partner2.png',
-      title: 'CADRAC',
-      description: 'La confiance de nos clients est notre priorité. Nous travaillons avec intégrité.'
+      img: "/images/partner2.png",
+      title: "CADRAC",
+      description:
+        "La confiance de nos clients est notre priorité. Nous travaillons avec intégrité.",
     },
     {
-      img: '/images/partner3.png',
-      title: 'CIR',
-      description: 'Nous visons l\'excellence dans chaque aspect de notre service client.'
+      img: "/images/partner3.png",
+      title: "CIR",
+      description:
+        "Nous visons l'excellence dans chaque aspect de notre service client.",
     },
     {
-      img: '/images/partner4.png',
-      title: 'Ministère de l\'Intérieure',
-      description: 'Votre satisfaction est notre plus grande récompense et motivation.'
-    }
+      img: "/images/partner4.png",
+      title: "Ministère de l'Intérieure",
+      description:
+        "Votre satisfaction est notre plus grande récompense et motivation.",
+    },
   ];
 
-  
-
   const stats = [
-    { number: '0+', label: 'Années d\'expérience' },
-    { number: '0+', label: 'Terrains vendus' },
-    { number: '0+', label: 'Clients satisfaits' },
-    { number: '0%', label: 'Taux de satisfaction' }
+    { number: "0+", label: "Années d'expérience" },
+    { number: "0+", label: "Terrains vendus" },
+    { number: "0+", label: "Clients satisfaits" },
+    { number: "0%", label: "Taux de satisfaction" },
   ];
 
   const team = [
     {
-      name: 'KOUASSI Jean',
-      role: 'Directeur Général',
-      description: 'Expert en immobilier avec 15 ans d\'expérience',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400'
+      name: "KOUASSI Jean",
+      role: "Directeur Général",
+      description: "Expert en immobilier avec 15 ans d'expérience",
+      image:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
     },
     {
-      name: 'AMOUZOU Marie',
-      role: 'Responsable Commercial',
-      description: 'Spécialiste en transactions immobilières',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400'
+      name: "AMOUZOU Marie",
+      role: "Responsable Commercial",
+      description: "Spécialiste en transactions immobilières",
+      image:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
     },
     {
-      name: 'AGBOSSOU Pierre',
-      role: 'Conseiller Juridique',
-      description: 'Expert en droit foncier et immobilier',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400'
-    }
+      name: "AGBOSSOU Pierre",
+      role: "Conseiller Juridique",
+      description: "Expert en droit foncier et immobilier",
+      image:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400",
+    },
   ];
 
   return (
@@ -108,10 +117,10 @@ const About = () => {
           <source src={heroVideo} type="video/webm" />
           Votre navigateur ne supporte pas les vidéos HTML5.
         </video>
-        
+
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-primary-900/70"></div>
-        
+
         {/* Content */}
         <Container className="relative z-10 h-full flex items-center justify-center">
           <motion.div
@@ -120,7 +129,7 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto text-white"
           >
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
@@ -128,16 +137,17 @@ const About = () => {
             >
               À Propos de Nous
             </motion.h1>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-lg md:text-xl leading-relaxed drop-shadow-md"
             >
-              Nous sommes la première plateforme digitale dédiée à l'achat et la vente de terrains au Togo.
-              Notre mission est de rendre l'accès à la propriété foncière simple, sécurisé et transparent.
+              Nous sommes la première plateforme digitale dédiée à l'achat et la
+              vente de terrains au Togo. Notre mission est de rendre l'accès à
+              la propriété foncière simple, sécurisé et transparent.
             </motion.p>
-            
+
             {/* Scroll Indicator */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -170,13 +180,16 @@ const About = () => {
             >
               <div className="flex items-center mb-4">
                 <BuildingOfficeIcon className="h-10 w-10 text-primary-600 mr-3" />
-                <h2 className="text-3xl font-bold text-gray-900">Notre Mission</h2>
+                <h2 className="text-3xl font-bold text-gray-900">
+                  Notre Mission
+                </h2>
               </div>
               <p className="text-gray-600 text-lg leading-relaxed">
-                Faciliter l'accès à la propriété foncière pour tous les Togolais et investisseurs
-                en proposant une plateforme moderne, sécurisée et transparente. Nous nous engageons
-                à offrir un service de qualité qui respecte les normes légales et protège les
-                intérêts de nos clients.
+                Faciliter l'accès à la propriété foncière pour tous les Togolais
+                et investisseurs en proposant une plateforme moderne, sécurisée
+                et transparente. Nous nous engageons à offrir un service de
+                qualité qui respecte les normes légales et protège les intérêts
+                de nos clients.
               </p>
             </motion.div>
 
@@ -187,13 +200,16 @@ const About = () => {
             >
               <div className="flex items-center mb-4">
                 <UserGroupIcon className="h-10 w-10 text-primary-600 mr-3" />
-                <h2 className="text-3xl font-bold text-gray-900">Notre Vision</h2>
+                <h2 className="text-3xl font-bold text-gray-900">
+                  Notre Vision
+                </h2>
               </div>
               <p className="text-gray-600 text-lg leading-relaxed">
-                Devenir la référence incontournable dans le secteur immobilier au Togo et en
-                Afrique de l'Ouest. Nous aspirons à créer un écosystème où chaque transaction
-                foncière est simple, rapide et sécurisée, tout en contribuant au développement
-                économique de notre pays.
+                Devenir la référence incontournable dans le secteur immobilier
+                au Togo et en Afrique de l'Ouest. Nous aspirons à créer un
+                écosystème où chaque transaction foncière est simple, rapide et
+                sécurisée, tout en contribuant au développement économique de
+                notre pays.
               </p>
             </motion.div>
           </div>
@@ -234,9 +250,7 @@ const About = () => {
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">
                       {value.title}
                     </h3>
-                    <p className="text-gray-600">
-                      {value.description}
-                    </p>
+                    <p className="text-gray-600">{value.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -279,9 +293,7 @@ const About = () => {
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">
                       {partner.title}
                     </h3>
-                    <p className="text-gray-600">
-                      {partner.description}
-                    </p>
+                    <p className="text-gray-600">{partner.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -306,9 +318,7 @@ const About = () => {
                 <div className="text-4xl md:text-5xl font-bold mb-2">
                   {stat.number}
                 </div>
-                <div className="text-primary-200">
-                  {stat.label}
-                </div>
+                <div className="text-primary-200">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -383,10 +393,13 @@ const About = () => {
               Ensemble, construisons l'avenir de l'immobilier au Togo
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact" className="btn-primary">
+              <a href="/contact" className="btn-primary bg-green-600">
                 Nous contacter
               </a>
-              <a href="/proprietes" className="btn-primary bg-gray-200 text-gray-900 hover:bg-gray-300">
+              <a
+                href="/proprietes"
+                className="btn-primary bg-gray-200 text-gray-900 hover:bg-gray-300"
+              >
                 Voir les terrains
               </a>
             </div>
