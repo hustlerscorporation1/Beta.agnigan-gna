@@ -600,7 +600,7 @@ const ChatBot = () => {
       libre: properties.filter((p) => p.price.includes("Libre")).length,
     };
 
-    return `Tu es un assistant virtuel expert pour Anyigbã nya, une plateforme immobilière au Togo. Tu dois répondre de manière naturelle, amicale et professionnelle.
+    return `Tu es un assistant virtuel expert pour Agnigban Gna, une plateforme immobilière au Togo. Tu dois répondre de manière naturelle, amicale et professionnelle.
 
 DONNÉES DE LA PLATEFORME :
 - Total propriétés : ${totalProperties}
@@ -629,7 +629,7 @@ RÈGLES :
   const callHuggingFaceAPI = async (userMessage) => {
     try {
       // Créer un prompt contextualisé avec les données du site
-      const contextualPrompt = `Tu es un assistant immobilier pour Anyigbã nya au Togo. Nous avons ${properties.length} propriétés disponibles avec des prix de 32M à 200M Fcfa. Régions: Maritime, Plateaux, Kara, Centrale, Savanes. Réponds naturellement à: ${userMessage}`;
+      const contextualPrompt = `Tu es un assistant immobilier pour Agnigban Gna au Togo. Nous avons ${properties.length} propriétés disponibles avec des prix de 32M à 200M Fcfa. Régions: Maritime, Plateaux, Kara, Centrale, Savanes. Réponds naturellement à: ${userMessage}`;
 
       const response = await fetch(
         "https://api-inference.huggingface.co/models/microsoft/DialoGPT-medium",
@@ -685,7 +685,7 @@ RÈGLES :
         },
         body: JSON.stringify({
           model: "command-light",
-          prompt: `Tu es un assistant immobilier expert pour Anyigbã nya, plateforme immobilière au Togo. Contexte: ${properties.length} propriétés, prix 32M-200M Fcfa, 5 régions. Question: ${userMessage}\n\nRéponse naturelle et professionnelle:`,
+          prompt: `Tu es un assistant immobilier expert pour Agnigban Gna, plateforme immobilière au Togo. Contexte: ${properties.length} propriétés, prix 32M-200M Fcfa, 5 régions. Question: ${userMessage}\n\nRéponse naturelle et professionnelle:`,
           max_tokens: 200,
           temperature: 0.7,
         }),
@@ -930,7 +930,7 @@ RÈGLES :
       message.includes("téléphone") ||
       message.includes("email")
     ) {
-      return "📞 Pour nous contacter :\n\n📧 Email : contact@anyigbanya.com\n📱 Téléphone : +228 XX XX XX XX\n🏢 Bureau : Lomé, Togo\n\n⏰ Horaires : Lun-Ven 8h-17h\n\nNotre équipe se ferait un plaisir de vous accompagner ! 😊";
+      return "📞 Pour nous contacter :\n\n📧 Email : contact@agnigbagna.com\n📱 Téléphone : +228 XX XX XX XX\n🏢 Bureau : Lomé, Togo\n\n⏰ Horaires : Lun-Ven 8h-17h\n\nNotre équipe se ferait un plaisir de vous accompagner ! 😊";
     }
 
     // Réponse par défaut
@@ -959,7 +959,7 @@ RÈGLES :
     // Réponses contextuelles intelligentes
     if (context.isGreeting) {
       const greetings = [
-        "Bonjour ! 😊 Ravi de vous accueillir sur Anyigbã nya ! Je suis là pour vous aider à trouver la propriété idéale au Togo. Que recherchez-vous exactement ?",
+        "Bonjour ! 😊 Ravi de vous accueillir sur Agnigban Gna ! Je suis là pour vous aider à trouver la propriété idéale au Togo. Que recherchez-vous exactement ?",
         "Salut ! 👋 Bienvenue sur notre plateforme immobilière ! Avec plus de 50 propriétés disponibles dans tout le Togo, je suis sûr qu'on va trouver votre bonheur. Par quoi on commence ?",
         "Hello ! 🏠 Content de vous voir ! Je connais toutes nos propriétés par cœur, des terrains abordables aux biens de prestige. Dites-moi ce qui vous intéresse !",
       ];

@@ -1,4 +1,4 @@
-# Guide de Migration - Anyigba Nya v2.0
+# Guide de Migration - Agnigban Gna v2.0
 
 Ce document explique les changements majeurs apportés lors de la refonte complète de l'application.
 

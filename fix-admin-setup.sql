@@ -1,6 +1,6 @@
 -- ========================================
 -- RÉPARATION COMPTE ADMINISTRATEUR
--- Anyigbã Nya - Fix Admin Access
+-- Agnigban Gna - Fix Admin Access
 -- ========================================
 
 -- 1. S'assurer que la table profiles existe

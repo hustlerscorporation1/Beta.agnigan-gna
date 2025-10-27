@@ -1,6 +1,6 @@
 -- ========================================
 -- CONFIGURATION COMPTE ADMINISTRATEUR
--- Anyigbã Nya - Tableau de Bord Admin
+-- Agnigban Gna - Tableau de Bord Admin
 -- ========================================
 
 -- 1. Créer la table profiles si elle n'existe pas

@@ -43,7 +43,7 @@ const AdminLogin = () => {
         {/* Logo & Title */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-green-600 mb-2">
-            Anyigbã Nya Admin
+            Agnigban Gna Admin
           </h1>
           <p className="text-gray-600">
             Connectez-vous à votre tableau de bord

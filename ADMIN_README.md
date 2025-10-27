@@ -1,8 +1,8 @@
-# Tableau de Bord Administrateur - Anyigbã Nya
+# Tableau de Bord Administrateur - Agnigban Gna
 
 ## 📋 Vue d'ensemble
 
-Tableau de bord administrateur complet pour gérer tous les flux de la plateforme immobilière Anyigbã Nya. Interface moderne et intuitive construite avec React et TailwindCSS.
+Tableau de bord administrateur complet pour gérer tous les flux de la plateforme immobilière Agnigban Gna. Interface moderne et intuitive construite avec React et TailwindCSS.
 
 ---
 

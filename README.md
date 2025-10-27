@@ -1,4 +1,4 @@
-# Anyigba Nya - Plateforme Immobilière au Togo
+# Agnigban Gna - Plateforme Immobilière au Togo
 
 Plateforme moderne d'achat et de vente de terrains au Togo. Interface élégante, responsive et professionnelle construite avec React, TailwindCSS et Supabase.
 
@@ -27,8 +27,8 @@ Plateforme moderne d'achat et de vente de terrains au Togo. Interface élégante
 
 ```bash
 # Cloner le projet
-git clone https://github.com/votre-username/anyigba_nya.git
-cd anyigba_nya
+git clone https://github.com/votre-username/agnigban_gna.git
+cd agnigban_gna
 
 # Installer les dépendances
 npm install
@@ -71,7 +71,7 @@ L'application sera accessible sur `http://localhost:3000`
 ## Structure du Projet
 
 ```bash
-anyigba_nya/
+agnigban_gna/
 ├── public/               # Fichiers statiques
 ├── src/
 │   ├── components/       # Composants réutilisables
@@ -205,5 +205,5 @@ Ce projet est sous licence privée. Tous droits réservés.
 ## Support
 
 Pour toute question ou assistance :
-- Email : contact@anyigbanya.com
+- Email : contact@agnigbagna.com
 - Téléphone : +228 XX XX XX XX

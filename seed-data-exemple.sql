@@ -1,5 +1,5 @@
 -- ================================================
--- SCRIPT DE DONNÉES D'EXEMPLE POUR AGNIGNAN GNA
+-- SCRIPT DE DONNÉES D'EXEMPLE POUR AGNIGBAN GNA
 -- ================================================
 -- Ce script crée des données de test pour remplir la base de données
 

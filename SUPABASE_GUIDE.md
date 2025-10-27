@@ -5,7 +5,7 @@
 ### **1️⃣ Ouvrir Supabase Dashboard**
 1. Allez sur [https://supabase.com](https://supabase.com)
 2. Connectez-vous à votre compte
-3. Sélectionnez votre projet Anyigbã Nya
+3. Sélectionnez votre projet Agnigban Gna
 4. Cliquez sur **SQL Editor** dans le menu de gauche
 
 ---

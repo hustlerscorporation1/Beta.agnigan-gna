@@ -1,4 +1,4 @@
-# 🚀 GUIDE D'INSTALLATION - ORDRE D'EXÉCUTION
+# 🚀 GUIDE D'INSTALLATION - AGNIGBAN GNA - ORDRE D'EXÉCUTION
 
 ## ⚠️ IMPORTANT: SUIVRE CET ORDRE EXACT!
 
@@ -35,26 +35,32 @@ Vous pouvez maintenant exécuter 02-inserer-donnees-exemple.sql
 
 ### **ÉTAPE 2: Insérer les Données**
 
-**Fichier:** `02-inserer-donnees-exemple.sql`
+**Fichier:** `03-inserer-terrains-uniquement.sql` ← **MODIFIÉ**
 
 **Actions:**
 1. Dans Supabase SQL Editor
 2. Cliquer sur **"New query"** (créer nouvelle requête)
-3. **Copier TOUT le contenu** de `02-inserer-donnees-exemple.sql`
+3. **Copier TOUT le contenu** de `03-inserer-terrains-uniquement.sql`
 4. **Coller** dans l'éditeur
 5. Cliquer sur **"Run"**
 
 **✅ Résultat attendu:**
 ```
-✅ Données insérées avec succès! 
-15 propriétés et 20 messages créés.
+✅ Données terrains insérées avec succès!
+15 terrains et 20 messages créés.
 
-Propriétés:
+Terrains:
 - 7 disponibles
-- 3 vendues
+- 3 vendus
 - 5 en attente
 
-Contacts:
+Répartition par type:
+- Agricultural: X terrains
+- Residential: X terrains
+- Commercial: X terrains
+- Industrial: X terrains
+
+Messages:
 - 7 non lus
 - 4 lus
 - 3 répondus
@@ -195,9 +201,15 @@ Une fois tout exécuté, vous devriez voir:
 - 📉 Graphiques remplis
 
 ### **Page Propriétés:**
-- 7 propriétés disponibles
-- 3 propriétés vendues
-- 5 propriétés en attente
+- 7 terrains disponibles
+- 3 terrains vendus
+- 5 terrains en attente
+
+**Types de terrains:**
+- 🏡 **Résidentiels** (construction maison)
+- 🚜 **Agricoles** (culture, élevage)
+- 🏢 **Commerciaux** (boutiques, bureaux)
+- 🏭 **Industriels** (entrepôts, usines)
 
 ### **Page Contacts:**
 - 7 messages non lus
@@ -222,7 +234,7 @@ Si ça ne marche toujours pas:
 ```
 00-GUIDE-INSTALLATION-ORDRE.md     ← Ce guide
 01-creer-toutes-les-tables.sql     ← À exécuter EN PREMIER
-02-inserer-donnees-exemple.sql     ← À exécuter EN SECOND
+03-inserer-terrains-uniquement.sql ← À exécuter EN SECOND ← TERRAINS UNIQUEMENT
 diagnostic-donnees.sql             ← Pour vérifier (optionnel)
 fix-affichage-donnees.sql          ← Si problème RLS (optionnel)
 ```

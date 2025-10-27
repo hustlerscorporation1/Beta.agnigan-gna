@@ -1,19 +1,19 @@
 // Configuration et constantes de l'application
 
-export const APP_NAME = "Anyigba Nya";
+export const APP_NAME = "Agnigban Gna";
 export const APP_DESCRIPTION = "Plateforme d'achat et vente de terrains au Togo";
 
 export const SOCIAL_LINKS = {
-  facebook: "https://facebook.com/anyigbanya",
-  twitter: "https://twitter.com/anyigbanya",
-  instagram: "https://instagram.com/anyigbanya",
-  linkedin: "https://linkedin.com/company/anyigbanya",
-  tiktok: "https://tiktok.com/@anyigbanya"
+  facebook: "https://facebook.com/agnigbagna",
+  twitter: "https://twitter.com/agnigbagna",
+  instagram: "https://instagram.com/agnigbagna",
+  linkedin: "https://linkedin.com/company/agnigbagna",
+  tiktok: "https://tiktok.com/@agnigbagna"
 };
 
 export const CONTACT_INFO = {
   phone: "+228 70 14 61 80",
-  email: "contact@anyigbanya.com",
+  email: "contact@agnigbagna.com",
   address: "Lomé, Togo"
 };
 
