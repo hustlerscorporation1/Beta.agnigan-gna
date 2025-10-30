@@ -13,13 +13,21 @@ import {
   X,
   Bell,
   Search,
-  User
+  User,
+  ChevronDown,
+  ChevronUp,
+  List,
+  ShoppingCart,
+  CheckCircle,
+  Clock,
+  RefreshCw
 } from 'lucide-react';
 import { useAdminAuth } from '../../context/AdminAuthContext';
 import { ADMIN_NAV_ITEMS, ADMIN_ROUTES } from '../../config/adminRoutes';
 
 const AdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [expandedMenus, setExpandedMenus] = useState({});
   const { admin, logout } = useAdminAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -40,11 +48,30 @@ const AdminLayout = () => {
       CreditCard,
       BarChart3,
       Settings,
+      List,
+      ShoppingCart,
+      CheckCircle,
+      Clock,
+      RefreshCw,
     };
     return icons[iconName] || LayoutDashboard;
   };
 
   const isActive = (path) => location.pathname === path;
+
+  const isSubItemActive = (item) => {
+    if (item.subItems) {
+      return item.subItems.some(subItem => location.pathname === subItem.path);
+    }
+    return false;
+  };
+
+  const toggleMenu = (itemId) => {
+    setExpandedMenus(prev => ({
+      ...prev,
+      [itemId]: !prev[itemId]
+    }));
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -70,24 +97,63 @@ const AdminLayout = () => {
         </div>
 
         {/* Navigation */}
-        <nav className="p-4 space-y-2">
+        <nav className="p-4 space-y-2 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 180px)' }}>
           {ADMIN_NAV_ITEMS.map((item) => {
             const Icon = getIcon(item.icon);
+            const hasSubItems = item.subItems && item.subItems.length > 0;
+            const isExpanded = expandedMenus[item.id];
+            const isItemActive = isActive(item.path) || isSubItemActive(item);
+
             return (
-              <button
-                key={item.id}
-                onClick={() => navigate(item.path)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                  isActive(item.path)
-                    ? 'bg-green-50 text-green-600'
-                    : 'text-gray-700 hover:bg-gray-50'
-                }`}
-              >
-                <Icon size={20} />
-                {sidebarOpen && (
-                  <span className="font-medium">{item.label}</span>
+              <div key={item.id}>
+                <button
+                  onClick={() => {
+                    if (hasSubItems) {
+                      toggleMenu(item.id);
+                    } else {
+                      navigate(item.path);
+                    }
+                  }}
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                    isItemActive
+                      ? 'bg-green-50 text-green-600'
+                      : 'text-gray-700 hover:bg-gray-50'
+                  }`}
+                >
+                  <Icon size={20} />
+                  {sidebarOpen && (
+                    <>
+                      <span className="font-medium flex-1 text-left">{item.label}</span>
+                      {hasSubItems && (
+                        isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />
+                      )}
+                    </>
+                  )}
+                </button>
+
+                {/* Sub-menu */}
+                {hasSubItems && isExpanded && sidebarOpen && (
+                  <div className="mt-1 ml-4 space-y-1">
+                    {item.subItems.map((subItem) => {
+                      const SubIcon = getIcon(subItem.icon);
+                      return (
+                        <button
+                          key={subItem.id}
+                          onClick={() => navigate(subItem.path)}
+                          className={`w-full flex items-center gap-3 px-4 py-2 rounded-lg transition-colors text-sm ${
+                            isActive(subItem.path)
+                              ? 'bg-green-100 text-green-700 font-medium'
+                              : 'text-gray-600 hover:bg-gray-100'
+                          }`}
+                        >
+                          <SubIcon size={16} />
+                          <span>{subItem.label}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
                 )}
-              </button>
+              </div>
             );
           })}
         </nav>

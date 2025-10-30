@@ -156,7 +156,7 @@ const ProcessusAchat = () => {
                   variant="outline"
                   size="lg"
                   onClick={() => navigate(ROUTES.PROPERTIES)}
-                  className="bg-white text-black hover:bg-green-600 hover:text-white"
+                  className="bg-white text-black hover:bg-green-600 hover:text-black"
                 >
                   Explorer les terrains
                 </Button>

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Mail, Lock, AlertCircle } from 'lucide-react';
+import { Mail, Lock, AlertCircle, CheckCircle, Loader } from 'lucide-react';
 import { useAdminAuth } from '../../context/AdminAuthContext';
 import { ADMIN_ROUTES } from '../../config/adminRoutes';
 
@@ -9,12 +9,21 @@ const AdminLogin = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { login } = useAdminAuth();
+  const [success, setSuccess] = useState(false);
+  const { login, isAuthenticated } = useAdminAuth();
   const navigate = useNavigate();
+
+  // Redirection si déjà connecté
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate(ADMIN_ROUTES.DASHBOARD, { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setSuccess(false);
 
     if (!email || !password) {
       setError('Veuillez remplir tous les champs');
@@ -26,7 +35,11 @@ const AdminLogin = () => {
       const result = await login(email, password);
 
       if (result.success) {
-        navigate(ADMIN_ROUTES.DASHBOARD);
+        setSuccess(true);
+        // Délai pour voir le feedback de succès
+        setTimeout(() => {
+          navigate(ADMIN_ROUTES.DASHBOARD, { replace: true });
+        }, 500);
       } else {
         setError(result.error || 'Email ou mot de passe incorrect');
       }
@@ -51,11 +64,18 @@ const AdminLogin = () => {
         </div>
 
         {/* Login Form */}
-        <div className="bg-white rounded-2xl shadow-xl p-8">
+        <div className="bg-white rounded-2xl shadow-xl p-8 transition-all duration-300">
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3 animate-shake">
               <AlertCircle className="text-red-600 flex-shrink-0 mt-0.5" size={20} />
               <p className="text-sm text-red-800">{error}</p>
+            </div>
+          )}
+
+          {success && (
+            <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-3 animate-slide-down">
+              <CheckCircle className="text-green-600 flex-shrink-0 mt-0.5" size={20} />
+              <p className="text-sm text-green-800">Connexion réussie ! Redirection...</p>
             </div>
           )}
 
@@ -72,8 +92,9 @@ const AdminLogin = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="admin@example.com"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                  disabled={loading}
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-all"
+                  disabled={loading || success}
+                  autoComplete="email"
                 />
               </div>
             </div>
@@ -90,8 +111,9 @@ const AdminLogin = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                  disabled={loading}
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-all"
+                  disabled={loading || success}
+                  autoComplete="current-password"
                 />
               </div>
             </div>
@@ -99,10 +121,12 @@ const AdminLogin = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              disabled={loading}
-              className="w-full py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={loading || success}
+              className="w-full py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-all transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
             >
-              {loading ? 'Connexion...' : 'Se connecter'}
+              {loading && <Loader className="animate-spin" size={20} />}
+              {success && <CheckCircle size={20} />}
+              {loading ? 'Connexion en cours...' : success ? 'Connecté !' : 'Se connecter'}
             </button>
           </form>
 

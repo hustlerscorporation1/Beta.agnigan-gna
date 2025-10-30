@@ -396,7 +396,7 @@ const Header = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setShowDownloadModal(false)}
-              className="fixed inset-0 bg-black/60 z-[9999] backdrop-blur-sm"
+              className="fixed inset-0 flex items-center justify-center bg-black/60 z-[9999] backdrop-blur-sm"
             />
 
             {/* Modal */}
@@ -404,7 +404,7 @@ const Header = () => {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="fixed top-20 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[10000] w-full max-w-md"
+              className="fixed top-20 flex left-[1rem] bottom-20 items-center justify-center z-[10000] w-full "
             >
               <div className="bg-white rounded-2xl shadow-2xl overflow-hidden mx-4">
                 {/* Header */}
@@ -415,7 +415,7 @@ const Header = () => {
                         Télécharger l'application
                       </h3>
                       <p className="text-primary-100 text-sm">
-                        Accédez à vos terrains partout, tout le temps
+                      Vérifier des terrains partout et à tout le temps
                       </p>
                     </div>
                     <button

@@ -36,10 +36,12 @@ const PropertiesList = () => {
   const fetchProperties = async () => {
     try {
       setLoading(true);
+      // Requête optimisée - seulement les colonnes nécessaires
       const { data, error } = await supabase
         .from('properties')
-        .select('*')
-        .order('created_at', { ascending: false });
+        .select('id, title, location, price, area, type, status, image, created_at')
+        .order('created_at', { ascending: false })
+        .limit(100); // Limiter pour performance
 
       if (error) throw error;
       const props = data || [];

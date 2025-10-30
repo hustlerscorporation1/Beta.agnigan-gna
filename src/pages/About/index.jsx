@@ -52,7 +52,7 @@ const About = () => {
     },
     {
       img: "/images/partner2.png",
-      title: "CADRAC",
+      title: "CADASTRE",
       description:
         "La confiance de nos clients est notre priorité. Nous travaillons avec intégrité.",
     },
