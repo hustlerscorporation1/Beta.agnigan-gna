@@ -12,8 +12,10 @@ import {
 import { supabase } from "../../superbase/superbaseClient";
 import { ROUTES, APP_NAME } from "../../config/constants";
 import Button from "../ui/Button";
-import Logo from "../../images/LOGO_AGNIGBAN_GNA Trs Noir2 (2).png";
-import scane from "../../images/Custom_QR_Code_Car_Decal_Personalized_Website_or_Social_Media_Business-removebg-preview.png";
+
+// Utilisation des chemins publics pour les images (compatibilité production)
+const Logo = "/images/logo-agnigban-gna.png";
+const scane = "/images/qr-code.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
