@@ -1,23 +1,22 @@
 import { pool } from "../config/db.js";
 import { v4 as uuidv4 } from "uuid";
+import { logAgentAction } from "../models/agentAction.js";
 
 // ➕ Enregistrer une action d’agent
 export const logAgentAction = async (req, res) => {
   const { agent_id, action_type, target_table, target_id, details } = req.body;
   try {
     const id = uuidv4();
-    await pool.query(
-      `INSERT INTO agent_actions (id, agent_id, action_type, target_table, target_id, details)
-       VALUES (?, ?, ?, ?, ?, ?)`,
-      [
-        id,
-        agent_id,
-        action_type,
-        target_table,
-        target_id,
-        JSON.stringify(details),
-      ]
-    );
+
+    await logAgentAction({
+      id,
+      agent_id,
+      action_type,
+      target_table,
+      target_id,
+      details: JSON.stringify(details),
+    });
+
     res.status(201).json({ message: "Action enregistrée.", id });
   } catch (error) {
     console.error(error);

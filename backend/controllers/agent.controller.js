@@ -1,17 +1,22 @@
-import { pool } from "../config/db.js";
+// controllers/agentController.js
 import { v4 as uuidv4 } from "uuid";
+import { insertAgent, updateAgentById, getAllAgents } from "../models/Agent.js";
 
 // ➕ Créer un agent
 export const createAgent = async (req, res) => {
-  const { profile_id, employee_code, branch, commission_rate } = req.body;
   try {
     const id = uuidv4();
-    await pool.query(
-      `INSERT INTO agents (id, profile_id, employee_code, branch, commission_rate)
-       VALUES (?, ?, ?, ?, ?)`,
-      [id, profile_id, employee_code, branch, commission_rate]
-    );
-    res.status(201).json({ message: "Agent créé.", id });
+    const { profile_id, employee_code, branch, commission_rate } = req.body;
+
+    await insertAgent({
+      id,
+      profile_id,
+      employee_code,
+      branch,
+      commission_rate,
+    });
+
+    res.status(201).json({ message: "Agent créé avec succès.", id });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Erreur lors de la création de l’agent." });
@@ -20,14 +25,13 @@ export const createAgent = async (req, res) => {
 
 // 🔄 Mettre à jour un agent
 export const updateAgent = async (req, res) => {
-  const { id } = req.params;
-  const { branch, commission_rate, is_active } = req.body;
   try {
-    await pool.query(
-      `UPDATE agents SET branch = ?, commission_rate = ?, is_active = ? WHERE id = ?`,
-      [branch, commission_rate, is_active, id]
-    );
-    res.status(200).json({ message: "Agent mis à jour." });
+    const { id } = req.params;
+    const { branch, commission_rate, is_active } = req.body;
+
+    await updateAgentById(id, { branch, commission_rate, is_active });
+
+    res.status(200).json({ message: "Agent mis à jour avec succès." });
   } catch (error) {
     console.error(error);
     res
@@ -36,16 +40,11 @@ export const updateAgent = async (req, res) => {
   }
 };
 
-// 📋 Lister tous les agents
+// 📋 Lister les agents
 export const listAgents = async (req, res) => {
   try {
-    const [rows] = await pool.query(
-      `SELECT a.*, p.first_name, p.last_name, p.phone_number 
-       FROM agents a
-       LEFT JOIN profiles p ON a.profile_id = p.id
-       ORDER BY a.created_at DESC`
-    );
-    res.status(200).json(rows);
+    const agents = await getAllAgents();
+    res.status(200).json(agents);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Erreur lors du chargement des agents." });
