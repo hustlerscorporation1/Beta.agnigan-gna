@@ -1,5 +1,6 @@
 // Données réelles des terrains au Togo
-import heroImage from '../images/hero-image.jpg';
+// Utilisation des chemins publics pour les images (compatibilité production)
+const heroImage = `${process.env.PUBLIC_URL || ''}/images/hero-image.jpg`;
 
 export const properties = [
   {
@@ -24,6 +25,7 @@ export const properties = [
   {
     id: 2,
     image: heroImage,
+    images: [heroImage, heroImage, heroImage, heroImage],
     title: "Sogan Kokouvi",
     price: "Titre Foncier : En cours",
     priceValue: null,
@@ -63,6 +65,7 @@ export const properties = [
   {
     id: 4,
     image: heroImage,
+    images: [heroImage, heroImage, heroImage, heroImage],
     title: "Komlan Yendouma",
     price: "Titre Foncier : Privé",
     priceValue: null,
@@ -82,6 +85,7 @@ export const properties = [
   {
     id: 5,
     image: heroImage,
+    images: [heroImage, heroImage, heroImage, heroImage],
     title: "Komlan Amegah",
     price: "153 000 000 Fcfa",
     priceValue: 153000000,
@@ -102,6 +106,7 @@ export const properties = [
   {
     id: 6,
     image: heroImage,
+    images: [heroImage, heroImage, heroImage, heroImage],
     title: "Komlan Adjo",
     price: "107 000 000 Fcfa",
     priceValue: 107000000,
@@ -122,6 +127,7 @@ export const properties = [
   {
     id: 7,
     image: heroImage,
+    images: [heroImage, heroImage, heroImage, heroImage],
     title: "Tchalla Atayi",
     price: "71 000 000 Fcfa",
     priceValue: 71000000,
@@ -141,6 +147,7 @@ export const properties = [
   {
     id: 8,
     image: heroImage,
+    images: [heroImage, heroImage, heroImage, heroImage],
     title: "Ayité Mawuli",
     price: "36 000 000 Fcfa",
     priceValue: 36000000,
@@ -160,6 +167,7 @@ export const properties = [
   {
     id: 9,
     image: heroImage,
+    images: [heroImage, heroImage, heroImage, heroImage],
     title: "Agbossou Kokouvi",
     price: "Titre Foncier : Privé",
     priceValue: null,
@@ -179,6 +187,7 @@ export const properties = [
   {
     id: 10,
     image: heroImage,
+    images: [heroImage, heroImage, heroImage, heroImage],
     title: "Kokouvi Vincent",
     price: "Titre Foncier : En cours",
     priceValue: null,
@@ -198,6 +207,7 @@ export const properties = [
   {
     id: 11,
     image: heroImage,
+    images: [heroImage, heroImage, heroImage, heroImage],
     title: "Kokouvi Amegah",
     price: "Titre Foncier : En cours",
     priceValue: null,
@@ -217,6 +227,7 @@ export const properties = [
   {
     id: 12,
     image: heroImage,
+    images: [heroImage, heroImage, heroImage, heroImage],
     title: "Sosougan Sama",
     price: "77 000 000 Fcfa",
     priceValue: 77000000,
@@ -237,6 +248,7 @@ export const properties = [
   {
     id: 13,
     image: heroImage,
+    images: [heroImage, heroImage, heroImage, heroImage],
     title: "Adjonou Yaovi",
     price: "180 000 000 Fcfa",
     priceValue: 180000000,
@@ -258,6 +270,7 @@ export const properties = [
   {
     id: 14,
     image: heroImage,
+    images: [heroImage, heroImage, heroImage, heroImage],
     title: "Tchalla Atayi",
     price: "135 000 000 Fcfa",
     priceValue: 135000000,
@@ -278,6 +291,7 @@ export const properties = [
   {
     id: 15,
     image: heroImage,
+    images: [heroImage, heroImage, heroImage, heroImage],
     title: "Tchalla Komlan",
     price: "140 000 000 Fcfa",
     priceValue: 140000000,
@@ -299,6 +313,7 @@ export const properties = [
   {
     id: 16,
     image: heroImage,
+    images: [heroImage, heroImage, heroImage, heroImage],
     title: "Sogan Kokouvi",
     price: "47 000 000 Fcfa",
     priceValue: 47000000,
@@ -318,6 +333,7 @@ export const properties = [
   {
     id: 17,
     image: heroImage,
+    images: [heroImage, heroImage, heroImage, heroImage],
     title: "Vincent Komlan",
     price: "39 000 000 Fcfa",
     priceValue: 39000000,
@@ -337,6 +353,7 @@ export const properties = [
   {
     id: 18,
     image: heroImage,
+    images: [heroImage, heroImage, heroImage, heroImage],
     title: "Adjonou Yendouma",
     price: "Titre Foncier : Privé",
     priceValue: null,
@@ -357,6 +374,7 @@ export const properties = [
   {
     id: 19,
     image: heroImage,
+    images: [heroImage, heroImage, heroImage, heroImage],
     title: "Komlan Gnassingbé",
     price: "Titre Foncier : Privé",
     priceValue: null,
@@ -376,6 +394,7 @@ export const properties = [
   {
     id: 20,
     image: heroImage,
+    images: [heroImage, heroImage, heroImage, heroImage],
     title: "Ayité Djidjoho",
     price: "Titre Foncier : En cours",
     priceValue: null,
