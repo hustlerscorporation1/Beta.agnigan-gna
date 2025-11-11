@@ -1,6 +1,7 @@
 // Données réelles des terrains au Togo
 // Utilisation des chemins publics pour les images (compatibilité production)
-const heroImage = `${process.env.PUBLIC_URL || ''}/images/hero-image.jpg`;
+// Chemin absolu simple pour compatibilité maximale avec tous les hébergeurs
+const heroImage = '/images/hero-image.jpg';
 
 export const properties = [
   {
