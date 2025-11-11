@@ -1,0 +1,67 @@
+═══════════════════════════════════════════════
+✅ ACTION IMMÉDIATE - Images sur Render
+═══════════════════════════════════════════════
+
+📌 SITUATION :
+--------------
+- Code corrigé et pushé ✅
+- Render va rebuilder automatiquement
+- Les images DEVRAIENT s'afficher après le rebuild
+
+⏰ TEMPS D'ATTENTE :
+--------------------
+Attendez 5-10 minutes que Render finisse de rebuilder
+
+🔍 TESTS À FAIRE (après 10 minutes) :
+--------------------------------------
+
+1. Testez l'URL de test :
+   https://votre-site.onrender.com/test-image.html
+   
+   ✅ Si l'image s'affiche = Tout fonctionne !
+   ❌ Si pas d'image = Voir étape 2
+
+2. Testez l'image directement :
+   https://votre-site.onrender.com/images/hero-image.jpg
+   
+   ✅ Si l'image s'affiche = Le fichier est là
+   ❌ Si erreur 404 = Voir étape 3
+
+3. Si TOUJOURS pas d'image :
+   - Allez sur Dashboard Render
+   - Cliquez "Manual Deploy"
+   - Sélectionnez "Clear build cache & deploy"
+   - Attendez 5 minutes
+
+4. Testez la page terrain :
+   https://votre-site.onrender.com/property/2
+   
+   ✅ Les images doivent maintenant s'afficher !
+
+═══════════════════════════════════════════════
+
+🎯 SI ÇA NE FONCTIONNE TOUJOURS PAS :
+--------------------------------------
+
+Il faudra peut-être modifier le chemin de l'image.
+
+Ouvrez : src/data/properties.js
+
+Ligne 3, changez :
+const heroImage = `${process.env.PUBLIC_URL || ''}/images/hero-image.jpg`;
+
+Par :
+const heroImage = '/images/hero-image.jpg';
+
+Puis :
+git add .
+git commit -m "Fix: Chemin absolu pour images"
+git push
+
+═══════════════════════════════════════════════
+
+📖 DOCUMENTATION COMPLÈTE :
+---------------------------
+Consultez : DEBUG_RENDER.md
+
+═══════════════════════════════════════════════

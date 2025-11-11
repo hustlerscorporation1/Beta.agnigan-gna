@@ -16,7 +16,7 @@ import {
 import { ROUTES, APP_NAME, CONTACT_INFO, SOCIAL_LINKS } from '../../config/constants';
 import Container from '../ui/Container';
 import Logo from '../../images/LOGO_AGNIGBAN_GNA Trs Noir2 (2).png';
-import entityLogo from '../../images/Logo_Hustler_AN-removebg-preview.png';
+import entiteLogo from '../../images/Logo_Hustler_AN-removebg-preview.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -153,7 +153,7 @@ const Footer = () => {
         <div className="pt-8 border-t border-gray-700">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div>
-              <img src={entityLogo} alt="Entity Logo" className="h-16 w-auto " />
+              <img src={entiteLogo} alt="Entity Logo" className="h-16 w-auto " />
             </div>
             <p className="text-gray-400 text-sm text-center md:text-left">
               © {currentYear} {APP_NAME}. Tous droits réservés.

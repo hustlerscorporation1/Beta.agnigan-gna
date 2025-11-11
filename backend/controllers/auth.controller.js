@@ -1,26 +1,28 @@
-import { pool } from "../config/db.js";
+// controllers/authController.js
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { v4 as uuidv4 } from "uuid";
 import { jwtSecret, jwtExpiry } from "../config/auth.js";
+import {
+  findUserByEmail,
+  insertUser,
+  updateLastLogin,
+} from "../models/User.js";
 
-// ➕ Inscription (si besoin pour users)
+// ➕ Inscription
 export const register = async (req, res) => {
-  const { email, password, role } = req.body;
   try {
-    const [existing] = await pool.query(
-      `SELECT id FROM auth_users WHERE email = ?`,
-      [email]
-    );
-    if (existing.length)
+    const { email, password, role } = req.body;
+
+    const existingUser = await findUserByEmail(email);
+    if (existingUser)
       return res.status(400).json({ message: "Email déjà utilisé." });
 
     const id = uuidv4();
     const hash = await bcrypt.hash(password, 10);
-    await pool.query(
-      `INSERT INTO auth_users (id, email, password_hash, role) VALUES (?, ?, ?, ?)`,
-      [id, email, hash, role || "buyer"]
-    );
+
+    await insertUser({ id, email, password_hash: hash, role: role || "buyer" });
+
     res.status(201).json({ message: "Utilisateur créé.", id });
   } catch (error) {
     console.error(error);
@@ -30,16 +32,13 @@ export const register = async (req, res) => {
 
 // 🔑 Connexion
 export const login = async (req, res) => {
-  const { email, password } = req.body;
   try {
-    const [rows] = await pool.query(
-      `SELECT * FROM auth_users WHERE email = ?`,
-      [email]
-    );
-    if (!rows.length)
+    const { email, password } = req.body;
+    const user = await findUserByEmail(email);
+
+    if (!user)
       return res.status(401).json({ message: "Utilisateur non trouvé." });
 
-    const user = rows[0];
     const match = await bcrypt.compare(password, user.password_hash);
     if (!match)
       return res.status(401).json({ message: "Mot de passe incorrect." });
@@ -49,6 +48,9 @@ export const login = async (req, res) => {
       jwtSecret,
       { expiresIn: jwtExpiry }
     );
+
+    await updateLastLogin(user.id);
+
     res.status(200).json({
       token,
       user: { id: user.id, email: user.email, role: user.role },
