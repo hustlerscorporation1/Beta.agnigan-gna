@@ -144,9 +144,15 @@ const PropertiesWithMap = () => {
     
     const matchesRegion = selectedRegion === 'all' || property.region === selectedRegion;
     const matchesStatus = selectedStatus === 'all' || property.status === selectedStatus;
-    
     return matchesSearch && matchesRegion && matchesStatus;
   });
+
+  // Masquer la carte automatiquement si aucun terrain n'est trouvé
+  useEffect(() => {
+    if (filteredProperties.length === 0) {
+      setShowMap(false);
+    }
+  }, [filteredProperties.length]);
 
   return (
     <LayoutNoFooter>
