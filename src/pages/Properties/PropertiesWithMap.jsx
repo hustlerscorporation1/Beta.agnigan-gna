@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   MagnifyingGlassIcon,
@@ -40,9 +40,19 @@ L.Icon.Default.mergeOptions({
 
 const PropertiesWithMap = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [showFilters, setShowFilters] = useState(false);
   const [showMap, setShowMap] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Gérer le paramètre de recherche de l'URL
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const search = params.get('search');
+    if (search) {
+      setSearchQuery(decodeURIComponent(search));
+    }
+  }, [location.search]);
   const [selectedRegion, setSelectedRegion] = useState('all');
   const [selectedPrefecture, setSelectedPrefecture] = useState('all');
   const [selectedCommune, setSelectedCommune] = useState('all');
@@ -174,6 +184,13 @@ const PropertiesWithMap = () => {
               </p>
             </div>
             <div className="flex gap-2">
+              <Button
+                variant="success"
+                className="hidden lg:flex"
+                onClick={() => navigate(`${ROUTES.CONTACT}?subject=Demande%20Particulière`)}
+              >
+                Soumettre une demande particulière
+              </Button>
               <Button
                 variant={showMap ? 'primary' : 'outline'}
                 icon={MapIcon}
@@ -633,15 +650,36 @@ const PropertiesWithMap = () => {
               <p className="text-gray-600 mb-6">
                 Essayez de modifier vos critères de recherche
               </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    setSearchQuery('');
+                    setSelectedRegion('all');
+                    setSelectedStatus('all');
+                  }}
+                >
+                  Réinitialiser les filtres
+                </Button>
+                <Button
+                  variant="success"
+                  onClick={() => navigate(`${ROUTES.CONTACT}?subject=Demande%20Particulière`)}
+                >
+                  Soumettre une demande particulière
+                </Button>
+              </div>
+            </div>
+          )}
+          
+          {filteredProperties.length > 0 && !showMap && (
+            <div className="mt-12 text-center p-8 bg-primary-50 rounded-2xl border border-primary-100">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Vous ne trouvez pas votre bonheur ?</h3>
+              <p className="text-gray-600 mb-6">Faites-nous part de vos besoins spécifiques et nous trouverons le terrain idéal pour vous.</p>
               <Button
-                variant="primary"
-                onClick={() => {
-                  setSearchQuery('');
-                  setSelectedRegion('all');
-                  setSelectedStatus('all');
-                }}
+                variant="success"
+                onClick={() => navigate(`${ROUTES.CONTACT}?subject=Demande%20Particulière`)}
               >
-                Réinitialiser les filtres
+                Soumettre une demande particulière
               </Button>
             </div>
           )}

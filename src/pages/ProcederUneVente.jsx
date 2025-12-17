@@ -130,10 +130,10 @@ const ProcessusVente = () => {
         <section className="relative bg-green-600 text-white py-20 overflow-hidden">
           {/* Background Image */}
           <div
-            className="absolute inset-0 bg-green-600 bg-cover bg-center bg-no-repeat"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${heroBgImage})` }}
           ></div>
-          <div className="absolute inset-0  bg-green-600 from-green-600 to-green-600"></div>
+          <div className="absolute inset-0 bg-green-600/80"></div>
           <Container className="relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -144,7 +144,7 @@ const ProcessusVente = () => {
               <div className="flex justify-center mb-6">
                 <CurrencyDollarIcon className="h-20 w-20" />
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 mt-16">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 ">
                 Processus de Vente d'un Terrain
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-orange-100">
@@ -153,18 +153,16 @@ const ProcessusVente = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
-                  variant="outline"
                   size="lg"
                   onClick={() => navigate(ROUTES.DECLARE_PROPERTY)}
-                  className=" border-none bg-white text-green-600 hover:bg-gray-100 hover:text-black"
+                  className="bg-white !text-green-600 hover:bg-green-600 hover:!text-white border-none shadow-lg"
                 >
                   Publier une annonce
                 </Button>
                 <Button
-                  variant="outline"
                   size="lg"
                   onClick={() => navigate(ROUTES.CONTACT)}
-                  className="border-white text-white hover:bg-white hover:text-black"
+                  className="border-white text-white hover:bg-green-600 hover:text-white"
                 >
                   Nous contacter
                 </Button>
@@ -290,10 +288,9 @@ const ProcessusVente = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
-                  variant="outline"
                   size="xl"
                   onClick={() => navigate(ROUTES.DECLARE_PROPERTY)}
-                  className="bg-white text-black hover:bg-green hover:text-black"
+                  className="bg-white !text-green-600 hover:bg-green-600 hover:!text-white border-none shadow-xl"
                 >
                   Publier mon annonce
                 </Button>
@@ -301,7 +298,7 @@ const ProcessusVente = () => {
                   variant="outline"
                   size="xl"
                   onClick={() => navigate(ROUTES.CONTACT)}
-                  className="border-white text-white hover:bg-white hover:text-black"
+                  className="border-white text-white hover:bg-green-600 hover:text-white"
                 >
                   Contactez-nous
                 </Button>

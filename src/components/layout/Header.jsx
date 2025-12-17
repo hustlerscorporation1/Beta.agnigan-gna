@@ -27,11 +27,17 @@ const Header = () => {
   const [searchId, setSearchId] = useState("");
   const navigate = useNavigate();
 
-  const handleSearchById = (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
-    const id = searchId.trim();
-    if (id && !isNaN(id)) {
-      navigate(`${ROUTES.PROPERTY_DETAIL}/${id}`);
+    const query = searchId.trim();
+    if (query) {
+      if (!isNaN(query)) {
+        // Si c'est un nombre, recherche par ID
+        navigate(`${ROUTES.PROPERTY_DETAIL}/${query}`);
+      } else {
+        // Sinon, recherche par localité/texte sur la page des propriétés
+        navigate(`${ROUTES.PROPERTIES}?search=${encodeURIComponent(query)}`);
+      }
       setSearchId("");
     }
   };
@@ -127,16 +133,14 @@ const Header = () => {
               ))}
             </div>
 
-            {/* Search by ID */}
             <div className="hidden md:flex items-center">
-              <form onSubmit={handleSearchById} className="relative group">
+              <form onSubmit={handleSearch} className="relative group">
                 <input
-                  type="number"
+                  type="text"
                   value={searchId}
                   onChange={(e) => setSearchId(e.target.value)}
-                  placeholder="ID du terrain..."
+                  placeholder="ID ou localité..."
                   className="w-48 pl-10 pr-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all hover:border-gray-400"
-                  min="1"
                 />
                 <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 group-focus-within:text-primary-600 transition-colors" />
                 <button
