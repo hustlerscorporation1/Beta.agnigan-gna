@@ -17,8 +17,10 @@ import Card, { CardContent, CardHeader, CardTitle, CardDescription } from '../..
 import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';
 import { ROUTES } from '../../config/constants';
+import { useTranslation } from 'react-i18next';
 
 const Register = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -49,13 +51,13 @@ const Register = () => {
 
     // Validation
     if (formData.password !== formData.confirmPassword) {
-      setError('Les mots de passe ne correspondent pas');
+      setError(t('auth.register.error_password_match'));
       setIsLoading(false);
       return;
     }
 
     if (formData.password.length < 6) {
-      setError('Le mot de passe doit contenir au moins 6 caractères');
+      setError(t('auth.register.error_password_length'));
       setIsLoading(false);
       return;
     }
@@ -81,7 +83,7 @@ const Register = () => {
         navigate(ROUTES.LOGIN);
       }, 5000);
     } catch (error) {
-      setError(error.message || 'Une erreur est survenue lors de l\'inscription');
+      setError(error.message || t('auth.register.general_error'));
     } finally {
       setIsLoading(false);
     }
@@ -97,7 +99,7 @@ const Register = () => {
       });
       if (error) throw error;
     } catch (error) {
-      setError('Erreur lors de l\'inscription avec Google');
+      setError(t('auth.register.google_error'));
     }
   };
 
@@ -113,9 +115,9 @@ const Register = () => {
             >
               <Card>
                 <CardHeader className="text-center">
-                  <CardTitle>Créer un compte</CardTitle>
+                  <CardTitle>{t('auth.register.title')}</CardTitle>
                   <CardDescription>
-                    Rejoignez-nous et commencez votre parcours immobilier
+                    {t('auth.register.subtitle')}
                   </CardDescription>
                 </CardHeader>
 
@@ -136,23 +138,23 @@ const Register = () => {
                         <CheckCircleIcon className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
                         <div className="flex-1">
                           <h3 className="text-lg font-bold text-green-900 mb-2">
-                            🎉 Compte créé avec succès !
+                            🎉 {t('auth.register.success_title')}
                           </h3>
                           <div className="text-green-800 space-y-2">
                             <p className="font-medium">
-                              Bienvenue sur Agnigban Gna !
+                              {t('auth.register.welcome')}
                             </p>
                             <p className="text-sm">
-                              📧 <strong>Étape importante :</strong> Un email de vérification a été envoyé à <strong>{formData.email}</strong>
+                              📧 <strong>{t('auth.register.important_step')}</strong> {t('auth.register.verification_sent')} <strong>{formData.email}</strong>
                             </p>
                             <p className="text-sm">
-                              ✅ Veuillez consulter votre boîte de réception et cliquer sur le lien de vérification pour activer votre compte.
+                              ✅ {t('auth.register.verification_instruction')}
                             </p>
                             <p className="text-xs text-green-700 mt-3 italic">
-                              💡 Pensez à vérifier vos spams si vous ne trouvez pas l'email.
+                              💡 {t('auth.register.spam_hint')}
                             </p>
                             <p className="text-xs text-green-600 mt-2">
-                              Redirection vers la page de connexion dans quelques secondes...
+                              {t('auth.register.redirecting')}
                             </p>
                           </div>
                         </div>
@@ -165,59 +167,59 @@ const Register = () => {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-4">
                       <Input
-                        label="Prénom"
+                        label={t('auth.register.first_name')}
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleChange}
                         required
-                        placeholder="Votre prénom"
+                        placeholder={t('auth.register.first_name_placeholder')}
                         icon={UserIcon}
                       />
 
                       <Input
-                        label="Nom"
+                        label={t('auth.register.last_name')}
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleChange}
                         required
-                        placeholder="Votre nom"
+                        placeholder={t('auth.register.last_name_placeholder')}
                         icon={UserIcon}
                       />
                     </div>
 
                     <Input
-                      label="Adresse email"
+                      label={t('auth.register.email_label')}
                       name="email"
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      placeholder="votre@email.com"
+                      placeholder={t('auth.register.email_placeholder')}
                       icon={EnvelopeIcon}
                     />
 
                     <Input
-                      label="Téléphone"
+                      label={t('auth.register.phone_label')}
                       name="phone"
                       type="tel"
                       value={formData.phone}
                       onChange={handleChange}
                       required
-                      placeholder="+228 XX XX XX XX"
+                      placeholder={t('auth.register.phone_placeholder')}
                       icon={PhoneIcon}
                     />
 
                     <div className="relative">
                       <Input
-                        label="Mot de passe"
+                        label={t('auth.register.password_label')}
                         name="password"
                         type={showPassword ? 'text' : 'password'}
                         value={formData.password}
                         onChange={handleChange}
                         required
-                        placeholder="••••••••"
+                        placeholder={t('auth.register.password_placeholder')}
                         icon={LockClosedIcon}
-                        helperText="Au moins 6 caractères"
+                        helperText={t('auth.register.password_helper')}
                       />
                       <button
                         type="button"
@@ -234,13 +236,13 @@ const Register = () => {
 
                     <div className="relative">
                       <Input
-                        label="Confirmer le mot de passe"
+                        label={t('auth.register.confirm_password_label')}
                         name="confirmPassword"
                         type={showConfirmPassword ? 'text' : 'password'}
                         value={formData.confirmPassword}
                         onChange={handleChange}
                         required
-                        placeholder="••••••••"
+                        placeholder={t('auth.register.confirm_password_placeholder')}
                         icon={LockClosedIcon}
                       />
                       <button
@@ -260,13 +262,13 @@ const Register = () => {
                       <label className="flex items-start">
                         <input type="checkbox" className="mt-1 mr-2 rounded" required />
                         <span className="text-gray-600">
-                          J'accepte les{' '}
+                          {t('auth.register.accept_terms')}{' '}
                           <Link to="/conditions" className="text-blue-600 hover:text-blue-700">
-                            conditions d'utilisation
+                            {t('auth.register.terms_link')}
                           </Link>
-                          {' '}et la{' '}
+                          {' '}{t('auth.register.and')}{' '}
                           <Link to="/confidentialite" className="text-blue-600 hover:text-blue-700">
-                            politique de confidentialité
+                            {t('auth.register.privacy_link')}
                           </Link>
                         </span>
                       </label>
@@ -280,7 +282,7 @@ const Register = () => {
                       loading={isLoading}
                       disabled={isLoading || success}
                     >
-                      Créer mon compte
+                      {t('auth.register.submit')}
                     </Button>
                   </form>
 
@@ -290,7 +292,7 @@ const Register = () => {
                         <div className="w-full border-t border-gray-300"></div>
                       </div>
                       <div className="relative flex justify-center text-sm">
-                        <span className="px-2 bg-white text-gray-500">Ou s'inscrire avec</span>
+                        <span className="px-2 bg-white text-gray-500">{t('auth.register.or_signup_with')}</span>
                       </div>
                     </div>
 
@@ -325,12 +327,12 @@ const Register = () => {
                   </div>
 
                   <div className="mt-6 text-center text-sm text-gray-600">
-                    Vous avez déjà un compte ?{' '}
+                    {t('auth.register.already_have_account')}{' '}
                     <Link
                       to={ROUTES.LOGIN}
                       className="text-blue-600 hover:text-blue-700 font-medium"
                     >
-                      Se connecter
+                      {t('auth.register.login')}
                     </Link>
                   </div>
                   </>

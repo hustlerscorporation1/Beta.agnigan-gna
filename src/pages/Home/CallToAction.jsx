@@ -5,8 +5,10 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Container from '../../components/ui/Container';
 import Button from '../../components/ui/Button';
 import { ROUTES } from '../../config/constants';
+import { useTranslation } from 'react-i18next';
 
 const CallToAction = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
@@ -26,11 +28,10 @@ const CallToAction = () => {
           className="text-center max-w-4xl mx-auto"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Prêt à Trouver Votre Terrain Idéal ?
+            {t('home.cta.title')}
           </h2>
           <p className="text-lg md:text-xl text-primary-100 mb-10 leading-relaxed">
-            Rejoignez des milliers de clients satisfaits qui ont trouvé leur terrain grâce à notre plateforme.
-            Commencez votre recherche dès aujourd'hui !
+            {t('home.cta.subtitle')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -46,7 +47,7 @@ const CallToAction = () => {
                 iconPosition="right"
                 className="bg-white text-primary-600 hover:bg-gray-100"
               >
-                Commencer maintenant
+                {t('home.cta.start')}
               </Button>
             </motion.div>
 
@@ -60,7 +61,7 @@ const CallToAction = () => {
                 onClick={() => navigate(ROUTES.CONTACT)}
                 className="border-white text-white hover:bg-white hover:text-primary-600"
               >
-                Nous contacter
+                {t('home.cta.contact')}
               </Button>
             </motion.div>
           </div>
@@ -75,19 +76,19 @@ const CallToAction = () => {
           >
             <div>
               <div className="text-4xl font-bold mb-2">500+</div>
-              <div className="text-primary-200">Terrains disponibles</div>
+              <div className="text-primary-200">{t('home.cta.stats.land')}</div>
             </div>
             <div>
               <div className="text-4xl font-bold mb-2">0+</div>
-              <div className="text-primary-200">Clients satisfaits</div>
+              <div className="text-primary-200">{t('home.cta.stats.clients')}</div>
             </div>
             <div>
               <div className="text-4xl font-bold mb-2">0%</div>
-              <div className="text-primary-200">Taux de satisfaction</div>
+              <div className="text-primary-200">{t('home.cta.stats.satisfaction')}</div>
             </div>
             <div>
               <div className="text-4xl font-bold mb-2">24/7</div>
-              <div className="text-primary-200">Support client</div>
+              <div className="text-primary-200">{t('home.cta.stats.support')}</div>
             </div>
           </motion.div>
         </motion.div>

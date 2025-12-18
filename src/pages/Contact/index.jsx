@@ -12,8 +12,10 @@ import Card, { CardContent } from '../../components/ui/Card';
 import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';
 import { CONTACT_INFO } from '../../config/constants';
+import { useTranslation } from 'react-i18next';
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -55,26 +57,26 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: MapPinIcon,
-      title: 'Adresse',
+      title: t('contact.info.address'),
       content: CONTACT_INFO.address,
       link: null
     },
     {
       icon: PhoneIcon,
-      title: 'Téléphone',
+      title: t('contact.info.phone'),
       content: CONTACT_INFO.phone,
       link: `tel:${CONTACT_INFO.phone}`
     },
     {
       icon: EnvelopeIcon,
-      title: 'Email',
+      title: t('contact.info.email'),
       content: CONTACT_INFO.email,
       link: `mailto:${CONTACT_INFO.email}`
     },
     {
       icon: ClockIcon,
-      title: 'Horaires',
-      content: 'Lun - Ven: 8h - 18h\nSam: 8h - 13h',
+      title: t('contact.info.hours'),
+      content: t('contact.info.hours_val'),
       link: null
     }
   ];
@@ -90,10 +92,10 @@ const Contact = () => {
             className="text-center max-w-3xl mx-auto"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Contactez-Nous
+              {t('contact.hero_title')}
             </h1>
             <p className="text-lg md:text-xl text-primary-100">
-              Notre équipe est à votre disposition pour répondre à toutes vos questions
+              {t('contact.hero_desc')}
             </p>
           </motion.div>
         </Container>
@@ -148,61 +150,61 @@ const Contact = () => {
               <Card>
                 <CardContent className="p-8">
                   <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                    Envoyez-nous un message
+                    {t('contact.form.title')}
                   </h2>
 
                   {submitStatus === 'success' && (
                     <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
                       <p className="text-green-800 text-sm">
-                        ✓ Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.
+                        {t('contact.form.success')}
                       </p>
                     </div>
                   )}
 
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <Input
-                      label="Nom complet"
+                      label={t('contact.form.name_label')}
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      placeholder="Votre nom"
+                      placeholder={t('contact.form.name_placeholder')}
                     />
 
                     <div className="grid md:grid-cols-2 gap-4">
                       <Input
-                        label="Email"
+                        label={t('contact.form.email_label')}
                         name="email"
                         type="email"
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        placeholder="votre@email.com"
+                        placeholder={t('contact.form.email_placeholder')}
                       />
 
                       <Input
-                        label="Téléphone"
+                        label={t('contact.form.phone_label')}
                         name="phone"
                         type="tel"
                         value={formData.phone}
                         onChange={handleChange}
                         required
-                        placeholder="+228 XX XX XX XX"
+                        placeholder={t('contact.form.phone_placeholder')}
                       />
                     </div>
 
                     <Input
-                      label="Sujet"
+                      label={t('contact.form.subject_label')}
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      placeholder="Objet de votre message"
+                      placeholder={t('contact.form.subject_placeholder')}
                     />
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Message
+                        {t('contact.form.message_label')}
                       </label>
                       <textarea
                         name="message"
@@ -211,7 +213,7 @@ const Contact = () => {
                         required
                         rows="5"
                         className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all duration-200"
-                        placeholder="Décrivez votre demande..."
+                        placeholder={t('contact.form.message_placeholder')}
                       />
                     </div>
 
@@ -223,7 +225,7 @@ const Contact = () => {
                       loading={isSubmitting}
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
+                      {isSubmitting ? t('contact.form.sending') : t('contact.form.submit')}
                     </Button>
                   </form>
                 </CardContent>
@@ -240,28 +242,28 @@ const Contact = () => {
               <Card>
                 <CardContent className="p-8">
                   <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    Pourquoi nous contacter ?
+                    {t('contact.why.title')}
                   </h3>
                   <ul className="space-y-3">
                     <li className="flex items-start">
                       <span className="text-primary-600 mr-2">✓</span>
-                      <span className="text-gray-600">Obtenir des informations sur nos terrains</span>
+                      <span className="text-gray-600">{t('contact.why.item1')}</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-primary-600 mr-2">✓</span>
-                      <span className="text-gray-600">Planifier une visite de terrain</span>
+                      <span className="text-gray-600">{t('contact.why.item2')}</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-primary-600 mr-2">✓</span>
-                      <span className="text-gray-600">Déclarer un terrain à vendre</span>
+                      <span className="text-gray-600">{t('contact.why.item3')}</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-primary-600 mr-2">✓</span>
-                      <span className="text-gray-600">Obtenir une assistance juridique</span>
+                      <span className="text-gray-600">{t('contact.why.item4')}</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-primary-600 mr-2">✓</span>
-                      <span className="text-gray-600">Poser des questions générales</span>
+                      <span className="text-gray-600">{t('contact.why.item5')}</span>
                     </li>
                   </ul>
                 </CardContent>
@@ -277,7 +279,7 @@ const Contact = () => {
                     style={{ border: 0 }}
                     allowFullScreen=""
                     loading="lazy"
-                    title="Notre localisation"
+                    title={t('contact.map_title')}
                   ></iframe>
                 </div>
               </Card>
@@ -296,30 +298,30 @@ const Contact = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Questions <span className="text-gradient">Fréquentes</span>
+              {t('contact.faq.title')}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Trouvez rapidement des réponses à vos questions
+              {t('contact.faq.desc')}
             </p>
           </motion.div>
 
           <div className="max-w-3xl mx-auto space-y-4">
             {[
               {
-                q: 'Comment puis-je acheter un terrain ?',
-                a: 'Parcourez notre catalogue, sélectionnez un terrain, contactez-nous pour une visite et nous vous accompagnerons dans toutes les démarches administratives.'
+                q: t('contact.faq.q1'),
+                a: t('contact.faq.a1')
               },
               {
-                q: 'Les terrains sont-ils vérifiés ?',
-                a: 'Oui, tous nos terrains sont vérifiés juridiquement. Nous nous assurons que tous les documents sont conformes et authentiques.'
+                q: t('contact.faq.q2'),
+                a: t('contact.faq.a2')
               },
               {
-                q: 'Proposez-vous des facilités de paiement ?',
-                a: 'Oui, nous proposons des plans de financement flexibles adaptés à votre budget. Contactez-nous pour en savoir plus.'
+                q: t('contact.faq.q3'),
+                a: t('contact.faq.a3')
               },
               {
-                q: 'Comment déclarer un terrain à vendre ?',
-                a: 'Créez un compte, accédez à votre profil et utilisez le formulaire de déclaration. Notre équipe vérifiera les informations avant publication.'
+                q: t('contact.faq.q4'),
+                a: t('contact.faq.a4')
               }
             ].map((faq, index) => (
               <motion.div

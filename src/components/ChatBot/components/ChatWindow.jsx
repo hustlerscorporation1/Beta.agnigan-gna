@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import { FiSend, FiX } from 'react-icons/fi';
 import Message from './Message';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import '../styles/ChatWindow.css';
 
 const ChatWindow = ({ isOpen, messages, isTyping, onSendMessage, onClose }) => {
+  const { t } = useTranslation();
   const [inputValue, setInputValue] = React.useState('');
   const messagesEndRef = useRef(null);
 
@@ -50,17 +52,17 @@ const ChatWindow = ({ isOpen, messages, isTyping, onSendMessage, onClose }) => {
                 <span className="text-sm font-bold">AG</span>
               </div>
               <div>
-                <h3 className="text-sm font-bold leading-tight">Assistant Gna</h3>
+                <h3 className="text-sm font-bold leading-tight">{t('chatbot.title')}</h3>
                 <div className="flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                  <span className="text-[10px] text-gray-500 uppercase tracking-wider font-medium">En ligne</span>
+                  <span className="text-[10px] text-gray-500 uppercase tracking-wider font-medium">{t('chatbot.status')}</span>
                 </div>
               </div>
             </div>
             <button 
               onClick={onClose}
               className="p-1.5 hover:bg-gray-100 rounded-full transition-colors text-gray-400 hover:text-gray-600"
-              aria-label="Fermer"
+              aria-label={t('chatbot.close')}
             >
               <FiX size={18} />
             </button>
@@ -89,7 +91,7 @@ const ChatWindow = ({ isOpen, messages, isTyping, onSendMessage, onClose }) => {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Posez votre question..."
+                placeholder={t('chatbot.placeholder')}
                 disabled={isTyping}
                 rows={1}
                 className="w-full bg-transparent border-none focus:ring-0 p-1 text-sm resize-none max-h-32 custom-scrollbar outline-none"
@@ -112,7 +114,7 @@ const ChatWindow = ({ isOpen, messages, isTyping, onSendMessage, onClose }) => {
               </button>
             </div>
             <p className="text-[10px] text-center text-gray-400 mt-2">
-              L'IA peut faire des erreurs. Vérifiez les informations importantes.
+              {t('chatbot.disclaimer')}
             </p>
           </form>
         </motion.div>

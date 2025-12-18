@@ -1,0 +1,429 @@
+{
+  "header": {
+    "home": "Accueil",
+    "properties": "Propriétés",
+    "about": "À propos",
+    "blog": "Blog",
+    "contact": "Contact",
+    "download_app": "Télécharger l'App",
+    "login": "Connexion",
+    "register": "Inscription",
+    "my_profile": "Mon profil",
+    "declare_property": "Déclarer un terrain",
+    "logout": "Déconnexion",
+    "search_placeholder": "ID ou localité...",
+    "my_account": "Mon compte",
+    "go": "Aller"
+  },
+  "home": {
+    "hero_title": "Agnigban Gna, Togo",
+    "hero_subtitle": "La plateforme officielle d'achat et de vente de terrains en toute sécurité.",
+    "buy_land": "Acheter un terrain",
+    "sell_land": "Procéder à une vente",
+    "features": {
+      "verify": "Authenticité",
+      "verify_desc": "Légalité garantie à 100%",
+      "buy": "Achat Direct",
+      "buy_desc": "Terrains titrés et vérifiés",
+      "sell": "Vente Rapide",
+      "sell_desc": "Évaluation et mise en vente"
+    },
+    "stats": {
+      "land": "Terrains",
+      "clients": "Clients",
+      "satisfaction": "Satisfaction"
+    },
+    "typed": [
+      "Bienvenue sur la plateforme officielle d'achat et vente de terrains au Togo",
+      "Trouvez le terrain de vos rêves en quelques clics",
+      "Vendez votre terrain rapidement et en toute sécurité"
+    ],
+    "services": {
+      "title": "Nos",
+      "subtitle": "Services",
+      "description": "Une gamme complète de services pour répondre à tous vos besoins immobiliers",
+      "items": {
+        "verify": {
+          "title": "Vérification de Terrain",
+          "desc": "Vérifiez l'authenticité et la légalité de votre terrain avant tout achat. Notre service vous garantit transparence et sécurité.",
+          "f1": "Vérification juridique",
+          "f2": "Historique du terrain",
+          "f3": "Certificat d'authenticité"
+        },
+        "buy": {
+          "title": "Achat de Terrain",
+          "desc": "Trouvez le terrain idéal parmi notre sélection variée. Accompagnement complet de la recherche à la signature.",
+          "f1": "Large catalogue",
+          "f2": "Visite virtuelle",
+          "f3": "Accompagnement juridique"
+        },
+        "sell": {
+          "title": "Vente de Terrain",
+          "desc": "Vendez votre terrain rapidement grâce à notre plateforme performante et notre réseau d'acheteurs qualifiés.",
+          "f1": "Évaluation gratuite",
+          "f2": "Visibilité maximale",
+          "f3": "Transaction sécurisée"
+        }
+      },
+      "learn_more": "En savoir plus →",
+      "why_choose_us": "Pourquoi Nous Choisir ?",
+      "advantages": {
+        "security": "Sécurité Garantie",
+        "security_desc": "Toutes nos transactions sont sécurisées et conformes à la législation togolaise",
+        "docs": "Documents Vérifiés",
+        "docs_desc": "Chaque terrain est vérifié avec des documents authentiques et à jour",
+        "support": "Accompagnement",
+        "support_desc": "Notre équipe vous accompagne à chaque étape de votre projet immobilier"
+      }
+    },
+    "featured": {
+      "title": "Terrains",
+      "subtitle": "En Vedette",
+      "description": "Découvrez notre sélection de terrains premium dans toutes les régions du Togo",
+      "stats": {
+        "available": "Disponible",
+        "private": "Privé",
+        "pending": "En cours"
+      },
+      "surface": "Surface",
+      "price": "Prix",
+      "view_details": "Voir détails",
+      "explore_cities": "Explorez par ville",
+      "view_all": "Voir tous les terrains"
+    },
+    "cta": {
+      "title": "Prêt à Trouver Votre Terrain Idéal ?",
+      "subtitle": "Rejoignez des milliers de clients satisfaits qui ont trouvé leur terrain grâce à notre plateforme. Commencez votre recherche dès aujourd'hui !",
+      "start": "Commencer maintenant",
+      "contact": "Nous contacter",
+      "stats": {
+        "land": "Terrains disponibles",
+        "clients": "Clients satisfaits",
+        "satisfaction": "Taux de satisfaction",
+        "support": "Support client"
+      }
+    },
+    "testimonials": {
+      "title": "Avis de nos",
+      "subtitle": "Clients",
+      "description": "Découvrez ce que nos clients satisfaits disent de nos services",
+      "items": {
+        "1": {
+          "role": "Entrepreneur",
+          "text": "Service exceptionnel ! J'ai acheté mon terrain en toute confiance grâce à l'accompagnement professionnel de l'équipe. Tous les documents étaient vérifiés et le processus était transparent."
+        },
+        "2": {
+          "role": "Commerçante",
+          "text": "Très satisfaite de mon achat. La plateforme est facile à utiliser et j'ai trouvé exactement ce que je cherchais. Le service client est réactif et à l'écoute."
+        },
+        "3": {
+          "role": "Ingénieur",
+          "text": "Excellent service de vérification de terrain. J'ai pu acheter en toute sécurité grâce aux contrôles rigoureux effectués. Je recommande vivement cette plateforme."
+        }
+      }
+    }
+  },
+  "footer": {
+    "about": "Votre plateforme de confiance pour l'achat et la vente de terrains au Togo. Transparence, sécurité et professionnalisme.",
+    "company": "Entreprise",
+    "services": "Services",
+    "contact": "Contact",
+    "legal": {
+      "terms": "Conditions d'utilisation",
+      "privacy": "Politique de confidentialité",
+      "mentions": "Mentions légales"
+    },
+    "rights": "© {{year}} {{name}}. Tous droits réservés."
+  },
+  "chatbot": {
+    "title": "Assistant Gna",
+    "status": "En ligne",
+    "close": "Fermer",
+    "placeholder": "Posez votre question...",
+    "disclaimer": "L'IA peut faire des erreurs. Vérifiez les informations importantes.",
+    "open_chat": "Ouvrir le chat",
+    "close_chat": "Fermer le chat"
+  },
+  "property_detail": {
+    "not_found": "Terrain non trouvé",
+    "back_to_properties": "Retour aux propriétés",
+    "price_label": "Prix",
+    "surface_label": "Surface",
+    "id_label": "ID",
+    "view_n": "Vue {{n}}",
+    "see_reality": "Voir en Réalité",
+    "see_video": "Voir la vidéo",
+    "satellite": "Satellite",
+    "description_title": "Description",
+    "features_title": "Caractéristiques",
+    "docs_title": "Documents Disponibles",
+    "download": "Télécharger",
+    "contact": {
+      "buy_title": "Acheter ce terrain",
+      "interested_title": "Intéressé ?",
+      "available_msg": "Ce terrain est disponible à la vente. Contactez-nous pour finaliser votre achat.",
+      "info_msg": "Contactez-nous pour plus d'informations sur ce terrain ou pour planifier une visite.",
+      "buy_now": "Acheter maintenant",
+      "request_info": "Demander des informations",
+      "call_now": "Appeler maintenant"
+    },
+    "seller": {
+      "title": "Vendeur",
+      "verified_agent": "Agent vérifié"
+    },
+    "safety": {
+      "title": "💡 Conseils de sécurité",
+      "tip1": "Vérifiez toujours les documents du terrain",
+      "tip2": "Visitez le terrain avant tout engagement",
+      "tip3": "Ne payez jamais sans contrat officiel"
+    },
+    "form": {
+      "modal_title": "Demande d'information",
+      "name_label": "Nom complet",
+      "email_label": "Email",
+      "phone_label": "Téléphone",
+      "message_label": "Message",
+      "msg_placeholder": "Je suis intéressé par le terrain \"{{title}}\"",
+      "send": "Envoyer la demande",
+      "success_msg": "Votre demande a été envoyée avec succès !"
+    },
+    "modals": {
+      "v3d_title": "Visite Virtuelle 3D",
+      "video_title": "Vidéo du Terrain",
+      "v3d_interactive": "Visite 3D Interactive",
+      "v3d_desc": "Explorez ce terrain en 3D avec une vue à 360°. Déplacez-vous librement et découvrez chaque détail.",
+      "v3d_tip": "💡 Astuce: Cette vue 3D sera disponible prochainement avec une visite interactive complète",
+      "total_surface": "Surface totale",
+      "location": "Localisation",
+      "video_tour": "Visite Vidéo du Terrain",
+      "video_desc": "Découvrez ce magnifique terrain en vidéo HD avec des vues aériennes et au sol.",
+      "video_coming_soon": "📹 La vidéo sera disponible prochainement",
+      "about_video_title": "📹 À propos de cette vidéo:",
+      "about_video_desc": "Cette visite vidéo vous permet de voir le terrain sous tous les angles. Idéal pour avoir une première impression avant de planifier votre visite sur place."
+    }
+  },
+  "properties": {
+    "search_placeholder": "Rechercher par nom, ville, région...",
+    "id_search_tip": "💡 Vous connaissez l'ID du terrain ? Utilisez la barre de recherche en haut pour y accéder directement !",
+    "special_request_btn": "Soumettre une demande particulière",
+    "view_map": "Carte",
+    "view_list": "Liste",
+    "filters_btn": "Filtres",
+    "prefecture_label": "Préfecture",
+    "commune_label": "Commune",
+    "canton_label": "Canton",
+    "quartier_label": "Quartier",
+    "status_label": "Statut",
+    "all_prefectures": "Toutes les préfectures",
+    "all_communes": "Toutes les communes",
+    "all_cantons": "Tous les cantons",
+    "all_quartiers": "Tous les quartiers",
+    "reset_all": "Réinitialiser les filtres",
+    "apply": "Appliquer",
+    "buy_marker": "🛒 Acheter",
+    "buy_btn": "Acheter",
+    "buy_this_land": "Acheter ce terrain",
+    "not_found_title": "Aucun terrain trouvé",
+    "not_found_desc": "Essayez de modifier vos critères de recherche",
+    "special_request_title": "Vous ne trouvez pas votre bonheur ?",
+    "special_request_desc": "Faites-nous part de vos besoins spécifiques et nous trouverons le terrain idéal pour vous."
+  },
+  "about": {
+    "hero_title": "À Propos de Nous",
+    "hero_desc": "Nous sommes la première plateforme digitale dédiée à l'achat et la vente de terrains au Togo. Notre mission est de rendre l'accès à la propriété foncière simple, sécurisé et transparent.",
+    "mission_title": "Notre Mission",
+    "mission_desc": "Faciliter l'accès à la propriété foncière pour tous les Togolais et investisseurs en proposant une plateforme moderne, sécurisée et transparente. Nous nous engageons à offrir un service de qualité qui respecte les normes légales et protège les intérêts de nos clients.",
+    "vision_title": "Notre Vision",
+    "vision_desc": "Devenir la référence incontournable dans le secteur immobilier au Togo et en Afrique de l'Ouest. Nous aspirons à créer un écosystème où chaque transaction foncière est simple, rapide et sécurisée, tout en contribuant au développement économique de notre pays.",
+    "values_title": "Nos Valeurs",
+    "values_desc": "Les principes qui guident notre travail au quotidien",
+    "value1_title": "Transparence",
+    "value1_desc": "Nous garantissons une totale transparence dans toutes nos transactions et processus.",
+    "value2_title": "Confiance",
+    "value2_desc": "La confiance de nos clients est notre priorité. Nous travaillons avec intégrité.",
+    "value3_title": "Excellence",
+    "value3_desc": "Nous visons l'excellence dans chaque aspect de notre service client.",
+    "value4_title": "Satisfaction",
+    "value4_desc": "Votre satisfaction est notre plus grande récompense et motivation.",
+    "partners_title": "Nos Partenaires",
+    "partners_desc": "Les partenaires qui nous soutiennent",
+    "stats": {
+      "years": "Années d'expérience",
+      "land_sold": "Terrains vendus",
+      "happy_clients": "Clients satisfaits",
+      "satisfaction_rate": "Taux de satisfaction"
+    },
+    "team_title": "Notre Équipe",
+    "team_desc": "Des professionnels passionnés et expérimentés à votre service",
+    "cta_title": "Rejoignez-nous dans cette aventure",
+    "cta_desc": "Ensemble, construisons l'avenir de l'immobilier au Togo",
+    "contact_us": "Nous contacter",
+    "view_lands": "Voir les terrains"
+  },
+  "contact": {
+    "hero_title": "Contactez-Nous",
+    "hero_desc": "Notre équipe est à votre disposition pour répondre à toutes vos questions",
+    "info": {
+      "address": "Adresse",
+      "phone": "Téléphone",
+      "email": "Email",
+      "hours": "Horaires",
+      "hours_val": "Lun - Ven: 8h - 18h\nSam: 8h - 13h"
+    },
+    "form": {
+      "title": "Envoyez-nous un message",
+      "success": "✓ Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.",
+      "name_label": "Nom complet",
+      "email_label": "Email",
+      "phone_label": "Téléphone",
+      "subject_label": "Sujet",
+      "message_label": "Message",
+      "name_placeholder": "Votre nom",
+      "email_placeholder": "votre@email.com",
+      "phone_placeholder": "+228 XX XX XX XX",
+      "subject_placeholder": "Objet de votre message",
+      "message_placeholder": "Décrivez votre demande...",
+      "submit": "Envoyer le message",
+      "sending": "Envoi en cours..."
+    },
+    "why": {
+      "title": "Pourquoi nous contacter ?",
+      "item1": "Obtenir des informations sur nos terrains",
+      "item2": "Planifier une visite de terrain",
+      "item3": "Déclarer un terrain à vendre",
+      "item4": "Obtenir une assistance juridique",
+      "item5": "Poser des questions générales"
+    },
+    "faq": {
+      "title": "Questions Fréquentes",
+      "desc": "Trouvez rapidement des réponses à vos questions",
+      "q1": "Comment puis-je acheter un terrain ?",
+      "a1": "Parcourez notre catalogue, sélectionnez un terrain, contactez-nous pour une visite et nous vous accompagnerons dans toutes les démarches administratives.",
+      "q2": "Les terrains sont-ils vérifiés ?",
+      "a2": "Oui, tous nos terrains sont vérifiés juridiquement. Nous nous assurons que tous les documents sont conformes et authentiques.",
+      "q3": "Proposez-vous des facilités de paiement ?",
+      "a3": "Oui, nous proposons des plans de financement flexibles adaptés à votre budget. Contactez-nous pour en savoir plus.",
+      "q4": "Comment déclarer un terrain à vendre ?",
+      "a4": "Créez un compte, accédez à votre profil et utilisez le formulaire de déclaration. Notre équipe vérifiera les informations avant publication."
+    },
+    "map_title": "Notre localisation"
+  },
+  "auth": {
+    "login": {
+      "title": "Connexion",
+      "subtitle": "Connectez-vous à votre compte pour accéder à votre espace personnel",
+      "email_label": "Adresse email",
+      "email_placeholder": "votre@email.com",
+      "password_label": "Mot de passe",
+      "password_placeholder": "••••••••",
+      "remember_me": "Se souvenir de moi",
+      "forgot_password": "Mot de passe oublié ?",
+      "submit": "Se connecter",
+      "or_continue_with": "Ou continuer avec",
+      "no_account": "Vous n'avez pas de compte ?",
+      "create_account": "Créer un compte",
+      "success_title": "Connexion réussie !",
+      "success_desc": "Bienvenue ! Redirection vers votre profil...",
+      "error_verification": "Veuillez vérifier votre adresse email avant de vous connecter. Un email de vérification vous a été envoyé lors de votre inscription. Pensez à vérifier vos spams.",
+      "resend_verification": "📧 Renvoyer l'email de vérification",
+      "resend_success": "Email de vérification renvoyé ! Veuillez vérifier votre boîte de réception.",
+      "resend_error": "Erreur lors de l'envoi de l'email de vérification. Veuillez réessayer.",
+      "google_error": "Erreur lors de la connexion avec Google",
+      "general_error": "Une erreur est survenue lors de la connexion"
+    },
+    "register": {
+      "title": "Créer un compte",
+      "subtitle": "Rejoignez-nous et commencez votre parcours immobilier",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "first_name_placeholder": "Votre prénom",
+      "last_name_placeholder": "Votre nom",
+      "email_label": "Adresse email",
+      "email_placeholder": "votre@email.com",
+      "phone_label": "Téléphone",
+      "phone_placeholder": "+228 XX XX XX XX",
+      "password_label": "Mot de passe",
+      "password_placeholder": "••••••••",
+      "confirm_password_label": "Confirmer le mot de passe",
+      "confirm_password_placeholder": "••••••••",
+      "password_helper": "Au moins 6 caractères",
+      "accept_terms": "J'accepte les",
+      "terms_link": "conditions d'utilisation",
+      "and": "et la",
+      "privacy_link": "politique de confidentialité",
+      "submit": "Créer mon compte",
+      "or_signup_with": "Ou s'inscrire avec",
+      "already_have_account": "Vous avez déjà un compte ?",
+      "login": "Se connecter",
+      "success_title": "Compte créé avec succès !",
+      "welcome": "Bienvenue sur Agnigban Gna !",
+      "important_step": "Étape importante :",
+      "verification_sent": "Un email de vérification a été envoyé à",
+      "verification_instruction": "Veuillez consulter votre boîte de réception et cliquer sur le lien de vérification pour activer votre compte.",
+      "spam_hint": "Pensez à vérifier vos spams si vous ne trouvez pas l'email.",
+      "redirecting": "Redirection vers la page de connexion dans quelques secondes...",
+      "error_password_match": "Les mots de passe ne correspondent pas",
+      "error_password_length": "Le mot de passe doit contenir au moins 6 caractères",
+      "google_error": "Erreur lors de l'inscription avec Google",
+      "general_error": "Une erreur est survenue lors de l'inscription"
+    }
+  },
+  "blog": {
+    "hero_title": "Blog Agnigban Gna",
+    "hero_subtitle": "Conseils, guides et actualités sur l'immobilier au Togo",
+    "search_placeholder": "Rechercher un article...",
+    "featured_title": "Article en vedette",
+    "read_article": "Lire l'article",
+    "latest_articles": "Derniers articles",
+    "results_count": "Résultats ({{count}})",
+    "not_found_title": "Aucun article trouvé",
+    "not_found_desc": "Essayez de modifier vos critères de recherche",
+    "reset_filters": "Réinitialiser les filtres",
+    "newsletter_title": "Restez informé",
+    "newsletter_desc": "Recevez nos derniers articles et conseils directement dans votre boîte mail",
+    "email_placeholder": "Votre adresse email",
+    "subscribe": "S'abonner",
+    "read_time": "{{count}} min de lecture"
+  },
+  "legal": {
+    "terms": {
+      "title": "Conditions d'Utilisation",
+      "last_update": "Dernière mise à jour : 18 décembre 2024",
+      "intro": "Bienvenue sur Agnigban Gna. En accédant à ce site, vous acceptez d'être lié par les présentes conditions d'utilisation.",
+      "section1_title": "1. Utilisation du Site",
+      "section1_content": "L'utilisation de notre plateforme est réservée à des fins légales liées à la consultation, l'achat ou la vente de terrains au Togo.",
+      "section2_title": "2. Propriété Intellectuelle",
+      "section2_content": "Tout le contenu présent sur ce site est la propriété exclusive de Agnigban Gna.",
+      "section3_title": "3. Responsabilité",
+      "section3_content": "Agnigban Gna s'efforce de fournir des informations précises mais ne peut garantir l'exactitude absolue des annonces publiées par des tiers."
+    },
+    "privacy": {
+      "title": "Politique de Confidentialité",
+      "last_update": "Dernière mise à jour : 18 décembre 2024",
+      "intro": "La protection de vos données personnelles est une priorité pour Agnigban Gna.",
+      "section1_title": "1. Collecte des Données",
+      "section1_content": "Nous collectons les informations que vous nous fournissez lors de la création de votre compte ou de vos demandes de contact.",
+      "section2_title": "2. Utilisation des Données",
+      "section2_content": "Vos données sont utilisées pour traiter vos demandes et améliorer votre expérience sur notre plateforme.",
+      "section3_title": "3. Cookies",
+      "section3_content": "Nous utilisons des cookies pour analyser le trafic et personnaliser le contenu."
+    },
+    "notice": {
+      "title": "Mentions Légales",
+      "company_name": "Raison Sociale : Agnigban Gna",
+      "headquarters": "Siège Social : Lomé, Togo",
+      "phone": "Téléphone : +228 70 14 61 80",
+      "email": "Email : contact@agnigbagna.com",
+      "director": "Directeur de la publication : Équipe Agnigban Gna",
+      "hosting": "Hébergement : Render.com",
+      "section_title": "Informations Légales",
+      "section_content": "Conformément à la législation en vigueur au Togo, nous mettons à votre disposition les informations légales concernant notre plateforme."
+    }
+  },
+  "languages": {
+    "fr": "Français",
+    "en": "English",
+    "de": "Deutsch",
+    "title": "Langues"
+  }
+}

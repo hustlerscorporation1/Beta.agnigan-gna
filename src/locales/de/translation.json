@@ -1,0 +1,429 @@
+{
+  "header": {
+    "home": "Startseite",
+    "properties": "Immobilien",
+    "about": "Über uns",
+    "blog": "Blog",
+    "contact": "Kontakt",
+    "download_app": "App herunterladen",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "my_profile": "Mein Profil",
+    "declare_property": "Grundstück melden",
+    "logout": "Abmelden",
+    "search_placeholder": "ID oder Ort...",
+    "my_account": "Mein Konto",
+    "go": "Los"
+  },
+  "home": {
+    "hero_title": "Agnigban Gna, Togo",
+    "hero_subtitle": "Die offizielle Plattform für den sicheren Kauf und Verkauf von Grundstücken.",
+    "buy_land": "Ein Grundstück kaufen",
+    "sell_land": "Ein Grundstück verkaufen",
+    "features": {
+      "verify": "Authentizität",
+      "verify_desc": "100% garantierte Legalität",
+      "buy": "Direktkauf",
+      "buy_desc": "Registrierte Grundstücke",
+      "sell": "Schneller Verkauf",
+      "sell_desc": "Bewertung und Inserat"
+    },
+    "stats": {
+      "land": "Grundstücke",
+      "clients": "Kunden",
+      "satisfaction": "Zufriedenheit"
+    },
+    "typed": [
+      "Willkommen auf der offiziellen Plattform für den Kauf und Verkauf von Grundstücken in Togo",
+      "Finden Sie Ihr Traumgrundstück mit wenigen Klicks",
+      "Verkaufen Sie Ihr Grundstück schnell und sicher"
+    ],
+    "services": {
+      "title": "Unsere",
+      "subtitle": "Dienstleistungen",
+      "description": "Ein komplettes Spektrum an Dienstleistungen für alle Ihre Immobilienbedürfnisse",
+      "items": {
+        "verify": {
+          "title": "Landprüfung",
+          "desc": "Prüfen Sie vor jedem Kauf die Echtheit und Rechtmäßigkeit Ihres Grundstücks. Unser Service garantiert Transparenz und Sicherheit.",
+          "f1": "Rechtliche Prüfung",
+          "f2": "Grundstückshistorie",
+          "f3": "Echtheitszertifikat"
+        },
+        "buy": {
+          "title": "Grundstückskauf",
+          "desc": "Finden Sie das ideale Grundstück aus unserer vielfältigen Auswahl. Volle Unterstützung von der Suche bis zur Unterschrift.",
+          "f1": "Großer Katalog",
+          "f2": "Virtueller Rundgang",
+          "f3": "Rechtliche Unterstützung"
+        },
+        "sell": {
+          "title": "Grundstücksverkauf",
+          "desc": "Verkaufen Sie Ihr Grundstück schnell dank unserer leistungsstarken Plattform und unserem Netzwerk qualifizierter Käufer.",
+          "f1": "Kostenlose Bewertung",
+          "f2": "Maximale Sichtbarkeit",
+          "f3": "Sichere Transaktion"
+        }
+      },
+      "learn_more": "Mehr erfahren →",
+      "why_choose_us": "Warum uns wählen ?",
+      "advantages": {
+        "security": "Garantierte Sicherheit",
+        "security_desc": "Alle unsere Transaktionen sind sicher und entsprechen der togoischen Gesetzgebung",
+        "docs": "Geprüfte Dokumente",
+        "docs_desc": "Jedes Grundstück wird mit authentischen und aktuellen Dokumenten geprüft",
+        "support": "Begleitung",
+        "support_desc": "Unser Team begleitet Sie in jeder Phase Ihres Immobilienprojekts"
+      }
+    },
+    "featured": {
+      "title": "Besondere",
+      "subtitle": "Immobilien",
+      "description": "Entdecken Sie unsere Auswahl an erstklassigen Grundstücken in allen Regionen Togos",
+      "stats": {
+        "available": "Verfügbar",
+        "private": "Privat",
+        "pending": "Ausstehend"
+      },
+      "surface": "Fläche",
+      "price": "Preis",
+      "view_details": "Details anzeigen",
+      "explore_cities": "Nach Stadt erkunden",
+      "view_all": "Alle Grundstücke anzeigen"
+    },
+    "cta": {
+      "title": "Bereit, Ihr ideales Grundstück zu finden?",
+      "subtitle": "Schließen Sie sich Tausenden von zufriedenen Kunden an, die ihr Grundstück über unsere Plattform gefunden haben. Beginnen Sie noch heute mit Ihrer Suche!",
+      "start": "Jetzt anfangen",
+      "contact": "Kontaktieren Sie uns",
+      "stats": {
+        "land": "Verfügbare Grundstücke",
+        "clients": "Zufriedene Kunden",
+        "satisfaction": "Zufriedenheitsrate",
+        "support": "Kundensupport"
+      }
+    },
+    "testimonials": {
+      "title": "Meinungen unserer",
+      "subtitle": "Kunden",
+      "description": "Entdecken Sie, was unsere zufriedenen Kunden über unsere Dienstleistungen sagen",
+      "items": {
+        "1": {
+          "role": "Unternehmer",
+          "text": "Außergewöhnlicher Service! Ich habe mein Grundstück dank der professionellen Unterstützung des Teams mit vollem Vertrauen gekauft. Alle Dokumente wurden geprüft und der Prozess war transparent."
+        },
+        "2": {
+          "role": "Händlerin",
+          "text": "Sehr zufrieden mit meinem Kauf. Die Plattform ist einfach zu bedienen und ich habe genau das gefunden, was ich gesucht habe. Der Kundenservice ist reaktionsschnell und aufmerksam."
+        },
+        "3": {
+          "role": "Ingenieur",
+          "text": "Exzellenter Landprüfungsservice. Dank der strengen Kontrollen konnte ich sicher kaufen. Ich kann diese Plattform nur wärmstens empfehlen."
+        }
+      }
+    }
+  },
+  "footer": {
+    "about": "Ihre vertrauenswürdige Plattform für den Kauf und Verkauf von Grundstücken in Togo. Transparenz, Sicherheit und Professionalität.",
+    "company": "Unternehmen",
+    "services": "Dienstleistungen",
+    "contact": "Kontakt",
+    "legal": {
+      "terms": "Nutzungsbedingungen",
+      "privacy": "Datenschutzrichtlinie",
+      "mentions": "Rechtliche Hinweise"
+    },
+    "rights": "© {{year}} {{name}}. Alle Rechte vorbehalten."
+  },
+  "chatbot": {
+    "title": "Assistent Gna",
+    "status": "Online",
+    "close": "Schließen",
+    "placeholder": "Stellen Sie Ihre Frage...",
+    "disclaimer": "KI kann Fehler machen. Überprüfen Sie wichtige Informationen.",
+    "open_chat": "Chat öffnen",
+    "close_chat": "Chat schließen"
+  },
+  "property_detail": {
+    "not_found": "Grundstück nicht gefunden",
+    "back_to_properties": "Zurück zu den Immobilien",
+    "price_label": "Preis",
+    "surface_label": "Fläche",
+    "id_label": "ID",
+    "view_n": "Ansicht {{n}}",
+    "see_reality": "In Realität sehen",
+    "see_video": "Video ansehen",
+    "satellite": "Satellit",
+    "description_title": "Beschreibung",
+    "features_title": "Eigenschaften",
+    "docs_title": "Verfügbare Dokumente",
+    "download": "Herunterladen",
+    "contact": {
+      "buy_title": "Dieses Grundstück kaufen",
+      "interested_title": "Interessiert?",
+      "available_msg": "Dieses Grundstück steht zum Verkauf. Kontaktieren Sie uns, um Ihren Kauf abzuschließen.",
+      "info_msg": "Kontaktieren Sie uns für weitere Informationen zu diesem Grundstück oder um einen Besuch zu vereinbaren.",
+      "buy_now": "Jetzt kaufen",
+      "request_info": "Informationen anfordern",
+      "call_now": "Jetzt anrufen"
+    },
+    "seller": {
+      "title": "Verkäufer",
+      "verified_agent": "Geprüfter Agent"
+    },
+    "safety": {
+      "title": "💡 Sicherheitstipps",
+      "tip1": "Überprüfen Sie immer die Grundstücksdokumente",
+      "tip2": "Besichtigen Sie das Grundstück vor jeder Verpflichtung",
+      "tip3": "Zahlen Sie niemals ohne einen offiziellen Vertrag"
+    },
+    "form": {
+      "modal_title": "Informationsanfrage",
+      "name_label": "Vollständiger Name",
+      "email_label": "E-Mail",
+      "phone_label": "Telefon",
+      "message_label": "Nachricht",
+      "msg_placeholder": "Ich interessiere mich für das Grundstück \"{{title}}\"",
+      "send": "Anfrage senden",
+      "success_msg": "Ihre Anfrage wurde erfolgreich gesendet!"
+    },
+    "modals": {
+      "v3d_title": "Virtueller 3D-Rundgang",
+      "video_title": "Grundstücksvideo",
+      "v3d_interactive": "Interaktiver 3D-Rundgang",
+      "v3d_desc": "Erkunden Sie dieses Grundstück in 3D mit einer 360°-Ansicht. Bewegen Sie sich frei und entdecken Sie jedes Detail.",
+      "v3d_tip": "💡 Tipp: Diese 3D-Ansicht wird in Kürze mit einem vollständigen interaktiven Rundgang verfügbar sein",
+      "total_surface": "Gesamtfläche",
+      "location": "Standort",
+      "video_tour": "Video-Grundstücksbesichtigung",
+      "video_desc": "Entdecken Sie dieses prachtvolle Grundstück in HD-Video mit Luft- und Bodenaufnahmen.",
+      "video_coming_soon": "📹 Das Video wird in Kürze verfügbar sein",
+      "about_video_title": "📹 Über dieses Video:",
+      "about_video_desc": "Diese Videobesichtigung ermöglicht es Ihnen, das Grundstück aus allen Blickwinkeln zu sehen. Ideal, um einen ersten Eindruck zu gewinnen, bevor Sie Ihre Besichtigung vor Ort planen."
+    }
+  },
+  "properties": {
+    "search_placeholder": "Suche nach Name, Stadt, Region...",
+    "id_search_tip": "💡 Kennen Sie die Grundstücks-ID? Nutzen Sie die Suchleiste oben, um direkt darauf zuzugreifen!",
+    "special_request_btn": "Besondere Anfrage einreichen",
+    "view_map": "Karte",
+    "view_list": "Liste",
+    "filters_btn": "Filter",
+    "prefecture_label": "Präfektur",
+    "commune_label": "Gemeinde",
+    "canton_label": "Kanton",
+    "quartier_label": "Viertel",
+    "status_label": "Status",
+    "all_prefectures": "Alle Präfekturen",
+    "all_communes": "Alle Gemeinden",
+    "all_cantons": "Alle Kantone",
+    "all_quartiers": "Alle Viertel",
+    "reset_all": "Filter zurücksetzen",
+    "apply": "Anwenden",
+    "buy_marker": "🛒 Kaufen",
+    "buy_btn": "Kaufen",
+    "buy_this_land": "Dieses Grundstück kaufen",
+    "not_found_title": "Kein Grundstück gefunden",
+    "not_found_desc": "Versuchen Sie, Ihre Suchkriterien zu ändern",
+    "special_request_title": "Nicht fündig geworden?",
+    "special_request_desc": "Teilen Sie uns Ihre spezifischen Bedürfnisse mit und wir finden das ideale Grundstück für Sie."
+  },
+  "about": {
+    "hero_title": "Über uns",
+    "hero_desc": "Wir sind die erste digitale Plattform, die sich dem Kauf und Verkauf von Grundstücken in Togo widmet. Unsere Mission ist es, den Zugang zu Landbesitz einfach, sicher und transparent zu gestalten.",
+    "mission_title": "Unsere Mission",
+    "mission_desc": "Erleichterung des Zugangs zu Grundeigentum für alle Togolesen und Investoren durch das Angebot einer modernen, sicheren und transparenten Plattform. Wir verpflichten uns, einen qualitativ hochwertigen Service zu bieten, der gesetzliche Standards einhält und die Interessen unserer Kunden schützt.",
+    "vision_title": "Unsere Vision",
+    "vision_desc": "Die unverzichtbare Referenz im Immobiliensektor in Togo und Westafrika werden. Wir streben danach, ein Ökosystem zu schaffen, in dem jede Grundstückstransaktion einfach, schnell und sicher ist, und gleichzeitig zur wirtschaftlichen Entwicklung unseres Landes beizutragen.",
+    "values_title": "Unsere Werte",
+    "values_desc": "Die Prinzipien, die unsere tägliche Arbeit leiten",
+    "value1_title": "Transparenz",
+    "value1_desc": "Wir garantieren absolute Transparenz bei all unseren Transaktionen und Prozessen.",
+    "value2_title": "Vertrauen",
+    "value2_desc": "Das Vertrauen unserer Kunden ist unsere Priorität. Wir arbeiten mit Integrität.",
+    "value3_title": "Exzellenz",
+    "value3_desc": "Wir streben nach Exzellenz in jedem Aspekt unseres Kundenservice.",
+    "value4_title": "Zufriedenheit",
+    "value4_desc": "Ihre Zufriedenheit ist unsere größte Belohnung und Motivation.",
+    "partners_title": "Unsere Partner",
+    "partners_desc": "Die Partner, die uns unterstützen",
+    "stats": {
+      "years": "Jahre Erfahrung",
+      "land_sold": "Verkaufte Grundstücke",
+      "happy_clients": "Zufriedene Kunden",
+      "satisfaction_rate": "Zufriedenheitsrate"
+    },
+    "team_title": "Unser Team",
+    "team_desc": "Leidenschaftliche und erfahrene Profis zu Ihren Diensten",
+    "cta_title": "Begleiten Sie uns bei diesem Abenteuer",
+    "cta_desc": "Lassen Sie uns gemeinsam die Zukunft der Immobilien in Togo bauen",
+    "contact_us": "Kontaktieren Sie uns",
+    "view_lands": "Grundstücke ansehen"
+  },
+  "contact": {
+    "hero_title": "Kontaktieren Sie uns",
+    "hero_desc": "Unser Team steht Ihnen zur Verfügung, um all Ihre Fragen zu beantworten",
+    "info": {
+      "address": "Adresse",
+      "phone": "Telefon",
+      "email": "E-Mail",
+      "hours": "Öffnungszeiten",
+      "hours_val": "Mo - Fr: 8:00 - 18:00 Uhr\nSa: 8:00 - 13:00 Uhr"
+    },
+    "form": {
+      "title": "Schicken Sie uns eine Nachricht",
+      "success": "✓ Nachricht erfolgreich gesendet! Wir werden so schnell wie möglich antworten.",
+      "name_label": "Vollständiger Name",
+      "email_label": "E-Mail",
+      "phone_label": "Telefon",
+      "subject_label": "Betreff",
+      "message_label": "Nachricht",
+      "name_placeholder": "Ihr Name",
+      "email_placeholder": "ihre@email.com",
+      "phone_placeholder": "+228 XX XX XX XX",
+      "subject_placeholder": "Gegenstand Ihrer Nachricht",
+      "message_placeholder": "Beschreiben Sie Ihre Anfrage...",
+      "submit": "Nachricht senden",
+      "sending": "Wird gesendet..."
+    },
+    "why": {
+      "title": "Warum Sie uns kontaktieren sollten?",
+      "item1": "Informationen über unsere Grundstücke erhalten",
+      "item2": "Einen Feldbesuch planen",
+      "item3": "Grundstück zum Verkauf melden",
+      "item4": "Rechtlichen Beistand erhalten",
+      "item5": "Allgemeine Fragen stellen"
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "desc": "Finden Sie schnell Antworten auf Ihre Fragen",
+      "q1": "Wie kann ich ein Grundstück kaufen?",
+      "a1": "Durchsuchen Sie unseren Katalog, wählen Sie ein Grundstück aus, kontaktieren Sie uns für eine Besichtigung und wir werden Sie bei allen administrativen Schritten unterstützen.",
+      "q2": "Sind die Grundstücke geprüft?",
+      "a2": "Ja, alle unsere Grundstücke sind rechtlich geprüft. Wir stellen sicher, dass alle Dokumente konform und authentisch sind.",
+      "q3": "Bieten Sie Zahlungserleichterungen an?",
+      "a3": "Ja, wir bieten flexible Finanzierungspläne an, die auf Ihr Budget zugeschnitten sind. Kontaktieren Sie uns, um mehr zu erfahren.",
+      "q4": "Wie melde ich ein Grundstück zum Verkauf?",
+      "a4": "Erstellen Sie ein Konto, greifen Sie auf Ihr Profil zu und nutzen Sie das Meldeformular. Unser Team wird die Informationen vor der Veröffentlichung prüfen."
+    },
+    "map_title": "Unser Standort"
+  },
+  "auth": {
+    "login": {
+      "title": "Anmeldung",
+      "subtitle": "Melden Sie sich bei Ihrem Konto an, um auf Ihren persönlichen Bereich zuzugreifen",
+      "email_label": "E-Mail-Adresse",
+      "email_placeholder": "ihre@email.com",
+      "password_label": "Passwort",
+      "password_placeholder": "••••••••",
+      "remember_me": "Angemeldet bleiben",
+      "forgot_password": "Passwort vergessen?",
+      "submit": "Anmelden",
+      "or_continue_with": "Oder weiter mit",
+      "no_account": "Sie haben noch kein Konto?",
+      "create_account": "Konto erstellen",
+      "success_title": "Anmeldung erfolgreich!",
+      "success_desc": "Willkommen! Weiterleitung zu Ihrem Profil...",
+      "error_verification": "Bitte verifizieren Sie Ihre E-Mail-Adresse, bevor Sie sich anmelden. Eine Bestätigungs-E-Mail wurde Ihnen bei der Registrierung zugesandt. Prüfen Sie bitte auch Ihren Spam-Ordner.",
+      "resend_verification": "📧 Bestätigungs-E-Mail erneut senden",
+      "resend_success": "Bestätigungs-E-Mail erneut gesendet! Bitte überprüfen Sie Ihren Posteingang.",
+      "resend_error": "Fehler beim Senden der Bestätigungs-E-Mail. Bitte versuchen Sie es erneut.",
+      "google_error": "Fehler bei der Anmeldung mit Google",
+      "general_error": "Bei der Anmeldung ist ein Fehler aufgetreten"
+    },
+    "register": {
+      "title": "Konto erstellen",
+      "subtitle": "Treten Sie uns bei und beginnen Sie Ihre Immobilienreise",
+      "first_name": "Vorname",
+      "last_name": "Nachname",
+      "first_name_placeholder": "Ihr Vorname",
+      "last_name_placeholder": "Ihr Nachname",
+      "email_label": "E-Mail-Adresse",
+      "email_placeholder": "ihre@email.com",
+      "phone_label": "Telefon",
+      "phone_placeholder": "+228 XX XX XX XX",
+      "password_label": "Passwort",
+      "password_placeholder": "••••••••",
+      "confirm_password_label": "Passwort bestätigen",
+      "confirm_password_placeholder": "••••••••",
+      "password_helper": "Mindestens 6 Zeichen",
+      "accept_terms": "Ich akzeptiere die",
+      "terms_link": "Nutzungsbedingungen",
+      "and": "und die",
+      "privacy_link": "Datenschutzbestimmungen",
+      "submit": "Konto erstellen",
+      "or_signup_with": "Oder registrieren mit",
+      "already_have_account": "Haben Sie bereits ein Konto?",
+      "login": "Anmelden",
+      "success_title": "Konto erfolgreich erstellt!",
+      "welcome": "Willkommen bei Agnigban Gna!",
+      "important_step": "Wichtiger Schritt:",
+      "verification_sent": "Eine Bestätigungs-E-Mail wurde gesendet an",
+      "verification_instruction": "Bitte überprüfen Sie Ihren Posteingang und klicken Sie auf den Bestätigungslink, um Ihr Konto zu aktivieren.",
+      "spam_hint": "Prüfen Sie bitte auch Ihren Spam-Ordner, falls Sie keine E-Mail erhalten haben.",
+      "redirecting": "Weiterleitung zur Anmeldeseite in wenigen Sekunden...",
+      "error_password_match": "Die Passwörter stimmen nicht überein",
+      "error_password_length": "Das Passwort muss mindestens 6 Zeichen lang sein",
+      "google_error": "Fehler bei der Registrierung mit Google",
+      "general_error": "Bei der Registrierung ist ein Fehler aufgetreten"
+    }
+  },
+  "blog": {
+    "hero_title": "Agnigban Gna Blog",
+    "hero_subtitle": "Tipps, Anleitungen und Neuigkeiten zu Immobilien in Togo",
+    "search_placeholder": "Artikel suchen...",
+    "featured_title": "Vorgestellter Artikel",
+    "read_article": "Artikel lesen",
+    "latest_articles": "Neueste Artikel",
+    "results_count": "Ergebnisse ({{count}})",
+    "not_found_title": "Keine Artikel gefunden",
+    "not_found_desc": "Versuchen Sie, Ihre Suchkriterien zu ändern",
+    "reset_filters": "Filter zurücksetzen",
+    "newsletter_title": "Bleiben Sie informiert",
+    "newsletter_desc": "Erhalten Sie unsere neuesten Artikel und Tipps direkt in Ihr Postfach",
+    "email_placeholder": "Ihre E-Mail-Adresse",
+    "subscribe": "Abonnieren",
+    "read_time": "{{count}} Min. Lesezeit"
+  },
+  "legal": {
+    "terms": {
+      "title": "Nutzungsbedingungen",
+      "last_update": "Letzte Aktualisierung: 18. Dezember 2024",
+      "intro": "Willkommen bei Agnigban Gna. Durch den Zugriff auf diese Website erklären Sie sich mit diesen Nutzungsbedingungen einverstanden.",
+      "section1_title": "1. Nutzung der Website",
+      "section1_content": "Die Nutzung unserer Plattform ist für legale Zwecke im Zusammenhang mit der Beratung, dem Kauf oder Verkauf von Grundstücken in Togo reserviert.",
+      "section2_title": "2. Geistiges Eigentum",
+      "section2_content": "Alle Inhalte auf dieser Website sind das ausschließliche Eigentum von Agnigban Gna.",
+      "section3_title": "3. Verantwortung",
+      "section3_content": "Agnigban Gna bemüht sich um genaue Informationen, kann jedoch nicht für die absolute Richtigkeit der von Dritten veröffentlichten Anzeigen garantieren."
+    },
+    "privacy": {
+      "title": "Datenschutzrichtlinie",
+      "last_update": "Letzte Aktualisierung: 18. Dezember 2024",
+      "intro": "Der Schutz Ihrer persönlichen Daten ist für Agnigban Gna eine Priorität.",
+      "section1_title": "1. Datenerhebung",
+      "section1_content": "Wir sammeln die Informationen, die Sie uns bei der Erstellung Ihres Kontos oder bei Kontaktanfragen zur Verfügung stellen.",
+      "section2_title": "2. Datennutzung",
+      "section2_content": "Ihre Daten werden verwendet, um Ihre Anfragen zu bearbeiten und Ihre Erfahrung auf unserer Plattform zu verbessern.",
+      "section3_title": "3. Cookies",
+      "section3_content": "Wir verwenden Cookies, um den Datenverkehr zu analysieren und Inhalte zu personalisieren."
+    },
+    "notice": {
+      "title": "Impressum",
+      "company_name": "Firmenname: Agnigban Gna",
+      "headquarters": "Hauptsitz: Lomé, Togo",
+      "phone": "Telefon: +228 70 14 61 80",
+      "email": "E-Mail: contact@agnigbagna.com",
+      "director": "Verantwortlich für den Inhalt: Agnigban Gna Team",
+      "hosting": "Hosting: Render.com",
+      "section_title": "Rechtliche Informationen",
+      "section_content": "In Übereinstimmung mit der geltenden togoischen Gesetzgebung stellen wir Ihnen rechtliche Informationen zu unserer Plattform zur Verfügung."
+    }
+  },
+  "languages": {
+    "fr": "Französisch",
+    "en": "Englisch",
+    "de": "Deutsch",
+    "title": "Sprachen"
+  }
+}

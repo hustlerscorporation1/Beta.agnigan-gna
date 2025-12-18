@@ -13,32 +13,46 @@ import Card, { CardHeader, CardTitle, CardDescription, CardContent } from '../..
 import Container from '../../components/ui/Container';
 import Button from '../../components/ui/Button';
 import { ROUTES } from '../../config/constants';
+import { useTranslation } from 'react-i18next';
 
 const Services = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const services = [
     {
       icon: MagnifyingGlassIcon,
-      title: 'Vérification de Terrain',
-      description: 'Vérifiez l\'authenticité et la légalité de votre terrain avant tout achat. Notre service vous garantit transparence et sécurité.',
-      features: ['Vérification juridique', 'Historique du terrain', 'Certificat d\'authenticité'],
+      title: t('home.services.items.verify.title'),
+      description: t('home.services.items.verify.desc'),
+      features: [
+        t('home.services.items.verify.f1'),
+        t('home.services.items.verify.f2'),
+        t('home.services.items.verify.f3')
+      ],
       color: 'blue',
       link: ROUTES.PROPERTIES
     },
     {
       icon: HomeIcon,
-      title: 'Achat de Terrain',
-      description: 'Trouvez le terrain idéal parmi notre sélection variée. Accompagnement complet de la recherche à la signature.',
-      features: ['Large catalogue', 'Visite virtuelle', 'Accompagnement juridique'],
+      title: t('home.services.items.buy.title'),
+      description: t('home.services.items.buy.desc'),
+      features: [
+        t('home.services.items.buy.f1'),
+        t('home.services.items.buy.f2'),
+        t('home.services.items.buy.f3')
+      ],
       color: 'green',
       link: ROUTES.BUY_PROCESS
     },
     {
       icon: CurrencyDollarIcon,
-      title: 'Vente de Terrain',
-      description: 'Vendez votre terrain rapidement grâce à notre plateforme performante et notre réseau d\'acheteurs qualifiés.',
-      features: ['Évaluation gratuite', 'Visibilité maximale', 'Transaction sécurisée'],
+      title: t('home.services.items.sell.title'),
+      description: t('home.services.items.sell.desc'),
+      features: [
+        t('home.services.items.sell.f1'),
+        t('home.services.items.sell.f2'),
+        t('home.services.items.sell.f3')
+      ],
       color: 'orange',
       link: ROUTES.SELL_PROCESS
     }
@@ -47,18 +61,18 @@ const Services = () => {
   const advantages = [
     {
       icon: ShieldCheckIcon,
-      title: 'Sécurité Garantie',
-      description: 'Toutes nos transactions sont sécurisées et conformes à la législation togolaise'
+      title: t('home.services.advantages.security'),
+      description: t('home.services.advantages.security_desc')
     },
     {
       icon: DocumentCheckIcon,
-      title: 'Documents Vérifiés',
-      description: 'Chaque terrain est vérifié avec des documents authentiques et à jour'
+      title: t('home.services.advantages.docs'),
+      description: t('home.services.advantages.docs_desc')
     },
     {
       icon: UserGroupIcon,
-      title: 'Accompagnement',
-      description: 'Notre équipe vous accompagne à chaque étape de votre projet immobilier'
+      title: t('home.services.advantages.support'),
+      description: t('home.services.advantages.support_desc')
     }
   ];
 
@@ -74,10 +88,10 @@ const Services = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Nos <span className="text-gradient">Services</span>
+            {t('home.services.title')} <span className="text-gradient">{t('home.services.subtitle')}</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Une gamme complète de services pour répondre à tous vos besoins immobiliers
+            {t('home.services.description')}
           </p>
         </motion.div>
 
@@ -112,7 +126,7 @@ const Services = () => {
                   </ul>
                   
                   <Button variant="ghost" size="sm" fullWidth>
-                    En savoir plus →
+                    {t('home.services.learn_more')}
                   </Button>
                 </CardContent>
               </Card>
@@ -129,7 +143,7 @@ const Services = () => {
           className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-3xl p-8 md:p-12"
         >
           <h3 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-12">
-            Pourquoi Nous Choisir ?
+            {t('home.services.why_choose_us')}
           </h3>
           
           <div className="grid md:grid-cols-3 gap-8">

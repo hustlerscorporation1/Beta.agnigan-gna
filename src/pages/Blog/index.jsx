@@ -11,6 +11,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Layout from "../../components/layout/Layout";
 import Container from "../../components/ui/Container";
+import { useTranslation } from "react-i18next";
 import Card, { CardContent } from "../../components/ui/Card";
 import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
@@ -19,6 +20,7 @@ import { ROUTES } from "../../config/constants";
 import { blogPosts, blogCategories } from "../../data/blogPosts";
 
 const Blog = () => {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -43,7 +45,8 @@ const Blog = () => {
   // Formater la date
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
-    return new Date(dateString).toLocaleDateString("fr-FR", options);
+    const locale = i18n.language === 'fr' ? 'fr-FR' : (i18n.language === 'de' ? 'de-DE' : 'en-US');
+    return new Date(dateString).toLocaleDateString(locale, options);
   };
 
   return (
@@ -58,16 +61,16 @@ const Blog = () => {
             className="text-center max-w-3xl mx-auto"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Blog Agnigban Gna
+              {t('blog.hero_title')}
             </h1>
             <p className="text-xl text-primary-100 mb-8">
-              Conseils, guides et actualités sur l'immobilier au Togo
+              {t('blog.hero_subtitle')}
             </p>
 
             {/* Search Bar */}
             <div className="max-w-xl mx-auto">
               <Input
-                placeholder="Rechercher un article..."
+                placeholder={t('blog.search_placeholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 icon={MagnifyingGlassIcon}
@@ -111,7 +114,7 @@ const Blog = () => {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                Article en vedette
+                {t('blog.featured_title')}
               </h2>
               <Card hover className="overflow-hidden group cursor-pointer">
                 <div className="grid md:grid-cols-2 gap-6">
@@ -142,7 +145,7 @@ const Blog = () => {
                       </div>
                       <div className="flex items-center gap-1">
                         <ClockIcon className="h-4 w-4" />
-                        {featuredPost.readTime}
+                        {t('blog.read_time', { count: parseInt(featuredPost.readTime) })}
                       </div>
                     </div>
 
@@ -165,7 +168,7 @@ const Blog = () => {
                         navigate(`${ROUTES.BLOG_DETAIL}/${featuredPost.slug}`)
                       }
                     >
-                      Lire l'article
+                      {t('blog.read_article')}
                     </Button>
                   </CardContent>
                 </div>
@@ -181,8 +184,8 @@ const Blog = () => {
           <div className="mb-8">
             <h2 className="text-2xl font-bold text-gray-900">
               {searchQuery || selectedCategory !== "all"
-                ? `Résultats (${filteredPosts.length})`
-                : "Derniers articles"}
+                ? t('blog.results_count', { count: filteredPosts.length })
+                : t('blog.latest_articles')}
             </h2>
           </div>
 
@@ -234,7 +237,7 @@ const Blog = () => {
                         </div>
                         <div className="flex items-center gap-1">
                           <ClockIcon className="h-3 w-3" />
-                          {post.readTime}
+                          {t('blog.read_time', { count: parseInt(post.readTime) })}
                         </div>
                       </div>
 
@@ -258,10 +261,10 @@ const Blog = () => {
             <div className="text-center py-16">
               <MagnifyingGlassIcon className="h-16 w-16 text-gray-300 mx-auto mb-4" />
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Aucun article trouvé
+                {t('blog.not_found_title')}
               </h3>
               <p className="text-gray-600 mb-6">
-                Essayez de modifier vos critères de recherche
+                {t('blog.not_found_desc')}
               </p>
               <Button
                 variant="primary"
@@ -270,7 +273,7 @@ const Blog = () => {
                   setSelectedCategory("all");
                 }}
               >
-                Réinitialiser les filtres
+                {t('blog.reset_filters')}
               </Button>
             </div>
           )}
@@ -287,19 +290,18 @@ const Blog = () => {
             transition={{ duration: 0.6 }}
             className="max-w-2xl mx-auto text-center"
           >
-            <h2 className="text-3xl font-bold mb-4">Restez informé</h2>
+            <h2 className="text-3xl font-bold mb-4">{t('blog.newsletter_title')}</h2>
             <p className="text-primary-100 mb-8">
-              Recevez nos derniers articles et conseils directement dans votre
-              boîte mail
+              {t('blog.newsletter_desc')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <Input
                 type="email"
-                placeholder="Votre adresse email"
+                placeholder={t('blog.email_placeholder')}
                 className="bg-white flex-1"
               />
               <Button variant="secondary" size="lg">
-                S'abonner
+                {t('blog.subscribe')}
               </Button>
             </div>
           </motion.div>

@@ -22,6 +22,9 @@ import Declarer from './pages/Declarer';
 import ProcederUnVente from './pages/ProcederUneVente';
 import ProcederAchat from './pages/ProcedeAchat';
 import AuthCallback from './pages/AuthCallback';
+import TermsOfUse from './pages/Legal/TermsOfUse';
+import PrivacyPolicy from './pages/Legal/PrivacyPolicy';
+import LegalNotice from './pages/Legal/LegalNotice';
 
 // Blog pages
 import Blog from './pages/Blog';
@@ -29,6 +32,7 @@ import BlogDetail from './pages/Blog/BlogDetail';
 
 // Components
 import ChatBot from './components/ChatBot';
+import LanguageSwitcher from './components/LanguageSwitcher';
 
 // Admin
 import AdminApp from './admin/AdminApp';
@@ -36,6 +40,7 @@ import AdminApp from './admin/AdminApp';
 function App() {
   return (
     <div className="app">
+      <LanguageSwitcher />
       <ChatBot />
       
       <Routes>
@@ -66,6 +71,11 @@ function App() {
         
         {/* Auth Callback */}
         <Route path="/auth/callback" element={<AuthCallback />} />
+
+        {/* Legal Pages */}
+        <Route path={ROUTES.TERMS} element={<TermsOfUse />} />
+        <Route path={ROUTES.PRIVACY} element={<PrivacyPolicy />} />
+        <Route path={ROUTES.LEGAL_NOTICE} element={<LegalNotice />} />
       </Routes>
     </div>
   );

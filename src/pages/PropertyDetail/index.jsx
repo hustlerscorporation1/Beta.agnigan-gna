@@ -21,6 +21,7 @@ import {
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import { useTranslation } from 'react-i18next';
 import Layout from '../../components/layout/Layout';
 import Container from '../../components/ui/Container';
 import Card, { CardContent } from '../../components/ui/Card';
@@ -39,6 +40,7 @@ L.Icon.Default.mergeOptions({
 });
 
 const PropertyDetail = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
   const propertyId = parseInt(id);
@@ -64,9 +66,9 @@ const PropertyDetail = () => {
   };
 
   const statusLabels = {
-    available: 'Disponible',
-    pending: 'En cours',
-    private: 'Privé'
+    available: t('home.featured.stats.available'),
+    pending: t('home.featured.stats.pending'),
+    private: t('home.featured.stats.private')
   };
 
   useEffect(() => {
@@ -77,9 +79,9 @@ const PropertyDetail = () => {
     return (
       <Layout>
         <Container className="py-20 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Terrain non trouvé</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('property_detail.not_found')}</h2>
           <Button onClick={() => navigate(ROUTES.PROPERTIES)}>
-            Retour aux propriétés
+            {t('property_detail.back_to_properties')}
           </Button>
         </Container>
       </Layout>
@@ -101,7 +103,7 @@ const PropertyDetail = () => {
     // Handle form submission
     console.log('Form submitted:', formData);
     setShowContactForm(false);
-    alert('Votre demande a été envoyée avec succès !');
+    alert(t('property_detail.form.success_msg'));
   };
 
   const handleChange = (e) => {
@@ -141,7 +143,7 @@ const PropertyDetail = () => {
             icon={ArrowLeftIcon}
             onClick={() => navigate(ROUTES.PROPERTIES)}
           >
-            Retour aux propriétés
+            {t('property_detail.back_to_properties')}
           </Button>
         </Container>
       </section>
@@ -161,7 +163,7 @@ const PropertyDetail = () => {
                   {statusLabels[property.status]}
                 </Badge>
                 <Badge variant="default" className="bg-gray-900 text-white">
-                  ID: {property.id}
+                  {t('property_detail.id_label')}: {property.id}
                 </Badge>
               </div>
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
@@ -173,9 +175,9 @@ const PropertyDetail = () => {
               </div>
             </div>
             <div className="text-right">
-              <p className="text-sm text-gray-500 mb-1">Prix</p>
+              <p className="text-sm text-gray-500 mb-1">{t('property_detail.price_label')}</p>
               <p className="text-4xl font-bold text-primary-600">{property.price}</p>
-              <p className="text-sm text-gray-500 mt-1">Surface: {property.surface}</p>
+              <p className="text-sm text-gray-500 mt-1">{t('property_detail.surface_label')}: {property.surface}</p>
             </div>
           </motion.div>
         </Container>
@@ -248,7 +250,7 @@ const PropertyDetail = () => {
                     }`}
                     onClick={() => setCurrentImageIndex(index)}
                   >
-                    <img src={img} alt={`Vue ${index + 1}`} className="w-full h-full object-cover" />
+                    <img src={img} alt={t('property_detail.view_n', { n: index + 1 })} className="w-full h-full object-cover" />
                   </motion.div>
                 ))}
               </div>
@@ -268,7 +270,7 @@ const PropertyDetail = () => {
                   onClick={() => setShow3DView(true)}
                   className="bg-primary-600 text-white hover:text-primary-600 border-0"
                 >
-                  Voir en Réalité
+                  {t('property_detail.see_reality')}
                 </Button>
                 <Button
                   variant="outline"
@@ -277,7 +279,7 @@ const PropertyDetail = () => {
                   onClick={() => setShowVideoModal(true)}
                   className="bg-white text-primary-600 hover:text-primary-600 border-0"
                 >
-                  Voir la vidéo
+                  {t('property_detail.see_video')}
                 </Button>
               </motion.div>
 
@@ -317,7 +319,7 @@ const PropertyDetail = () => {
                         : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
                     }`}
                   >
-                    🛫 Satellite
+                    🛫 {t('property_detail.satellite')}
                   </button>
                 </div>
    
@@ -359,7 +361,7 @@ const PropertyDetail = () => {
               >
               <Card>
                 <CardContent className="p-6">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Description</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('property_detail.description_title')}</h2>
                   <p className="text-gray-600 leading-relaxed text-justify">
                     {property.description || `Magnifique terrain de ${property.surface} situé à ${property.acteur} dans la région ${property.region}. 
                     Ce terrain offre une excellente opportunité d'investissement dans une zone en plein développement. 
@@ -379,14 +381,14 @@ const PropertyDetail = () => {
               >
               <Card>
                 <CardContent className="p-6">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Caractéristiques</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('property_detail.features_title')}</h2>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex items-start space-x-3">
                       <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
                         <HomeIcon className="h-5 w-5 text-primary-600" />
                       </div>
                       <div>
-                        <p className="font-semibold text-gray-900">Surface</p>
+                        <p className="font-semibold text-gray-900">{t('property_detail.surface_label')}</p>
                         <p className="text-gray-600">{property.surface}</p>
                       </div>
                     </div>
@@ -396,7 +398,7 @@ const PropertyDetail = () => {
                         <MapPinIcon className="h-5 w-5 text-primary-600" />
                       </div>
                       <div>
-                        <p className="font-semibold text-gray-900">Région</p>
+                        <p className="font-semibold text-gray-900">{t('home.featured.explore_cities')}</p>
                         <p className="text-gray-600">{property.region}</p>
                       </div>
                     </div>
@@ -406,7 +408,7 @@ const PropertyDetail = () => {
                         <DocumentTextIcon className="h-5 w-5 text-primary-600" />
                       </div>
                       <div>
-                        <p className="font-semibold text-gray-900">Statut</p>
+                        <p className="font-semibold text-gray-900">{t('home.featured.stats.available')}</p>
                         <p className="text-gray-600">{statusLabels[property.status]}</p>
                       </div>
                     </div>
@@ -416,7 +418,7 @@ const PropertyDetail = () => {
                         <CurrencyDollarIcon className="h-5 w-5 text-primary-600" />
                       </div>
                       <div>
-                        <p className="font-semibold text-gray-900">Prix</p>
+                        <p className="font-semibold text-gray-900">{t('property_detail.price_label')}</p>
                         <p className="text-gray-600">{property.price}</p>
                       </div>
                     </div>
@@ -435,7 +437,7 @@ const PropertyDetail = () => {
                 >
                 <Card>
                   <CardContent className="p-6">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-4">Documents Disponibles</h2>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('property_detail.docs_title')}</h2>
                     <div className="space-y-3">
                       {property.documents.map((doc, index) => (
                         <div
@@ -450,7 +452,7 @@ const PropertyDetail = () => {
                             </div>
                           </div>
                           <Button variant="ghost" size="sm">
-                            Télécharger
+                            {t('property_detail.download')}
                           </Button>
                         </div>
                       ))}
@@ -474,12 +476,12 @@ const PropertyDetail = () => {
                 <Card>
                   <CardContent className="p-6">
                     <h3 className="text-xl font-bold text-gray-900 mb-4">
-                      {property.status === 'available' ? 'Acheter ce terrain' : 'Intéressé ?'}
+                      {property.status === 'available' ? t('property_detail.contact.buy_title') : t('property_detail.contact.interested_title')}
                     </h3>
                     <p className="text-gray-600 mb-6">
                       {property.status === 'available' 
-                        ? 'Ce terrain est disponible à la vente. Contactez-nous pour finaliser votre achat.'
-                        : 'Contactez-nous pour plus d\'informations sur ce terrain ou pour planifier une visite.'}
+                        ? t('property_detail.contact.available_msg')
+                        : t('property_detail.contact.info_msg')}
                     </p>
                     <div className="space-y-3">
                       {property.status === 'available' && (
@@ -490,7 +492,7 @@ const PropertyDetail = () => {
                           icon={ShoppingCartIcon}
                           onClick={() => setShowContactForm(true)}
                         >
-                          Acheter maintenant
+                          {t('property_detail.contact.buy_now')}
                         </Button>
                       )}
                       <Button
@@ -499,7 +501,7 @@ const PropertyDetail = () => {
                         size="lg"
                         onClick={() => setShowContactForm(true)}
                       >
-                        Demander des informations
+                        {t('property_detail.contact.request_info')}
                       </Button>
                       <Button
                         variant="outline"
@@ -507,7 +509,7 @@ const PropertyDetail = () => {
                         icon={PhoneIcon}
                         onClick={() => window.location.href = 'tel:+22890000000'}
                       >
-                        Appeler maintenant
+                        {t('property_detail.contact.call_now')}
                       </Button>
                     </div>
                   </CardContent>
@@ -523,14 +525,14 @@ const PropertyDetail = () => {
                 >
                 <Card>
                   <CardContent className="p-6">
-                    <h3 className="text-lg font-bold text-gray-900 mb-4">Vendeur</h3>
+                    <h3 className="text-lg font-bold text-gray-900 mb-4">{t('property_detail.seller.title')}</h3>
                     <div className="flex items-center space-x-3 mb-4">
                       <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
                         <UserIcon className="h-6 w-6 text-primary-600" />
                       </div>
                       <div>
                         <p className="font-semibold text-gray-900">{property.acteur}</p>
-                        <p className="text-sm text-gray-500">Agent vérifié</p>
+                        <p className="text-sm text-gray-500">{t('property_detail.seller.verified_agent')}</p>
                       </div>
                     </div>
                     <div className="space-y-2 text-sm">
@@ -552,19 +554,19 @@ const PropertyDetail = () => {
                 >
                 <Card className="bg-primary-50 border-primary-200">
                   <CardContent className="p-6">
-                    <h3 className="text-lg font-bold text-gray-900 mb-3">💡 Conseils de sécurité</h3>
+                    <h3 className="text-lg font-bold text-gray-900 mb-3">{t('property_detail.safety.title')}</h3>
                     <ul className="space-y-2 text-sm text-gray-700">
                       <li className="flex items-start">
                         <span className="text-primary-600 mr-2">•</span>
-                        <span>Vérifiez toujours les documents du terrain</span>
+                        <span>{t('property_detail.safety.tip1')}</span>
                       </li>
                       <li className="flex items-start">
                         <span className="text-primary-600 mr-2">•</span>
-                        <span>Visitez le terrain avant tout engagement</span>
+                        <span>{t('property_detail.safety.tip2')}</span>
                       </li>
                       <li className="flex items-start">
                         <span className="text-primary-600 mr-2">•</span>
-                        <span>Ne payez jamais sans contrat officiel</span>
+                        <span>{t('property_detail.safety.tip3')}</span>
                       </li>
                     </ul>
                   </CardContent>
@@ -595,7 +597,7 @@ const PropertyDetail = () => {
             >
               <div className="p-6">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-2xl font-bold text-gray-900">Demande d'information</h2>
+                  <h2 className="text-2xl font-bold text-gray-900">{t('property_detail.form.modal_title')}</h2>
                   <button
                     onClick={() => setShowContactForm(false)}
                     className="text-gray-400 hover:text-gray-600 transition-colors"
@@ -606,7 +608,7 @@ const PropertyDetail = () => {
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <Input
-                    label="Nom complet"
+                    label={t('property_detail.form.name_label')}
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
@@ -636,7 +638,7 @@ const PropertyDetail = () => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                      Message
+                      {t('property_detail.form.message_label')}
                     </label>
                     <textarea
                       name="message"
@@ -645,12 +647,12 @@ const PropertyDetail = () => {
                       required
                       rows="4"
                       className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all"
-                      placeholder={`Je suis intéressé par le terrain "${property.title}"`}
+                      placeholder={t('property_detail.form.msg_placeholder', { title: property.title })}
                     />
                   </div>
 
                   <Button type="submit" variant="primary" fullWidth size="lg">
-                    Envoyer la demande
+                    {t('property_detail.form.send')}
                   </Button>
                 </form>
               </div>
@@ -680,7 +682,7 @@ const PropertyDetail = () => {
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
                     <CubeIcon className="h-8 w-8 text-blue-600" />
-                    <h2 className="text-2xl font-bold text-gray-900">Visite Virtuelle 3D</h2>
+                    <h2 className="text-2xl font-bold text-gray-900">{t('property_detail.modals.v3d_title')}</h2>
                   </div>
                   <button
                     onClick={() => setShow3DView(false)}
@@ -694,26 +696,26 @@ const PropertyDetail = () => {
                 <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-8 h-[600px] flex flex-col items-center justify-center border-2 border-dashed border-blue-300">
                   <CubeIcon className="h-24 w-24 text-blue-400 mb-6 animate-bounce" />
                   <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                    Visite 3D Interactive
+                    {t('property_detail.modals.v3d_interactive')}
                   </h3>
                   <p className="text-gray-600 mb-6 text-center max-w-md">
-                    Explorez ce terrain en 3D avec une vue à 360°. Déplacez-vous librement et découvrez chaque détail.
+                    {t('property_detail.modals.v3d_desc')}
                   </p>
                   
                   {/* Placeholder - À remplacer par une vraie intégration 3D */}
                   <div className="grid grid-cols-2 gap-4 w-full max-w-2xl">
                     <div className="bg-white p-4 rounded-lg shadow-md text-center">
-                      <p className="text-sm text-gray-600 mb-2">Surface totale</p>
+                      <p className="text-sm text-gray-600 mb-2">{t('property_detail.modals.total_surface')}</p>
                       <p className="text-xl font-bold text-blue-600">{property.surface}</p>
                     </div>
                     <div className="bg-white p-4 rounded-lg shadow-md text-center">
-                      <p className="text-sm text-gray-600 mb-2">Localisation</p>
+                      <p className="text-sm text-gray-600 mb-2">{t('property_detail.modals.location')}</p>
                       <p className="text-xl font-bold text-blue-600">{property.region}</p>
                     </div>
                   </div>
 
                   <p className="text-xs text-gray-500 mt-6 italic">
-                    💡 Astuce: Cette vue 3D sera disponible prochainement avec une visite interactive complète
+                    {t('property_detail.modals.v3d_tip')}
                   </p>
                   
                   {/* Pour intégrer une vraie vue 3D, décommentez et ajoutez votre URL:
@@ -752,7 +754,7 @@ const PropertyDetail = () => {
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
                     <VideoCameraIcon className="h-8 w-8 text-red-600" />
-                    <h2 className="text-2xl font-bold text-gray-900">Vidéo du Terrain</h2>
+                    <h2 className="text-2xl font-bold text-gray-900">{t('property_detail.modals.video_title')}</h2>
                   </div>
                   <button
                     onClick={() => setShowVideoModal(false)}
@@ -767,12 +769,12 @@ const PropertyDetail = () => {
                   {/* Placeholder - À remplacer par une vraie vidéo */}
                   <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-red-900 to-pink-900 text-white">
                     <PlayCircleIcon className="h-32 w-32 mb-6 animate-pulse" />
-                    <h3 className="text-2xl font-bold mb-3">Visite Vidéo du Terrain</h3>
+                    <h3 className="text-2xl font-bold mb-3">{t('property_detail.modals.video_tour')}</h3>
                     <p className="text-red-100 mb-4 text-center max-w-md px-4">
-                      Découvrez ce magnifique terrain en vidéo HD avec des vues aériennes et au sol.
+                      {t('property_detail.modals.video_desc')}
                     </p>
                     <p className="text-sm text-red-200 italic">
-                      📹 La vidéo sera disponible prochainement
+                      {t('property_detail.modals.video_coming_soon')}
                     </p>
                   </div>
 
@@ -801,8 +803,7 @@ const PropertyDetail = () => {
 
                 <div className="mt-6 p-4 bg-red-50 rounded-lg">
                   <p className="text-sm text-gray-700">
-                    <strong>📹 À propos de cette vidéo:</strong> Cette visite vidéo vous permet de voir le terrain sous tous les angles. 
-                    Idéal pour avoir une première impression avant de planifier votre visite sur place.
+                    <strong>{t('property_detail.modals.about_video_title')}</strong> {t('property_detail.modals.about_video_desc')}
                   </p>
                 </div>
               </div>

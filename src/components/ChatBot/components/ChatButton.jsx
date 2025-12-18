@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FaCommentDots, FaTimes } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 import '../styles/ChatButton.css';
 
 const ChatButton = ({ isOpen, onClick, unreadCount }) => {
+  const { t } = useTranslation();
   return (
     <button 
       className={`chat-button ${isOpen ? 'chat-button--open' : ''}`}
       onClick={onClick}
-      aria-label={isOpen ? 'Fermer le chat' : 'Ouvrir le chat'}
+      aria-label={isOpen ? t('chatbot.close_chat') : t('chatbot.open_chat')}
     >
       {isOpen ? (
         <FaTimes className="chat-button__icon" />

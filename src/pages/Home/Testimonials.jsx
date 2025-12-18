@@ -2,34 +2,36 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeftIcon, ChevronRightIcon, StarIcon } from '@heroicons/react/24/solid';
 import Container from '../../components/ui/Container';
+import { useTranslation } from 'react-i18next';
 import Client1 from '../../images/Client 1.jpg';
 import Client2 from '../../images/Client 2.jpg';
 
 const Testimonials = () => {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const testimonials = [
     {
       id: 1,
       name: 'AGBOSSOU Anani',
-      role: 'Entrepreneur',
-      text: 'Service exceptionnel ! J\'ai acheté mon terrain en toute confiance grâce à l\'accompagnement professionnel de l\'équipe. Tous les documents étaient vérifiés et le processus était transparent.',
+      role: t('home.testimonials.items.1.role'),
+      text: t('home.testimonials.items.1.text'),
       image: Client1,
       rating: 5
     },
     {
       id: 2,
       name: 'KOFFI Marie',
-      role: 'Commerçante',
-      text: 'Très satisfaite de mon achat. La plateforme est facile à utiliser et j\'ai trouvé exactement ce que je cherchais. Le service client est réactif et à l\'écoute.',
+      role: t('home.testimonials.items.2.role'),
+      text: t('home.testimonials.items.2.text'),
       image: Client2,
       rating: 5
     },
     {
       id: 3,
       name: 'AMOUZOU Jean',
-      role: 'Ingénieur',
-      text: 'Excellent service de vérification de terrain. J\'ai pu acheter en toute sécurité grâce aux contrôles rigoureux effectués. Je recommande vivement cette plateforme.',
+      role: t('home.testimonials.items.3.role'),
+      text: t('home.testimonials.items.3.text'),
       image: Client1,
       rating: 5
     }
@@ -62,10 +64,10 @@ const Testimonials = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Avis de nos <span className="text-gradient">Clients</span>
+            {t('home.testimonials.title')} <span className="text-gradient">{t('home.testimonials.subtitle')}</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Découvrez ce que nos clients satisfaits disent de nos services
+            {t('home.testimonials.description')}
           </p>
         </motion.div>
 

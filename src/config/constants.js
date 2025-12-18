@@ -32,7 +32,10 @@ export const ROUTES = {
   DECLARE_PROPERTY: "/declarer-terrain",
   BUY_PROCESS: "/processus-achat",
   SELL_PROCESS: "/processus-vente",
-  LEARN_MORE: "/en-savoir-plus"
+  LEARN_MORE: "/en-savoir-plus",
+  TERMS: "/conditions-utilisation",
+  PRIVACY: "/politique-confidentialite",
+  LEGAL_NOTICE: "/mentions-legales"
 };
 
 export const CITIES = [

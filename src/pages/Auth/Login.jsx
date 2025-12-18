@@ -9,8 +9,10 @@ import Card, { CardContent, CardHeader, CardTitle, CardDescription } from '../..
 import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';
 import { ROUTES } from '../../config/constants';
+import { useTranslation } from 'react-i18next';
 
 const Login = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -47,7 +49,7 @@ const Login = () => {
 
       // Vérifier si l'email est confirmé
       if (data.user && !data.user.email_confirmed_at) {
-        setError('Veuillez vérifier votre adresse email avant de vous connecter. Un email de vérification vous a été envoyé lors de votre inscription. Pensez à vérifier vos spams.');
+        setError(t('auth.login.error_verification'));
         setShowResendButton(true);
         // Déconnecter l'utilisateur
         await supabase.auth.signOut();
@@ -61,7 +63,7 @@ const Login = () => {
         navigate(ROUTES.PROFILE);
       }, 2000);
     } catch (error) {
-      setError(error.message || 'Une erreur est survenue lors de la connexion');
+      setError(error.message || t('auth.login.general_error'));
     } finally {
       setIsLoading(false);
     }
@@ -77,7 +79,7 @@ const Login = () => {
       });
       if (error) throw error;
     } catch (error) {
-      setError('Erreur lors de la connexion avec Google');
+      setError(t('auth.login.google_error'));
     }
   };
 
@@ -98,10 +100,10 @@ const Login = () => {
       // Afficher un message de succès temporaire
       setTimeout(() => {
         setSuccess(false);
-        setError('Email de vérification renvoyé ! Veuillez vérifier votre boîte de réception.');
+        setError(t('auth.login.resend_success'));
       }, 100);
     } catch (error) {
-      setError('Erreur lors de l\'envoi de l\'email de vérification. Veuillez réessayer.');
+      setError(t('auth.login.resend_error'));
     } finally {
       setResendLoading(false);
     }
@@ -119,9 +121,9 @@ const Login = () => {
             >
               <Card>
                 <CardHeader className="text-center">
-                  <CardTitle>Connexion</CardTitle>
+                  <CardTitle>{t('auth.login.title')}</CardTitle>
                   <CardDescription>
-                    Connectez-vous à votre compte pour accéder à votre espace personnel
+                    {t('auth.login.subtitle')}
                   </CardDescription>
                 </CardHeader>
 
@@ -138,7 +140,7 @@ const Login = () => {
                           disabled={resendLoading}
                           className="bg-white"
                         >
-                          📧 Renvoyer l'email de vérification
+                          {t('auth.login.resend_verification')}
                         </Button>
                       )}
                     </div>
@@ -154,10 +156,10 @@ const Login = () => {
                         <CheckCircleIcon className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
                         <div className="flex-1">
                           <h3 className="text-lg font-bold text-green-900 mb-2">
-                            🎉 Connexion réussie !
+                            🎉 {t('auth.login.success_title')}
                           </h3>
                           <p className="text-green-800 text-sm">
-                            Bienvenue ! Redirection vers votre profil...
+                            {t('auth.login.success_desc')}
                           </p>
                         </div>
                       </div>
@@ -168,25 +170,25 @@ const Login = () => {
                   <>
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <Input
-                      label="Adresse email"
+                      label={t('auth.login.email_label')}
                       name="email"
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      placeholder="votre@email.com"
+                      placeholder={t('auth.login.email_placeholder')}
                       icon={EnvelopeIcon}
                     />
 
                     <div className="relative">
                       <Input
-                        label="Mot de passe"
+                        label={t('auth.login.password_label')}
                         name="password"
                         type={showPassword ? 'text' : 'password'}
                         value={formData.password}
                         onChange={handleChange}
                         required
-                        placeholder="••••••••"
+                        placeholder={t('auth.login.password_placeholder')}
                         icon={LockClosedIcon}
                       />
                       <button
@@ -205,13 +207,13 @@ const Login = () => {
                     <div className="flex items-center justify-between text-sm">
                       <label className="flex items-center">
                         <input type="checkbox" className="mr-2 rounded" />
-                        <span className="text-gray-600">Se souvenir de moi</span>
+                        <span className="text-gray-600">{t('auth.login.remember_me')}</span>
                       </label>
                       <Link
                         to={ROUTES.FORGOT_PASSWORD}
                         className="text-blue-600 hover:text-blue-700 font-medium"
                       >
-                        Mot de passe oublié ?
+                        {t('auth.login.forgot_password')}
                       </Link>
                     </div>
 
@@ -223,7 +225,7 @@ const Login = () => {
                       loading={isLoading}
                       disabled={isLoading || success}
                     >
-                      Se connecter
+                      {t('auth.login.submit')}
                     </Button>
                   </form>
 
@@ -233,7 +235,7 @@ const Login = () => {
                         <div className="w-full border-t border-gray-300"></div>
                       </div>
                       <div className="relative flex justify-center text-sm">
-                        <span className="px-2 bg-white text-gray-500">Ou continuer avec</span>
+                        <span className="px-2 bg-white text-gray-500">{t('auth.login.or_continue_with')}</span>
                       </div>
                     </div>
 
@@ -268,12 +270,12 @@ const Login = () => {
                   </div>
 
                   <div className="mt-6 text-center text-sm text-gray-600">
-                    Vous n'avez pas de compte ?{' '}
+                    {t('auth.login.no_account')}{' '}
                     <Link
                       to={ROUTES.REGISTER}
                       className="text-blue-600 hover:text-blue-700 font-medium"
                     >
-                      Créer un compte
+                      {t('auth.login.create_account')}
                     </Link>
                   </div>
                   </>

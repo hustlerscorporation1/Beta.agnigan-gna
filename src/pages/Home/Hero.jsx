@@ -13,8 +13,10 @@ import Button from '../../components/ui/Button';
 import Container from '../../components/ui/Container';
 import { ROUTES } from '../../config/constants';
 import heroBgImage from '../../images/Hero-agnigban_gna.jpg';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const typedElement = useRef(null);
 
@@ -45,11 +47,7 @@ const Hero = () => {
 
   useEffect(() => {
     const typed = new Typed(typedElement.current, {
-      strings: [
-        'Bienvenue sur la plateforme officielle d\'achat et vente de terrains au Togo',
-        'Trouvez le terrain de vos rêves en quelques clics',
-        'Vendez votre terrain rapidement et en toute sécurité'
-      ],
+      strings: t('home.typed', { returnObjects: true }),
       typeSpeed: 60,           // Vitesse d'écriture (plus bas = plus rapide)
       backSpeed: 40,           // Vitesse d'effacement
       backDelay: 2000,         // Pause avant d'effacer
@@ -64,27 +62,27 @@ const Hero = () => {
     });
 
     return () => typed.destroy();
-  }, []);
+  }, [i18n.language, t]); // Add i18n.language and t to dependencies to restart Typed on language change
 
   const quickActions = [
     {
       icon: MagnifyingGlassIcon,
-      title: 'Vérifier',
-      description: 'l\'authenticité de votre terrain avant tout achat.',
+      title: t('home.features.verify'),
+      description: t('home.features.verify_desc'),
       color: 'blue',
       action: () => navigate(ROUTES.PROPERTIES)
     },
     {
       icon: HomeIcon,
-      title: 'Acheter',
-      description: 'le terrain en toute sécurité et adapté à votre besoin.',
+      title: t('home.features.buy'),
+      description: t('home.features.buy_desc'),
       color: 'green',
       action: () => navigate(ROUTES.BUY_PROCESS)
     },
     {
       icon: CurrencyDollarIcon,
-      title: 'Vendre',
-      description: 'Vendez votre terrain l’acheteur idéal',
+      title: t('home.features.sell'),
+      description: t('home.features.sell_desc'),
       color: 'orange',
       action: () => navigate(ROUTES.SELL_PROCESS)
     }
@@ -147,7 +145,7 @@ const Hero = () => {
                 icon={ShoppingCartIcon}
                 onClick={() => navigate(ROUTES.BUY_PROCESS)}
               >
-                Acheter un terrain
+                {t('home.buy_land')}
               </Button>
               <Button
                 variant="outline"
@@ -155,7 +153,7 @@ const Hero = () => {
                 icon={BanknotesIcon}
                 onClick={() => navigate(ROUTES.SELL_PROCESS)}
               >
-                Procéder à une vente
+                {t('home.sell_land')}
               </Button>
             </motion.div>
 
@@ -168,15 +166,15 @@ const Hero = () => {
             >
               <div className="text-center lg:text-left">
                 <div className="text-3xl font-bold text-primary-600">500+</div>
-                <div className="text-sm text-gray-600">Terrains</div>
+                <div className="text-sm text-gray-600">{t('home.stats.land')}</div>
               </div>
               <div className="text-center lg:text-left">
                 <div className="text-3xl font-bold text-primary-600">0+</div>
-                <div className="text-sm text-gray-600">Clients</div>
+                <div className="text-sm text-gray-600">{t('home.stats.clients')}</div>
               </div>
               <div className="text-center lg:text-left">
                 <div className="text-3xl font-bold text-primary-600">0%</div>
-                <div className="text-sm text-gray-600">Satisfaction</div>
+                <div className="text-sm text-gray-600">{t('home.stats.satisfaction')}</div>
               </div>
             </motion.div>
           </motion.div>

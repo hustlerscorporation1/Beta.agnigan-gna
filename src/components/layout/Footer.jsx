@@ -15,29 +15,31 @@ import {
 } from 'react-icons/fa';
 import { ROUTES, APP_NAME, CONTACT_INFO, SOCIAL_LINKS } from '../../config/constants';
 import Container from '../ui/Container';
+import { useTranslation } from 'react-i18next';
 
 // Utilisation des chemins publics pour les images (compatibilité production)
 const Logo = '/images/logo-agnigban-gna.png';
 const entiteLogo = '/images/logo-hustler.png';
 
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
     company: [
-      { name: 'À propos', path: ROUTES.ABOUT },
-      { name: 'Contact', path: ROUTES.CONTACT },
-      { name: 'Blog', path: '/blog' }
+      { name: t('header.about'), path: ROUTES.ABOUT },
+      { name: t('header.contact'), path: ROUTES.CONTACT },
+      { name: t('header.blog'), path: '/blog' }
     ],
     services: [
-      { name: 'Acheter un terrain', path: ROUTES.BUY_PROCESS },
-      { name: 'Vendre un terrain', path: ROUTES.SELL_PROCESS },
-      { name: 'Vérifier un terrain', path: ROUTES.PROPERTIES }
+      { name: t('home.services.items.buy.title'), path: ROUTES.BUY_PROCESS },
+      { name: t('home.services.items.sell.title'), path: ROUTES.SELL_PROCESS },
+      { name: t('home.services.items.verify.title'), path: ROUTES.PROPERTIES }
     ],
     legal: [
-      { name: 'Conditions d\'utilisation', path: '/conditions' },
-      { name: 'Politique de confidentialité', path: '/confidentialite' },
-      { name: 'Mentions légales', path: '/mentions-legales' }
+      { name: t('footer.legal.terms'), path: ROUTES.TERMS },
+      { name: t('footer.legal.privacy'), path: ROUTES.PRIVACY },
+      { name: t('footer.legal.mentions'), path: ROUTES.LEGAL_NOTICE }
     ]
   };
 
@@ -64,8 +66,7 @@ const Footer = () => {
               />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Votre plateforme de confiance pour l'achat et la vente de terrains au Togo. 
-              Transparence, sécurité et professionnalisme.
+              {t('footer.about')}
             </p>
             
             {/* Social Media Links */}
@@ -89,7 +90,7 @@ const Footer = () => {
 
           {/* Company Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Entreprise</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.company')}</h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.path}>
@@ -106,7 +107,7 @@ const Footer = () => {
 
           {/* Services Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.services')}</h3>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.path}>
@@ -123,7 +124,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.contact')}</h3>
             <ul className="space-y-3">
               <li className="flex items-start space-x-3 text-sm">
                 <MapPinIcon className="h-5 w-5 text-gray-400 flex-shrink-0 mt-0.5" />
@@ -158,7 +159,7 @@ const Footer = () => {
               <img src={entiteLogo} alt="Entity Logo" className="h-16 w-auto " />
             </div>
             <p className="text-gray-400 text-sm text-center md:text-left">
-              © {currentYear} {APP_NAME}. Tous droits réservés.
+              {t('footer.rights', { year: currentYear, name: APP_NAME })}
             </p>
             
             <div className="flex space-x-6 text-sm">

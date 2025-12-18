@@ -13,6 +13,7 @@ import {
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { useTranslation } from 'react-i18next';
 import LayoutNoFooter from '../../components/layout/LayoutNoFooter';
 import Container from '../../components/ui/Container';
 import Button from '../../components/ui/Button';
@@ -39,6 +40,7 @@ L.Icon.Default.mergeOptions({
 });
 
 const PropertiesWithMap = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   const [showFilters, setShowFilters] = useState(false);
@@ -63,22 +65,22 @@ const PropertiesWithMap = () => {
 
   // Options dynamiques basées sur les sélections
   const prefectureOptions = [
-    { value: 'all', label: 'Toutes les préfectures' },
+    { value: 'all', label: t('properties.all_prefectures') },
     ...getPrefectures(selectedRegion)
   ];
 
   const communeOptions = [
-    { value: 'all', label: 'Toutes les communes' },
+    { value: 'all', label: t('properties.all_communes') },
     ...getCommunes(selectedRegion, selectedPrefecture)
   ];
 
   const cantonOptions = [
-    { value: 'all', label: 'Tous les cantons' },
+    { value: 'all', label: t('properties.all_cantons') },
     ...getCantons(selectedRegion, selectedPrefecture, selectedCommune)
   ];
 
   const quartierOptions = [
-    { value: 'all', label: 'Tous les quartiers' },
+    { value: 'all', label: t('properties.all_quartiers') },
     ...getQuartiers(selectedRegion, selectedPrefecture, selectedCommune)
   ];
 
@@ -130,9 +132,9 @@ const PropertiesWithMap = () => {
   };
 
   const statusLabels = {
-    available: 'Disponible',
-    pending: 'En cours',
-    private: 'Privé'
+    available: t('home.featured.stats.available'),
+    pending: t('home.featured.stats.pending'),
+    private: t('home.featured.stats.private')
   };
 
   // Filtrage avec vraies données
@@ -180,13 +182,13 @@ const PropertiesWithMap = () => {
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1">
               <Input
-                placeholder="Rechercher par nom, ville, région..."
+                placeholder={t('properties.search_placeholder')}
                 icon={MagnifyingGlassIcon}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
               <p className="mt-2 text-xs text-gray-500">
-                💡 Vous connaissez l'ID du terrain ? Utilisez la barre de recherche en haut pour y accéder directement !
+                {t('properties.id_search_tip')}
               </p>
             </div>
             <div className="flex gap-2">
@@ -292,7 +294,7 @@ const PropertiesWithMap = () => {
                 <div className="flex items-center justify-between p-4 border-b border-gray-200">
                   <h3 className="text-lg font-semibold text-gray-900 flex items-center">
                     <FunnelIcon className="h-5 w-5 mr-2" />
-                    Filtres de recherche
+                    {t('properties.filters_btn')}
                   </h3>
                   <button
                     onClick={() => setShowFilters(false)}
@@ -306,7 +308,7 @@ const PropertiesWithMap = () => {
                 <div className="p-4 space-y-4 overflow-y-auto flex-1">
   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      🇬 Région
+                       🇬 {t('home.featured.explore_cities')}
                     </label>
                     <select
                       value={selectedRegion}
@@ -324,7 +326,7 @@ const PropertiesWithMap = () => {
                   {selectedRegion !== 'all' && (
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        🏛️ Préfecture
+                        🏛️ {t('properties.prefecture_label')}
                       </label>
                       <select
                         value={selectedPrefecture}
@@ -343,7 +345,7 @@ const PropertiesWithMap = () => {
                   {selectedPrefecture !== 'all' && (
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        🏘️ Commune
+                        🏘️ {t('properties.commune_label')}
                       </label>
                       <select
                         value={selectedCommune}
@@ -362,7 +364,7 @@ const PropertiesWithMap = () => {
                   {selectedCommune !== 'all' && cantonOptions.length > 1 && (
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        🏞️ Canton
+                        🏞️ {t('properties.canton_label')}
                       </label>
                       <select
                         value={selectedCanton}
@@ -381,7 +383,7 @@ const PropertiesWithMap = () => {
                   {selectedCommune !== 'all' && quartierOptions.length > 1 && (
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        🏘️ Quartier
+                        🏘️ {t('properties.quartier_label')}
                       </label>
                       <select
                         value={selectedQuartier}
@@ -399,7 +401,7 @@ const PropertiesWithMap = () => {
 
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      📄 Statut
+                      📄 {t('properties.status_label')}
                     </label>
                     <select
                       value={selectedStatus}
@@ -430,14 +432,14 @@ const PropertiesWithMap = () => {
                       setSearchQuery('');
                     }}
                   >
-                    Réinitialiser tout
+                    {t('properties.reset_all')}
                   </Button>
                   <Button
                     variant="primary"
                     fullWidth
                     onClick={() => setShowFilters(false)}
                   >
-                    Appliquer
+                    {t('properties.apply')}
                   </Button>
                 </div>
               </motion.div>
@@ -517,14 +519,14 @@ const PropertiesWithMap = () => {
                                   onClick={() => navigate(`${ROUTES.PROPERTY_DETAIL}/${property.id}`)}
                                   className="text-xs bg-green-600 text-white px-3 py-2 rounded hover:bg-green-700 font-semibold"
                                 >
-                                  🛒 Acheter
+                                  {t('properties.buy_marker')}
                                 </button>
                               )}
                               <button
                                 onClick={() => navigate(`${ROUTES.PROPERTY_DETAIL}/${property.id}`)}
                                 className="text-xs bg-primary-600 text-white px-3 py-1 rounded hover:bg-primary-700"
                               >
-                                Voir détails
+                                {t('home.featured.view_details')}
                               </button>
                             </div>
                           </div>
@@ -565,7 +567,7 @@ const PropertiesWithMap = () => {
                           className="w-full bg-green-600 hover:bg-green-700 text-white text-sm font-semibold py-2 px-3 rounded transition-colors duration-200 flex items-center justify-center gap-1"
                         >
                           <ShoppingCartIcon className="h-4 w-4" />
-                          Acheter
+                          {t('properties.buy_btn')}
                         </button>
                       )}
                     </CardContent>
@@ -596,7 +598,7 @@ const PropertiesWithMap = () => {
                       />
                       <div className="absolute top-4 left-4">
                         <Badge variant="default" className="bg-black/70 text-white border-0 backdrop-blur-sm">
-                          ID: {property.id}
+                          {t('property_detail.id_label')}: {property.id}
                         </Badge>
                       </div>
                       <div className="absolute top-4 right-4">
@@ -618,11 +620,11 @@ const PropertiesWithMap = () => {
 
                       <div className="flex justify-between items-center pt-4 border-t border-gray-200 mb-4">
                         <div>
-                          <div className="text-xs text-gray-500">Surface</div>
+                          <div className="text-xs text-gray-500">{t('property_detail.surface_label')}</div>
                           <div className="text-sm font-semibold text-gray-900">{property.surface}</div>
                         </div>
                         <div className="text-right">
-                          <div className="text-xs text-gray-500">Prix</div>
+                          <div className="text-xs text-gray-500">{t('property_detail.price_label')}</div>
                           <div className="text-sm font-bold text-primary-600">{property.price}</div>
                         </div>
                       </div>
@@ -637,7 +639,7 @@ const PropertiesWithMap = () => {
                           className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
                         >
                           <ShoppingCartIcon className="h-5 w-5" />
-                          Acheter ce terrain
+                          {t('properties.buy_this_land')}
                         </button>
                       )}
                     </CardContent>
@@ -651,10 +653,10 @@ const PropertiesWithMap = () => {
             <div className="text-center py-16">
               <XMarkIcon className="h-16 w-16 text-gray-300 mx-auto mb-4" />
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Aucun terrain trouvé
+                {t('properties.not_found_title')}
               </h3>
               <p className="text-gray-600 mb-6">
-                Essayez de modifier vos critères de recherche
+                {t('properties.not_found_desc')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
@@ -665,13 +667,13 @@ const PropertiesWithMap = () => {
                     setSelectedStatus('all');
                   }}
                 >
-                  Réinitialiser les filtres
+                  {t('properties.reset_all')}
                 </Button>
                 <Button
                   variant="success"
                   onClick={() => navigate(`${ROUTES.CONTACT}?subject=Demande%20Particulière`)}
                 >
-                  Soumettre une demande particulière
+                  {t('properties.special_request_btn')}
                 </Button>
               </div>
             </div>
@@ -679,13 +681,13 @@ const PropertiesWithMap = () => {
           
           {filteredProperties.length > 0 && !showMap && (
             <div className="mt-12 text-center p-8 bg-primary-50 rounded-2xl border border-primary-100">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Vous ne trouvez pas votre bonheur ?</h3>
-              <p className="text-gray-600 mb-6">Faites-nous part de vos besoins spécifiques et nous trouverons le terrain idéal pour vous.</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">{t('properties.special_request_title')}</h3>
+              <p className="text-gray-600 mb-6">{t('properties.special_request_desc')}</p>
               <Button
                 variant="success"
                 onClick={() => navigate(`${ROUTES.CONTACT}?subject=Demande%20Particulière`)}
               >
-                Soumettre une demande particulière
+                {t('properties.special_request_btn')}
               </Button>
             </div>
           )}

@@ -1,0 +1,429 @@
+{
+  "header": {
+    "home": "Home",
+    "properties": "Properties",
+    "about": "About",
+    "blog": "Blog",
+    "contact": "Contact",
+    "download_app": "Download App",
+    "login": "Login",
+    "register": "Register",
+    "my_profile": "My profile",
+    "declare_property": "Declare property",
+    "logout": "Logout",
+    "search_placeholder": "ID or location...",
+    "my_account": "My account",
+    "go": "Go"
+  },
+  "home": {
+    "hero_title": "Agnigban Gna, Togo",
+    "hero_subtitle": "The official platform for buying and selling land safely.",
+    "buy_land": "Buy a land",
+    "sell_land": "Sell a land",
+    "features": {
+      "verify": "Authenticity",
+      "verify_desc": "100% Guaranteed Legality",
+      "buy": "Direct Buy",
+      "buy_desc": "Titled and verified lands",
+      "sell": "Fast Sale",
+      "sell_desc": "Evaluation and listing"
+    },
+    "stats": {
+      "land": "Properties",
+      "clients": "Clients",
+      "satisfaction": "Satisfaction"
+    },
+    "typed": [
+      "Welcome to the official platform for buying and selling land in Togo",
+      "Find your dream land in a few clicks",
+      "Sell your land quickly and safely"
+    ],
+    "services": {
+      "title": "Our",
+      "subtitle": "Services",
+      "description": "A complete range of services to meet all your real estate needs",
+      "items": {
+        "verify": {
+          "title": "Land Verification",
+          "desc": "Check the authenticity and legality of your land before any purchase. Our service guarantees transparency and security.",
+          "f1": "Legal verification",
+          "f2": "Land history",
+          "f3": "Certificate of authenticity"
+        },
+        "buy": {
+          "title": "Land Purchase",
+          "desc": "Find the ideal land among our varied selection. Full support from search to signature.",
+          "f1": "Large catalog",
+          "f2": "Virtual tour",
+          "f3": "Legal support"
+        },
+        "sell": {
+          "title": "Land Sale",
+          "desc": "Sell your land quickly thanks to our high-performance platform and our network of qualified buyers.",
+          "f1": "Free evaluation",
+          "f2": "Maximum visibility",
+          "f3": "Secure transaction"
+        }
+      },
+      "learn_more": "Learn more →",
+      "why_choose_us": "Why Choose Us ?",
+      "advantages": {
+        "security": "Guaranteed Security",
+        "security_desc": "All our transactions are secure and comply with Togolese legislation",
+        "docs": "Verified Documents",
+        "docs_desc": "Each land is verified with authentic and up-to-date documents",
+        "support": "Support",
+        "support_desc": "Our team accompanies you at every stage of your real estate project"
+      }
+    },
+    "featured": {
+      "title": "Featured",
+      "subtitle": "Properties",
+      "description": "Discover our selection of premium land in all regions of Togo",
+      "stats": {
+        "available": "Available",
+        "private": "Private",
+        "pending": "Pending"
+      },
+      "surface": "Surface",
+      "price": "Price",
+      "view_details": "View details",
+      "explore_cities": "Explore by city",
+      "view_all": "View all properties"
+    },
+    "cta": {
+      "title": "Ready to Find Your Ideal Land?",
+      "subtitle": "Join thousands of satisfied customers who have found their land through our platform. Start your search today!",
+      "start": "Start now",
+      "contact": "Contact us",
+      "stats": {
+        "land": "Available properties",
+        "clients": "Satisfied clients",
+        "satisfaction": "Satisfaction rate",
+        "support": "Customer support"
+      }
+    },
+    "testimonials": {
+      "title": "Our Clients'",
+      "subtitle": "Opinions",
+      "description": "Discover what our satisfied clients say about our services",
+      "items": {
+        "1": {
+          "role": "Entrepreneur",
+          "text": "Exceptional service! I bought my land with full confidence thanks to the professional support of the team. All documents were verified and the process was transparent."
+        },
+        "2": {
+          "role": "Merchant",
+          "text": "Very satisfied with my purchase. The platform is easy to use and I found exactly what I was looking for. Customer service is responsive and attentive."
+        },
+        "3": {
+          "role": "Engineer",
+          "text": "Excellent land verification service. I was able to buy safely thanks to the rigorous checks carried out. I highly recommend this platform."
+        }
+      }
+    }
+  },
+  "footer": {
+    "about": "Your trusted platform for buying and selling land in Togo. Transparency, security and professionalism.",
+    "company": "Company",
+    "services": "Services",
+    "contact": "Contact",
+    "legal": {
+      "terms": "Terms of Use",
+      "privacy": "Privacy Policy",
+      "mentions": "Legal Mentions"
+    },
+    "rights": "© {{year}} {{name}}. All rights reserved."
+  },
+  "chatbot": {
+    "title": "Assistant Gna",
+    "status": "Online",
+    "close": "Close",
+    "placeholder": "Ask your question...",
+    "disclaimer": "AI can make mistakes. Check important information.",
+    "open_chat": "Open chat",
+    "close_chat": "Close chat"
+  },
+  "property_detail": {
+    "not_found": "Property not found",
+    "back_to_properties": "Back to properties",
+    "price_label": "Price",
+    "surface_label": "Surface",
+    "id_label": "ID",
+    "view_n": "View {{n}}",
+    "see_reality": "View in Reality",
+    "see_video": "Watch video",
+    "satellite": "Satellite",
+    "description_title": "Description",
+    "features_title": "Features",
+    "docs_title": "Available Documents",
+    "download": "Download",
+    "contact": {
+      "buy_title": "Buy this property",
+      "interested_title": "Interested?",
+      "available_msg": "This property is available for sale. Contact us to finalize your purchase.",
+      "info_msg": "Contact us for more information on this property or to schedule a visit.",
+      "buy_now": "Buy now",
+      "request_info": "Request information",
+      "call_now": "Call now"
+    },
+    "seller": {
+      "title": "Seller",
+      "verified_agent": "Verified agent"
+    },
+    "safety": {
+      "title": "💡 Safety Tips",
+      "tip1": "Always verify property documents",
+      "tip2": "Visit the property before any commitment",
+      "tip3": "Never pay without an official contract"
+    },
+    "form": {
+      "modal_title": "Information Request",
+      "name_label": "Full name",
+      "email_label": "Email",
+      "phone_label": "Phone",
+      "message_label": "Message",
+      "msg_placeholder": "I am interested in the property \"{{title}}\"",
+      "send": "Send request",
+      "success_msg": "Your request has been sent successfully!"
+    },
+    "modals": {
+      "v3d_title": "3D Virtual Tour",
+      "video_title": "Property Video",
+      "v3d_interactive": "Interactive 3D Tour",
+      "v3d_desc": "Explore this property in 3D with a 360° view. Move freely and discover every detail.",
+      "v3d_tip": "💡 Tip: This 3D view will be available soon with a full interactive tour",
+      "total_surface": "Total surface",
+      "location": "Location",
+      "video_tour": "Video Property Tour",
+      "video_desc": "Discover this magnificent property in HD video with aerial and ground views.",
+      "video_coming_soon": "📹 The video will be available soon",
+      "about_video_title": "📹 About this video:",
+      "about_video_desc": "This video tour allows you to see the land from all angles. Ideal for getting a first impression before planning your on-site visit."
+    }
+  },
+  "properties": {
+    "search_placeholder": "Search by name, city, region...",
+    "id_search_tip": "💡 Know the land ID? Use the search bar at the top to access it directly!",
+    "special_request_btn": "Submit a special request",
+    "view_map": "Map",
+    "view_list": "List",
+    "filters_btn": "Filters",
+    "prefecture_label": "Prefecture",
+    "commune_label": "Commune",
+    "canton_label": "Canton",
+    "quartier_label": "District",
+    "status_label": "Status",
+    "all_prefectures": "All prefectures",
+    "all_communes": "All communes",
+    "all_cantons": "All cantons",
+    "all_quartiers": "All districts",
+    "reset_all": "Reset filters",
+    "apply": "Apply",
+    "buy_marker": "🛒 Buy",
+    "buy_btn": "Buy",
+    "buy_this_land": "Buy this land",
+    "not_found_title": "No land found",
+    "not_found_desc": "Try modifying your search criteria",
+    "special_request_title": "Can't find what you're looking for?",
+    "special_request_desc": "Tell us your specific needs and we will find the ideal land for you."
+  },
+  "about": {
+    "hero_title": "About Us",
+    "hero_desc": "We are the first digital platform dedicated to the purchase and sale of land in Togo. Our mission is to make access to land ownership simple, secure, and transparent.",
+    "mission_title": "Our Mission",
+    "mission_desc": "Facilitate access to land ownership for all Togolese and investors by offering a modern, secure, and transparent platform. We are committed to providing quality service that respects legal standards and protects the interests of our clients.",
+    "vision_title": "Our Vision",
+    "vision_desc": "Become the essential reference in the real estate sector in Togo and West Africa. We aspire to create an ecosystem where every land transaction is simple, fast, and secure, while contributing to the economic development of our country.",
+    "values_title": "Our Values",
+    "values_desc": "The principles that guide our daily work",
+    "value1_title": "Transparency",
+    "value1_desc": "We guarantee total transparency in all our transactions and processes.",
+    "value2_title": "Trust",
+    "value2_desc": "Our clients' trust is our priority. We work with integrity.",
+    "value3_title": "Excellence",
+    "value3_desc": "We aim for excellence in every aspect of our customer service.",
+    "value4_title": "Satisfaction",
+    "value4_desc": "Your satisfaction is our greatest reward and motivation.",
+    "partners_title": "Our Partners",
+    "partners_desc": "The partners who support us",
+    "stats": {
+      "years": "Years of experience",
+      "land_sold": "Lands sold",
+      "happy_clients": "Happy clients",
+      "satisfaction_rate": "Satisfaction rate"
+    },
+    "team_title": "Our Team",
+    "team_desc": "Passionate and experienced professionals at your service",
+    "cta_title": "Join us in this adventure",
+    "cta_desc": "Together, let's build the future of real estate in Togo",
+    "contact_us": "Contact us",
+    "view_lands": "View lands"
+  },
+  "contact": {
+    "hero_title": "Contact Us",
+    "hero_desc": "Our team is at your disposal to answer all your questions",
+    "info": {
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Hours",
+      "hours_val": "Mon - Fri: 8am - 6pm\nSat: 8am - 1pm"
+    },
+    "form": {
+      "title": "Send us a message",
+      "success": "✓ Message sent successfully! We will respond as soon as possible.",
+      "name_label": "Full name",
+      "email_label": "Email",
+      "phone_label": "Phone",
+      "subject_label": "Subject",
+      "message_label": "Message",
+      "name_placeholder": "Your name",
+      "email_placeholder": "your@email.com",
+      "phone_placeholder": "+228 XX XX XX XX",
+      "subject_placeholder": "Object of your message",
+      "message_placeholder": "Describe your request...",
+      "submit": "Send message",
+      "sending": "Sending..."
+    },
+    "why": {
+      "title": "Why contact us?",
+      "item1": "Get information about our lands",
+      "item2": "Schedule a field visit",
+      "item3": "Declare land for sale",
+      "item4": "Get legal assistance",
+      "item5": "Ask general questions"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "desc": "Find answers to your questions quickly",
+      "q1": "How can I buy land?",
+      "a1": "Browse our catalog, select land, contact us for a visit and we will assist you in all administrative procedures.",
+      "q2": "Are the lands verified?",
+      "a2": "Yes, all our lands are legally verified. We ensure that all documents are compliant and authentic.",
+      "q3": "Do you offer payment facilities?",
+      "a3": "Yes, we offer flexible financing plans tailored to your budget. Contact us to find out more.",
+      "q4": "How to declare land for sale?",
+      "a4": "Create an account, access your profile and use the declaration form. Our team will verify the information before publication."
+    },
+    "map_title": "Our location"
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "subtitle": "Sign in to your account to access your personal space",
+      "email_label": "Email address",
+      "email_placeholder": "your@email.com",
+      "password_label": "Password",
+      "password_placeholder": "••••••••",
+      "remember_me": "Remember me",
+      "forgot_password": "Forgot password?",
+      "submit": "Log in",
+      "or_continue_with": "Or continue with",
+      "no_account": "Don't have an account?",
+      "create_account": "Create account",
+      "success_title": "Login successful!",
+      "success_desc": "Welcome! Redirecting to your profile...",
+      "error_verification": "Please verify your email address before logging in. A verification email was sent during your registration. Consider checking your spam.",
+      "resend_verification": "📧 Resend verification email",
+      "resend_success": "Verification email resent! Please check your inbox.",
+      "resend_error": "Error sending verification email. Please try again.",
+      "google_error": "Error logging in with Google",
+      "general_error": "An error occurred during login"
+    },
+    "register": {
+      "title": "Create an account",
+      "subtitle": "Join us and start your real estate journey",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "first_name_placeholder": "Your first name",
+      "last_name_placeholder": "Your last name",
+      "email_label": "Email address",
+      "email_placeholder": "your@email.com",
+      "phone_label": "Phone",
+      "phone_placeholder": "+228 XX XX XX XX",
+      "password_label": "Password",
+      "password_placeholder": "••••••••",
+      "confirm_password_label": "Confirm password",
+      "confirm_password_placeholder": "••••••••",
+      "password_helper": "At least 6 characters",
+      "accept_terms": "I accept the",
+      "terms_link": "terms of use",
+      "and": "and the",
+      "privacy_link": "privacy policy",
+      "submit": "Create my account",
+      "or_signup_with": "Or sign up with",
+      "already_have_account": "Already have an account?",
+      "login": "Log in",
+      "success_title": "Account created successfully!",
+      "welcome": "Welcome to Agnigban Gna!",
+      "important_step": "Important step:",
+      "verification_sent": "A verification email has been sent to",
+      "verification_instruction": "Please check your inbox and click on the verification link to activate your account.",
+      "spam_hint": "Consider checking your spam folder if you can't find the email.",
+      "redirecting": "Redirecting to the login page in a few seconds...",
+      "error_password_match": "Passwords do not match",
+      "error_password_length": "Password must be at least 6 characters long",
+      "google_error": "Error during registration with Google",
+      "general_error": "An error occurred during registration"
+    }
+  },
+  "blog": {
+    "hero_title": "Agnigban Gna Blog",
+    "hero_subtitle": "Tips, guides and news on real estate in Togo",
+    "search_placeholder": "Search an article...",
+    "featured_title": "Featured Article",
+    "read_article": "Read article",
+    "latest_articles": "Latest articles",
+    "results_count": "Results ({{count}})",
+    "not_found_title": "No articles found",
+    "not_found_desc": "Try modifying your search criteria",
+    "reset_filters": "Reset filters",
+    "newsletter_title": "Stay informed",
+    "newsletter_desc": "Receive our latest articles and tips directly in your mailbox",
+    "email_placeholder": "Your email address",
+    "subscribe": "Subscribe",
+    "read_time": "{{count}} min read"
+  },
+  "legal": {
+    "terms": {
+      "title": "Terms of Use",
+      "last_update": "Last update: December 18, 2024",
+      "intro": "Welcome to Agnigban Gna. By accessing this site, you agree to be bound by these terms of use.",
+      "section1_title": "1. Site Usage",
+      "section1_content": "The use of our platform is reserved for legal purposes related to the consultation, purchase or sale of land in Togo.",
+      "section2_title": "2. Intellectual Property",
+      "section2_content": "All content present on this site is the exclusive property of Agnigban Gna.",
+      "section3_title": "3. Responsibility",
+      "section3_content": "Agnigban Gna strives to provide accurate information but cannot guarantee the absolute accuracy of advertisements published by third parties."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "last_update": "Last update: December 18, 2024",
+      "intro": "The protection of your personal data is a priority for Agnigban Gna.",
+      "section1_title": "1. Data Collection",
+      "section1_content": "We collect the information you provide to us when creating your account or contacting us.",
+      "section2_title": "2. Data Usage",
+      "section2_content": "Your data is used to process your requests and improve your experience on our platform.",
+      "section3_title": "3. Cookies",
+      "section3_content": "We use cookies to analyze traffic and personalize content."
+    },
+    "notice": {
+      "title": "Legal Notice",
+      "company_name": "Company Name: Agnigban Gna",
+      "headquarters": "Headquarters: Lomé, Togo",
+      "phone": "Phone: +228 70 14 61 80",
+      "email": "Email: contact@agnigbagna.com",
+      "director": "Publication Director: Agnigban Gna Team",
+      "hosting": "Hosting: Render.com",
+      "section_title": "Legal Information",
+      "section_content": "In accordance with current Togolese legislation, we provide you with legal information regarding our platform."
+    }
+  },
+  "languages": {
+    "fr": "French",
+    "en": "English",
+    "de": "German",
+    "title": "Languages"
+  }
+}

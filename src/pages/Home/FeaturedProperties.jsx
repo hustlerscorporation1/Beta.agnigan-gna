@@ -8,8 +8,10 @@ import Button from '../../components/ui/Button';
 import Badge from '../../components/ui/Badge';
 import { ROUTES, CITIES } from '../../config/constants';
 import { properties } from '../../data/properties';
+import { useTranslation } from 'react-i18next';
 
 const FeaturedProperties = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   // Sélectionner les 4 premiers terrains disponibles comme terrains en vedette
@@ -28,9 +30,9 @@ const FeaturedProperties = () => {
   };
 
   const statusLabels = {
-    available: 'Disponible',
-    private: 'Privé',
-    pending: 'En cours'
+    available: t('home.featured.stats.available'),
+    private: t('home.featured.stats.private'),
+    pending: t('home.featured.stats.pending')
   };
 
   return (
@@ -45,10 +47,10 @@ const FeaturedProperties = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Terrains <span className="text-gradient">En Vedette</span>
+            {t('home.featured.title')} <span className="text-gradient">{t('home.featured.subtitle')}</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Découvrez notre sélection de terrains premium dans toutes les régions du Togo
+            {t('home.featured.description')}
           </p>
         </motion.div>
 
@@ -94,17 +96,17 @@ const FeaturedProperties = () => {
 
                   <div className="flex justify-between items-center mb-4 pb-4 border-b border-gray-200">
                     <div>
-                      <div className="text-xs text-gray-500">Surface</div>
+                      <div className="text-xs text-gray-500">{t('home.featured.surface')}</div>
                       <div className="text-sm font-semibold text-gray-900">{property.surface}</div>
                     </div>
                     <div className="text-right">
-                      <div className="text-xs text-gray-500">Prix</div>
+                      <div className="text-xs text-gray-500">{t('home.featured.price')}</div>
                       <div className="text-sm font-semibold text-primary-600">{property.price}</div>
                     </div>
                   </div>
 
                   <Button variant="ghost" size="sm" fullWidth>
-                    Voir détails
+                    {t('home.featured.view_details')}
                   </Button>
                 </CardContent>
               </Card>
@@ -121,7 +123,7 @@ const FeaturedProperties = () => {
           className="text-center"
         >
           <h3 className="text-xl font-semibold text-gray-900 mb-6">
-            Explorez par ville
+            {t('home.featured.explore_cities')}
           </h3>
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             {CITIES.map((city) => (
@@ -144,7 +146,7 @@ const FeaturedProperties = () => {
             iconPosition="right"
             onClick={() => navigate(ROUTES.PROPERTIES)}
           >
-            Voir tous les terrains
+            {t('home.featured.view_all')}
           </Button>
         </motion.div>
       </Container>

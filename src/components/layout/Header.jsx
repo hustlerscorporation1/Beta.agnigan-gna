@@ -12,6 +12,7 @@ import {
 import { supabase } from "../../superbase/superbaseClient";
 import { ROUTES, APP_NAME } from "../../config/constants";
 import Button from "../ui/Button";
+import { useTranslation } from "react-i18next";
 
 // Utilisation des chemins publics pour les images (compatibilité production)
 const Logo = "/images/logo-agnigban-gna.png";
@@ -25,6 +26,7 @@ const Header = () => {
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showDownloadModal, setShowDownloadModal] = useState(false);
   const [searchId, setSearchId] = useState("");
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const handleSearch = (e) => {
@@ -87,11 +89,11 @@ const Header = () => {
   };
 
   const navLinks = [
-    { name: "Accueil", path: ROUTES.HOME },
-    { name: "Propriétés", path: ROUTES.PROPERTIES },
-    { name: "À propos", path: ROUTES.ABOUT },
-    { name: "Blog", path: ROUTES.BLOG },
-    { name: "Contact", path: ROUTES.CONTACT },
+    { name: t("header.home"), path: ROUTES.HOME },
+    { name: t("header.properties"), path: ROUTES.PROPERTIES },
+    { name: t("header.about"), path: ROUTES.ABOUT },
+    { name: t("header.blog"), path: ROUTES.BLOG },
+    { name: t("header.contact"), path: ROUTES.CONTACT },
   ];
 
   return (
@@ -139,7 +141,7 @@ const Header = () => {
                   type="text"
                   value={searchId}
                   onChange={(e) => setSearchId(e.target.value)}
-                  placeholder="ID ou localité..."
+                  placeholder={t("header.search_placeholder")}
                   className="w-48 pl-10 pr-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all hover:border-gray-400"
                 />
                 <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 group-focus-within:text-primary-600 transition-colors" />
@@ -161,7 +163,7 @@ const Header = () => {
                 icon={ArrowDownTrayIcon}
                 onClick={() => setShowDownloadModal(true)}
               >
-                Télécharger l'App
+                {t("header.download_app")}
               </Button>
 
               {user ? (
@@ -172,7 +174,7 @@ const Header = () => {
                   >
                     <UserCircleIcon className="h-6 w-6 text-gray-600" />
                     <span className="text-sm font-medium text-gray-700">
-                      {userFirstName || "Mon compte"}
+                      {userFirstName || t("header.my_account")}
                     </span>
                     <ChevronDownIcon className="h-4 w-4 text-gray-600" />
                   </button>
@@ -190,21 +192,21 @@ const Header = () => {
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
                           onClick={() => setShowUserMenu(false)}
                         >
-                          Mon profil
+                          {t("header.my_profile")}
                         </Link>
                         <Link
                           to={ROUTES.DECLARE_PROPERTY}
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
                           onClick={() => setShowUserMenu(false)}
                         >
-                          Déclarer un terrain
+                          {t("header.declare_property")}
                         </Link>
                         <hr className="my-2" />
                         <button
                           onClick={handleSignOut}
                           className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50"
                         >
-                          Déconnexion
+                          {t("header.logout")}
                         </button>
                       </motion.div>
                     )}
@@ -217,14 +219,14 @@ const Header = () => {
                     size="sm"
                     onClick={() => navigate(ROUTES.LOGIN)}
                   >
-                    Connexion
+                    {t("header.login")}
                   </Button>
                   <Button
                     variant="primary"
                     size="sm"
                     onClick={() => navigate(ROUTES.REGISTER)}
                   >
-                    Inscription
+                    {t("header.register")}
                   </Button>
                 </>
               )}
@@ -266,16 +268,16 @@ const Header = () => {
                         type="number"
                         value={searchId}
                         onChange={(e) => setSearchId(e.target.value)}
-                        placeholder="Entrez l'ID du terrain..."
+                        placeholder={t("header.search_placeholder")}
                         className="w-full pl-10 pr-16 py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
                         min="1"
                       />
                       <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 group-focus-within:text-primary-600 transition-colors" />
-                      <button
+                       <button
                         type="submit"
                         className="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1 text-xs font-medium text-white bg-primary-600 rounded-md hover:bg-primary-700 transition-colors"
                       >
-                        Aller
+                        {t("header.go")}
                       </button>
                     </form>
                   </div>
