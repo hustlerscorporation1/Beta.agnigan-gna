@@ -1,0 +1,10 @@
+services:
+  - type: static
+    name: agnigna-gna
+    env: static
+    buildCommand: npm install && npm run build
+    publishPath: build
+    routes:
+      - source: /*
+        destination: /index.html
+        type: rewrite
