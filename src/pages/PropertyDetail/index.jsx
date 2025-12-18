@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 import {
   MapPinIcon,
   CurrencyDollarIcon,
@@ -131,6 +131,7 @@ const PropertyDetail = () => {
   };
 
   return (
+    <MotionConfig reducedMotion="never">
     <Layout>
       {/* Back Button */}
       <section className="bg-gray-50 py-4 border-b">
@@ -148,7 +149,12 @@ const PropertyDetail = () => {
       {/* Header */}
       <section className="bg-white py-8 border-b">
         <Container>
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <motion.div 
+            className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-3">
                 <Badge variant={statusColors[property.status]}>
@@ -171,7 +177,7 @@ const PropertyDetail = () => {
               <p className="text-4xl font-bold text-primary-600">{property.price}</p>
               <p className="text-sm text-gray-500 mt-1">Surface: {property.surface}</p>
             </div>
-          </div>
+          </motion.div>
         </Container>
       </section>
 
@@ -183,9 +189,9 @@ const PropertyDetail = () => {
             <div className="md:col-span-2 relative group">
               <motion.div
                 key={currentImageIndex}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
                 className="relative h-[500px] rounded-xl overflow-hidden"
               >
                 <img
@@ -197,18 +203,22 @@ const PropertyDetail = () => {
                 {/* Navigation Arrows */}
                 {images.length > 1 && (
                   <>
-                    <button
+                    <motion.button
                       onClick={handlePrevImage}
                       className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all opacity-0 group-hover:opacity-100"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
                     >
                       <ChevronLeftIcon className="h-6 w-6 text-gray-800" />
-                    </button>
-                    <button
+                    </motion.button>
+                    <motion.button
                       onClick={handleNextImage}
                       className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all opacity-0 group-hover:opacity-100"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
                     >
                       <ChevronRightIcon className="h-6 w-6 text-gray-800" />
-                    </button>
+                    </motion.button>
                   </>
                 )}
 
@@ -227,7 +237,12 @@ const PropertyDetail = () => {
                 {images.slice(0, 4).map((img, index) => (
                   <motion.div
                     key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
                     whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     className={`h-32 rounded-lg overflow-hidden cursor-pointer border-2 ${
                       index === currentImageIndex ? 'border-primary-600' : 'border-transparent'
                     }`}
@@ -239,7 +254,13 @@ const PropertyDetail = () => {
               </div>
 
               {/* Boutons 3D et Vidéo */}
-              <div className="grid grid-cols-2 gap-2">
+              <motion.div 
+                className="grid grid-cols-2 gap-2"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
                 <Button
                   variant="outline"
                   fullWidth
@@ -258,10 +279,15 @@ const PropertyDetail = () => {
                 >
                   Voir la vidéo
                 </Button>
-              </div>
+              </motion.div>
 
               {/* Map */}
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
                 <div className="mb-3 flex gap-2 flex-wrap">
                   <button
                     onClick={() => setMapLayer('osm')}
@@ -312,7 +338,7 @@ const PropertyDetail = () => {
                     </Marker>
                   </MapContainer>
                 </Card>
-              </div>
+              </motion.div>
             </div>
           </div>
         </Container>
@@ -325,6 +351,12 @@ const PropertyDetail = () => {
             {/* Left Column - Details */}
             <div className="lg:col-span-2 space-y-8">
               {/* Description */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6 }}
+              >
               <Card>
                 <CardContent className="p-6">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">Description</h2>
@@ -336,8 +368,15 @@ const PropertyDetail = () => {
                   </p>
                 </CardContent>
               </Card>
+              </motion.div>
 
               {/* Caractéristiques */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
               <Card>
                 <CardContent className="p-6">
                   <h2 className="text-2xl font-bold text-gray-900 mb-6">Caractéristiques</h2>
@@ -384,9 +423,16 @@ const PropertyDetail = () => {
                   </div>
                 </CardContent>
               </Card>
+              </motion.div>
 
               {/* Documents */}
               {property.documents && property.documents.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
                 <Card>
                   <CardContent className="p-6">
                     <h2 className="text-2xl font-bold text-gray-900 mb-4">Documents Disponibles</h2>
@@ -411,6 +457,7 @@ const PropertyDetail = () => {
                     </div>
                   </CardContent>
                 </Card>
+                </motion.div>
               )}
             </div>
 
@@ -418,6 +465,12 @@ const PropertyDetail = () => {
             <div className="lg:col-span-1">
               <div className="sticky top-24 space-y-6">
                 {/* Contact Card */}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6 }}
+                >
                 <Card>
                   <CardContent className="p-6">
                     <h3 className="text-xl font-bold text-gray-900 mb-4">
@@ -459,8 +512,15 @@ const PropertyDetail = () => {
                     </div>
                   </CardContent>
                 </Card>
+                </motion.div>
 
                 {/* Seller Info */}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                >
                 <Card>
                   <CardContent className="p-6">
                     <h3 className="text-lg font-bold text-gray-900 mb-4">Vendeur</h3>
@@ -481,8 +541,15 @@ const PropertyDetail = () => {
                     </div>
                   </CardContent>
                 </Card>
+                </motion.div>
 
                 {/* Safety Tips */}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
                 <Card className="bg-primary-50 border-primary-200">
                   <CardContent className="p-6">
                     <h3 className="text-lg font-bold text-gray-900 mb-3">💡 Conseils de sécurité</h3>
@@ -502,6 +569,7 @@ const PropertyDetail = () => {
                     </ul>
                   </CardContent>
                 </Card>
+                </motion.div>
               </div>
             </div>
           </div>
@@ -743,6 +811,7 @@ const PropertyDetail = () => {
         )}
       </AnimatePresence>
     </Layout>
+    </MotionConfig>
   );
 };
 

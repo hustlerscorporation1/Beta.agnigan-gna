@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # compiled output
 /dist
 /node_modules
@@ -44,3 +45,6 @@ lerna-debug.log*
 # Uploads
 /uploads
 /temp
+=======
+node_modules
+>>>>>>> 49e207a5d61c28e9a91d2f316d6f87fefa2e3c5d

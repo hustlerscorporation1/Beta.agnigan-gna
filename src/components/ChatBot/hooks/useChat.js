@@ -1,13 +1,14 @@
-import { useState, useCallback, useEffect } from 'react';
-import { botConfig, botResponses } from '../config/config';
+import { useState, useCallback } from 'react';
+import { botConfig } from '../config/config';
+import { aiService } from '../../../services/aiService';
 
-export const useChat = () => {
+export const useChat = (propertyData = []) => {
   const [messages, setMessages] = useState([
     { id: 1, text: botConfig.welcomeMessage, sender: 'bot' }
   ]);
   const [isTyping, setIsTyping] = useState(false);
 
-  // Fonction pour simuler la frappe du bot
+  // Fonction pour simuler la frappe du bot (plus fluide)
   const simulateTyping = useCallback((text, delay = 0) => {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -15,13 +16,14 @@ export const useChat = () => {
         const messageId = Date.now();
         let currentText = '';
         
+        // Vitesse de frappe adaptée à la longueur du texte pour simuler le streaming
+        const speed = text.length > 100 ? 5 : 15;
+
         const typingInterval = setInterval(() => {
           if (currentText.length < text.length) {
             currentText = text.substring(0, currentText.length + 1);
             setMessages(prev => {
-              // Supprimer le message de frappe précédent s'il existe
               const filteredMessages = prev.filter(msg => msg.id !== messageId);
-              // Ajouter le nouveau message avec le texte mis à jour
               return [
                 ...filteredMessages,
                 { 
@@ -35,7 +37,6 @@ export const useChat = () => {
           } else {
             clearInterval(typingInterval);
             setIsTyping(false);
-            // Remplacer le message de frappe par le message final sans l'indicateur de frappe
             setMessages(prev => {
               const filteredMessages = prev.filter(msg => msg.id !== messageId);
               return [
@@ -50,63 +51,48 @@ export const useChat = () => {
             });
             resolve();
           }
-        }, botConfig.typingSpeed);
+        }, speed);
       }, delay);
     });
   }, []);
 
-  // Gestion des réponses du bot
-  const getBotResponse = useCallback(async (userMessage) => {
-    const lowerMessage = userMessage.toLowerCase();
+  // Gestion des réponses du bot via l'IA
+  const getBotResponse = useCallback(async (userMessage, history) => {
+    // Essayer de générer une réponse via l'IA
+    const aiResponse = await aiService.generateResponse(userMessage, history, propertyData);
     
-    // Réponses prédéfinies
-    if (/bonjour|salut|coucou|hey|hi|hello/.test(lowerMessage)) {
-      const randomIndex = Math.floor(Math.random() * botResponses.salutations.length);
-      await simulateTyping(botResponses.salutations[randomIndex], 500);
-    } 
-    else if (/merci|super|génial|parfait/.test(lowerMessage)) {
-      const randomIndex = Math.floor(Math.random() * botResponses.remerciements.length);
-      await simulateTyping(botResponses.remerciements[randomIndex], 500);
-    }
-    else if (/acheter|achat|achete|recherche|trouver/.test(lowerMessage)) {
-      await simulateTyping(botResponses.achat.procedure, 500);
-      await simulateTyping(" " + botResponses.achat.contact, 200);
-    }
-    else if (/vendre|vente|vends|mettre en vente/.test(lowerMessage)) {
-      await simulateTyping(botResponses.vente.procedure, 500);
-      await simulateTyping(" " + botResponses.vente.conditions, 200);
-    }
-    else {
+    if (aiResponse) {
+      await simulateTyping(aiResponse, 300);
+    } else {
+      // Fallback si l'IA échoue ou si la clé API est absente
       await simulateTyping(botConfig.defaultResponse, 500);
     }
-  }, [simulateTyping]);
+  }, [simulateTyping, propertyData]);
 
   // Gestion de l'envoi de message
   const sendMessage = useCallback(async (text) => {
     const trimmedText = text.trim();
     if (!trimmedText || isTyping) return;
 
-    // Créer un nouvel ID pour le message utilisateur
     const userMessageId = Date.now();
+    const newUserMessage = {
+      id: userMessageId,
+      text: trimmedText,
+      sender: 'user'
+    };
     
     // Ajout du message de l'utilisateur
-    setMessages(prev => [
-      ...prev,
-      {
-        id: userMessageId,
-        text: trimmedText,
-        sender: 'user'
-      }
-    ]);
+    const updatedMessages = [...messages, newUserMessage];
+    setMessages(updatedMessages);
     
     // Réponse du bot
     try {
-      await getBotResponse(trimmedText);
+      await getBotResponse(trimmedText, updatedMessages);
     } catch (error) {
       console.error('Erreur lors de la génération de la réponse du bot:', error);
-      await simulateTyping("Désolé, une erreur s'est produite. Veuillez réessayer.", 500);
+      await simulateTyping("Désolé, je rencontre une petite difficulté technique. Pourriez-vous reformuler ?", 500);
     }
-  }, [getBotResponse, isTyping, simulateTyping]);
+  }, [getBotResponse, isTyping, simulateTyping, messages]);
 
   return {
     messages,
