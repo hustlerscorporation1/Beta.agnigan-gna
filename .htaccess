@@ -1,0 +1,115 @@
+############################################
+# 🔧 CONFIGURATION GÉNÉRALE
+############################################
+
+Options -Indexes
+ServerSignature Off
+
+############################################
+# 🔁 FORCER HTTPS + WWW
+############################################
+
+RewriteEngine On
+
+# Forcer HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Forcer WWW (optionnel, enlève si non désiré)
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+############################################
+# 🌐 ROUTING SPA (React / Vue / Angular)
+############################################
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]
+
+############################################
+# 🔐 SÉCURITÉ AVANCÉE
+############################################
+
+# Bloquer fichiers sensibles
+<FilesMatch "^(\.env|\.git|\.svn|\.htaccess|\.htpasswd|composer\.json|package\.json|package-lock\.json|yarn\.lock)$">
+    Require all denied
+</FilesMatch>
+
+# Bloquer accès aux dossiers cachés
+RedirectMatch 403 /\.
+
+# Protection contre injections simples
+RewriteCond %{QUERY_STRING} (\<|%3C|%3E|\%27|\%22|\%3D) [NC]
+RewriteRule ^ - [F]
+
+############################################
+# 🛡️ HEADERS DE SÉCURITÉ
+############################################
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), camera=(), microphone=()"
+</IfModule>
+
+############################################
+# ⚡ COMPRESSION GZIP
+############################################
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css
+    AddOutputFilterByType DEFLATE application/javascript application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+############################################
+# 🚀 CACHE NAVIGATEUR (PERFORMANCE)
+############################################
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # HTML
+    ExpiresByType text/html "access plus 1 hour"
+
+    # CSS & JS
+    ExpiresByType text/css "access plus 30 days"
+    ExpiresByType application/javascript "access plus 30 days"
+
+    # Images
+    ExpiresByType image/jpg "access plus 60 days"
+    ExpiresByType image/jpeg "access plus 60 days"
+    ExpiresByType image/png "access plus 60 days"
+    ExpiresByType image/webp "access plus 60 days"
+    ExpiresByType image/svg+xml "access plus 60 days"
+
+    # Fonts
+    ExpiresByType font/woff2 "access plus 60 days"
+</IfModule>
+
+############################################
+# 🧹 NETTOYAGE DES URLS (SEO)
+############################################
+
+# Supprimer .html dans les URLs
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
+
+############################################
+# ❌ DÉSACTIVER HOTLINKING (OPTIONNEL)
+############################################
+
+#RewriteCond %{HTTP_REFERER} !^$
+#RewriteCond %{HTTP_REFERER} !^https?://(www\.)?tonsite\.com/ [NC]
+#RewriteRule \.(jpg|jpeg|png|gif|webp)$ - [F]
+
+############################################
+# 🧪 LOG ERREURS PERSONNALISÉ
+############################################
+
+ErrorDocument 403 /errors/403.html
+ErrorDocument 404 /errors/404.html
+ErrorDocument 500 /errors/500.html
