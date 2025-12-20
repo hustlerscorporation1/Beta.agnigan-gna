@@ -17,110 +17,79 @@ import Layout from "../components/layout/Layout";
 import Button from "../components/ui/Button";
 import Container from "../components/ui/Container";
 import { ROUTES } from "../config/constants";
+import { useTranslation } from "react-i18next";
 import heroBgImage from "../images/Terrain-dans-n'importe-quelle-localité(4).jpg";
 
 const ProcessusVente = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const steps = [
     {
       number: 1,
       icon: PencilSquareIcon,
-      title: "Préparation de l'annonce",
-      description:
-        "Créez un titre accrocheur et une description détaillée de votre terrain pour attirer les acheteurs potentiels.",
+      title: t('sell_process.steps.1.title'),
+      description: t('sell_process.steps.1.desc'),
       color: "orange",
-      tips: [
-        "Titre clair et précis (ex: Terrain 500m² à Kégué)",
-        "Description détaillée du terrain",
-        "Mentionnez les avantages et proximités",
-      ],
+      tips: t('sell_process.steps.1.tips', { returnObjects: true }),
     },
     {
       number: 2,
       icon: DocumentTextIcon,
-      title: "Vérification des documents",
-      description:
-        "Rassemblez et vérifiez tous les documents légaux nécessaires pour prouver la légalité de votre terrain.",
+      title: t('sell_process.steps.2.title'),
+      description: t('sell_process.steps.2.desc'),
       color: "blue",
-      tips: [
-        "Titre foncier original et authentique",
-        "Certificat de propriété",
-        "Plan cadastral à jour",
-      ],
+      tips: t('sell_process.steps.2.tips', { returnObjects: true }),
     },
     {
       number: 3,
       icon: PhotoIcon,
-      title: "Photos et localisation",
-      description:
-        "Ajoutez des photos de qualité et indiquez précisément la localisation de votre terrain sur la carte.",
+      title: t('sell_process.steps.3.title'),
+      description: t('sell_process.steps.3.desc'),
       color: "green",
-      tips: [
-        "Photos HD de plusieurs angles",
-        "Localisation GPS précise",
-        "Photos de l'environnement",
-      ],
+      tips: t('sell_process.steps.3.tips', { returnObjects: true }),
     },
     {
       number: 4,
       icon: CurrencyDollarIcon,
-      title: "Fixation du prix",
-      description:
-        "Déterminez un prix compétitif basé sur le marché local et les caractéristiques de votre terrain.",
+      title: t('sell_process.steps.4.title'),
+      description: t('sell_process.steps.4.desc'),
       color: "purple",
-      tips: [
-        "Étudiez les prix du marché",
-        "Considérez la localisation",
-        "Soyez prêt à négocier",
-      ],
+      tips: t('sell_process.steps.4.tips', { returnObjects: true }),
     },
     {
       number: 5,
       icon: UserGroupIcon,
-      title: "Gestion des acheteurs",
-      description:
-        "Répondez aux demandes, organisez des visites et négociez avec les acheteurs intéressés.",
+      title: t('sell_process.steps.5.title'),
+      description: t('sell_process.steps.5.desc'),
       color: "indigo",
-      tips: [
-        "Répondez rapidement aux messages",
-        "Organisez des visites sécurisées",
-        "Négociez de bonne foi",
-      ],
+      tips: t('sell_process.steps.5.tips', { returnObjects: true }),
     },
     {
       number: 6,
       icon: CheckCircleIcon,
-      title: "Finalisation de la vente",
-      description:
-        "Signez les documents de vente, effectuez le transfert de propriété et recevez votre paiement.",
+      title: t('sell_process.steps.6.title'),
+      description: t('sell_process.steps.6.desc'),
       color: "green",
-      tips: [
-        "Signez devant notaire",
-        "Vérifiez le paiement",
-        "Transférez le titre foncier",
-      ],
+      tips: t('sell_process.steps.6.tips', { returnObjects: true }),
     },
   ];
 
   const benefits = [
     {
       icon: ChartBarIcon,
-      title: "Visibilité maximale",
-      description:
-        "Votre annonce est visible par des milliers d'acheteurs potentiels",
+      title: t('sell_process.benefits.visibility.title'),
+      description: t('sell_process.benefits.visibility.desc'),
     },
     {
       icon: ShieldCheckIcon,
-      title: "Transactions sécurisées",
-      description:
-        "Nous vérifions tous les documents pour des ventes sécurisées",
+      title: t('sell_process.benefits.security.title'),
+      description: t('sell_process.benefits.security.desc'),
     },
     {
       icon: ClockIcon,
-      title: "Vente rapide",
-      description:
-        "Vendez votre terrain rapidement grâce à notre plateforme efficace",
+      title: t('sell_process.benefits.speed.title'),
+      description: t('sell_process.benefits.speed.desc'),
     },
   ];
   return (
@@ -145,11 +114,10 @@ const ProcessusVente = () => {
                 <CurrencyDollarIcon className="h-20 w-20" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 ">
-                Processus de Vente d'un Terrain
+                {t('sell_process.hero_title')}
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-orange-100">
-                Suivez ces 6 étapes pour vendre votre terrain rapidement et en
-                toute sécurité
+                {t('sell_process.hero_subtitle')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
@@ -157,14 +125,14 @@ const ProcessusVente = () => {
                   onClick={() => navigate(ROUTES.DECLARE_PROPERTY)}
                   className="bg-white !text-green-600 hover:bg-green-600 hover:!text-white border-none shadow-lg"
                 >
-                  Publier une annonce
+                  {t('sell_process.publish_btn')}
                 </Button>
                 <Button
                   size="lg"
                   onClick={() => navigate(ROUTES.CONTACT)}
                   className="border-white text-white hover:bg-green-600 hover:text-white"
                 >
-                  Nous contacter
+                  {t('sell_process.contact_btn')}
                 </Button>
               </div>
             </motion.div>
@@ -207,11 +175,10 @@ const ProcessusVente = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Les 6 Étapes du Processus de Vente
+              {t('sell_process.steps_title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Un parcours simple et efficace pour vendre votre terrain au
-              meilleur prix
+              {t('sell_process.steps_subtitle')}
             </p>
           </motion.div>
 
@@ -251,7 +218,7 @@ const ProcessusVente = () => {
                   </p>
                   <div className="space-y-2">
                     <p className="font-semibold text-gray-700">
-                      Conseils pratiques:
+                      {t('sell_process.tips_label')}
                     </p>
                     <ul className="space-y-1">
                       {step.tips.map((tip, tipIndex) => (
@@ -279,12 +246,10 @@ const ProcessusVente = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Prêt à vendre votre terrain ?
+                {t('sell_process.cta.title')}
               </h2>
               <p className="text-xl mb-8 text-orange-100">
-                Publiez votre annonce dès maintenant et touchez des milliers
-                d'acheteurs potentiels. Notre équipe vous accompagne tout au
-                long du processus!
+                {t('sell_process.cta.desc')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
@@ -292,7 +257,7 @@ const ProcessusVente = () => {
                   onClick={() => navigate(ROUTES.DECLARE_PROPERTY)}
                   className="bg-white !text-green-600 hover:bg-green-600 hover:!text-white border-none shadow-xl"
                 >
-                  Publier mon annonce
+                  {t('sell_process.cta.publish')}
                 </Button>
                 <Button
                   variant="outline"
@@ -300,7 +265,7 @@ const ProcessusVente = () => {
                   onClick={() => navigate(ROUTES.CONTACT)}
                   className="border-white text-white hover:bg-green-600 hover:text-white"
                 >
-                  Contactez-nous
+                  {t('sell_process.cta.contact')}
                 </Button>
               </div>
             </motion.div>

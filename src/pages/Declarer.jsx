@@ -14,10 +14,11 @@ import Layout from '../components/layout/Layout';
 import Container from '../components/ui/Container';
 import Card, { CardContent } from '../components/ui/Card';
 import Button from '../components/ui/Button';
-import Input from '../components/ui/Input';
 import { ROUTES, CITIES } from '../config/constants';
+import { useTranslation } from 'react-i18next';
 
 function Declarer() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -90,39 +91,39 @@ function Declarer() {
     const newErrors = {};
 
     if (currentStep === 1) {
-      if (!formData.title.trim()) newErrors.title = 'Le titre est requis';
-      if (!formData.description.trim()) newErrors.description = 'La description est requise';
-      if (!formData.price || formData.price <= 0) newErrors.price = 'Le prix doit être supérieur à 0';
-      if (!formData.surface || formData.surface <= 0) newErrors.surface = 'La surface doit être supérieure à 0';
+      if (!formData.title.trim()) newErrors.title = t('declarer.errors.title_required');
+      if (!formData.description.trim()) newErrors.description = t('declarer.errors.description_required');
+      if (!formData.price || formData.price <= 0) newErrors.price = t('declarer.errors.price_invalid');
+      if (!formData.surface || formData.surface <= 0) newErrors.surface = t('declarer.errors.surface_invalid');
     }
 
     if (currentStep === 2) {
-      if (!formData.region) newErrors.region = 'La région est requise';
-      if (!formData.city) newErrors.city = 'La ville est requise';
-      if (!formData.district.trim()) newErrors.district = 'Le quartier est requis';
-      if (!formData.address.trim()) newErrors.address = 'L\'adresse est requise';
+      if (!formData.region) newErrors.region = t('declarer.errors.region_required');
+      if (!formData.city) newErrors.city = t('declarer.errors.city_required');
+      if (!formData.district.trim()) newErrors.district = t('declarer.errors.district_required');
+      if (!formData.address.trim()) newErrors.address = t('declarer.errors.address_required');
     }
 
     if (currentStep === 3) {
-      if (!formData.ownerName.trim()) newErrors.ownerName = 'Votre nom est requis';
-      if (!formData.ownerEmail.trim()) newErrors.ownerEmail = 'L\'email est requis';
-      if (!formData.ownerPhone.trim()) newErrors.ownerPhone = 'Le téléphone est requis';
+      if (!formData.ownerName.trim()) newErrors.ownerName = t('declarer.errors.name_required');
+      if (!formData.ownerEmail.trim()) newErrors.ownerEmail = t('declarer.errors.email_required');
+      if (!formData.ownerPhone.trim()) newErrors.ownerPhone = t('declarer.errors.phone_required');
       
       // Validation email
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (formData.ownerEmail && !emailRegex.test(formData.ownerEmail)) {
-        newErrors.ownerEmail = 'Email invalide';
+        newErrors.ownerEmail = t('declarer.errors.email_invalid');
       }
 
       // Validation téléphone
       if (formData.ownerPhone && formData.ownerPhone.length < 8) {
-        newErrors.ownerPhone = 'Numéro de téléphone invalide';
+        newErrors.ownerPhone = t('declarer.errors.phone_invalid');
       }
     }
 
     if (currentStep === 4) {
       if (!formData.images || formData.images.length === 0) {
-        newErrors.images = 'Au moins une photo du terrain est requise';
+        newErrors.images = t('declarer.errors.image_required');
       }
     }
 
@@ -136,7 +137,7 @@ function Declarer() {
       setErrors({});
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      setErrorMessage('Veuillez remplir tous les champs obligatoires de cette étape avant de continuer.');
+      setErrorMessage(t('declarer.error_fill_fields'));
       setShowError(true);
       setTimeout(() => setShowError(false), 3000);
     }
@@ -185,10 +186,10 @@ function Declarer() {
     for (let i = 1; i <= 4; i++) {
       if (!validateStep(i)) {
         const stepNames = {
-          1: 'Informations du Terrain',
-          2: 'Localisation',
-          3: 'Contact & Documents',
-          4: 'Photos et Médias'
+          1: t('declarer.steps.info'),
+          2: t('declarer.steps.location'),
+          3: t('declarer.steps.contact_docs'),
+          4: t('declarer.steps.media')
         };
         setErrorMessage(`❌ Erreur à l'étape ${i} (${stepNames[i]}) : Veuillez compléter tous les champs obligatoires avant de publier votre annonce.`);
         setShowError(true);
@@ -214,10 +215,10 @@ function Declarer() {
   };
 
   const steps = [
-    { number: 1, title: 'Informations', icon: HomeIcon },
-    { number: 2, title: 'Localisation', icon: MapPinIcon },
-    { number: 3, title: 'Contact & Documents', icon: DocumentTextIcon },
-    { number: 4, title: 'Médias', icon: PhotoIcon }
+    { number: 1, title: t('declarer.steps.info'), icon: HomeIcon },
+    { number: 2, title: t('declarer.steps.location'), icon: MapPinIcon },
+    { number: 3, title: t('declarer.steps.contact_docs'), icon: DocumentTextIcon },
+    { number: 4, title: t('declarer.steps.media'), icon: PhotoIcon }
   ];
 
   return (
@@ -232,11 +233,10 @@ function Declarer() {
             className="text-center max-w-3xl mx-auto"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Vendez Votre Terrain
+              {t('declarer.hero_title')}
             </h1>
             <p className="text-xl text-black">
-        
-              Remplissez ce formulaire pour publier votre annonce
+              {t('declarer.hero_desc')}
             </p>
           </motion.div>
         </Container>
@@ -252,10 +252,10 @@ function Declarer() {
           >
             <CheckCircleIcon className="h-20 w-20 text-green-600 mx-auto mb-4" />
             <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              Annonce Publiée !
+              {t('declarer.success_title')}
             </h2>
             <p className="text-gray-600">
-              Votre terrain a été ajouté avec succès. Redirection...
+              {t('declarer.success_desc')}
             </p>
           </motion.div>
         </div>
@@ -331,8 +331,7 @@ function Declarer() {
                 {/* Avertissement */}
                 <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
                   <p className="text-sm text-gray-700">
-                    ⚠️ <strong>Important :</strong> Tous les champs marqués avec <span className="text-red-600">*</span> sont obligatoires. 
-                    Vous devez compléter les 4 étapes, y compris l'ajout d'au moins 1 photo, avant de publier votre annonce.
+                    ⚠️ <strong>{t('common.important') || 'Important'} :</strong> {t('declarer.important_note')}
                   </p>
                 </div>
 
@@ -345,17 +344,17 @@ function Declarer() {
                       className="space-y-6"
                     >
                       <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                        Informations du Terrain
+                        {t('declarer.form.title_label')}
                       </h2>
 
                       <div>
                         <Input
-                          label="Titre de l'annonce"
+                          label={t('declarer.form.annonce_title')}
                           name="title"
                           value={formData.title}
                           onChange={handleChange}
                           required
-                          placeholder="Ex: Magnifique terrain à Lomé"
+                          placeholder={t('declarer.form.annonce_placeholder')}
                         />
                         {errors.title && (
                           <p className="text-red-600 text-sm mt-1">{errors.title}</p>
@@ -364,7 +363,7 @@ function Declarer() {
 
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Description *
+                          {t('declarer.form.description')} *
                         </label>
                         <textarea
                           name="description"
@@ -375,7 +374,7 @@ function Declarer() {
                           className={`w-full px-4 py-2.5 rounded-lg border ${
                             errors.description ? 'border-red-500' : 'border-gray-300'
                           } focus:ring-2 focus:ring-primary-500 focus:outline-none`}
-                          placeholder="Décrivez votre terrain en détail..."
+                          placeholder={t('declarer.form.description_placeholder')}
                         />
                         {errors.description && (
                           <p className="text-red-600 text-sm mt-1">{errors.description}</p>
@@ -385,7 +384,7 @@ function Declarer() {
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <Input
-                            label="Prix (FCFA)"
+                            label={t('declarer.form.price_label')}
                             name="price"
                             type="number"
                             value={formData.price}
@@ -401,7 +400,7 @@ function Declarer() {
 
                         <div>
                           <Input
-                            label="Surface (m²)"
+                            label={t('declarer.form.surface_label')}
                             name="surface"
                             type="number"
                             value={formData.surface}
@@ -418,7 +417,7 @@ function Declarer() {
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Type de terrain
+                            {t('declarer.form.type_label')}
                           </label>
                           <select
                             name="type"
@@ -426,16 +425,16 @@ function Declarer() {
                             onChange={handleChange}
                             className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:outline-none"
                           >
-                            <option value="residential">Résidentiel</option>
-                            <option value="commercial">Commercial</option>
-                            <option value="agricultural">Agricole</option>
-                            <option value="industrial">Industriel</option>
+                            <option value="residential">{t('declarer.form.types.residential')}</option>
+                            <option value="commercial">{t('declarer.form.types.commercial')}</option>
+                            <option value="agricultural">{t('declarer.form.types.agricultural')}</option>
+                            <option value="industrial">{t('declarer.form.types.industrial')}</option>
                           </select>
                         </div>
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Statut
+                            {t('declarer.form.status_label')}
                           </label>
                           <select
                             name="status"
@@ -443,9 +442,9 @@ function Declarer() {
                             onChange={handleChange}
                             className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:outline-none"
                           >
-                            <option value="available">Disponible</option>
-                            <option value="pending">En négociation</option>
-                            <option value="private">Privé</option>
+                            <option value="available">{t('declarer.form.statuses.available')}</option>
+                            <option value="pending">{t('declarer.form.statuses.pending')}</option>
+                            <option value="private">{t('declarer.form.statuses.private')}</option>
                           </select>
                         </div>
                       </div>
@@ -460,12 +459,12 @@ function Declarer() {
                       className="space-y-6"
                     >
                       <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                        Localisation du Terrain
+                        {t('declarer.form.location_title')}
                       </h2>
 
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Région *
+                          {t('declarer.form.region_label')} *
                           </label>
                         <select
                           name="region"
@@ -476,7 +475,7 @@ function Declarer() {
                             errors.region ? 'border-red-500' : 'border-gray-300'
                           } focus:ring-2 focus:ring-primary-500 focus:outline-none`}
                         >
-                          <option value="">Sélectionnez une région</option>
+                          <option value="">{t('declarer.form.region_placeholder')}</option>
                           <option value="Maritime">Maritime</option>
                           <option value="Plateaux">Plateaux</option>
                           <option value="Centrale">Centrale</option>
@@ -490,7 +489,7 @@ function Declarer() {
 
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Ville *
+                          {t('declarer.form.city_label')} *
                         </label>
                         <select
                           name="city"
@@ -501,7 +500,7 @@ function Declarer() {
                             errors.city ? 'border-red-500' : 'border-gray-300'
                           } focus:ring-2 focus:ring-primary-500 focus:outline-none`}
                         >
-                          <option value="">Sélectionnez une ville</option>
+                          <option value="">{t('declarer.form.city_placeholder')}</option>
                           {CITIES.map(city => (
                             <option key={city.id} value={city.name}>{city.name}</option>
                           ))}
@@ -513,12 +512,12 @@ function Declarer() {
 
                       <div>
                         <Input
-                          label="Quartier"
+                          label={t('declarer.form.district_label')}
                           name="district"
                           value={formData.district}
                           onChange={handleChange}
                           required
-                          placeholder="Ex: Agoè"
+                          placeholder={t('declarer.form.district_placeholder')}
                         />
                         {errors.district && (
                           <p className="text-red-600 text-sm mt-1">{errors.district}</p>
@@ -527,13 +526,13 @@ function Declarer() {
 
                       <div>
                         <Input
-                          label="Adresse complète"
+                          label={t('declarer.form.address_label')}
                           name="address"
                           value={formData.address}
                           onChange={handleChange}
                           required
                           icon={MapPinIcon}
-                          placeholder="Adresse détaillée du terrain"
+                          placeholder={t('declarer.form.address_placeholder')}
                         />
                         {errors.address && (
                           <p className="text-red-600 text-sm mt-1">{errors.address}</p>
@@ -550,22 +549,22 @@ function Declarer() {
                       className="space-y-6"
                     >
                       <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                        Contact & Documents
+                        {t('declarer.form.contact_title')}
                       </h2>
 
                       <div className="bg-primary-50 p-4 rounded-lg mb-6">
-                        <h3 className="font-semibold text-gray-900 mb-2">Informations de contact</h3>
-                        <p className="text-sm text-gray-600">Ces informations seront visibles par les acheteurs potentiels</p>
+                        <h3 className="font-semibold text-gray-900 mb-2">{t('declarer.form.contact_info_title')}</h3>
+                        <p className="text-sm text-gray-600">{t('declarer.form.contact_info_desc')}</p>
                       </div>
 
                       <div>
                         <Input
-                          label="Votre nom complet"
+                          label={t('declarer.form.owner_name')}
                           name="ownerName"
                           value={formData.ownerName}
                           onChange={handleChange}
                           required
-                          placeholder="Nom du propriétaire"
+                          placeholder={t('declarer.form.owner_name_placeholder')}
                         />
                         {errors.ownerName && (
                           <p className="text-red-600 text-sm mt-1">{errors.ownerName}</p>
@@ -575,7 +574,7 @@ function Declarer() {
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <Input
-                            label="Email"
+                            label={t('declarer.form.email_label')}
                             name="ownerEmail"
                             type="email"
                             value={formData.ownerEmail}
@@ -590,7 +589,7 @@ function Declarer() {
 
                         <div>
                           <Input
-                            label="Téléphone"
+                            label={t('declarer.form.phone_label')}
                             name="ownerPhone"
                             type="tel"
                             value={formData.ownerPhone}
@@ -605,7 +604,7 @@ function Declarer() {
                       </div>
 
                       <div className="border-t border-gray-200 pt-6 mt-6">
-                        <h3 className="font-semibold text-gray-900 mb-4">Documents disponibles</h3>
+                        <h3 className="font-semibold text-gray-900 mb-4">{t('declarer.docs_title')}</h3>
                         <div className="space-y-3">
                           <label className="flex items-center">
                             <input
@@ -615,7 +614,7 @@ function Declarer() {
                               onChange={handleChange}
                               className="w-4 h-4 text-primary-600 rounded focus:ring-primary-500"
                             />
-                            <span className="ml-3 text-gray-700">Titre foncier</span>
+                            <span className="ml-3 text-gray-700">{t('declarer.docs.title_deed')}</span>
                           </label>
 
                           <label className="flex items-center">
@@ -626,7 +625,7 @@ function Declarer() {
                               onChange={handleChange}
                               className="w-4 h-4 text-primary-600 rounded focus:ring-primary-500"
                             />
-                            <span className="ml-3 text-gray-700">Certificat de propriété</span>
+                            <span className="ml-3 text-gray-700">{t('declarer.docs.property_cert')}</span>
                           </label>
 
                           <label className="flex items-center">
@@ -637,7 +636,7 @@ function Declarer() {
                               onChange={handleChange}
                               className="w-4 h-4 text-primary-600 rounded focus:ring-primary-500"
                             />
-                            <span className="ml-3 text-gray-700">Autorisation de vente</span>
+                            <span className="ml-3 text-gray-700">{t('declarer.docs.sale_auth')}</span>
                           </label>
                         </div>
                       </div>
@@ -652,35 +651,33 @@ function Declarer() {
                       className="space-y-6"
                     >
                       <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                        Photos et Médias
+                        {t('declarer.form_media.title')}
                       </h2>
 
                       {/* Avertissement si étapes incomplètes */}
                       {(!checkStepValidity(1) || !checkStepValidity(2) || !checkStepValidity(3) || !checkStepValidity(4)) && (
                         <div className="bg-red-50 border-l-4 border-red-600 p-4 rounded-lg mb-6">
                           <p className="text-sm text-red-800 font-medium">
-                            ⚠️ <strong>Attention :</strong> Vous devez compléter toutes les étapes avant de pouvoir publier votre annonce.
+                            ⚠️ <strong>{t('common.attention')} :</strong> {t('declarer.form_media.warning_incomplete')}
                           </p>
                           <div className="mt-2 text-xs text-red-700">
-                            {!checkStepValidity(1) && <p>• Étape 1 : Informations du terrain incomplètes</p>}
-                            {!checkStepValidity(2) && <p>• Étape 2 : Localisation incomplète</p>}
-                            {!checkStepValidity(3) && <p>• Étape 3 : Informations de contact incomplètes</p>}
-                            {!checkStepValidity(4) && <p>• Étape 4 : Au moins 1 photo est requise</p>}
+                            {!checkStepValidity(1) && <p>• {t('declarer.form_media.error_step1')}</p>}
+                            {!checkStepValidity(2) && <p>• {t('declarer.form_media.error_step2')}</p>}
+                            {!checkStepValidity(3) && <p>• {t('declarer.form_media.error_step3')}</p>}
+                            {!checkStepValidity(4) && <p>• {t('declarer.form_media.error_step4')}</p>}
                           </div>
                         </div>
                       )}
 
                       <div className="bg-blue-50 p-4 rounded-lg mb-6">
                         <p className="text-sm text-gray-700">
-                          📸 <strong>Photos obligatoires :</strong> Ajoutez au moins 1 photo de qualité de votre terrain. 
-                          Les annonces avec plusieurs photos reçoivent 5x plus de contacts ! 
-                          Les vidéos et vues 3D sont optionnelles.
+                          📸 <strong>{t('declarer.form_media.photo_mandatory_title')}</strong> {t('declarer.form_media.photo_mandatory_desc')}
                         </p>
                       </div>
 
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Photos du terrain *
+                          {t('declarer.form_media.photo_label')}
                         </label>
                         
                         {/* Zone d'upload */}
@@ -691,8 +688,8 @@ function Declarer() {
                           }`}
                         >
                           <PhotoIcon className="h-12 w-12 text-gray-400 mx-auto mb-3" />
-                          <p className="text-gray-600 mb-2">Cliquez pour ajouter des photos</p>
-                          <p className="text-xs text-gray-500">PNG, JPG jusqu'à 10MB (minimum 1 photo)</p>
+                          <p className="text-gray-600 mb-2">{t('common.select_file')}</p>
+                          <p className="text-xs text-gray-500">{t('common.file_types')}</p>
                           <input
                             type="file"
                             multiple
@@ -711,7 +708,9 @@ function Declarer() {
                         {formData.images.length > 0 && (
                           <div className="mt-4">
                             <p className="text-sm font-medium text-gray-700 mb-2">
-                              {formData.images.length} photo{formData.images.length > 1 ? 's' : ''} sélectionnée{formData.images.length > 1 ? 's' : ''}
+                              {formData.images.length === 1 
+                                ? t('declarer.form_media.photos_selected', { count: formData.images.length })
+                                : t('declarer.form_media.photos_selected_plural', { count: formData.images.length })}
                             </p>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                               {formData.images.map((img, index) => (
@@ -736,19 +735,19 @@ function Declarer() {
                       </div>
 
                       <Input
-                        label="URL de la vidéo (optionnel)"
+                        label={t('declarer.form_media.video_label')}
                         name="videoUrl"
                         value={formData.videoUrl}
                         onChange={handleChange}
-                        placeholder="https://youtube.com/watch?v=..."
+                        placeholder={t('declarer.form_media.video_placeholder')}
                       />
 
                       <Input
-                        label="URL de la visite 3D (optionnel)"
+                        label={t('declarer.form_media.view3d_label')}
                         name="view3dUrl"
                         value={formData.view3dUrl}
                         onChange={handleChange}
-                        placeholder="https://matterport.com/..."
+                        placeholder={t('declarer.form_media.view3d_placeholder')}
                       />
                     </motion.div>
                   )}
@@ -762,7 +761,7 @@ function Declarer() {
                         onClick={handlePrev}
                         className="flex-1"
                       >
-                        Précédent
+                        {t('common.previous')}
                       </Button>
                     )}
 
@@ -773,7 +772,7 @@ function Declarer() {
                         onClick={handleNext}
                         className="flex-1"
                       >
-                        Suivant
+                        {t('common.next')}
                       </Button>
                     ) : (
                       <Button
@@ -783,7 +782,7 @@ function Declarer() {
                         disabled={isLoading}
                         className="flex-1"
                       >
-                        Publier l'annonce
+                        {t('common.publish')}
                       </Button>
                     )}
                   </div>

@@ -13,11 +13,37 @@
     "logout": "Déconnexion",
     "search_placeholder": "ID ou localité...",
     "my_account": "Mon compte",
-    "go": "Aller"
+    "go": "Aller",
+    "download_modal": {
+      "title": "Télécharger l'application",
+      "subtitle": "Vérifier des terrains partout et à tout le temps",
+      "available_on": "Disponible sur",
+      "download_on": "Télécharger sur",
+      "features_title": "Fonctionnalités de l'app :",
+      "feature_search": "Recherche rapide de terrains",
+      "feature_gps": "Localisation GPS intégrée",
+      "feature_notifications": "Notifications en temps réel",
+      "feature_favorites": "Gestion de favoris"
+    }
+  },
+  "common": {
+    "important": "Important",
+    "attention": "Attention",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "publish": "Publier l'annonce",
+    "back": "Retour",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "optional": "optionnel",
+    "select_file": "Cliquez pour ajouter des photos",
+    "file_types": "PNG, JPG jusqu'à 10MB (minimum 1 photo)"
   },
   "home": {
     "hero_title": "Agnigban Gna, Togo",
-    "hero_subtitle": "La plateforme officielle d'achat et de vente de terrains en toute sécurité.",
+    "hero_title_part1": "",
+    "hero_title_location": "Togo",
+    "hero_subtitle": "La plateforme de référence pour la vérification et l'achat de terrains au Togo",
     "buy_land": "Acheter un terrain",
     "sell_land": "Procéder à une vente",
     "features": {
@@ -209,6 +235,8 @@
     "view_map": "Carte",
     "view_list": "Liste",
     "filters_btn": "Filtres",
+    "region_label": "Région",
+    "all_regions": "Toutes les régions",
     "prefecture_label": "Préfecture",
     "commune_label": "Commune",
     "canton_label": "Canton",
@@ -258,7 +286,42 @@
     "cta_title": "Rejoignez-nous dans cette aventure",
     "cta_desc": "Ensemble, construisons l'avenir de l'immobilier au Togo",
     "contact_us": "Nous contacter",
-    "view_lands": "Voir les terrains"
+    "view_lands": "Voir les terrains",
+    "partners_items": {
+      "otr": {
+        "title": "OTR Togo",
+        "description": "Office Togolais des Recettes"
+      },
+      "cadastre": {
+        "title": "CADASTRE",
+        "description": "Direction du Cadastre et de la Conservation Foncière"
+      },
+      "cir": {
+        "title": "CIR",
+        "description": "Centre d'Information Relatif au Foncier"
+      },
+      "interior": {
+        "title": "Ministère de l'Intérieure",
+        "description": "Ministère de l'Administration Territoriale, de la Décentralisation et du Développement des Territoires"
+      }
+    },
+    "team_members": {
+      "jean": {
+        "name": "KOUASSI Jean",
+        "role": "Expert Immobilier",
+        "description": "Expert en immobilier avec 15 ans d'expérience"
+      },
+      "marie": {
+        "name": "AMOUZOU Marie",
+        "role": "Spécialiste Transactions",
+        "description": "Spécialiste en transactions immobilières"
+      },
+      "pierre": {
+        "name": "AGBOSSOU Pierre",
+        "role": "Conseiller Juridique",
+        "description": "Expert en droit foncier et immobilier"
+      }
+    }
   },
   "contact": {
     "hero_title": "Contactez-Nous",
@@ -383,7 +446,17 @@
     "newsletter_desc": "Recevez nos derniers articles et conseils directement dans votre boîte mail",
     "email_placeholder": "Votre adresse email",
     "subscribe": "S'abonner",
-    "read_time": "{{count}} min de lecture"
+    "read_time": "{{count}} min de lecture",
+    "categories": {
+      "all": "Tous",
+      "guide": "Guides",
+      "conseils": "Conseils",
+      "investissement": "Investissement",
+      "vente": "Vente",
+      "analyse": "Analyse",
+      "juridique": "Juridique",
+      "finance": "Finance"
+    }
   },
   "legal": {
     "terms": {
@@ -425,5 +498,359 @@
     "en": "English",
     "de": "Deutsch",
     "title": "Langues"
+  },
+  "declare": {
+    "title": "Déclarer un terrain",
+    "subtitle": "Publiez votre annonce en quelques étapes simples",
+    "steps": {
+      "info": "Informations",
+      "location": "Localisation",
+      "features": "Caractéristiques",
+      "media": "Médias",
+      "confirm": "Confirmation"
+    },
+    "form": {
+      "owner": "Propriétaire",
+      "land_type": "Type de terrain",
+      "usage": "Usage prévu",
+      "gps": "Coordonnées GPS",
+      "price_placeholder": "Prix en FCFA",
+      "surface_placeholder": "Superficie en m²",
+      "upload_photos": "Télécharger les photos",
+      "upload_docs": "Télécharger les documents",
+      "drag_drop": "Glissez-déposez vos fichiers ici",
+      "selected_files": "{{count}} fichier(s) sélectionné(s)"
+    },
+    "buttons": {
+      "prev": "Précédent",
+      "next": "Suivant",
+      "submit": "Publier l'annonce"
+    },
+    "messages": {
+      "success_title": "Annonce publiée !",
+      "success_desc": "Votre terrain a été enregistré avec succès et sera visible après validation.",
+      "error_fill_fields": "Veuillez remplir tous les champs obligatoires",
+      "error_upload": "Erreur lors du téléchargement des fichiers"
+    }
+  },
+  "buy_process": {
+    "hero_title": "Processus d'Achat d'un Terrain",
+    "hero_subtitle": "Suivez ces 6 étapes simples pour acheter votre terrain en toute sécurité au Togo",
+    "explore_btn": "Explorer les terrains",
+    "contact_btn": "Nous contacter",
+    "benefits": {
+      "security": {
+        "title": "Sécurité garantie",
+        "desc": "Tous nos terrains ont des titres fonciers vérifiés et authentiques"
+      },
+      "support": {
+        "title": "Accompagnement personnalisé",
+        "desc": "Notre équipe vous guide à chaque étape du processus d'achat"
+      },
+      "legal": {
+        "title": "Documents légaux",
+        "desc": "Tous les documents nécessaires sont préparés et vérifiés par nos experts"
+      }
+    },
+    "steps_title": "Les 6 Étapes du Processus",
+    "steps_subtitle": "Un parcours simple et sécurisé pour devenir propriétaire",
+    "tips_label": "Conseils pratiques:",
+    "steps": {
+      "1": {
+        "title": "Recherche du terrain",
+        "desc": "Explorez notre catalogue de terrains et trouvez celui qui correspond à vos besoins et à votre budget au Togo.",
+        "tips": ["Définissez votre budget", "Choisissez la localisation idéale", "Vérifiez la superficie"]
+      },
+      "2": {
+        "title": "Vérification du titre foncier",
+        "desc": "Assurez-vous que le titre foncier est authentique et conforme aux réglementations togolaises.",
+        "tips": ["Consultez le registre foncier", "Vérifiez l'authenticité du TF", "Validez les limites du terrain"]
+      },
+      "3": {
+        "title": "Négociation et accord",
+        "desc": "Discutez le prix avec le vendeur et parvenez à un accord satisfaisant pour les deux parties.",
+        "tips": ["Comparez les prix du marché", "Négociez les modalités", "Rédigez un accord préalable"]
+      },
+      "4": {
+        "title": "Finalisation et paiement",
+        "desc": "Effectuez le paiement selon les modalités convenues et signez tous les documents nécessaires.",
+        "tips": ["Utilisez des moyens sécurisés", "Conservez tous les reçus", "Signez devant notaire"]
+      },
+      "5": {
+        "title": "Transfert officiel",
+        "desc": "Enregistrez le terrain à votre nom auprès des autorités foncières compétentes.",
+        "tips": ["Préparez les documents requis", "Payez les frais d'enregistrement", "Obtenez votre nouveau titre"]
+      },
+      "6": {
+        "title": "Validation finale",
+        "desc": "Recevez votre certificat de propriété et assurez-vous que tous les documents sont en ordre.",
+        "tips": ["Vérifiez tous les documents", "Conservez les copies certifiées", "Célébrez votre acquisition!"]
+      }
+    },
+    "cta": {
+      "title": "Prêt à acheter votre terrain ?",
+      "desc": "Notre équipe d'experts est là pour vous accompagner à chaque étape. Contactez-nous dès aujourd'hui pour commencer votre projet!",
+      "view_lands": "Voir les terrains disponibles",
+      "contact": "Contactez-nous"
+    }
+  },
+  "sell_process": {
+    "hero_title": "Processus de Vente d'un Terrain",
+    "hero_subtitle": "Suivez ces 6 étapes pour vendre votre terrain rapidement et en toute sécurité",
+    "publish_btn": "Publier une annonce",
+    "contact_btn": "Nous contacter",
+    "benefits": {
+      "visibility": {
+        "title": "Visibilité maximale",
+        "desc": "Votre annonce est visible par des milliers d'acheteurs potentiels"
+      },
+      "security": {
+        "title": "Transactions sécurisées",
+        "desc": "Nous vérifions tous les documents pour des ventes sécurisées"
+      },
+      "speed": {
+        "title": "Vente rapide",
+        "desc": "Vendez votre terrain rapidement grâce à notre plateforme efficace"
+      }
+    },
+    "steps_title": "Les 6 Étapes du Processus de Vente",
+    "steps_subtitle": "Un parcours simple et efficace pour vendre votre terrain au meilleur prix",
+    "tips_label": "Conseils pratiques:",
+    "steps": {
+      "1": {
+        "title": "Préparation de l'annonce",
+        "desc": "Créez un titre accrocheur et une description détaillée de votre terrain pour attirer les acheteurs potentiels.",
+        "tips": ["Titre clair et précis (ex: Terrain 500m² à Kégué)", "Description détaillée du terrain", "Mentionnez les avantages et proximités"]
+      },
+      "2": {
+        "title": "Vérification des documents",
+        "desc": "Rassemblez et vérifiez tous les documents légaux nécessaires pour prouver la légalité de votre terrain.",
+        "tips": ["Titre foncier original et authentique", "Certificat de propriété", "Plan cadastral à jour"]
+      },
+      "3": {
+        "title": "Photos et localisation",
+        "desc": "Ajoutez des photos de qualité et indiquez précisément la localisation de votre terrain sur la carte.",
+        "tips": ["Photos HD de plusieurs angles", "Localisation GPS précise", "Photos de l'environnement"]
+      },
+      "4": {
+        "title": "Fixation du prix",
+        "desc": "Déterminez un prix compétitif basé sur le marché local et les caractéristiques de votre terrain.",
+        "tips": ["Étudiez les prix du marché", "Considérez la localisation", "Soyez prêt à négocier"]
+      },
+      "5": {
+        "title": "Gestion des acheteurs",
+        "desc": "Répondez aux demandes, organisez des visites et négociez avec les acheteurs intéressés.",
+        "tips": ["Répondez rapidement aux messages", "Organisez des visites sécurisées", "Négociez de bonne foi"]
+      },
+      "6": {
+        "title": "Finalisation de la vente",
+        "desc": "Signez les documents de vente, effectuez le transfert de propriété et recevez votre paiement.",
+        "tips": ["Signez devant notaire", "Vérifiez le paiement", "Transférez le titre foncier"]
+      }
+    },
+    "cta": {
+      "title": "Prêt à vendre votre terrain ?",
+      "desc": "Publiez votre annonce dès maintenant et touchez des milliers d'acheteurs potentiels. Notre équipe vous accompagne tout au long du processus!",
+      "publish": "Publier mon annonce",
+      "contact": "Contactez-nous"
+    }
+  },
+  "process_sell": {
+    "title": "Processus de Vente",
+    "subtitle": "Vendez votre terrain rapidement et en toute sécurité",
+    "steps": [
+      {
+        "title": "Préparation",
+        "desc": "Créez une annonce attrayante"
+      },
+      {
+        "title": "Vérification",
+        "desc": "Rassemblez les documents légaux"
+      },
+      {
+        "title": "Visibilité",
+        "desc": "Photos et localisation précise"
+      }
+    ]
+  },
+  "profile": {
+    "title": "Mon Profil",
+    "loading": "Chargement...",
+    "verified_badge": "Compte vérifié",
+    "sell_land": "Vendre un terrain",
+    "info_title": "Informations du profil",
+    "edit": "Modifier",
+    "cancel": "Annuler",
+    "save_changes": "Enregistrer les modifications",
+    "form": {
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "phone": "Téléphone",
+      "address": "Adresse",
+      "address_placeholder": "Votre adresse"
+    },
+    "my_actions": "Mes actions",
+    "status": {
+      "available": "Disponible",
+      "reserved": "Réservé"
+    },
+    "added_on": "Ajouté le {{date}}",
+    "mock_properties": {
+      "res": "Terrain Résidentiel",
+      "com": "Terrain Commercial"
+    },
+    "no_properties": "Aucun terrain déclaré",
+    "sell_first": "Vendez votre premier terrain",
+    "notifications": {
+      "title": "Notifications",
+      "mark_all_read": "Tout marquer comme lu",
+      "mark_read": "Marquer comme lu",
+      "empty_title": "Aucune notification pour le moment",
+      "empty_desc": "Vous serez notifié des nouvelles demandes et mises à jour"
+    },
+    "messages": {
+      "success": "Profil mis à jour avec succès !",
+      "error": "Erreur lors de la mise à jour du profil"
+    },
+    "mock_notifications": {
+      "notif1_title": "Nouvelle demande d'information",
+      "notif1_msg": "Un acheteur est intéressé par votre terrain à Lomé",
+      "notif1_time": "Il y a 5 minutes",
+      "notif2_title": "Terrain publié avec succès",
+      "notif2_msg": "Votre terrain \"Terrain Résidentiel à Agoènyivé\" est maintenant en ligne",
+      "notif2_time": "Il y a 2 heures",
+      "notif3_title": "Action requise",
+      "notif3_msg": "Veuillez mettre à jour vos documents pour le terrain à Vogan",
+      "notif3_time": "Il y a 1 jour",
+      "notif4_title": "Visite programmée",
+      "notif4_msg": "Une visite est prévue le 25 octobre pour votre terrain",
+      "notif4_time": "Il y a 2 jours"
+    }
+  },
+  "process_buy": {
+    "title": "Processus d'Achat",
+    "subtitle": "Étapes pour acheter votre terrain en toute sécurité",
+    "steps": [
+      {
+        "title": "Recherche",
+        "desc": "Trouvez le terrain idéal"
+      },
+      {
+        "title": "Vérification",
+        "desc": "Vérifiez l'authenticité du titre"
+      },
+      {
+        "title": "Finalisation",
+        "desc": "Signature et transfert officiel"
+      }
+    ]
+  },
+  "blog_detail": {
+    "not_found": "Article non trouvé",
+    "not_found_desc": "Désolé, cet article n'existe pas ou a été supprimé.",
+    "back_to_blog": "Retour au blog",
+    "share": "Partager",
+    "save": "Sauvegarder",
+    "about_author": "À propos de l'auteur",
+    "contributor": "Contributeur",
+    "recommended": "Articles recommandés",
+    "tags": "Tags",
+    "newsletter": {
+      "title": "Newsletter",
+      "desc": "Recevez nos derniers articles directement dans votre boîte mail",
+      "subscribe": "S'abonner"
+    }
+  },
+  "declarer": {
+    "hero_title": "Vendez Votre Terrain",
+    "hero_desc": "Remplissez ce formulaire pour publier votre annonce",
+    "success_title": "Annonce Publiée !",
+    "success_desc": "Votre terrain a été ajouté avec succès. Redirection...",
+    "error_fill_fields": "Veuillez remplir tous les champs obligatoires de cette étape avant de continuer.",
+    "important_note": "Tous les champs marqués avec * sont obligatoires. Vous devez compléter les 4 étapes, y compris l'ajout d'au moins 1 photo, avant de publier votre annonce.",
+    "steps": {
+      "info": "Informations",
+      "location": "Localisation",
+      "contact_docs": "Contact & Documents",
+      "media": "Médias"
+    },
+    "form": {
+      "title_label": "Informations du Terrain",
+      "annonce_title": "Titre de l'annonce",
+      "annonce_placeholder": "Ex: Magnifique terrain à Lomé",
+      "description": "Description",
+      "description_placeholder": "Décrivez votre terrain en détail...",
+      "price_label": "Prix (FCFA)",
+      "surface_label": "Surface (m²)",
+      "type_label": "Type de terrain",
+      "status_label": "Statut",
+      "types": {
+        "residential": "Résidentiel",
+        "commercial": "Commercial",
+        "agricultural": "Agricole",
+        "industrial": "Industriel"
+      },
+      "statuses": {
+        "available": "Disponible",
+        "pending": "En négociation",
+        "private": "Privé"
+      },
+      "location_title": "Localisation du Terrain",
+      "region_label": "Région",
+      "region_placeholder": "Sélectionnez une région",
+      "city_label": "Ville",
+      "city_placeholder": "Sélectionnez une ville",
+      "district_label": "Quartier",
+      "district_placeholder": "Ex: Agoè",
+      "address_label": "Adresse complète",
+      "address_placeholder": "Adresse détaillée du terrain",
+      "contact_title": "Contact & Documents",
+      "contact_info_title": "Informations de contact",
+      "contact_info_desc": "Ces informations seront visibles par les acheteurs potentiels",
+      "owner_name": "Votre nom complet",
+      "owner_name_placeholder": "Nom du propriétaire",
+      "email_label": "Email",
+      "phone_label": "Téléphone"
+    },
+    "errors": {
+      "title_required": "Le titre est requis",
+      "description_required": "La description est requise",
+      "price_invalid": "Le prix doit être supérieur à 0",
+      "surface_invalid": "La surface doit être supérieure à 0",
+      "region_required": "La région est requise",
+      "city_required": "La ville est requise",
+      "district_required": "Le quartier est requis",
+      "address_required": "L'adresse est requise",
+      "name_required": "Votre nom est requis",
+      "email_required": "L'email est requis",
+      "email_invalid": "Email invalide",
+      "phone_required": "Le téléphone est requis",
+      "phone_invalid": "Numéro de téléphone invalide",
+      "image_required": "Au moins une photo du terrain est requise"
+    },
+    "form_media": {
+      "title": "Photos et Médias",
+      "warning_incomplete": "Attention : Vous devez compléter toutes les étapes avant de pouvoir publier votre annonce.",
+      "error_step1": "Étape 1 : Informations du terrain incomplètes",
+      "error_step2": "Étape 2 : Localisation incomplète",
+      "error_step3": "Étape 3 : Informations de contact incomplètes",
+      "error_step4": "Étape 4 : Au moins 1 photo est requise",
+      "photo_mandatory_title": "Photos obligatoires :",
+      "photo_mandatory_desc": "Ajoutez au moins 1 photo de qualité de votre terrain. Les annonces avec plusieurs photos reçoivent 5x plus de contacts ! Les vidéos et vues 3D sont optionnelles.",
+      "photo_label": "Photos du terrain *",
+      "video_label": "URL de la vidéo (optionnel)",
+      "video_placeholder": "https://youtube.com/watch?v=...",
+      "view3d_label": "URL de la visite 3D (optionnel)",
+      "view3d_placeholder": "https://matterport.com/...",
+      "photos_selected": "{{count}} photo sélectionnée",
+      "photos_selected_plural": "{{count}} photos sélectionnées"
+    },
+    "docs_title": "Documents disponibles",
+    "docs": {
+      "title_deed": "Titre foncier",
+      "property_cert": "Certificat de propriété",
+      "sale_auth": "Autorisation de vente"
+    }
   }
 }
+

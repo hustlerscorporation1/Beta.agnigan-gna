@@ -13,11 +13,37 @@
     "logout": "Abmelden",
     "search_placeholder": "ID oder Ort...",
     "my_account": "Mein Konto",
-    "go": "Los"
+    "go": "Los",
+    "download_modal": {
+      "title": "Anwendung herunterladen",
+      "subtitle": "Grundstücke überall und jederzeit prüfen",
+      "available_on": "Verfügbar auf",
+      "download_on": "Herunterladen auf",
+      "features_title": "App-Funktionen:",
+      "feature_search": "Schnelle Grundstückssuche",
+      "feature_gps": "Integrierter GPS-Standort",
+      "feature_notifications": "Echtzeit-Benachrichtigungen",
+      "feature_favorites": "Favoritenverwaltung"
+    }
+  },
+  "common": {
+    "important": "Wichtig",
+    "attention": "Achtung",
+    "previous": "Zurück",
+    "next": "Weiter",
+    "publish": "Anzeige veröffentlichen",
+    "back": "Zurück",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "optional": "optional",
+    "select_file": "Klicken Sie hier, um Fotos hinzuzufügen",
+    "file_types": "PNG, JPG bis zu 10MB (mindestens 1 Foto)"
   },
   "home": {
     "hero_title": "Agnigban Gna, Togo",
-    "hero_subtitle": "Die offizielle Plattform für den sicheren Kauf und Verkauf von Grundstücken.",
+    "hero_title_part1": "",
+    "hero_title_location": "Togo",
+    "hero_subtitle": "Die Referenzplattform für die Überprüfung und den Kauf von Grundstücken in Togo",
     "buy_land": "Ein Grundstück kaufen",
     "sell_land": "Ein Grundstück verkaufen",
     "features": {
@@ -209,6 +235,8 @@
     "view_map": "Karte",
     "view_list": "Liste",
     "filters_btn": "Filter",
+    "region_label": "Region",
+    "all_regions": "Alle Regionen",
     "prefecture_label": "Präfektur",
     "commune_label": "Gemeinde",
     "canton_label": "Kanton",
@@ -258,7 +286,42 @@
     "cta_title": "Begleiten Sie uns bei diesem Abenteuer",
     "cta_desc": "Lassen Sie uns gemeinsam die Zukunft der Immobilien in Togo bauen",
     "contact_us": "Kontaktieren Sie uns",
-    "view_lands": "Grundstücke ansehen"
+    "view_lands": "Grundstücke ansehen",
+    "partners_items": {
+      "otr": {
+        "title": "OTR Togo",
+        "description": "Togolesisches Einnahmenamt"
+      },
+      "cadastre": {
+        "title": "KATASTER",
+        "description": "Abteilung für Grundbuch und Landkonservierung"
+      },
+      "cir": {
+        "title": "CIR",
+        "description": "Landinformationszentrum"
+      },
+      "interior": {
+        "title": "Innenministerium",
+        "description": "Ministerium für territoriale Verwaltung, Dezentralisierung und territoriale Entwicklung"
+      }
+    },
+    "team_members": {
+      "jean": {
+        "name": "KOUASSI Jean",
+        "role": "Immobilienexperte",
+        "description": "Immobilienexperte mit 15 Jahren Erfahrung"
+      },
+      "marie": {
+        "name": "AMOUZOU Marie",
+        "role": "Transaktionsspezialist",
+        "description": "Spezialist für Immobilientransaktionen"
+      },
+      "pierre": {
+        "name": "AGBOSSOU Pierre",
+        "role": "Rechtsberater",
+        "description": "Experte für Grundstücks- und Immobilienrecht"
+      }
+    }
   },
   "contact": {
     "hero_title": "Kontaktieren Sie uns",
@@ -383,7 +446,17 @@
     "newsletter_desc": "Erhalten Sie unsere neuesten Artikel und Tipps direkt in Ihr Postfach",
     "email_placeholder": "Ihre E-Mail-Adresse",
     "subscribe": "Abonnieren",
-    "read_time": "{{count}} Min. Lesezeit"
+    "read_time": "{{count}} Min. Lesezeit",
+    "categories": {
+      "all": "Alle",
+      "guide": "Anleitungen",
+      "conseils": "Tipps",
+      "investissement": "Investition",
+      "vente": "Verkauf",
+      "analyse": "Analyse",
+      "juridique": "Rechtlich",
+      "finance": "Finanzen"
+    }
   },
   "legal": {
     "terms": {
@@ -425,5 +498,358 @@
     "en": "Englisch",
     "de": "Deutsch",
     "title": "Sprachen"
+  },
+  "declare": {
+    "title": "Grundstück anmelden",
+    "subtitle": "Veröffentlichen Sie Ihre Anzeige in wenigen einfachen Schritten",
+    "steps": {
+      "info": "Informationen",
+      "location": "Standort",
+      "features": "Eigenschaften",
+      "media": "Medien",
+      "confirm": "Bestätigung"
+    },
+    "form": {
+      "owner": "Eigentümer",
+      "land_type": "Grundstückstyp",
+      "usage": "Vorgesehene Nutzung",
+      "gps": "GPS-Koordinaten",
+      "price_placeholder": "Preis in FCFA",
+      "surface_placeholder": "Fläche in m²",
+      "upload_photos": "Fotos hochladen",
+      "upload_docs": "Dokumente hochladen",
+      "drag_drop": "Dateien hierher ziehen",
+      "selected_files": "{{count}} Datei(en) ausgewählt"
+    },
+    "buttons": {
+      "prev": "Zurück",
+      "next": "Weiter",
+      "submit": "Anzeige veröffentlichen"
+    },
+    "messages": {
+      "success_title": "Anzeige veröffentlicht!",
+      "success_desc": "Ihr Grundstück wurde erfolgreich registriert und wird nach der Validierung sichtbar sein.",
+      "error_fill_fields": "Bitte füllen Sie alle Pflichtfelder aus",
+      "error_upload": "Fehler beim Hochladen der Dateien"
+    }
+  },
+  "buy_process": {
+    "hero_title": "Grundstückskauf-Prozess",
+    "hero_subtitle": "Folgen Sie diesen 6 einfachen Schritten, um Ihr Grundstück in Togo sicher zu kaufen",
+    "explore_btn": "Grundstücke erkunden",
+    "contact_btn": "Kontaktieren Sie uns",
+    "benefits": {
+      "security": {
+        "title": "Garantierte Sicherheit",
+        "desc": "Alle unsere Grundstücke verfügen über geprüfte und authentische Grundbucheinträge"
+      },
+      "support": {
+        "title": "Personalisierte Unterstützung",
+        "desc": "Unser Team begleitet Sie bei jedem Schritt des Kaufprozesses"
+      },
+      "legal": {
+        "title": "Rechtliche Dokumente",
+        "desc": "Alle notwendigen Dokumente werden von unseren Experten vorbereitet und geprüft"
+      }
+    },
+    "steps_title": "Die 6 Schritte des Prozesses",
+    "steps_subtitle": "Ein einfacher und sicherer Weg, Eigentümer zu werden",
+    "tips_label": "Praktische Tipps:",
+    "steps": {
+      "1": {
+        "title": "Grundstückssuche",
+        "desc": "Erkunden Sie unseren Grundstückskatalog und finden Sie dasjenige, das Ihren Bedürfnissen und Ihrem Budget in Togo entspricht.",
+        "tips": ["Definieren Sie Ihr Budget", "Wählen Sie den idealen Standort", "Überprüfen Sie die Fläche"]
+      },
+      "2": {
+        "title": "Überprüfung des Grundbucheintrags",
+        "desc": "Stellen Sie sicher, dass der Grundbucheintrag authentisch ist und den togolesischen Vorschriften entspricht.",
+        "tips": ["Konsultieren Sie das Grundbuchamt", "Überprüfen Sie die Echtheit des GE", "Validieren Sie die Grundstücksgrenzen"]
+      },
+      "3": {
+        "title": "Verhandlung und Vereinbarung",
+        "desc": "Besprechen Sie den Preis mit dem Verkäufer und erzielen Sie eine für beide Parteien zufriedenstellende Einigung.",
+        "tips": ["Vergleichen Sie Marktpreise", "Handeln Sie Bedingungen aus", "Erstellen Sie eine Vorvereinbarung"]
+      },
+      "4": {
+        "title": "Finalisierung und Zahlung",
+        "desc": "Leisten Sie die Zahlung gemäß den vereinbarten Bedingungen und unterzeichnen Sie alle notwendigen Dokumente.",
+        "tips": ["Verwenden Sie sichere Mittel", "Bewahren Sie alle Belege auf", "Unterschreiben Sie vor einem Notar"]
+      },
+      "5": {
+        "title": "Offizielle Übertragung",
+        "desc": "Registrieren Sie das Grundstück bei den zuständigen Grundstücksbehörden auf Ihren Namen.",
+        "tips": ["Bereiten Sie die erforderlichen Dokumente vor", "Zahlen Sie die Registriergebühren", "Erhalten Sie Ihren neuen Titel"]
+      },
+      "6": {
+        "title": "Abschließende Validierung",
+        "desc": "Erhalten Sie Ihre Eigentumsurkunde und stellen Sie sicher, dass alle Dokumente in Ordnung sind.",
+        "tips": ["Überprüfen Sie alle Dokumente", "Bewahren Sie beglaubigte Kopien auf", "Feiern Sie Ihren Erwerb!"]
+      }
+    },
+    "cta": {
+      "title": "Bereit, Ihr Grundstück zu kaufen?",
+      "desc": "Unser Expertenteam ist hier, um Sie bei jedem Schritt zu unterstützen. Kontaktieren Sie uns noch heute, um Ihr Projekt zu starten!",
+      "view_lands": "Verfügbare Grundstücke ansehen",
+      "contact": "Kontaktieren Sie uns"
+    }
+  },
+  "sell_process": {
+    "hero_title": "Grundstücksverkauf-Prozess",
+    "hero_subtitle": "Folgen Sie diesen 6 Schritten, um Ihr Grundstück schnell und sicher zu verkaufen",
+    "publish_btn": "Eine Anzeige veröffentlichen",
+    "contact_btn": "Kontaktieren Sie uns",
+    "benefits": {
+      "visibility": {
+        "title": "Maximale Sichtbarkeit",
+        "desc": "Ihre Anzeige ist für Tausende von potenziellen Käufern sichtbar"
+      },
+      "security": {
+        "title": "Sichere Transaktionen",
+        "desc": "Wir prüfen alle Dokumente für sichere Verkäufe"
+      },
+      "speed": {
+        "title": "Schneller Verkauf",
+        "desc": "Verkaufen Sie Ihr Grundstück schnell dank unserer effizienten Plattform"
+      }
+    },
+    "steps_title": "Die 6 Schritte des Verkaufsprozesses",
+    "steps_subtitle": "Ein einfacher und effizienter Weg, Ihr Grundstück zum besten Preis zu verkaufen",
+    "tips_label": "Praktische Tipps:",
+    "steps": {
+      "1": {
+        "title": "Vorbereitung der Anzeige",
+        "desc": "Erstellen Sie einen eingängigen Titel und eine detaillierte Beschreibung Ihres Grundstücks, um potenzielle Käufer anzulocken.",
+        "tips": ["Klarer und präziser Titel (z.B. 500m² Grundstück in Kégué)", "Detaillierte Grundstücksbeschreibung", "Erwähnen Sie Vorteile und Nähe"]
+      },
+      "2": {
+        "title": "Dokumentenprüfung",
+        "desc": "Sammeln und überprüfen Sie alle rechtlichen Dokumente, die notwendig sind, um die Rechtmäßigkeit Ihres Grundstücks zu beweisen.",
+        "tips": ["Originaler und authentischer Grundbucheintrag", "Eigentumsbescheinigung", "Aktueller Katasterplan"]
+      },
+      "3": {
+        "title": "Fotos und Standort",
+        "desc": "Fügen Sie qualitativ hochwertige Fotos hinzu und geben Sie den Standort Ihres Grundstücks auf der Karte genau an.",
+        "tips": ["HD-Fotos aus mehreren Winkeln", "Präziser GPS-Standort", "Fotos der Umgebung"]
+      },
+      "4": {
+        "title": "Preisfestsetzung",
+        "desc": "Legen Sie einen wettbewerbsfähigen Preis basierend auf dem lokalen Markt und den Merkmalen Ihres Grundstücks fest.",
+        "tips": ["Studieren Sie Marktpreise", "Berücksichtigen Sie den Standort", "Seien Sie bereit zu verhandeln"]
+      },
+      "5": {
+        "title": "Käufermanagement",
+        "desc": "Beantworten Sie Anfragen, organisieren Sie Besichtigungen und verhandeln Sie mit interessierten Käufern.",
+        "tips": ["Antworten Sie schnell auf Nachrichten", "Organisieren Sie sichere Besichtigungen", "Verhandeln Sie in gutem Glauben"]
+      },
+      "6": {
+        "title": "Verkaufsabschluss",
+        "desc": "Unterzeichnen Sie die Verkaufsunterlagen, führen Sie die Eigentumsübertragung durch und erhalten Sie Ihre Zahlung.",
+        "tips": ["Unterschreiben Sie vor einem Notar", "Überprüfen Sie die Zahlung", "Übertragen Sie den Grundbucheintrag"]
+      }
+    },
+    "cta": {
+      "title": "Bereit, Ihr Grundstück zu verkaufen?",
+      "desc": "Veröffentlichen Sie jetzt Ihre Anzeige und erreichen Sie Tausende von potenziellen Käufern. Unser Team unterstützt Sie während des gesamten Prozesses!",
+      "publish": "Meine Anzeige veröffentlichen",
+      "contact": "Kontaktieren Sie uns"
+    }
+  },
+  "process_sell": {
+    "title": "Verkaufsprozess",
+    "subtitle": "Verkaufen Sie Ihr Grundstück schnell und sicher",
+    "steps": [
+      {
+        "title": "Vorbereitung",
+        "desc": "Erstellen Sie eine attraktive Anzeige"
+      },
+      {
+        "title": "Prüfung",
+        "desc": "Rechtliche Dokumente sammeln"
+      },
+      {
+        "title": "Sichtbarkeit",
+        "desc": "Fotos und präziser Standort"
+      }
+    ]
+  },
+  "profile": {
+    "title": "Mein Profil",
+    "loading": "Laden...",
+    "verified_badge": "Verifiziertes Konto",
+    "sell_land": "Ein Grundstück verkaufen",
+    "info_title": "Profilinformationen",
+    "edit": "Bearbeiten",
+    "cancel": "Abbrechen",
+    "save_changes": "Änderungen speichern",
+    "form": {
+      "first_name": "Vorname",
+      "last_name": "Nachname",
+      "phone": "Telefon",
+      "address": "Adresse",
+      "address_placeholder": "Ihre Adresse"
+    },
+    "my_actions": "Meine Aktionen",
+    "status": {
+      "available": "Verfügbar",
+      "reserved": "Reserviert"
+    },
+    "added_on": "Hinzugefügt am {{date}}",
+    "mock_properties": {
+      "res": "Wohnbaugrundstück",
+      "com": "Gewerbegrundstück"
+    },
+    "no_properties": "Kein Grundstück gemeldet",
+    "sell_first": "Verkaufen Sie Ihr erstes Grundstück",
+    "notifications": {
+      "title": "Benachrichtigungen",
+      "mark_all_read": "Alle als gelesen markieren",
+      "mark_read": "Als gelesen markieren",
+      "empty_title": "Keine Benachrichtigungen vorerst",
+      "empty_desc": "Sie werden über neue Anfragen und Updates benachrichtigt"
+    },
+    "messages": {
+      "success": "Profil erfolgreich aktualisiert!",
+      "error": "Fehler beim Aktualisieren des Profils"
+    },
+    "mock_notifications": {
+      "notif1_title": "Neue Informationsanfrage",
+      "notif1_msg": "Ein Käufer interessiert sich für Ihr Grundstück in Lomé",
+      "notif1_time": "Vor 5 Minuten",
+      "notif2_title": "Grundstück erfolgreich veröffentlicht",
+      "notif2_msg": "Ihr Grundstück „Wohngrundstück in Agoènyivé“ ist jetzt online",
+      "notif2_time": "Vor 2 Stunden",
+      "notif3_title": "Aktion erforderlich",
+      "notif3_msg": "Bitte aktualisieren Sie Ihre Unterlagen für das Grundstück in Vogan",
+      "notif3_time": "Vor 1 Tag",
+      "notif4_title": "Besichtigung geplant",
+      "notif4_msg": "Für Ihr Grundstück ist am 25. Oktober eine Besichtigung geplant",
+      "notif4_time": "Vor 2 Tagen"
+    }
+  },
+  "process_buy": {
+    "title": "Kaufprozess",
+    "subtitle": "Schritte zum sicheren Kauf Ihres Grundstücks",
+    "steps": [
+      {
+        "title": "Suche",
+        "desc": "Finden Sie das ideale Grundstück"
+      },
+      {
+        "title": "Prüfung",
+        "desc": "Prüfen Sie die Echtheit des Titels"
+      },
+      {
+        "title": "Abschluss",
+        "desc": "Unterschrift und offizielle Übertragung"
+      }
+    ]
+  },
+  "blog_detail": {
+    "not_found": "Beitrag nicht gefunden",
+    "not_found_desc": "Entschuldigung, dieser Beitrag existiert nicht oder wurde gelöscht.",
+    "back_to_blog": "Zurück zum Blog",
+    "share": "Teilen",
+    "save": "Speichern",
+    "about_author": "Über den Autor",
+    "contributor": "Mitwirkender",
+    "recommended": "Empfohlene Artikel",
+    "tags": "Tags",
+    "newsletter": {
+      "title": "Newsletter",
+      "desc": "Erhalten Sie unsere neuesten Artikel direkt in Ihr Postfach",
+      "subscribe": "Abonnieren"
+    }
+  },
+  "declarer": {
+    "hero_title": "Verkaufen Sie Ihr Land",
+    "hero_desc": "Füllen Sie dieses Formular aus, um Ihre Anzeige zu veröffentlichen",
+    "success_title": "Anzeige veröffentlicht!",
+    "success_desc": "Ihr Land wurde erfolgreich hinzugefügt. Weiterleitung...",
+    "error_fill_fields": "Bitte füllen Sie alle Pflichtfelder dieses Schrittes aus, bevor Sie fortfahren.",
+    "important_note": "Alle mit * gekennzeichneten Felder sind Pflichtfelder. Sie müssen die 4 Schritte abschließen, einschließlich des Hinzufügens von mindestens 1 Foto, bevor Sie Ihre Anzeige veröffentlichen.",
+    "steps": {
+      "info": "Informationen",
+      "location": "Standort",
+      "contact_docs": "Kontakt & Dokumente",
+      "media": "Medien"
+    },
+    "form": {
+      "title_label": "Landinformationen",
+      "annonce_title": "Anzeigentitel",
+      "annonce_placeholder": "Z.B.: Wunderschönes Land in Lomé",
+      "description": "Beschreibung",
+      "description_placeholder": "Beschreiben Sie Ihr Land im Detail...",
+      "price_label": "Preis (FCFA)",
+      "surface_label": "Fläche (m²)",
+      "type_label": "Landtyp",
+      "status_label": "Status",
+      "types": {
+        "residential": "Wohnen",
+        "commercial": "Gewerblich",
+        "agricultural": "Landwirtschaftlich",
+        "industrial": "Industriell"
+      },
+      "statuses": {
+        "available": "Verfügbar",
+        "pending": "In Verhandlung",
+        "private": "Privat"
+      },
+      "location_title": "Landstandort",
+      "region_label": "Region",
+      "region_placeholder": "Wählen Sie eine Region",
+      "city_label": "Stadt",
+      "city_placeholder": "Wählen Sie eine Stadt",
+      "district_label": "Viertel",
+      "district_placeholder": "Z.B.: Agoè",
+      "address_label": "Vollständige Adresse",
+      "address_placeholder": "Detaillierte Landadresse",
+      "contact_title": "Kontakt & Dokumente",
+      "contact_info_title": "Kontaktinformationen",
+      "contact_info_desc": "Diese Informationen werden für potenzielle Käufer sichtbar sein",
+      "owner_name": "Ihr vollständiger Name",
+      "owner_name_placeholder": "Name des Eigentümers",
+      "email_label": "E-Mail",
+      "phone_label": "Telefon"
+    },
+    "errors": {
+      "title_required": "Titel ist erforderlich",
+      "description_required": "Beschreibung ist erforderlich",
+      "price_invalid": "Preis muss größer als 0 sein",
+      "surface_invalid": "Fläche muss größer als 0 sein",
+      "region_required": "Region ist erforderlich",
+      "city_required": "Stadt ist erforderlich",
+      "district_required": "Viertel ist erforderlich",
+      "address_required": "Adresse ist erforderlich",
+      "name_required": "Ihr Name ist erforderlich",
+      "email_required": "E-Mail ist erforderlich",
+      "email_invalid": "Ungültige E-Mail",
+      "phone_required": "Telefon ist erforderlich",
+      "phone_invalid": "Ungültige Telefonnummer",
+      "image_required": "Mindestens ein Foto des Landes ist erforderlich"
+    },
+    "form_media": {
+      "title": "Fotos & Medien",
+      "warning_incomplete": "Achtung: Sie müssen alle Schritte abschließen, bevor Sie Ihre Anzeige veröffentlichen können.",
+      "error_step1": "Schritt 1: Landinformationen unvollständig",
+      "error_step2": "Schritt 2: Standort unvollständig",
+      "error_step3": "Schritt 3: Kontaktinformationen unvollständig",
+      "error_step4": "Schritt 4: Mindestens 1 Foto ist erforderlich",
+      "photo_mandatory_title": "Pflichtfotos:",
+      "photo_mandatory_desc": "Fügen Sie mindestens 1 Qualitätsfoto Ihres Landes hinzu. Anzeigen mit mehreren Fotos erhalten 5x mehr Kontakte! Videos und 3D-Ansichten sind optional.",
+      "photo_label": "Landfotos *",
+      "video_label": "Video-URL (optional)",
+      "video_placeholder": "https://youtube.com/watch?v=...",
+      "view3d_label": "URL der 3D-Tour (optional)",
+      "view3d_placeholder": "https://matterport.com/...",
+      "photos_selected": "{{count}} Foto ausgewählt",
+      "photos_selected_plural": "{{count} Fotos ausgewählt"
+    },
+    "docs_title": "Verfügbare Dokumente",
+    "docs": {
+      "title_deed": "Eigentumsurkunde",
+      "property_cert": "Eigentumsbescheinigung",
+      "sale_auth": "Verkaufsgenehmigung"
+    }
   }
 }

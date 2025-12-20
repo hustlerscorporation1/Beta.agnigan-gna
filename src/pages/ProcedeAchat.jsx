@@ -16,110 +16,79 @@ import Layout from "../components/layout/Layout";
 import Button from "../components/ui/Button";
 import Container from "../components/ui/Container";
 import { ROUTES } from "../config/constants";
+import { useTranslation } from "react-i18next";
 import heroBgImage from "../images/hero-image.jpg";
 
 const ProcessusAchat = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const steps = [
     {
       number: 1,
       icon: MagnifyingGlassIcon,
-      title: "Recherche du terrain",
-      description:
-        "Explorez notre catalogue de terrains et trouvez celui qui correspond à vos besoins et à votre budget au Togo.",
+      title: t('buy_process.steps.1.title'),
+      description: t('buy_process.steps.1.desc'),
       color: "blue",
-      tips: [
-        "Définissez votre budget",
-        "Choisissez la localisation idéale",
-        "Vérifiez la superficie",
-      ],
+      tips: t('buy_process.steps.1.tips', { returnObjects: true }),
     },
     {
       number: 2,
       icon: DocumentCheckIcon,
-      title: "Vérification du titre foncier",
-      description:
-        "Assurez-vous que le titre foncier est authentique et conforme aux réglementations togolaises.",
+      title: t('buy_process.steps.2.title'),
+      description: t('buy_process.steps.2.desc'),
       color: "purple",
-      tips: [
-        "Consultez le registre foncier",
-        "Vérifiez l'authenticité du TF",
-        "Validez les limites du terrain",
-      ],
+      tips: t('buy_process.steps.2.tips', { returnObjects: true }),
     },
     {
       number: 3,
       icon: ChatBubbleLeftRightIcon,
-      title: "Négociation et accord",
-      description:
-        "Discutez le prix avec le vendeur et parvenez à un accord satisfaisant pour les deux parties.",
+      title: t('buy_process.steps.3.title'),
+      description: t('buy_process.steps.3.desc'),
       color: "green",
-      tips: [
-        "Comparez les prix du marché",
-        "Négociez les modalités",
-        "Rédigez un accord préalable",
-      ],
+      tips: t('buy_process.steps.3.tips', { returnObjects: true }),
     },
     {
       number: 4,
       icon: BanknotesIcon,
-      title: "Finalisation et paiement",
-      description:
-        "Effectuez le paiement selon les modalités convenues et signez tous les documents nécessaires.",
+      title: t('buy_process.steps.4.title'),
+      description: t('buy_process.steps.4.desc'),
       color: "orange",
-      tips: [
-        "Utilisez des moyens sécurisés",
-        "Conservez tous les reçus",
-        "Signez devant notaire",
-      ],
+      tips: t('buy_process.steps.4.tips', { returnObjects: true }),
     },
     {
       number: 5,
       icon: BuildingLibraryIcon,
-      title: "Transfert officiel",
-      description:
-        "Enregistrez le terrain à votre nom auprès des autorités foncières compétentes.",
+      title: t('buy_process.steps.5.title'),
+      description: t('buy_process.steps.5.desc'),
       color: "indigo",
-      tips: [
-        "Préparez les documents requis",
-        "Payez les frais d'enregistrement",
-        "Obtenez votre nouveau titre",
-      ],
+      tips: t('buy_process.steps.5.tips', { returnObjects: true }),
     },
     {
       number: 6,
       icon: CheckBadgeIcon,
-      title: "Validation finale",
-      description:
-        "Recevez votre certificat de propriété et assurez-vous que tous les documents sont en ordre.",
+      title: t('buy_process.steps.6.title'),
+      description: t('buy_process.steps.6.desc'),
       color: "green",
-      tips: [
-        "Vérifiez tous les documents",
-        "Conservez les copies certifiées",
-        "Célébrez votre acquisition!",
-      ],
+      tips: t('buy_process.steps.6.tips', { returnObjects: true }),
     },
   ];
 
   const benefits = [
     {
       icon: ShieldCheckIcon,
-      title: "Sécurité garantie",
-      description:
-        "Tous nos terrains ont des titres fonciers vérifiés et authentiques",
+      title: t('buy_process.benefits.security.title'),
+      description: t('buy_process.benefits.security.desc'),
     },
     {
       icon: PhoneIcon,
-      title: "Accompagnement personnalisé",
-      description:
-        "Notre équipe vous guide à chaque étape du processus d'achat",
+      title: t('buy_process.benefits.support.title'),
+      description: t('buy_process.benefits.support.desc'),
     },
     {
       icon: DocumentCheckIcon,
-      title: "Documents légaux",
-      description:
-        "Tous les documents nécessaires sont préparés et vérifiés par nos experts",
+      title: t('buy_process.benefits.legal.title'),
+      description: t('buy_process.benefits.legal.desc'),
     },
   ];
 
@@ -145,11 +114,10 @@ const ProcessusAchat = () => {
                 <ShoppingCartIcon className="h-20 w-20" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 mt-16">
-                Processus d'Achat d'un Terrain
+                {t('buy_process.hero_title')}
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-green-100">
-                Suivez ces 6 étapes simples pour acheter votre terrain en toute
-                sécurité au Togo
+                {t('buy_process.hero_subtitle')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
@@ -158,7 +126,7 @@ const ProcessusAchat = () => {
                   onClick={() => navigate(ROUTES.PROPERTIES)}
                   className="bg-white text-black hover:bg-green-600 hover:text-black"
                 >
-                  Explorer les terrains
+                  {t('buy_process.explore_btn')}
                 </Button>
                 <Button
                   variant="outline"
@@ -166,7 +134,7 @@ const ProcessusAchat = () => {
                   onClick={() => navigate(ROUTES.CONTACT)}
                   className="border-white text-white hover:bg-white hover:text-green-600"
                 >
-                  Nous contacter
+                  {t('buy_process.contact_btn')}
                 </Button>
               </div>
             </motion.div>
@@ -209,10 +177,10 @@ const ProcessusAchat = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Les 6 Étapes du Processus
+              {t('buy_process.steps_title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Un parcours simple et sécurisé pour devenir propriétaire
+              {t('buy_process.steps_subtitle')}
             </p>
           </motion.div>
 
@@ -252,7 +220,7 @@ const ProcessusAchat = () => {
                   </p>
                   <div className="space-y-2">
                     <p className="font-semibold text-gray-700">
-                      Conseils pratiques:
+                      {t('buy_process.tips_label')}
                     </p>
                     <ul className="space-y-1">
                       {step.tips.map((tip, tipIndex) => (
@@ -280,13 +248,11 @@ const ProcessusAchat = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Prêt à acheter votre terrain ?
+                {t('buy_process.cta.title')}
               </h2>
 
               <p className="text-xl mb-8 text-green-100">
-                Notre équipe d'experts est là pour vous accompagner à chaque
-                étape. Contactez-nous dès aujourd'hui pour commencer votre
-                projet!
+                {t('buy_process.cta.desc')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
@@ -295,7 +261,7 @@ const ProcessusAchat = () => {
                   onClick={() => navigate(ROUTES.PROPERTIES)}
                   className="bg-white text-black hover:bg-gray-100 hover:text-black"
                 >
-                  Voir les terrains disponibles
+                  {t('buy_process.cta.view_lands')}
                 </Button>
                 <Button
                   variant="outline"
@@ -303,7 +269,7 @@ const ProcessusAchat = () => {
                   onClick={() => navigate(ROUTES.CONTACT)}
                   className="border-white text-white hover:bg-white hover:text-green-600"
                 >
-                  Contactez-nous
+                  {t('buy_process.cta.contact')}
                 </Button>
               </div>
             </motion.div>

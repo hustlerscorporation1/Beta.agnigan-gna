@@ -44,23 +44,23 @@ const About = () => {
   const partners = [
     {
       img: "/images/partner1.png",
-      title: "OTR Togo",
-      description: t('about.value1_desc'),
+      title: t('about.partners_items.otr.title'),
+      description: t('about.partners_items.otr.description'),
     },
     {
       img: "/images/partner2.png",
-      title: "CADASTRE",
-      description: t('about.value2_desc'),
+      title: t('about.partners_items.cadastre.title'),
+      description: t('about.partners_items.cadastre.description'),
     },
     {
       img: "/images/partner3.png",
-      title: "CIR",
-      description: t('about.value3_desc'),
+      title: t('about.partners_items.cir.title'),
+      description: t('about.partners_items.cir.description'),
     },
     {
       img: "/images/partner4.png",
-      title: "Ministère de l'Intérieure",
-      description: t('about.value4_desc'),
+      title: t('about.partners_items.interior.title'),
+      description: t('about.partners_items.interior.description'),
     },
   ];
 
@@ -73,23 +73,23 @@ const About = () => {
 
   const team = [
     {
-      name: "KOUASSI Jean",
-      role: t('home.testimonials.items.0.role'),
-      description: "Expert en immobilier avec 15 ans d'expérience",
+      name: t('about.team_members.jean.name'),
+      role: t('about.team_members.jean.role'),
+      description: t('about.team_members.jean.description'),
       image:
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
     },
     {
-      name: "AMOUZOU Marie",
-      role: t('home.testimonials.items.1.role'),
-      description: "Spécialiste en transactions immobilières",
+      name: t('about.team_members.marie.name'),
+      role: t('about.team_members.marie.role'),
+      description: t('about.team_members.marie.description'),
       image:
         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
     },
     {
-      name: "AGBOSSOU Pierre",
-      role: t('home.testimonials.items.2.role'),
-      description: "Expert en droit foncier et immobilier",
+      name: t('about.team_members.pierre.name'),
+      role: t('about.team_members.pierre.role'),
+      description: t('about.team_members.pierre.description'),
       image:
         "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400",
     },

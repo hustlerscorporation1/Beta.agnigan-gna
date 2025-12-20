@@ -120,7 +120,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              Agnigban Gna,{' '}
+              {t('home.hero_title_part1')} Agnigban Gna,{' '}
               <span className="text-primary-600">Togo</span>
             </motion.h1>
 

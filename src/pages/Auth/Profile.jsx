@@ -9,12 +9,13 @@ import {
   PencilIcon,
   HomeIcon,
   ClockIcon,
-  BellIcon,
-  CheckCircleIcon,
-  ExclamationCircleIcon,
   InformationCircleIcon,
-  XMarkIcon
+  XMarkIcon,
+  ExclamationCircleIcon,
+  BellIcon,
+  CheckCircleIcon
 } from '@heroicons/react/24/outline';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '../../superbase/superbaseClient';
 import Layout from '../../components/layout/Layout';
 import Container from '../../components/ui/Container';
@@ -25,6 +26,7 @@ import Badge from '../../components/ui/Badge';
 import { ROUTES } from '../../config/constants';
 
 const Profile = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -41,33 +43,33 @@ const Profile = () => {
     {
       id: 1,
       type: 'success',
-      title: 'Nouvelle demande d\'information',
-      message: 'Un acheteur est intéressé par votre terrain à Lomé',
-      time: 'Il y a 5 minutes',
+      title: t('profile.mock_notifications.notif1_title'),
+      message: t('profile.mock_notifications.notif1_msg'),
+      time: t('profile.mock_notifications.notif1_time'),
       read: false
     },
     {
       id: 2,
       type: 'info',
-      title: 'Terrain publié avec succès',
-      message: 'Votre terrain "Terrain Résidentiel à Agoènyivé" est maintenant en ligne',
-      time: 'Il y a 2 heures',
+      title: t('profile.mock_notifications.notif2_title'),
+      message: t('profile.mock_notifications.notif2_msg'),
+      time: t('profile.mock_notifications.notif2_time'),
       read: false
     },
     {
       id: 3,
       type: 'warning',
-      title: 'Action requise',
-      message: 'Veuillez mettre à jour vos documents pour le terrain à Vogan',
-      time: 'Il y a 1 jour',
+      title: t('profile.mock_notifications.notif3_title'),
+      message: t('profile.mock_notifications.notif3_msg'),
+      time: t('profile.mock_notifications.notif3_time'),
       read: true
     },
     {
       id: 4,
       type: 'success',
-      title: 'Visite programmée',
-      message: 'Une visite est prévue le 25 octobre pour votre terrain',
-      time: 'Il y a 2 jours',
+      title: t('profile.mock_notifications.notif4_title'),
+      message: t('profile.mock_notifications.notif4_msg'),
+      time: t('profile.mock_notifications.notif4_time'),
       read: true
     }
   ]);
@@ -171,11 +173,11 @@ const Profile = () => {
 
       if (error) throw error;
 
-      setSuccess('Profil mis à jour avec succès !');
+      setSuccess(t('profile.messages.success'));
       setIsEditing(false);
       loadUser(); // Recharger les données
     } catch (error) {
-      setError(error.message || 'Erreur lors de la mise à jour du profil');
+      setError(error.message || t('profile.messages.error'));
     } finally {
       setIsLoading(false);
     }
@@ -185,14 +187,14 @@ const Profile = () => {
   const userProperties = [
     {
       id: 1,
-      title: 'Terrain Résidentiel',
+      title: t('profile.mock_properties.res'),
       location: 'Lomé, Agoènyivé',
       status: 'available',
       dateAdded: '15 Oct 2024'
     },
     {
       id: 2,
-      title: 'Terrain Commercial',
+      title: t('profile.mock_properties.com'),
       location: 'Vogan',
       status: 'reserved',
       dateAdded: '10 Oct 2024'
@@ -204,7 +206,7 @@ const Profile = () => {
       <Layout>
         <Container className="py-20">
           <div className="text-center">
-            <p className="text-gray-600">Chargement...</p>
+            <p className="text-gray-600">{t('profile.loading')}</p>
           </div>
         </Container>
       </Layout>
@@ -229,7 +231,7 @@ const Profile = () => {
                   <p className="text-gray-600 mb-4">{user.email}</p>
                   
                   <Badge variant="success" className="mb-6">
-                    Compte vérifié
+                    {t('profile.verified_badge')}
                   </Badge>
 
                   <div className="space-y-3 text-left">
@@ -257,7 +259,7 @@ const Profile = () => {
                       fullWidth
                       onClick={() => navigate(ROUTES.DECLARE_PROPERTY)}
                     >
-                      Vendre un terrain
+                      {t('profile.sell_land')}
                     </Button>
                   </div>
                 </CardContent>
@@ -270,14 +272,14 @@ const Profile = () => {
               <Card>
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <CardTitle>Informations du profil</CardTitle>
+                    <CardTitle>{t('profile.info_title')}</CardTitle>
                     <Button
                       variant="ghost"
                       size="sm"
                       icon={PencilIcon}
                       onClick={() => setIsEditing(!isEditing)}
                     >
-                      {isEditing ? 'Annuler' : 'Modifier'}
+                      {isEditing ? t('profile.cancel') : t('profile.edit')}
                     </Button>
                   </div>
                 </CardHeader>
@@ -298,7 +300,7 @@ const Profile = () => {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-4">
                       <Input
-                        label="Prénom"
+                        label={t('profile.form.first_name')}
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleChange}
@@ -307,7 +309,7 @@ const Profile = () => {
                       />
 
                       <Input
-                        label="Nom"
+                        label={t('profile.form.last_name')}
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleChange}
@@ -317,7 +319,7 @@ const Profile = () => {
                     </div>
 
                     <Input
-                      label="Téléphone"
+                      label={t('profile.form.phone')}
                       name="phone"
                       type="tel"
                       value={formData.phone}
@@ -327,13 +329,13 @@ const Profile = () => {
                     />
 
                     <Input
-                      label="Adresse"
+                      label={t('profile.form.address')}
                       name="address"
                       value={formData.address}
                       onChange={handleChange}
                       disabled={!isEditing}
                       icon={MapPinIcon}
-                      placeholder="Votre adresse"
+                      placeholder={t('profile.form.address_placeholder')}
                     />
 
                     {isEditing && (
@@ -344,7 +346,7 @@ const Profile = () => {
                         loading={isLoading}
                         disabled={isLoading}
                       >
-                        Enregistrer les modifications
+                        {t('profile.save_changes')}
                       </Button>
                     )}
                   </form>
@@ -354,7 +356,7 @@ const Profile = () => {
               {/* User Properties */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Mes actions </CardTitle>
+                  <CardTitle>{t('profile.my_actions')}</CardTitle>
                 </CardHeader>
 
                 <CardContent className="p-6">
@@ -377,12 +379,12 @@ const Profile = () => {
                               </p>
                               <p className="text-xs text-gray-500 flex items-center mt-1">
                                 <ClockIcon className="h-3 w-3 mr-1" />
-                                Ajouté le {property.dateAdded}
+                                {t('profile.added_on', { date: property.dateAdded })}
                               </p>
                             </div>
                           </div>
                           <Badge variant={property.status === 'available' ? 'success' : 'warning'}>
-                            {property.status === 'available' ? 'Disponible' : 'Réservé'}
+                            {property.status === 'available' ? t('profile.status.available') : t('profile.status.reserved')}
                           </Badge>
                         </div>
                       ))}
@@ -390,12 +392,12 @@ const Profile = () => {
                   ) : (
                     <div className="text-center py-8">
                       <HomeIcon className="h-12 w-12 text-gray-300 mx-auto mb-3" />
-                      <p className="text-gray-600 mb-4">Aucun terrain déclaré</p>
+                      <p className="text-gray-600 mb-4">{t('profile.no_properties')}</p>
                       <Button
                         variant="primary"
                         onClick={() => navigate(ROUTES.DECLARE_PROPERTY)}
                       >
-                        Vendez votre premier terrain
+                        {t('profile.sell_first')}
                       </Button>
                     </div>
                   )}
@@ -407,7 +409,7 @@ const Profile = () => {
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <CardTitle>Notifications</CardTitle>
+                      <CardTitle>{t('profile.notifications.title')}</CardTitle>
                       {unreadCount > 0 && (
                         <Badge variant="danger" className="rounded-full px-2 py-0.5 text-xs">
                           {unreadCount}
@@ -420,7 +422,7 @@ const Profile = () => {
                         size="sm"
                         onClick={markAllAsRead}
                       >
-                        Tout marquer comme lu
+                        {t('profile.notifications.mark_all_read')}
                       </Button>
                     )}
                   </div>
@@ -475,7 +477,7 @@ const Profile = () => {
                                       onClick={() => markAsRead(notification.id)}
                                       className="text-xs text-blue-600 hover:text-blue-800 font-medium"
                                     >
-                                      Marquer comme lu
+                                      {t('profile.notifications.mark_read')}
                                     </button>
                                   )}
                                 </div>
@@ -488,9 +490,9 @@ const Profile = () => {
                   ) : (
                     <div className="text-center py-8">
                       <BellIcon className="h-12 w-12 text-gray-300 mx-auto mb-3" />
-                      <p className="text-gray-600">Aucune notification pour le moment</p>
+                      <p className="text-gray-600">{t('profile.notifications.empty_title')}</p>
                       <p className="text-sm text-gray-500 mt-1">
-                        Vous serez notifié des nouvelles demandes et mises à jour
+                        {t('profile.notifications.empty_desc')}
                       </p>
                     </div>
                   )}

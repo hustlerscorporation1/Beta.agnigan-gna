@@ -12,12 +12,38 @@
     "declare_property": "Declare property",
     "logout": "Logout",
     "search_placeholder": "ID or location...",
-    "my_account": "My account",
-    "go": "Go"
+    "my_account": "My Account",
+    "go": "Go",
+    "download_modal": {
+      "title": "Download the application",
+      "subtitle": "Check lands everywhere and all the time",
+      "available_on": "Available on",
+      "download_on": "Download on",
+      "features_title": "App features:",
+      "feature_search": "Quick land search",
+      "feature_gps": "Integrated GPS location",
+      "feature_notifications": "Real-time notifications",
+      "feature_favorites": "Favorites management"
+    }
+  },
+  "common": {
+    "important": "Important",
+    "attention": "Attention",
+    "previous": "Previous",
+    "next": "Next",
+    "publish": "Publish ad",
+    "back": "Back",
+    "save": "Save",
+    "cancel": "Cancel",
+    "optional": "optional",
+    "select_file": "Click to add photos",
+    "file_types": "PNG, JPG up to 10MB (minimum 1 photo)"
   },
   "home": {
     "hero_title": "Agnigban Gna, Togo",
-    "hero_subtitle": "The official platform for buying and selling land safely.",
+    "hero_title_part1": "",
+    "hero_title_location": "Togo",
+    "hero_subtitle": "The reference platform for land verification and purchase in Togo",
     "buy_land": "Buy a land",
     "sell_land": "Sell a land",
     "features": {
@@ -209,6 +235,8 @@
     "view_map": "Map",
     "view_list": "List",
     "filters_btn": "Filters",
+    "region_label": "Region",
+    "all_regions": "All regions",
     "prefecture_label": "Prefecture",
     "commune_label": "Commune",
     "canton_label": "Canton",
@@ -258,7 +286,42 @@
     "cta_title": "Join us in this adventure",
     "cta_desc": "Together, let's build the future of real estate in Togo",
     "contact_us": "Contact us",
-    "view_lands": "View lands"
+    "view_lands": "View lands",
+    "partners_items": {
+      "otr": {
+        "title": "OTR Togo",
+        "description": "Togolese Revenue Office"
+      },
+      "cadastre": {
+        "title": "CADASTRE",
+        "description": "Department of Land Registry and Land Conservation"
+      },
+      "cir": {
+        "title": "CIR",
+        "description": "Land Information Center"
+      },
+      "interior": {
+        "title": "Ministry of Interior",
+        "description": "Ministry of Territorial Administration, Decentralization and Territorial Development"
+      }
+    },
+    "team_members": {
+      "jean": {
+        "name": "KOUASSI Jean",
+        "role": "Real Estate Expert",
+        "description": "Real estate expert with 15 years of experience"
+      },
+      "marie": {
+        "name": "AMOUZOU Marie",
+        "role": "Transaction Specialist",
+        "description": "Specialist in real estate transactions"
+      },
+      "pierre": {
+        "name": "AGBOSSOU Pierre",
+        "role": "Legal Counselor",
+        "description": "Expert in land and real estate law"
+      }
+    }
   },
   "contact": {
     "hero_title": "Contact Us",
@@ -383,7 +446,17 @@
     "newsletter_desc": "Receive our latest articles and tips directly in your mailbox",
     "email_placeholder": "Your email address",
     "subscribe": "Subscribe",
-    "read_time": "{{count}} min read"
+    "read_time": "{{count}} min read",
+    "categories": {
+      "all": "All",
+      "guide": "Guides",
+      "conseils": "Tips",
+      "investissement": "Investment",
+      "vente": "Sales",
+      "analyse": "Analysis",
+      "juridique": "Legal",
+      "finance": "Finance"
+    }
   },
   "legal": {
     "terms": {
@@ -425,5 +498,360 @@
     "en": "English",
     "de": "German",
     "title": "Languages"
+  },
+  "declare": {
+    "title": "Declare a Land",
+    "subtitle": "Publish your ad in a few simple steps",
+    "steps": {
+      "info": "Information",
+      "location": "Location",
+      "features": "Features",
+      "media": "Media",
+      "confirm": "Confirmation"
+    },
+    "form": {
+      "owner": "Owner",
+      "land_type": "Land Type",
+      "usage": "Intended Usage",
+      "gps": "GPS Coordinates",
+      "price_placeholder": "Price in FCFA",
+      "surface_placeholder": "Surface in m²",
+      "upload_photos": "Upload Photos",
+      "upload_docs": "Upload Documents",
+      "drag_drop": "Drag and drop your files here",
+      "selected_files": "{{count}} file(s) selected"
+    },
+    "buttons": {
+      "prev": "Previous",
+      "next": "Next",
+      "submit": "Publish Ad"
+    },
+    "messages": {
+      "success_title": "Ad Published!",
+      "success_desc": "Your land has been successfully registered and will be visible after validation.",
+      "error_fill_fields": "Please fill in all required fields",
+      "error_upload": "Error uploading files"
+    }
+  },
+  "buy_process": {
+    "hero_title": "Land Purchase Process",
+    "hero_subtitle": "Follow these 6 simple steps to buy your land safely in Togo",
+    "explore_btn": "Explore lands",
+    "contact_btn": "Contact us",
+    "benefits": {
+      "security": {
+        "title": "Guaranteed security",
+        "desc": "All our lands have verified and authentic land titles"
+      },
+      "support": {
+        "title": "Personalized support",
+        "desc": "Our team guides you through every step of the purchase process"
+      },
+      "legal": {
+        "title": "Legal documents",
+        "desc": "All necessary documents are prepared and verified by our experts"
+      }
+    },
+    "steps_title": "The 6 Steps of the Process",
+    "steps_subtitle": "A simple and secure journey to become an owner",
+    "tips_label": "Practical tips:",
+    "steps": {
+      "1": {
+        "title": "Land search",
+        "desc": "Explore our land catalog and find the one that matches your needs and budget in Togo.",
+        "tips": ["Define your budget", "Choose the ideal location", "Verify the surface area"]
+      },
+      "2": {
+        "title": "Land title verification",
+        "desc": "Ensure the land title is authentic and complies with Togolese regulations.",
+        "tips": ["Consult the land registry", "Verify the authenticity of the LT", "Validate the land boundaries"]
+      },
+      "3": {
+        "title": "Negotiation and agreement",
+        "desc": "Discuss the price with the seller and reach a satisfactory agreement for both parties.",
+        "tips": ["Compare market prices", "Negotiate terms", "Draft a preliminary agreement"]
+      },
+      "4": {
+        "title": "Finalization and payment",
+        "desc": "Make payment according to agreed terms and sign all necessary documents.",
+        "tips": ["Use secure means", "Keep all receipts", "Sign before a notary"]
+      },
+      "5": {
+        "title": "Official transfer",
+        "desc": "Register the land in your name with the competent land authorities.",
+        "tips": ["Prepare required documents", "Pay registration fees", "Obtain your new title"]
+      },
+      "6": {
+        "title": "Final validation",
+        "desc": "Receive your ownership certificate and ensure all documents are in order.",
+        "tips": ["Verify all documents", "Keep certified copies", "Celebrate your acquisition!"]
+      }
+    },
+    "cta": {
+      "title": "Ready to buy your land?",
+      "desc": "Our team of experts is here to support you at every step. Contact us today to start your project!",
+      "view_lands": "View available lands",
+      "contact": "Contact us"
+    }
+  },
+  "sell_process": {
+    "hero_title": "Land Selling Process",
+    "hero_subtitle": "Follow these 6 steps to sell your land quickly and safely",
+    "publish_btn": "Publish an ad",
+    "contact_btn": "Contact us",
+    "benefits": {
+      "visibility": {
+        "title": "Maximum visibility",
+        "desc": "Your ad is visible to thousands of potential buyers"
+      },
+      "security": {
+        "title": "Secure transactions",
+        "desc": "We verify all documents for secure sales"
+      },
+      "speed": {
+        "title": "Fast selling",
+        "desc": "Sell your land quickly thanks to our efficient platform"
+      }
+    },
+    "steps_title": "The 6 Steps of the Selling Process",
+    "steps_subtitle": "A simple and efficient journey to sell your land at the best price",
+    "tips_label": "Practical tips:",
+    "steps": {
+      "1": {
+        "title": "Ad preparation",
+        "desc": "Create a catchy title and a detailed description of your land to attract potential buyers.",
+        "tips": ["Clear and precise title (e.g., 500m² land in Kégué)", "Detailed land description", "Mention advantages and proximities"]
+      },
+      "2": {
+        "title": "Document verification",
+        "desc": "Gather and verify all legal documents necessary to prove the legality of your land.",
+        "tips": ["Original and authentic land title", "Ownership certificate", "Up-to-date cadastral plan"]
+      },
+      "3": {
+        "title": "Photos and location",
+        "desc": "Add quality photos and accurately indicate your land's location on the map.",
+        "tips": ["HD photos from multiple angles", "Precise GPS location", "Environment photos"]
+      },
+      "4": {
+        "title": "Price setting",
+        "desc": "Determine a competitive price based on the local market and your land's characteristics.",
+        "tips": ["Study market prices", "Consider location", "Be ready to negotiate"]
+      },
+      "5": {
+        "title": "Buyer management",
+        "desc": "Respond to requests, organize visits, and negotiate with interested buyers.",
+        "tips": ["Respond quickly to messages", "Organize secure visits", "Negotiate in good faith"]
+      },
+      "6": {
+        "title": "Sale finalization",
+        "desc": "Sign the sale documents, perform the property transfer, and receive your payment.",
+        "tips": ["Sign before a notary", "Verify payment", "Transfer the land title"]
+      }
+    },
+    "cta": {
+      "title": "Ready to sell your land?",
+      "desc": "Publish your ad now and reach thousands of potential buyers. Our team supports you throughout the process!",
+      "publish": "Publish my ad",
+      "contact": "Contact us"
+    }
+  },
+  "process_sell": {
+    "title": "Sale Process",
+    "subtitle": "Sell your land quickly and safely",
+    "steps": [
+      {
+        "title": "Preparation",
+        "desc": "Create an attractive ad"
+      },
+      {
+        "title": "Verification",
+        "desc": "Gather legal documents"
+      },
+      {
+        "title": "Visibility",
+        "desc": "Photos and precise location"
+      }
+    ]
+  },
+  "profile": {
+    "title": "My Profile",
+    "loading": "Loading...",
+    "verified_badge": "Verified Account",
+    "sell_land": "Sell a land",
+    "info_title": "Profile Information",
+    "edit": "Edit",
+    "cancel": "Cancel",
+    "save_changes": "Save Changes",
+    "form": {
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "phone": "Phone",
+      "address": "Address",
+      "address_placeholder": "Your address"
+    },
+    "my_actions": "My Actions",
+    "status": {
+      "available": "Available",
+      "reserved": "Reserved"
+    },
+    "added_on": "Added on {{date}}",
+    "mock_properties": {
+      "res": "Residential Land",
+      "com": "Commercial Land"
+    },
+    "no_properties": "No land declared",
+    "sell_first": "Sell your first land",
+    "notifications": {
+      "title": "Notifications",
+      "mark_all_read": "Mark all as read",
+      "mark_read": "Mark as read",
+      "empty_title": "No notifications for now",
+      "empty_desc": "You will be notified of new requests and updates"
+    },
+    "messages": {
+      "success": "Profile updated successfully!",
+      "error": "Error updating profile"
+    },
+    "mock_notifications": {
+      "notif1_title": "New information request",
+      "notif1_msg": "A buyer is interested in your land in Lomé",
+      "notif1_time": "5 minutes ago",
+      "notif2_title": "Land published successfully",
+      "notif2_msg": "Your land \"Residential Land in Agoènyivé\" is now online",
+      "notif2_time": "2 hours ago",
+      "notif3_title": "Action required",
+      "notif3_msg": "Please update your documents for the land in Vogan",
+      "notif3_time": "1 day ago",
+      "notif4_title": "Visit scheduled",
+      "notif4_msg": "A visit is scheduled on October 25 for your land",
+      "notif4_time": "2 days ago"
+    }
+  },
+  "process_buy": {
+    "title": "Purchase Process",
+    "subtitle": "Steps to buy your land safely",
+    "steps": [
+      {
+        "title": "Search",
+        "desc": "Find the ideal land"
+      },
+      {
+        "title": "Verification",
+        "desc": "Verify title authenticity"
+      },
+      {
+        "title": "Finalization",
+        "desc": "Signature and official transfer"
+      }
+    ]
+  },
+  "blog_detail": {
+    "not_found": "Article not found",
+    "not_found_desc": "Sorry, this article doesn't exist or has been deleted.",
+    "back_to_blog": "Back to blog",
+    "share": "Share",
+    "save": "Save",
+    "about_author": "About the author",
+    "contributor": "Contributor",
+    "recommended": "Recommended articles",
+    "tags": "Tags",
+    "newsletter": {
+      "title": "Newsletter",
+      "desc": "Receive our latest articles directly in your mailbox",
+      "subscribe": "Subscribe"
+    }
+  },
+  "declarer": {
+    "hero_title": "Sell Your Land",
+    "hero_desc": "Fill out this form to publish your ad",
+    "success_title": "Ad Published!",
+    "success_desc": "Your land has been successfully added. Redirecting...",
+    "error_fill_fields": "Please fill in all mandatory fields of this step before continuing.",
+    "important_note": "All fields marked with * are mandatory. You must complete the 4 steps, including adding at least 1 photo, before publishing your ad.",
+    "steps": {
+      "info": "Information",
+      "location": "Location",
+      "contact_docs": "Contact & Documents",
+      "media": "Media"
+    },
+    "form": {
+      "title_label": "Land Information",
+      "annonce_title": "Ad Title",
+      "annonce_placeholder": "Ex: Beautiful land in Lomé",
+      "description": "Description",
+      "description_placeholder": "Describe your land in detail...",
+      "price_label": "Price (FCFA)",
+      "surface_label": "Surface (m²)",
+      "type_label": "Land Type",
+      "status_label": "Status",
+      "types": {
+        "residential": "Residential",
+        "commercial": "Commercial",
+        "agricultural": "Agricultural",
+        "industrial": "Industrial"
+      },
+      "statuses": {
+        "available": "Available",
+        "pending": "Under negotiation",
+        "private": "Private"
+      },
+      "location_title": "Land Location",
+      "region_label": "Region",
+      "region_placeholder": "Select a region",
+      "city_label": "City",
+      "city_placeholder": "Select a city",
+      "district_label": "District",
+      "district_placeholder": "Ex: Agoè",
+      "address_label": "Full Address",
+      "address_placeholder": "Detailed land address",
+      "contact_title": "Contact & Documents",
+      "contact_info_title": "Contact Information",
+      "contact_info_desc": "This information will be visible to potential buyers",
+      "owner_name": "Your full name",
+      "owner_name_placeholder": "Owner name",
+      "email_label": "Email",
+      "phone_label": "Phone"
+    },
+    "errors": {
+      "title_required": "Title is required",
+      "description_required": "Description is required",
+      "price_invalid": "Price must be greater than 0",
+      "surface_invalid": "Surface must be greater than 0",
+      "region_required": "Region is required",
+      "city_required": "City is required",
+      "district_required": "District is required",
+      "address_required": "Address is required",
+      "name_required": "Your name is required",
+      "email_required": "Email is required",
+      "email_invalid": "Invalid email",
+      "phone_required": "Phone is required",
+      "phone_invalid": "Invalid phone number",
+      "image_required": "At least one photo of the land is required"
+    },
+    "form_media": {
+      "title": "Photos & Media",
+      "warning_incomplete": "Attention: You must complete all steps before you can publish your ad.",
+      "error_step1": "Step 1: Land information incomplete",
+      "error_step2": "Step 2: Location incomplete",
+      "error_step3": "Step 3: Contact information incomplete",
+      "error_step4": "Step 4: At least 1 photo is required",
+      "photo_mandatory_title": "Mandatory photos:",
+      "photo_mandatory_desc": "Add at least 1 quality photo of your land. Ads with multiple photos get 5x more contacts! Videos and 3D views are optional.",
+      "photo_label": "Land photos *",
+      "video_label": "Video URL (optional)",
+      "video_placeholder": "https://youtube.com/watch?v=...",
+      "view3d_label": "3D tour URL (optional)",
+      "view3d_placeholder": "https://matterport.com/...",
+      "photos_selected": "{{count}} photo selected",
+      "photos_selected_plural": "{{count}} photos selected"
+    },
+    "docs_title": "Available documents",
+    "docs": {
+      "title_deed": "Title deed",
+      "property_cert": "Property certificate",
+      "sale_auth": "Sale authorization"
+    }
   }
 }
+
+

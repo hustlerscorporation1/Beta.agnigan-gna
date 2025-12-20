@@ -326,14 +326,14 @@ const Header = () => {
                         onClick={() => setIsMobileMenuOpen(false)}
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg"
                       >
-                        Mon profil
+                        {t("header.my_profile")}
                       </Link>
                       <Link
                         to={ROUTES.DECLARE_PROPERTY}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg"
                       >
-                        Déclarer un terrain
+                        {t("header.declare_property")}
                       </Link>
                       <button
                         onClick={() => {
@@ -342,7 +342,7 @@ const Header = () => {
                         }}
                         className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg"
                       >
-                        Déconnexion
+                        {t("header.logout")}
                       </button>
                     </>
                   ) : (
@@ -356,7 +356,7 @@ const Header = () => {
                           setIsMobileMenuOpen(false);
                         }}
                       >
-                        Connexion
+                        {t("header.login")}
                       </Button>
                       <Button
                         variant="primary"
@@ -367,7 +367,7 @@ const Header = () => {
                           setIsMobileMenuOpen(false);
                         }}
                       >
-                        Inscription
+                        {t("header.register")}
                       </Button>
                     </div>
                   )}
@@ -384,7 +384,7 @@ const Header = () => {
                         setIsMobileMenuOpen(false);
                       }}
                     >
-                      Télécharger l'app
+                      {t("header.download_app")}
                     </Button>
                   </div>
                 </div>
@@ -420,10 +420,10 @@ const Header = () => {
                   <div className="flex items-center justify-between">
                     <div>
                       <h3 className="text-2xl font-bold mb-2">
-                        Télécharger l'application
+                        {t("header.download_modal.title")}
                       </h3>
                       <p className="text-primary-100 text-sm">
-                      Vérifier des terrains partout et à tout le temps
+                        {t("header.download_modal.subtitle")}
                       </p>
                     </div>
                     <button
@@ -452,7 +452,7 @@ const Header = () => {
                       </svg>
                     </div>
                     <div className="flex-1">
-                      <p className="text-xs text-gray-300">Disponible sur</p>
+                      <p className="text-xs text-gray-300">{t("header.download_modal.available_on")}</p>
                       <p className="text-xl font-semibold">Google Play</p>
                     </div>
                     <ArrowDownTrayIcon className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -473,7 +473,7 @@ const Header = () => {
                       </svg>
                     </div>
                     <div className="flex-1">
-                      <p className="text-xs text-gray-300">Télécharger sur</p>
+                      <p className="text-xs text-gray-300">{t("header.download_modal.download_on")}</p>
                       <p className="text-xl font-semibold">App Store</p>
                     </div>
                     <ArrowDownTrayIcon className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -483,24 +483,24 @@ const Header = () => {
                   <div className="flex items-center justify-between mt-4">
                     <div className="pt-4 border-t border-gray-200">
                       <p className="text-sm font-semibold text-gray-900 mb-3">
-                        Fonctionnalités de l'app :
+                        {t("header.download_modal.features_title")}
                       </p>
                       <ul className="space-y-2 text-sm text-gray-600">
                         <li className="flex items-center">
                           <span className="w-1.5 h-1.5 bg-primary-600 rounded-full mr-2"></span>
-                          Recherche rapide de terrains
+                          {t("header.download_modal.feature_search")}
                         </li>
                         <li className="flex items-center">
                           <span className="w-1.5 h-1.5 bg-primary-600 rounded-full mr-2"></span>
-                          Localisation GPS intégrée
+                          {t("header.download_modal.feature_gps")}
                         </li>
                         <li className="flex items-center">
                           <span className="w-1.5 h-1.5 bg-primary-600 rounded-full mr-2"></span>
-                          Notifications en temps réel
+                          {t("header.download_modal.feature_notifications")}
                         </li>
                         <li className="flex items-center">
                           <span className="w-1.5 h-1.5 bg-primary-600 rounded-full mr-2"></span>
-                          Gestion de favoris
+                          {t("header.download_modal.feature_favorites")}
                         </li>
                       </ul>
                     </div>

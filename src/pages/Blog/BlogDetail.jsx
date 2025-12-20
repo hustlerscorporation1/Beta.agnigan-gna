@@ -12,12 +12,13 @@ import {
 import Layout from '../../components/layout/Layout';
 import Container from '../../components/ui/Container';
 import Card, { CardContent } from '../../components/ui/Card';
-import Button from '../../components/ui/Button';
 import Badge from '../../components/ui/Badge';
+import { useTranslation } from 'react-i18next';
 import { ROUTES } from '../../config/constants';
 import { blogPosts } from '../../data/blogPosts';
 
 const BlogDetail = () => {
+  const { t, i18n } = useTranslation();
   const { slug } = useParams();
   const navigate = useNavigate();
 
@@ -33,7 +34,8 @@ const BlogDetail = () => {
   // Formater la date
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('fr-FR', options);
+    const locale = i18n.language === 'en' ? 'en-US' : i18n.language === 'de' ? 'de-DE' : 'fr-FR';
+    return new Date(dateString).toLocaleDateString(locale, options);
   };
 
   // Si l'article n'existe pas
@@ -44,17 +46,17 @@ const BlogDetail = () => {
           <Container>
             <div className="text-center">
               <h1 className="text-4xl font-bold text-gray-900 mb-4">
-                Article non trouvé
+                {t('blog_detail.not_found')}
               </h1>
               <p className="text-gray-600 mb-8">
-                Désolé, cet article n'existe pas ou a été supprimé.
+                {t('blog_detail.not_found_desc')}
               </p>
               <Button
                 variant="primary"
                 icon={ArrowLeftIcon}
                 onClick={() => navigate(ROUTES.BLOG)}
               >
-                Retour au blog
+                {t('blog_detail.back_to_blog')}
               </Button>
             </div>
           </Container>
@@ -79,7 +81,7 @@ const BlogDetail = () => {
               className="flex items-center gap-2 text-primary-600 hover:text-primary-700 mb-8 transition-colors"
             >
               <ArrowLeftIcon className="h-5 w-5" />
-              Retour au blog
+              {t('blog_detail.back_to_blog')}
             </button>
 
             {/* Category Badge */}
@@ -110,17 +112,17 @@ const BlogDetail = () => {
               
               <div className="flex items-center gap-2">
                 <ClockIcon className="h-5 w-5" />
-                {post.readTime}
+                {t('blog.read_time', { count: parseInt(post.readTime) })}
               </div>
             </div>
 
             {/* Social Share Buttons */}
             <div className="flex gap-3">
               <Button variant="outline" size="sm" icon={ShareIcon}>
-                Partager
+                {t('blog_detail.share')}
               </Button>
               <Button variant="outline" size="sm" icon={BookmarkIcon}>
-                Sauvegarder
+                {t('blog_detail.save')}
               </Button>
             </div>
           </motion.div>
@@ -173,7 +175,7 @@ const BlogDetail = () => {
                   <div className="mt-12 pt-8 border-t border-gray-200">
                     <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                       <TagIcon className="h-5 w-5" />
-                      Tags
+                      {t('blog_detail.tags')}
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {post.tags.map((tag, index) => (
@@ -199,39 +201,39 @@ const BlogDetail = () => {
                 <div className="sticky top-24 space-y-6">
                   {/* Author Card */}
                   <Card>
-                    <CardContent className="p-6">
-                      <h3 className="text-lg font-bold text-gray-900 mb-4">
-                        À propos de l'auteur
-                      </h3>
-                      <div className="flex items-center gap-3 mb-4">
-                        <img
-                          src={post.author.avatar}
-                          alt={post.author.name}
-                          className="w-16 h-16 rounded-full"
-                        />
-                        <div>
-                          <p className="font-semibold text-gray-900">
-                            {post.author.name}
-                          </p>
-                          <p className="text-sm text-gray-600">
-                            Contributeur
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
+                        <CardContent className="p-6">
+                            <h3 className="text-lg font-bold text-gray-900 mb-4">
+                                {t('blog_detail.about_author')}
+                            </h3>
+                            <div className="flex items-center gap-3 mb-4">
+                                <img
+                                    src={post.author.avatar}
+                                    alt={post.author.name}
+                                    className="w-16 h-16 rounded-full"
+                                />
+                                <div>
+                                    <p className="font-semibold text-gray-900">
+                                        {post.author.name}
+                                    </p>
+                                    <p className="text-sm text-gray-600">
+                                        {t('blog_detail.contributor')}
+                                    </p>
+                                </div>
+                            </div>
+                        </CardContent>
                   </Card>
 
                   {/* Newsletter Card */}
                   <Card className="bg-primary-50 border-primary-200">
                     <CardContent className="p-6">
                       <h3 className="text-lg font-bold text-gray-900 mb-2">
-                        📬 Newsletter
+                        📬 {t('blog_detail.newsletter.title')}
                       </h3>
                       <p className="text-sm text-gray-600 mb-4">
-                        Recevez nos derniers articles directement dans votre boîte mail
+                        {t('blog_detail.newsletter.desc')}
                       </p>
                       <Button variant="primary" fullWidth size="sm">
-                        S'abonner
+                        {t('blog_detail.newsletter.subscribe')}
                       </Button>
                     </CardContent>
                   </Card>
@@ -252,7 +254,7 @@ const BlogDetail = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl font-bold text-gray-900 mb-8">
-              Articles recommandés
+              {t('blog_detail.recommended')}
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -295,7 +297,7 @@ const BlogDetail = () => {
                       <div className="flex items-center gap-4 text-xs text-gray-500">
                         <div className="flex items-center gap-1">
                           <ClockIcon className="h-3 w-3" />
-                          {relatedPost.readTime}
+                          {t('blog.read_time', { count: parseInt(relatedPost.readTime) })}
                         </div>
                       </div>
                     </CardContent>

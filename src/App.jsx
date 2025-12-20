@@ -33,6 +33,7 @@ import BlogDetail from './pages/Blog/BlogDetail';
 // Components
 import ChatBot from './components/ChatBot';
 import LanguageSwitcher from './components/LanguageSwitcher';
+import ScrollToTop from './components/ScrollToTop';
 
 // Admin
 import AdminApp from './admin/AdminApp';
@@ -40,6 +41,7 @@ import AdminApp from './admin/AdminApp';
 function App() {
   return (
     <div className="app">
+      <ScrollToTop />
       <LanguageSwitcher />
       <ChatBot />
       

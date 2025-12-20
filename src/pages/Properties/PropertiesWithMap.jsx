@@ -194,24 +194,27 @@ const PropertiesWithMap = () => {
             <div className="flex gap-2">
               <Button
                 variant="success"
-                className="hidden lg:flex"
-                onClick={() => navigate(`${ROUTES.CONTACT}?subject=Demande%20Particulière`)}
+                className="hidden lg:flex hover:bg-primary-600 hover:text-white"
+                onClick={() => navigate(`${ROUTES.CONTACT}?subject=${encodeURIComponent(t('properties.special_request_btn'))}`)}
+                style={{
+                  backgroundColor: '#F4A100',
+                }}
               >
-                Soumettre une demande particulière
+                {t('properties.special_request_btn')}
               </Button>
               <Button
                 variant={showMap ? 'primary' : 'outline'}
                 icon={MapIcon}
                 onClick={() => setShowMap(true)}
               >
-                Carte
+                {t('properties.view_map')}
               </Button>
               <Button
                 variant={!showMap ? 'primary' : 'outline'}
                 icon={ListBulletIcon}
                 onClick={() => setShowMap(false)}
               >
-                Liste
+                {t('properties.view_list')}
               </Button>
               <div className="relative">
                 <Button
@@ -219,7 +222,7 @@ const PropertiesWithMap = () => {
                   icon={FunnelIcon}
                   onClick={() => setShowFilters(!showFilters)}
                 >
-                  Filtres
+                  {t('properties.filters_btn')}
                 </Button>
                 {(selectedRegion !== 'all' || selectedPrefecture !== 'all' || selectedCommune !== 'all' || selectedCanton !== 'all' || selectedQuartier !== 'all' || selectedStatus !== 'all') && (
                   <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-primary-600 text-xs font-bold text-white">
@@ -240,27 +243,27 @@ const PropertiesWithMap = () => {
             >
               {selectedRegion !== 'all' && (
                 <Badge variant="primary" className="px-3 py-1">
-                  Région: {regions.find(r => r.value === selectedRegion)?.label}
+                  {t('properties.region_label')}: {regions.find(r => r.value === selectedRegion)?.label}
                 </Badge>
               )}
               {selectedPrefecture !== 'all' && (
                 <Badge variant="primary" className="px-3 py-1">
-                  Préfecture: {prefectureOptions.find(p => p.value === selectedPrefecture)?.label}
+                  {t('properties.prefecture_label')}: {prefectureOptions.find(p => p.value === selectedPrefecture)?.label}
                 </Badge>
               )}
               {selectedCommune !== 'all' && (
                 <Badge variant="primary" className="px-3 py-1">
-                  Commune: {communeOptions.find(c => c.value === selectedCommune)?.label}
+                  {t('properties.commune_label')}: {communeOptions.find(c => c.value === selectedCommune)?.label}
                 </Badge>
               )}
               {selectedCanton !== 'all' && (
                 <Badge variant="primary" className="px-3 py-1">
-                  Canton: {selectedCanton}
+                  {t('properties.canton_label')}: {selectedCanton}
                 </Badge>
               )}
               {selectedQuartier !== 'all' && (
                 <Badge variant="primary" className="px-3 py-1">
-                  Quartier: {selectedQuartier}
+                  {t('properties.quartier_label')}: {selectedQuartier}
                 </Badge>
               )}
               {selectedStatus !== 'all' && (
@@ -486,7 +489,7 @@ const PropertiesWithMap = () => {
                         : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
                     }`}
                   >
-                    🛫 Satellite
+                    🛫 {t('property_detail.satellite')}
                   </button>
                 </div>
 
@@ -671,7 +674,7 @@ const PropertiesWithMap = () => {
                 </Button>
                 <Button
                   variant="success"
-                  onClick={() => navigate(`${ROUTES.CONTACT}?subject=Demande%20Particulière`)}
+                  onClick={() => navigate(`${ROUTES.CONTACT}?subject=${encodeURIComponent(t('properties.special_request_btn'))}`)}
                 >
                   {t('properties.special_request_btn')}
                 </Button>
@@ -685,7 +688,7 @@ const PropertiesWithMap = () => {
               <p className="text-gray-600 mb-6">{t('properties.special_request_desc')}</p>
               <Button
                 variant="success"
-                onClick={() => navigate(`${ROUTES.CONTACT}?subject=Demande%20Particulière`)}
+                onClick={() => navigate(`${ROUTES.CONTACT}?subject=${encodeURIComponent(t('properties.special_request_btn'))}`)}
               >
                 {t('properties.special_request_btn')}
               </Button>
